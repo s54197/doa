@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>Login - DOA App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{-- <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" /> --}}
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body class="account-pages">
+
+            <!-- Begin page -->
+            <div class="accountbg" style="background: url('assets/images/tablet_paddy-min.jpg');background-size: cover;background-position: center;"></div>
+    
+            <div class="wrapper-page account-page-full">
+    
+                <div class="card shadow-none">
+                    <div class="card-block">
+    
+                        <div class="account-box">
+    
+                            <div class="card-box shadow-none p-4 mt-2">
+                                {{-- <h2 class="text-uppercase text-center pb-3">
+                                    <a href="index.html" class="text-success">
+                                        <span><img src="assets/images/logo-dark.png" alt="" height="26"></span>
+                                    </a>
+                                </h2> --}}
+                                <h2 class="text-center my-4">Sistem Rekod Maklumat</h2>
+    
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+    
+                                    <div class="form-group row mb-0">
+                                        <div class="col-12">
+                                            <label for="emailaddress">Emel:</label>
+                                            <input class="form-control" type="email" name="email" id="email" required placeholder="Sila Masukkan Emel" autofocus autocomplete="email">
+                                        </div>
+                                    </div>
+                                    @error('email')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+    
+                                    <div class="form-group row mt-2">
+                                        <div class="col-12">
+                                            <a href="{{ route('password.request') }}" class="text-muted float-right"><small>Lupa Kata Laluan?</small></a>
+                                            <label for="password">Kata Laluan:</label>
+                                            <input class="form-control" type="password" name="password" required id="password" placeholder="Sila Masukkan Kata Laluan" autocomplete="current-password">
+                                        </div>
+                                    </div>
+                                    @error('password')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+    
+                                    <div class="form-group row">
+                                        <div class="col-12">
+    
+                                            <div class="checkbox checkbox-info">
+                                                <input name="remember" id="remember" type="checkbox" checked="">
+                                                <label for="remember">
+                                                    Ingat Saya
+                                                </label>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group row text-center">
+                                        <div class="col-12">
+                                            <button class="btn btn-block btn-info waves-effect waves-light" type="submit">Log Masuk</button>
+                                        </div>
+                                    </div>
+    
+                                </form>
+    
+                                <div class="row mt-4">
+                                    <div class="col-sm-12 text-center">
+                                        <p class="text-muted">Belum Ada Akaun?<a href="page-register.html" class="text-dark ml-1"><b>Daftar Akaun Anda</b></a></p>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+    
+                <div class="text-center">
+                    <p class="account-copyright">2019 - 2021 © DOA Web Application 
+                        {{-- <span class="d-none d-sm-inline-block"> - Coderthemes.com</span> --}}
+                    </p>
+                </div>
+    
+            </div>
+    
+        <!-- Vendor js -->
+        <script src="assets/js/vendor.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/app.min.js"></script>
+        
+    </body>
+</html>
