@@ -2,7 +2,9 @@ name: Publish to CPanel
 on:
   push:
     branches:
-      - main
+      - [main]
+  workflow_dispatch:
+  
 jobs:
   FTP-Deploy-Action:
     name: FTP-Deploy-Action
