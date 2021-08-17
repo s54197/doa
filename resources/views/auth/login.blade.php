@@ -2,10 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8" />
-        <title>Login - DOA App</title>
+        <title>DOA - Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{-- <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" /> --}}
-        <meta content="Coderthemes" name="author" />
+        {{-- <meta content="Coderthemes" name="author" /> --}}
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- CSRF Token -->
@@ -39,7 +39,11 @@
                                         <span><img src="assets/images/logo-dark.png" alt="" height="26"></span>
                                     </a>
                                 </h2> --}}
-                                <h2 class="text-center my-4">Sistem Rekod Maklumat</h2>
+                                <div class="text-center mb-2 mt-4">
+                                    <img src="assets/images/jabatan_pertanian.png" alt="logo_jabatan_pertanian" height="80">
+                                </div>
+
+                                <h3 class="text-center mt-0 mb-4">Sistem Rekod Maklumat Pendaftaran</h3>
     
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
