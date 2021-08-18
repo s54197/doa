@@ -1,4 +1,4 @@
-@extends('layouts.app-new')
+@extends('layouts.app')
 
 @section('title', 'Info Kilang')
 
@@ -26,45 +26,59 @@
             <div class="row">
                 <div class="col-12">
                     <div>
-                        <form class="form-horizontal" role="form">
+                        <form method="POST" class="form-horizontal" role="form" {{--action="{{ route('syarikat.create') }}"--}}>
+                            @csrf
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_nama"><span class="text-danger">*</span>Nama syarikat:</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="syarikat_nama" name="syarikat_nama" class="form-control" value="Nama Syarikat">
-                                    <small class="text-danger" id="syarikat_nama_error" name="syarikat_nama_error"></small>
+                                    <input type="text" id="syarikat_nama" name="syarikat_nama" class="form-control" placeholder="Nama Syarikat" value="{{ old('syarikat_nama') }}">
+                                    @error('syarikat_nama') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_no_roc"><span class="text-danger">*</span>Nombor pendaftaran (ROC):</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="syarikat_no_roc" name="syarikat_no_roc" class="form-control" value="Nombor Pendaftaran (ROC)">
-                                    <small class="text-danger" id="syarikat_no_roc_error" name="syarikat_no_roc_error"></small>
+                                    <input type="text" id="syarikat_no_roc" name="syarikat_no_roc" class="form-control" placeholder="Nombor Pendaftaran (ROC)" value="{{ old('syarikat_no_roc') }}">
+                                    @error('syarikat_no_roc') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_tarikh_roc"><span class="text-danger">*</span>Tarikh pendaftaran (ROC)</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" id="syarikat_tarikh_roc" type="text" name="syarikat_tarikh_roc" data-date-orientation="bottom" data-date-format="dd-mm-yyyy">
-                                    <small class="text-danger" id="syarikat_tarikh_roc_error" name="syarikat_tarikh_roc_error"></small>
+                                    <input class="form-control" id="syarikat_tarikh_roc" type="text" name="syarikat_tarikh_roc" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('syarikat_tarikh_roc') }}">
+                                    @error('syarikat_tarikh_roc') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="form-group row mb-2">
+                            <div class="form-group row mb-0 mb-sm-2">
                                 <label class="col-md-3 col-form-label" for="syarikat_alamat"><span class="text-danger">*</span>Alamat syarikat:</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="syarikat_bangunan" name="syarikat_bangunan" class="form-control" value="Bangunan">
-                                    <input type="text" id="syarikat_jalan" name="syarikat_jalan" class="form-control mt-2" value="Jalan">
-                                    <small class="text-danger" id="syarikat_bangunan_error" name="syarikat_bangunan_error"></small>
+                                    <input type="text" id="syarikat_bangunan" name="syarikat_bangunan" class="form-control" placeholder="Bangunan" value="{{ old('syarikat_bangunan') }}">
+                                    <input type="text" id="syarikat_jalan" name="syarikat_jalan" class="form-control mt-2" placeholder="Jalan" value="{{ old('syarikat_jalan') }}">
+                                    @error('syarikat_bangunan') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row mt-0 mt-sm-2 mb-0 mb-sm-2">
                                 <label class="col-md-3 col-form-label" for="syarikat_alamat_tambahan"></label>
-                                <div class="col-md-2">
-                                    <input type="text" id="syarikat_poskod" name="syarikat_poskod" class="form-control" value="Poskod">
-                                    <small class="text-danger" id="syarikat_poskod_error" name="syarikat_poskod_error"></small>
+                                <div class="col-md-2 mb-2 mb-sm-0">
+                                    <input type="text" id="syarikat_poskod" name="syarikat_poskod" class="form-control" placeholder="Poskod" 
+                                    value="{{ old('syarikat_poskod') }}">
+                                    @error('syarikat_poskod') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="syarikat_bandar" name="syarikat_bandar" class="form-control" value="Bandar">
-                                    <small class="text-danger" id="syarikat_bandar_error" name="syarikat_bandar_error"></small>
+                                <div class="col-md-3 mb-2 mb-sm-0">
+                                    <input type="text" id="syarikat_bandar" name="syarikat_bandar" class="form-control" placeholder="Bandar" value="{{ old('syarikat_bandar') }}">
+                                    @error('syarikat_bandar') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                                 <div class="col-md-3">
                                     <select class="form-control" name="syarikat_negeri">
@@ -86,36 +100,44 @@
                                         <option value="Sarawak" {{ old('syarikat_negeri') == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
                                         <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('syarikat_negeri') == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
                                     </select>                                    
-                                    <small class="text-danger" id="syarikat_negeri_error" name="syarikat_negeri_error"></small>
+                                    @error('syarikat_negeri') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-8 offset-3">
+                            <div class="form-group row mb-0 mb-sm-2">
+                                <div class="col-md-8 offset-md-3 col-12 pl-4 pl-sm-2">
                                     <div class="checkbox checkbox-primary">
-                                        <input id="syarikat_surat" type="checkbox">
+                                        <input id="syarikat_surat" name="syarikat_surat" type="checkbox" value="alamat_sama" {{ old('syarikat_surat') == "alamat_sama" ? 'checked' : '' }}>
                                         <label for="syarikat_surat">
                                             Alamat yang sama untuk urusan surat-menyurat
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row mb-2">
+                            <div class="form-group row mb-sm-2 mb-0">
                                 <label class="col-md-3 col-form-label" for="syarikat_surat"><span class="text-danger">*</span>Alamat syarikat (surat-menyurat):</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="syarikat_bangunan" name="syarikat_surat_bangunan" class="form-control" value="Bangunan">
-                                    <input type="text" id="syarikat_surat_jalan" name="syarikat_surat_jalan" class="form-control mt-2" value="Jalan">
-                                    <small class="text-danger" id="syarikat_surat_bangunan_error" name="syarikat_surat_bangunan_error"></small>
+                                    <input type="text" id="syarikat_bangunan" name="syarikat_surat_bangunan" class="form-control" placeholder="Bangunan" value="{{ old('syarikat_surat_bangunan') }}">
+                                    <input type="text" id="syarikat_surat_jalan" name="syarikat_surat_jalan" class="form-control mt-2" placeholder="Jalan" value="{{ old('syarikat_surat_jalan') }}">
+                                    @error('syarikat_surat_bangunan') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_surat_tambahan"></label>
-                                <div class="col-md-2">
-                                    <input type="text" id="syarikat_surat_poskod" name="syarikat_surat_poskod" class="form-control" value="Poskod">
-                                    <small class="text-danger" id="syarikat_surat_poskod_error" name="syarikat_surat_poskod_error"></small>
+                                <div class="col-md-2 mb-2 mb-sm-0">
+                                    <input type="text" id="syarikat_surat_poskod" name="syarikat_surat_poskod" class="form-control" placeholder="Poskod" value="{{ old('syarikat_surat_poskod') }}">
+                                    @error('syarikat_surat_poskod') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="syarikat_surat_bandar" name="syarikat_surat_bandar" class="form-control" value="Bandar">
-                                    <small class="text-danger" id="syarikat_surat_bandar_error" name="syarikat_surat_bandar_error"></small>
+                                <div class="col-md-3 mb-2 mb-sm-0">
+                                    <input type="text" id="syarikat_surat_bandar" name="syarikat_surat_bandar" class="form-control" placeholder="Bandar" value="{{ old('syarikat_surat_bandar') }}">
+                                    @error('syarikat_surat_bandar') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                                 <div class="col-md-3">
                                     <select class="form-control" name="syarikat_surat_negeri">
@@ -137,35 +159,45 @@
                                         <option value="Sarawak" {{ old('syarikat_surat_negeri') == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
                                         <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('syarikat_surat_negeri') == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
                                     </select>                                    
-                                    <small class="text-danger" id="syarikat_surat_negeri_error" name="syarikat_surat_negeri_error"></small>
+                                    @error('syarikat_surat_negeri') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_no_tel"><span class="text-danger">*</span>Nombor telefon:</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="syarikat_no_tel" name="syarikat_no_tel" class="form-control" value="Nama Syarikat">
-                                    <small class="text-danger" id="syarikat_no_tel_error" name="syarikat_no_tel_error"></small>
+                                    <input type="text" id="syarikat_no_tel" name="syarikat_no_tel" class="form-control" placeholder="Nama Syarikat" value="{{ old('syarikat_no_tel') }}">
+                                    @error('syarikat_no_tel') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="syarikat_no_faks"><span class="text-danger">*</span>Nombor telefon:</label>
+                                <label class="col-md-3 col-form-label" for="syarikat_no_faks"><span class="text-danger">*</span>Nombor faks:</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="syarikat_no_faks" name="syarikat_no_faks" class="form-control" value="Nombor telefon">
-                                    <small class="text-danger" id="syarikat_no_faks_error" name="syarikat_no_faks_error"></small>
+                                    <input type="text" id="syarikat_no_faks" name="syarikat_no_faks" class="form-control" placeholder="Nombor telefon" value="{{ old('syarikat_no_faks') }}">
+                                    @error('syarikat_no_faks') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_emel"><span class="text-danger">*</span>Emel:</label>
                                 <div class="col-md-8">
-                                    <input type="email" id="syarikat_emel" name="syarikat_emel" class="form-control" value="Emel">
-                                    <small class="text-danger" id="syarikat_emel_error" name="syarikat_emel_error"></small>
+                                    <input type="email" id="syarikat_emel" name="syarikat_emel" class="form-control" placeholder="Emel" value="{{ old('syarikat_emel') }}">
+                                    @error('syarikat_emel') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_wakil">Nama wakil yang dibenarkan:</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="syarikat_wakil" name="syarikat_wakil" class="form-control" value="Nama wakil">
-                                    <small class="text-danger" id="syarikat_wakil_error" name="syarikat_wakil_error"></small>
+                                    <input type="text" id="syarikat_wakil" name="syarikat_wakil" class="form-control" placeholder="Nama wakil" value="{{ old('syarikat_wakil') }}">
+                                    @error('syarikat_wakil') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                    @enderror                                
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
@@ -196,6 +228,64 @@
 $(document).ready(function(){
     $('input[name="syarikat_tarikh_roc"]').datepicker();
     $('input[name="syarikat_tarikh_roc"]').attr("placeholder","Tarikh Pendaftaran (ROC) - Pilih dari kalendar");
+
+// copy changes to alamat surat menyurat if checkbox is checked
+$("input[name='syarikat_bangunan']").keyup(function(){
+    if ($('#syarikat_surat').is(":checked")){
+        $("input[name='syarikat_surat_bangunan']").val($(this).val());
+    }
 });
+$("input[name='syarikat_jalan']").keyup(function(){
+    if ($('#syarikat_surat').is(":checked")){
+        $("input[name='syarikat_surat_jalan']").val($(this).val());
+    }
+});
+$("input[name='syarikat_poskod']").keyup(function(){
+    if ($('#syarikat_surat').is(":checked")){
+        $("input[name='syarikat_surat_poskod']").val($(this).val());
+    }
+});
+$("input[name='syarikat_bandar']").keyup(function(){
+    if ($('#syarikat_surat').is(":checked")){
+        $("input[name='syarikat_surat_bandar']").val($(this).val());
+    }
+});
+$("select[name='syarikat_negeri']").on('change', function(){
+    if ($('#syarikat_surat').is(":checked")){
+        $("select[name='syarikat_surat_negeri']").val($(this).val());
+    }
+});
+
+// copy to alamat surat menyurat if checkbox is checked
+$('#syarikat_surat').click(function(){
+    changeInputReadonly();
+});
+
+// everytime page is reloaded check if the same alamat surat-menyurat is checked
+changeInputReadonly();
+
+});
+
+function changeInputReadonly(){
+    if($('#syarikat_surat').is(":checked")){
+        $("input[name='syarikat_surat_bangunan']").val($("input[name='syarikat_bangunan']").val())
+                                            .attr('readonly', true);
+        $("input[name='syarikat_surat_jalan']").val($("input[name='syarikat_jalan']").val())
+                                            .attr('readonly', true);
+        $("input[name='syarikat_surat_poskod']").val($("input[name='syarikat_poskod']").val())
+                                            .attr('readonly', true);
+        $("input[name='syarikat_surat_bandar']").val($("input[name='syarikat_bandar']").val())
+                                            .attr('readonly', true);
+        $("select[name='syarikat_surat_negeri']").val($("select[name='syarikat_negeri'] option:selected").val())
+                                            .attr('readonly', true);
+    }
+    else {     
+        $("input[name='syarikat_surat_bangunan']").attr('readonly', false);
+        $("input[name='syarikat_surat_jalan']").attr('readonly', false);
+        $("input[name='syarikat_surat_poskod']").attr('readonly', false);
+        $("input[name='syarikat_surat_bandar']").attr('readonly', false);
+        $("select[name='syarikat_surat_negeri']").attr('readonly', false);
+    }
+}
 </script>  
 @endsection
