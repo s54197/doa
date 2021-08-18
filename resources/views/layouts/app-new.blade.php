@@ -10,6 +10,8 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
+        <link href="/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
         <!-- App css -->
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -36,7 +38,7 @@
                     <!-- LOGO -->
                     <div class="logo-box pt-2">
                         <h5 class="text-light">
-                            SISTEM MAKLUMAT REKOD PENDAFTARAN
+                            Sistem Maklumat Rekod Pendaftaran
                         </h5>
                         {{-- <a href="index.html" class="logo">
                             <span class="logo-lg">
@@ -312,6 +314,7 @@
         <!-- Vendor js -->
         <script src="/assets/js/vendor.min.js"></script>
 
+        <script src="/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
         <!-- Flot chart -->
         <script src="/assets/libs/flot-charts/jquery.flot.js"></script>
@@ -331,6 +334,8 @@
 
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
+
+        @yield('local_js')
         
     </body>
 </html>

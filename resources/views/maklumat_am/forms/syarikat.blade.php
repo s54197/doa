@@ -28,14 +28,14 @@
                     <div>
                         <form class="form-horizontal" role="form">
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="syarikat_nama"><span class="text-danger">*</span>Nama Syarikat:</label>
+                                <label class="col-md-3 col-form-label" for="syarikat_nama"><span class="text-danger">*</span>Nama syarikat:</label>
                                 <div class="col-md-8">
                                     <input type="text" id="syarikat_nama" name="syarikat_nama" class="form-control" value="Nama Syarikat">
                                     <small class="text-danger" id="syarikat_nama_error" name="syarikat_nama_error"></small>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="syarikat_no_roc"><span class="text-danger">*</span>Nombor Pendaftaran (ROC):</label>
+                                <label class="col-md-3 col-form-label" for="syarikat_no_roc"><span class="text-danger">*</span>Nombor pendaftaran (ROC):</label>
                                 <div class="col-md-8">
                                     <input type="text" id="syarikat_no_roc" name="syarikat_no_roc" class="form-control" value="Nombor Pendaftaran (ROC)">
                                     <small class="text-danger" id="syarikat_no_roc_error" name="syarikat_no_roc_error"></small>
@@ -44,7 +44,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_tarikh_roc"><span class="text-danger">*</span>Tarikh pendaftaran (ROC)</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" id="syarikat_tarikh_roc" type="date" name="syarikat_tarikh_roc">
+                                    <input class="form-control" id="syarikat_tarikh_roc" type="text" name="syarikat_tarikh_roc" data-date-orientation="bottom" data-date-format="dd-mm-yyyy">
                                     <small class="text-danger" id="syarikat_tarikh_roc_error" name="syarikat_tarikh_roc_error"></small>
                                 </div>
                             </div>
@@ -189,4 +189,13 @@
     </div><!-- end col -->
 </div>
 <!-- end row -->
+@endsection
+
+@section('local_js')
+<script>
+$(document).ready(function(){
+    $('input[name="syarikat_tarikh_roc"]').datepicker();
+    $('input[name="syarikat_tarikh_roc"]').attr("placeholder","Tarikh Pendaftaran (ROC) - Pilih dari kalendar");
+});
+</script>  
 @endsection
