@@ -20,4 +20,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Maklumat Am
-Route::get('/form/syarikat', function () { return view('maklumat_am.forms.syarikat');});
+Route::get('/form/syarikat', function () { return view('maklumat_am.forms.syarikat');})->name('form.syarikat');
+Route::get('/syarikat', function () { return view('maklumat_am.main_syarikat');})->name('main.syarikat');

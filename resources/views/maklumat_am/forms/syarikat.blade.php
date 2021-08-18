@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Info Kilang')
+@section('title', 'Syarikat')
 
 @section('breadcrumbs')
 <li>

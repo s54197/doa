@@ -25,6 +25,8 @@
         }
     </style>
 
+    @yield('local_css')
+
     <body class="left-side-menu-dark">
 
         <!-- Begin page -->
@@ -76,13 +78,13 @@
                                 </a>
 
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="apps-calendar.html">Kilang <span class="badge badge-blue float-right">13</span></a></li>
-                                    <li><a href="apps-tickets.html">Agen <span class="badge badge-blue float-right">13</span></a></li>
-                                    <li><a href="apps-taskboard.html">Produk <span class="badge badge-blue float-right">13</span></a></li>
-                                    <li><a href="apps-task-detail.html">Perawis Aktif <span class="badge badge-blue float-right">13</span></a></li>
-                                    <li><a href="apps-contacts.html">Pembekal <span class="badge badge-blue float-right">13</span></a></li>
-                                    <li><a href="apps-projects.html">Pengilang <span class="badge badge-blue float-right">13</span></a></li>
-                                    <li><a href="apps-companies.html">Invoicing <span class="badge badge-blue float-right">13</span></a></li>
+                                    <li><a href="{{ route('main.syarikat') }}">Syarikat {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="apps-tickets.html">Agen {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="apps-taskboard.html">Produk {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="apps-task-detail.html">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="apps-contacts.html">Pembekal {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="apps-projects.html">Pengilang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="apps-companies.html">Invoicing {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                 </ul>
                             </li>
 
