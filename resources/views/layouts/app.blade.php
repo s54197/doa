@@ -10,7 +10,11 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
-        <link href="/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css -->
+        <link href="/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+       
+       <link href="/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -237,13 +241,13 @@
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-user"></i> <span>My Account</span>
+                                        <i class="fe-user"></i> <span>Profil Pengguna</span>
                                     </a>
 
                                     <!-- item-->
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();" class="dropdown-item notify-item">
-                                        <i class="fe-log-out"></i> <span>Logout</span>
+                                        <i class="fe-log-out"></i> <span>Log Keluar</span>
                                     </a>
 
                                 </div>
@@ -333,10 +337,14 @@
         <script src="/assets/libs/flot-charts/curvedLines.js"></script>
         <script src="/assets/libs/flot-charts/jquery.flot.axislabels.js"></script>
 
-         <!-- KNOB JS -->
-         <script src="/assets/libs/jquery-knob/jquery.knob.min.js"></script>
+        <!-- KNOB JS -->
+        <script src="/assets/libs/jquery-knob/jquery.knob.min.js"></script>
 
-         <script src="/assets/js/pages/dashboard.init.js"></script>
+        {{-- <script src="/assets/js/pages/dashboard.init.js"></script> --}}
+                 <!-- third party js -->
+        <script src="/assets/libs/datatables/jquery.dataTables.min.js"></script>
+        <script src="/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/assets/libs/datatables/dataTables.responsive.min.js"></script>
 
 
         <!-- App js -->

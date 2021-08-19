@@ -35,7 +35,7 @@
     
                             <div class="card-box shadow-none p-4 mt-2">
                                 {{-- <h2 class="text-uppercase text-center pb-3">
-                                    <a href="index.html" class="text-success">
+                                    <a href="index.html" class="text-primary">
                                         <span><img src="assets/images/logo-dark.png" alt="" height="26"></span>
                                     </a>
                                 </h2> --}}
@@ -72,7 +72,7 @@
                                     <div class="form-group row">
                                         <div class="col-12">
     
-                                            <div class="checkbox checkbox-info">
+                                            <div class="checkbox checkbox-primary">
                                                 <input name="remember" id="remember" type="checkbox" checked="">
                                                 <label for="remember">
                                                     Ingat Saya
@@ -84,7 +84,7 @@
     
                                     <div class="form-group row text-center">
                                         <div class="col-12">
-                                            <button class="btn btn-block btn-info waves-effect waves-light" type="submit">Log Masuk</button>
+                                            <button class="btn btn-block btn-primary waves-effect waves-light" type="submit">Log Masuk</button>
                                         </div>
                                     </div>
     
