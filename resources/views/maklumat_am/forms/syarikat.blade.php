@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12">
                     <div>
-                        <form method="POST" class="form-horizontal" role="form" {{--action="{{ route('syarikat.create') }}"--}}>
+                        <form method="POST" class="form-horizontal" role="form" action="{{ route('syarikat.create') }}">
                             @csrf
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="syarikat_nama"><span class="text-danger">*</span>Nama syarikat:</label>
