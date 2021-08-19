@@ -26,7 +26,7 @@ Route::get('/syarikat', function () { return view('maklumat_am.main_syarikat');}
 /***********************************
             FORM
 ***********************************/
-// view form syarikat 
+// view syarikat 
 Route::get('/form/syarikat', function () { return view('maklumat_am.forms.syarikat');})->name('form.syarikat');
 // create syarikat
 Route::post('/form/syarikat/create', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'store'])->name('syarikat.create')->middleware('auth');
