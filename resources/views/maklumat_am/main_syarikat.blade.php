@@ -113,7 +113,7 @@
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="#"><i class="mdi mdi-file-document-box-search-outline mr-2 text-muted font-18 vertical-middle"></i>Papar</a>
                                         <a class="dropdown-item" href="#"><i class="mdi mdi-file-document-box-plus-outline mr-2 text-muted font-18 vertical-middle"></i>Kemaskini</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-file-document-box-remove-outline mr-2 text-muted font-18 vertical-middle"></i>Padam</a>
+                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="mdi mdi-file-document-box-remove-outline mr-2 text-muted font-18 vertical-middle"></i>Padam</a>
                                     </div>
                                 </div>
                             </td>
@@ -199,6 +199,9 @@
     <!-- end row -->
 </div>
 <!-- end div -->
+@component('components.modal_confirm', ['id'=>'id_syarikat'])
+Adakah anda bersetuju untuk memadam data?
+@endcomponent
 @endsection
 
 @section('local_js')
