@@ -93,7 +93,7 @@
                             </li>
 
                             <li>
-                                <a href="{{ route('form.syarikat') }}">
+                                <a href="{{ route('form.pendaftaran') }}">
                                     <i class="fe-edit"></i>
                                     {{-- <span class="badge badge-danger float-right">3</span> --}}
                                     <span>Pendaftaran (Borang A)</span>
@@ -340,12 +340,16 @@
         <!-- KNOB JS -->
         <script src="/assets/libs/jquery-knob/jquery.knob.min.js"></script>
 
-        {{-- <script src="/assets/js/pages/dashboard.init.js"></script> --}}
-                 <!-- third party js -->
+        <!-- third party js -->
         <script src="/assets/libs/datatables/jquery.dataTables.min.js"></script>
         <script src="/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
         <script src="/assets/libs/datatables/dataTables.responsive.min.js"></script>
 
+        <!--Form Wizard-->
+        <script src="/assets/libs/jquery-steps/jquery.steps.min.js"></script>
+
+        <!-- Validation init js-->
+        <script src="/assets/js/pages/wizard-init.js"></script>
 
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
