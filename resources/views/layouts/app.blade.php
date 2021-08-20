@@ -14,7 +14,11 @@
         <link href="/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
         <link href="/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
        
-       <link href="/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link href="/assets/libs/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -327,29 +331,28 @@
 
         <script src="/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
-        <!-- Flot chart -->
-        <script src="/assets/libs/flot-charts/jquery.flot.js"></script>
-        <script src="/assets/libs/flot-charts/jquery.flot.time.js"></script>
-        <script src="/assets/libs/flot-charts/jquery.flot.tooltip.min.js"></script>
-        <script src="/assets/libs/flot-charts/jquery.flot.resize.js"></script>
-        <script src="/assets/libs/flot-charts/jquery.flot.pie.js"></script>
-        <script src="/assets/libs/flot-charts/jquery.flot.crosshair.js"></script>
-        <script src="/assets/libs/flot-charts/curvedLines.js"></script>
-        <script src="/assets/libs/flot-charts/jquery.flot.axislabels.js"></script>
-
         <!-- KNOB JS -->
         <script src="/assets/libs/jquery-knob/jquery.knob.min.js"></script>
-
-        <!-- third party js -->
-        <script src="/assets/libs/datatables/jquery.dataTables.min.js"></script>
-        <script src="/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
-        <script src="/assets/libs/datatables/dataTables.responsive.min.js"></script>
 
         <!--Form Wizard-->
         <script src="/assets/libs/jquery-steps/jquery.steps.min.js"></script>
 
         <!-- Validation init js-->
         <script src="/assets/js/pages/wizard-init.js"></script>
+
+        <!-- third party js -->
+        <script src="/assets/libs/datatables/jquery.dataTables.min.js"></script>
+        <script src="/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/assets/libs/datatables/dataTables.responsive.min.js"></script>
+        <script src="/assets/libs/switchery/switchery.min.js"></script>
+        <script src="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+        <script src="/assets/libs/select2/select2.min.js"></script>
+        <script src="/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
+        <script src="/assets/libs/autocomplete/jquery.autocomplete.min.js"></script>
+        <script src="/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
+        <script src="/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+        <script src="/assets/libs/bootstrap-filestyle2/bootstrap-filestyle.min.js"></script>
+        <script src="/assets/js/pages/form-advanced.init.js"></script>
 
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
