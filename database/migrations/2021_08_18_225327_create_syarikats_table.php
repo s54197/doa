@@ -32,7 +32,8 @@ class CreateSyarikatsTable extends Migration
             $table->string('syarikat_no_faks');
             $table->string('syarikat_emel');
             $table->string('syarikat_wakil');
-            $table->boolean('syarikat_status');
+            $table->string('syarikat_status');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

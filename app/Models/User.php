@@ -11,6 +11,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    // one to many relation
+    public function syarikat(){
+        return $this->hasMany('App\Models\Syarikat');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

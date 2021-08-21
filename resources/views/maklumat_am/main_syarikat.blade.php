@@ -73,19 +73,22 @@
                     </div>
                 </div>
 
+                @if( Session::has( 'success' ))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    Display the message if success
+                    {{ Session::get( 'success' ) }}
                 </div>
 
+                @elseif( Session::has( 'warning' ))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    Display the message if error
+                    {{ Session::get( 'warning' ) }}
                 </div>
+                @endif
                 
                 <table class="table table-bordered m-0 table-centered tickets-list table-actions-bar dt-responsive nowrap" cellspacing="0" width="100%" id="datatable">
                     <thead>

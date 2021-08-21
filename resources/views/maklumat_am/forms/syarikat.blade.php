@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div>
-                            <form method="POST" class="form-horizontal" role="form" {{--action="{{ route('syarikat.create') }}"--}}>
+                            <form method="POST" class="form-horizontal" role="form" action="{{ route('syarikat.create') }}">
                                 @csrf
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="syarikat_nama"><span class="text-danger">*</span>Nama syarikat:</label>
@@ -69,7 +69,7 @@
                                 <div class="form-group row mt-0 mt-sm-2 mb-0 mb-sm-2">
                                     <label class="col-md-3 col-form-label" for="syarikat_alamat_tambahan"></label>
                                     <div class="col-md-2 mb-2 mb-sm-0">
-                                        <input type="text" id="syarikat_poskod" name="syarikat_poskod" class="form-control" placeholder="Poskod" 
+                                        <input type="number" id="syarikat_poskod" name="syarikat_poskod" class="form-control" placeholder="Poskod" 
                                         value="{{ old('syarikat_poskod') }}">
                                         @error('syarikat_poskod') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -129,7 +129,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="syarikat_surat_tambahan"></label>
                                     <div class="col-md-2 mb-2 mb-sm-0">
-                                        <input type="text" id="syarikat_surat_poskod" name="syarikat_surat_poskod" class="form-control" placeholder="Poskod" value="{{ old('syarikat_surat_poskod') }}">
+                                        <input type="number" id="syarikat_surat_poskod" name="syarikat_surat_poskod" class="form-control" placeholder="Poskod" value="{{ old('syarikat_surat_poskod') }}">
                                         @error('syarikat_surat_poskod') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror                                

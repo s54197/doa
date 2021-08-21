@@ -28,5 +28,6 @@ class Syarikat extends Model
         'syarikat_emel',
         'syarikat_wakil',
         'syarikat_status',
+        'user_id',
     ];
 }

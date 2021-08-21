@@ -5,6 +5,9 @@ namespace App\Http\Controllers\MaklumatAm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Syarikat;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
 
 class SyarikatController extends Controller
 {
@@ -32,8 +35,33 @@ class SyarikatController extends Controller
             'syarikat_wakil' => 'required',
         ]);
 
-        return redirect('/syarikat')->with('message', 'Syarikat baru telah berjaya didaftarkan!');
-    
+        try {
+            $user = User::find(Auth::user()->id);
+            $user->syarikat()->create([
+                'syarikat_nama' => $request->syarikat_nama,
+                'syarikat_no_roc' => $request->syarikat_no_roc,
+                'syarikat_tarikh_roc' => Carbon::createFromFormat('m/d/Y', $request->syarikat_tarikh_roc)->format('Y-m-d'),
+                'syarikat_bangunan' => $request->syarikat_bangunan,
+                'syarikat_poskod' => $request->syarikat_poskod,
+                'syarikat_bandar' => $request->syarikat_bandar,
+                'syarikat_negeri' => $request->syarikat_negeri,
+                'syarikat_surat_bangunan' => $request->syarikat_surat_bangunan,
+                'syarikat_surat_jalan' => $request->syarikat_surat_jalan,
+                'syarikat_surat_poskod' => $request->syarikat_surat_poskod,
+                'syarikat_surat_bandar' => $request->syarikat_surat_bandar,
+                'syarikat_surat_negeri' => $request->syarikat_surat_negeri,
+                'syarikat_no_tel' => $request->syarikat_no_tel,
+                'syarikat_no_faks' => $request->syarikat_no_faks,
+                'syarikat_emel' => $request->syarikat_emel,
+                'syarikat_wakil' => $request->syarikat_wakil,
+                'syarikat_status' => 'Aktif',
+                'user_id' => $user->id,
+            ]);
+            return redirect('/syarikat')->withSuccess('Syarikat baru telah berjaya didaftarkan!');
+        } catch(Exception $e) {
+            return redirect('/syarikat')->withWarning('Syarikat baru tidak berjaya didaftarkan!');
+        }
+        
     }
     
     // Delete syarikat based on id
