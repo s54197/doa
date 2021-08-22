@@ -9,6 +9,12 @@ class Syarikat extends Model
 {
     use HasFactory;
 
+    // User relationship
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     protected $fillable = [
         'syarikat_nama',
         'syarikat_no_roc',
@@ -28,6 +34,5 @@ class Syarikat extends Model
         'syarikat_emel',
         'syarikat_wakil',
         'syarikat_status',
-        'user_id',
     ];
 }

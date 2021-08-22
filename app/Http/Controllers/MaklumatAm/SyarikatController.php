@@ -6,11 +6,46 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Syarikat;
 use App\Models\User;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Auth;
 
 class SyarikatController extends Controller
 {
+    
+    // All data
+    public function index() {
+        // All data syarikat
+        $syarikats = Syarikat::all();
+        // Summary
+        $TotalSyarikat = Syarikat::count();
+        $TotalSyarikatAktif = Syarikat::where('syarikat_status', '=', 'Aktif')->count();
+        $TotalSyarikatTidakAktif = Syarikat::where('syarikat_status', '=', 'Tidak Aktif')->count();
+        $TotalSyarikatBulanTerkini = Syarikat::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
+
+        return view('maklumat_am.main_syarikat', [
+            'syarikats' => $syarikats,
+            'totalsyarikat' => $TotalSyarikat,
+            'totalsyarikataktif' => $TotalSyarikatAktif, 
+            'totalsyarikattidakaktif' => $TotalSyarikatTidakAktif, 
+            'totalsyarikatbulanterkini' => $TotalSyarikatBulanTerkini,
+            'bulan' => date('M')
+        ]);
+        
+    }
+    
+    // Show data based on id
+    public function view($id) {
+        // Data syarikat
+        $syarikat = Syarikat::find($id);
+        $data = array(
+            'syarikats' => $syarikat,
+            'jenis' => 'papar',
+            'tajuk' => 'Paparan'
+        );
+        
+        return view('maklumat_am.forms.syarikat')->with($data);
+    }
     
     // Store data
     public function store(Request $request){
@@ -35,13 +70,16 @@ class SyarikatController extends Controller
             'syarikat_wakil' => 'required',
         ]);
 
+        // dd($request);
+
         try {
             $user = User::find(Auth::user()->id);
-            $user->syarikat()->create([
+            $user->syarikats()->create([
                 'syarikat_nama' => $request->syarikat_nama,
                 'syarikat_no_roc' => $request->syarikat_no_roc,
-                'syarikat_tarikh_roc' => Carbon::createFromFormat('m/d/Y', $request->syarikat_tarikh_roc)->format('Y-m-d'),
+                'syarikat_tarikh_roc' => Carbon::createFromFormat('d-m-Y', $request->syarikat_tarikh_roc)->format('Y-m-d'),
                 'syarikat_bangunan' => $request->syarikat_bangunan,
+                'syarikat_jalan' => $request->syarikat_jalan,
                 'syarikat_poskod' => $request->syarikat_poskod,
                 'syarikat_bandar' => $request->syarikat_bandar,
                 'syarikat_negeri' => $request->syarikat_negeri,
