@@ -338,7 +338,7 @@
         <script src="/assets/libs/jquery-steps/jquery.steps.min.js"></script>
 
         <!-- Validation init js-->
-        <script src="/assets/js/pages/wizard-init.js"></script>
+        <script src="/assets/js/pages/borang_A.js"></script>
 
         <!-- third party js -->
         <script src="/assets/libs/datatables/jquery.dataTables.min.js"></script>

@@ -36,6 +36,14 @@
                 {{-- <p class="sub-header">
                     Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.
                 </p> --}}
+                {{-- @if ($errors->any()) --}}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        Terdapat kesilapan pada data semasa mengisi borang, sila semak.
+                    </div>
+                {{-- @endif --}}
 
                 <form method="post" id="wizard-vertical">
                     @csrf
@@ -93,7 +101,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="pemohon_wakil_syarikat"><span class="text-danger">*</span>Wakil Syarikat:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="pemohon_wakil_syarikat">Wakil Syarikat:</label>
                             <div class="col-md-9">
                                 <input type="text" id="pemohon_wakil_syarikat" name="pemohon_wakil_syarikat" class="form-control custom_border" placeholder="Nama wakil" value="{{ old('pemohon_wakil_syarikat') }}">
                                 @error('pemohon_wakil_syarikat') 
@@ -108,7 +116,7 @@
                             <label class="col-md-3 col-form-label my-md-0" for="keluaran_dagangan"><span class="text-danger">*</span>Nama Dagangan:</label>
                             <div class="col-md-9">
                                 <select class="form-control" name="keluaran_dagangan">
-                                    <option value="">Pilih Produk...</option>
+                                    <option value="">Pilih Dagangan...</option>
                                     {{-- <option value="Johor" {{ old('keluaran_dagangan') == "Johor" ? 'selected' : '' }}>Johor</option> --}}
                                 </select>    
                                 @error('keluaran_dagangan') 
@@ -128,7 +136,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="keluaran_no_pendaftaran"><span class="text-danger">*</span>Nombor Pendaftaran:</label>
                             <div class="col-md-9">
-                                <input type="text" id="keluaran_no_pendaftaran" name="keluaran_no_pendaftaran" class="form-control custom_border" placeholder="Nombor Pendaftaran (ROC)" value="{{ old('keluaran_no_pendaftaran') }}">
+                                <input type="text" id="keluaran_no_pendaftaran" name="keluaran_no_pendaftaran" class="form-control custom_border" placeholder="Nombor Pendaftaran " value="{{ old('keluaran_no_pendaftaran') }}">
                                 @error('keluaran_no_pendaftaran') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -139,48 +147,102 @@
                     <section>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="perniagaan_aktiviti"><span class="text-danger">*</span>Nyatakan aktiviti utama perniagaan:</label>
-                            <div class="col-md-9">
-                                <select class="form-control" name="perniagaan_aktiviti" id="perniagaan_aktiviti">
-                                    <option value="">Pilih Aktiviti...</option>
-                                    <option value='Mengimport' {{ old('perniagaan_aktiviti') == 'Mengimport' ? 'selected' : '' }}>Mengimport</option>
-                                    <option value='Mengilang' {{ old('perniagaan_aktiviti') == 'Mengilang' ? 'selected' : '' }}>Mengilang</option>
-                                    <option value='Lain-lain (nyatakan)' {{ old('perniagaan_aktiviti') == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
-                                </select>    
-                                @error('perniagaan_aktiviti') 
-                                <small class='text-danger'>{{ $message }}</small> 
-                                @enderror
+                            <div class="col-md-5">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengimport" name="perniagaan_mengimport" type="checkbox" value="TRUE" {{ old('perniagaan_mengimport') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengimport">
+                                        Mengimport
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_lain" name="perniagaan_lain" type="checkbox" value="TRUE" {{ old('perniagaan_lain') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_lain">
+                                        Lain-lain (nyatakan)
+                                    </label>
+                                </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang" name="perniagaan_mengilang" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang">
+                                        Mengilang
+                                    </label>
+                                </div>
+                            </div>
+                            @error('perniagaan_aktiviti') 
+                            <small class='text-danger'>{{ $message }}</small> 
+                            @enderror
                         </div>
-                        <div class="form-group d-none row" id="perniagaan_aktiviti_lain_div">
+                        <div class="form-group row">
                             <div class="col-md-9 offset-md-3">
-                                <input type="text" id="perniagaan_aktiviti_lain" name="perniagaan_aktiviti_lain" class="form-control custom_border" placeholder="Lain-lain (nyatakan)" value="{{ old('perniagaan_aktiviti_lain') }}">
-                                @error('perniagaan_aktiviti_lain') 
+                                <input type="text" id="perniagaan_lain_maklumat" name="perniagaan_lain_maklumat" class="form-control custom_border" placeholder="Lain-lain Aktiviti" value="{{ old('perniagaan_lain_maklumat') }}">
+                                @error('perniagaan_lain_maklumat') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group d-none row" id="perniagaan_aktiviti_dijalankan_div">
-                            <label class="col-md-3 col-form-label my-md-0" for="perniagaan_aktiviti_dijalankan"><span class="text-danger">*</span>Jika aktiviti adalah mengilang, nyatakan aktiviti yang ingin dijalankan:</label>
-                            <div class="col-md-9">
-                                <select class="form-control" name="perniagaan_aktiviti_dijalankan" id="perniagaan_aktiviti_dijalankan">
-                                    <option value="">Pilih Aktiviti Dijalankan (Mengilang)...</option>
-                                    <option value='Menyedia' {{ old('perniagaan_aktiviti_dijalankan') == 'Menyedia' ? 'selected' : '' }}>Menyedia</option>
-                                    <option value='Mensebati' {{ old('perniagaan_aktiviti_dijalankan') == 'Mensebati' ? 'selected' : '' }}>Mensebati</option>
-                                    <option value='Mencampur' {{ old('perniagaan_aktiviti_dijalankan') == 'Mencampur' ? 'selected' : '' }}>Mencampur</option>
-                                    <option value='Melabel/Melabel semula' {{ old('perniagaan_aktiviti_dijalankan') == 'Melabel/Melabel semula' ? 'selected' : '' }}>Melabel/Melabel semula</option>
-                                    <option value='Mempek/Mempek semula' {{ old('perniagaan_aktiviti_dijalankan') == 'Mempek/Mempek semula' ? 'selected' : '' }}>Mempek/Mempek semula</option>
-                                    <option value='Membuat' {{ old('perniagaan_aktiviti_dijalankan') == 'Membuat' ? 'selected' : '' }}>Membuat</option>
-                                    <option value='Lain-lain (nyatakan)' {{ old('perniagaan_aktiviti_dijalankan') == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
-                                </select>    
-                                @error('perniagaan_aktiviti_dijalankan') 
-                                <small class='text-danger'>{{ $message }}</small> 
-                                @enderror
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="perniagaan_mengilang"><span class="text-danger">*</span>Jika aktiviti adalah mengilang, nyatakan aktiviti yang ingin dijalankan:</label>
+                            <div class="col-md-5">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang_menyedia" name="perniagaan_mengilang_menyedia" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang_menyedia') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang_menyedia">
+                                        Menyedia
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang_merumus" name="perniagaan_mengilang_merumus" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang_merumus') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang_merumus">
+                                        Merumus
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang_mensebati" name="perniagaan_mengilang_mensebati" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang_mensebati') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang_mensebati">
+                                        Mensebati
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang_mencampur" name="perniagaan_mengilang_mencampur" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang_mencampur') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang_mencampur">
+                                        Mencampur
+                                    </label>
+                                </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang_melabel" name="perniagaan_mengilang_melabel" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang_melabel') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang_melabel">
+                                        Melabel/Melabel semula
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang_mempek" name="perniagaan_mengilang_mempek" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang_mempek') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang_mempek">
+                                        Mempek/Mempek semula
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang_membuat" name="perniagaan_mengilang_membuat" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang_membuat') == "TRUE" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang_membuat">
+                                        Membuat
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="perniagaan_mengilang_lain" name="perniagaan_mengilang_lain" type="checkbox" value="TRUE" {{ old('perniagaan_mengilang_lain') == "Lain-lain (nyatakan)" ? 'checked' : '' }}>
+                                    <label for="perniagaan_mengilang_lain">
+                                        Lain-lain (nyatakan)
+                                    </label>
+                                </div>
+                            </div>
+                            @error('perniagaan_mengilang') 
+                            <small class='text-danger'>{{ $message }}</small> 
+                            @enderror
                         </div>
-                        <div class="form-group row d-none" id="perniagaan_aktiviti_dijalankan_lain_div">
+                        <div class="form-group row" id="perniagaan_mengilang_lain_maklumat_div">
                             <div class="col-md-9 offset-md-3">
-                                <input type="text" id="perniagaan_aktiviti_dijalankan_lain" name="perniagaan_aktiviti_dijalankan_lain" class="form-control custom_border" placeholder="Lain-lain (nyatakan)" value="{{ old('perniagaan_aktiviti_dijalankan_lain') }}">
-                                @error('perniagaan_aktiviti_dijalankan_lain') 
+                                <input type="text" id="perniagaan_mengilang_lain_maklumat" name="perniagaan_mengilang_lain_maklumat" class="form-control custom_border" placeholder="Lain-lain Aktiviti" value="{{ old('perniagaan_mengilang_lain_maklumat') }}">
+                                @error('perniagaan_mengilang_lain_maklumat') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
                             </div>
@@ -315,32 +377,6 @@ $(document).ready(function(){
         maximumSelectionLength: 4,
         // placeholder: "Pilih Pengilang (maksimum 4)",
     });
-
-    $('#perniagaan_aktiviti').on('change', function(){
-        // alert($(this).val());
-        if ($(this).val()=='Lain-lain (nyatakan)') $('#perniagaan_aktiviti_lain_div').removeClass('d-none');
-        else {
-            $('#perniagaan_aktiviti_lain_div').addClass('d-none');
-            $('#perniagaan_aktiviti_lain').val('');
-        }
-        
-        if ($(this).val()=='Mengilang') $('#perniagaan_aktiviti_dijalankan_div').removeClass('d-none');
-        else {
-            $('#perniagaan_aktiviti_dijalankan_div').addClass('d-none');
-            $('#perniagaan_aktiviti_dijalankan_lain_div').addClass('d-none');
-            $('#perniagaan_aktiviti_dijalankan_lain_div').val('');
-        }
-    });
-
-    $('#perniagaan_aktiviti_dijalankan').on('change', function(){
-        if ($(this).val()=='Lain-lain (nyatakan)') $('#perniagaan_aktiviti_dijalankan_lain_div').removeClass('d-none');
-        else {
-            $('#perniagaan_aktiviti_dijalankan_lain_div').addClass('d-none');
-            $('#perniagaan_aktiviti_dijalankan_lain').val('');
-        }
-    });
-
-
 });
 </script>
 @endsection
