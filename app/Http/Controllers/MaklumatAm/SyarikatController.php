@@ -161,9 +161,9 @@ class SyarikatController extends Controller
                 'syarikat_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/syarikat')->withSuccess('Syarikat baru telah berjaya didaftarkan!');
+            return redirect('/syarikat')->withSuccess('Syarikat baru telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/syarikat')->withWarning('Syarikat baru tidak berjaya didaftarkan!');
+            return redirect('/syarikat')->withWarning('Syarikat baru tidak berjaya dikemaskinikan!');
         }
     }
 
@@ -172,16 +172,10 @@ class SyarikatController extends Controller
         try{
             $syarikat = Syarikat::find($request->id);
             $syarikat->delete();
-            return array(
-                'status' => 'success',
-                'message' => $syarikat->name
-            );
+            return redirect('/syarikat')->withSuccess('Syarikat dengan id : '.$id.' telah berjaya dipadamkan!');
         }
         catch (\Illuminate\Database\QueryException $error){
-            return array(
-                'status' => 'failed',
-                'message' => $error
-            );
+            return redirect('/syarikat')->withWarning('Syarikat dengan id : '.$id.' tidak berjaya dipadamkan!');
         }
     }
 }
