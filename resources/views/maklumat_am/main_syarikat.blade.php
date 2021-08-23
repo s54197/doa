@@ -155,20 +155,18 @@ $(document).ready(function () {
         // }
     });
 
+    // To get syarikat id
     $('.padam').on('click', function(){
-        $(this).attr('id');
-        alert($(this).attr('id'));
-
+        
         id = $(this).attr('id');
         id = id.split('_');
-        alert(id[1]);
 
         $('.bs-example-modal-sm').modal('show');
-
         $('#padam_submit').attr('action','syarikat/delete/' + id[1]);
 
     });
 
+    // Submit
     $('#teruskan').on('click', function(){
         $('#padam_submit').submit();
     });
