@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div>
-                            <form method="POST" class="form-horizontal" role="form" action="{{ route('syarikat.create') }}">
+                            <form method="POST" class="form-horizontal" role="form" action="{{ $jenis == 'new' ? route('syarikat.create') : route('syarikat.update',$syarikats->id) }}">
                                 @csrf
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="syarikat_nama"><span class="text-danger">*</span>Nama syarikat:</label>
@@ -203,11 +203,14 @@
                                 
                                 <div class="form-group row mb-0">
                                     <div class="col-8 offset-3">
+                                        @if($jenis=='new' || $jenis=='kemaskini' )
                                         <button type="submit" name="syarikat_submit" id="syarikat_submit" class="btn btn-primary waves-effect waves-light mr-1">
-                                            Daftar
+                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }}
                                         </button>
-                                        <button type="reset" name="syarikat_batal" id="syarikat_batal" class="btn btn-light waves-effect">
-                                        {{ $jenis == "papar" ? 'Kembali' : 'Batal' }}
+                                        <button type="reset" name="syarikat_batal" id="syarikat_batal" class="btn btn-light waves-effect">Kosongkan</button>
+                                        @endif
+                                        <button type="button" onclick="window.location='{{ route('main.syarikat') }}'" name="syarikat_batal" id="syarikat_batal" class="btn btn-light waves-effect">
+                                            {{ $jenis == "papar" ? 'Kembali' : 'Batal' }}
                                         </button>
                                     </div>
                                 </div>
