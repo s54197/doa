@@ -301,13 +301,29 @@
                     </section>
                     <h3>Butiran Perawis Aktif, Lengai, Kandungan & Rumusan</h3>
                     <section>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="perawis_aktif"><span class="text-danger">*</span>Perawis Aktif:</label>
                             <div class="col-md-9">
                                 <select class="form-control" name="perawis_aktif">
                                     <option value="">Pilih Perawis Aktif...</option>
-                                    {{-- <option value='Mengimport' {{ old('perawis_aktif') == 'Mengimport' ? 'selected' : '' }}>Mengimport</option> --}}
                                 </select>    
+                                @error('perawis_aktif') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
+                            </div>
+                        </div> --}}
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="perawis_aktif"><span class="text-danger">*</span>Perawis Aktif:</label>
+                            <div class="col-md-9">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="perawis_aktif" id="perawis_aktif" multiple="multiple">
+                                    {{-- <optgroup label="Alaskan/Hawaiian Time Zone"></optgroup> --}}
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                </select>  
                                 @error('perawis_aktif') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
