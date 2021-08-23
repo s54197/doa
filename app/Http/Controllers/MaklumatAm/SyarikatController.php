@@ -168,9 +168,9 @@ class SyarikatController extends Controller
     }
 
     // Delete syarikat based on id
-    public function delete(Request $request){
+    public function delete($id){
         try{
-            $syarikat = Syarikat::find($request->id);
+            $syarikat = Syarikat::find($id);
             $syarikat->delete();
             return redirect('/syarikat')->withSuccess('Syarikat dengan id : '.$id.' telah berjaya dipadamkan!');
         }

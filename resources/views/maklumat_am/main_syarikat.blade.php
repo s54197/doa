@@ -116,7 +116,7 @@
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="{{ route('papar.syarikat', $syarikat->id) }}"><i class="mdi mdi-file-document-box-search-outline mr-2 text-muted font-18 vertical-middle"></i>Papar</a>
                                         <a class="dropdown-item" href="{{ route('kemaskini.syarikat', $syarikat->id) }}"><i class="mdi mdi-file-document-box-plus-outline mr-2 text-muted font-18 vertical-middle"></i>Kemaskini</a>
-                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="mdi mdi-file-document-box-remove-outline mr-2 text-muted font-18 vertical-middle"></i>Padam</a>
+                                        <a class="dropdown-item padam" href="#" id="padam_{{ $syarikat->id }}" ><i class="mdi mdi-file-document-box-remove-outline mr-2 text-muted font-18 vertical-middle"></i>Padam</a>
                                     </div>
                                 </div>
                             </td>
@@ -133,8 +133,12 @@
 @component('components.modal_confirm', ['id'=>'id_syarikat'])
 Adakah anda bersetuju untuk memadam data?
 @endcomponent
-@endsection
 
+<form id="padam_submit" method='post'>
+    @csrf
+    @method('delete')
+</form>
+@endsection
 @section('local_js')
 <script>
 $(document).ready(function () {
@@ -150,6 +154,25 @@ $(document).ready(function () {
         //     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
         // }
     });
+
+    $('.padam').on('click', function(){
+        $(this).attr('id');
+        alert($(this).attr('id'));
+
+        id = $(this).attr('id');
+        id = id.split('_');
+        alert(id[1]);
+
+        $('.bs-example-modal-sm').modal('show');
+
+        $('#padam_submit').attr('action','syarikat/delete/' + id[1]);
+
+    });
+
+    $('#teruskan').on('click', function(){
+        $('#padam_submit').submit();
+    });
+
 });
 </script>
 @endsection

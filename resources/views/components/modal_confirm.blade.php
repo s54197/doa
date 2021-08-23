@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger waves-effect waves-light" onclick="window.location='{{ route('syarikat.delete',$id) }}'">Teruskan</button>
+                <button type="button" id="teruskan" class="btn btn-danger waves-effect waves-light">Teruskan</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
