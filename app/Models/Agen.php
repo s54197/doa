@@ -4,10 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Agen extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
+    // User relationship
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected $fillable = [
         'agen_nama',
@@ -22,5 +30,6 @@ class Agen extends Model
         'agen_no_tel',
         'agen_no_faks',
         'agen_emel',
+        'agen_status',
     ];
 }

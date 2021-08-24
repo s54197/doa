@@ -52,6 +52,9 @@ class SyarikatController extends Controller
         // Data syarikat
         $syarikat = Syarikat::find($id);
         
+        // Reformat date 
+        $syarikat->syarikat_tarikh_roc = Carbon::createFromFormat('Y-m-d', $syarikat->syarikat_tarikh_roc)->format('d-m-Y');
+
         $data = array(
             'syarikats' => $syarikat,
             'jenis' => 'kemaskini',
@@ -80,7 +83,7 @@ class SyarikatController extends Controller
             'syarikat_surat_negeri' => 'required',
             'syarikat_no_tel' => 'required',
             'syarikat_no_faks' => 'required',
-            'syarikat_emel' => 'required',
+            'syarikat_emel' => 'required|email',
             // 'syarikat_wakil' => 'required',
         ]);
 
@@ -109,9 +112,9 @@ class SyarikatController extends Controller
                 'syarikat_status' => 'Aktif',
                 'user_id' => $user->id,
             ]);
-            return redirect('/syarikat')->withSuccess('Syarikat baru telah berjaya didaftarkan!');
+            return redirect('/syarikat')->withSuccess('Syarikat '.$request->syarikat_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/syarikat')->withWarning('Syarikat baru tidak berjaya didaftarkan!');
+            return redirect('/syarikat')->withWarning('Syarikat '.$request->syarikat_nama.' tidak berjaya didaftarkan!');
         }
         
     }
@@ -134,8 +137,8 @@ class SyarikatController extends Controller
             'syarikat_surat_negeri' => 'required',
             'syarikat_no_tel' => 'required',
             'syarikat_no_faks' => 'required',
-            'syarikat_emel' => 'required',
-            'syarikat_wakil' => 'required',
+            'syarikat_emel' => 'required|email',
+            // 'syarikat_wakil' => 'required',
         ]);
 
         try {
@@ -161,27 +164,21 @@ class SyarikatController extends Controller
                 'syarikat_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/syarikat')->withSuccess('Syarikat baru telah berjaya didaftarkan!');
+            return redirect('/syarikat')->withSuccess('Syarikat '.$syarikat->syarikat_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/syarikat')->withWarning('Syarikat baru tidak berjaya didaftarkan!');
+            return redirect('/syarikat')->withWarning('Syarikat '.$syarikat->syarikat_nama.' tidak berjaya dikemaskinikan!');
         }
     }
 
     // Delete syarikat based on id
-    public function delete(Request $request){
+    public function delete($id){
         try{
-            $syarikat = Syarikat::find($request->id);
+            $syarikat = Syarikat::find($id);
             $syarikat->delete();
-            return array(
-                'status' => 'success',
-                'message' => $syarikat->name
-            );
+            return redirect('/syarikat')->withSuccess('Syarikat '.$syarikat->syarikat_nama.' telah berjaya dipadamkan!');
         }
         catch (\Illuminate\Database\QueryException $error){
-            return array(
-                'status' => 'failed',
-                'message' => $error
-            );
+            return redirect('/syarikat')->withWarning('Syarikat '.$syarikat->syarikat_nama.' tidak berjaya dipadamkan!');
         }
     }
 }

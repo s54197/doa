@@ -185,7 +185,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="syarikat_emel"><span class="text-danger">*</span>Emel:</label>
                                     <div class="col-md-8">
-                                        <input type="email" id="syarikat_emel" name="syarikat_emel" class="form-control" placeholder="Emel" value="{{ old('syarikat_emel',isset($syarikats->syarikat_nama)?$syarikats->syarikat_nama:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="email" id="syarikat_emel" name="syarikat_emel" class="form-control" placeholder="Emel" value="{{ old('syarikat_emel',isset($syarikats->syarikat_emel)?$syarikats->syarikat_emel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_emel') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror                                
