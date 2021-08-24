@@ -49,7 +49,7 @@ class AgenController extends Controller
     public function update_view($id) {
         // Data agen
         $agen = Agen::find($id);
-        
+ 
         $data = array(
             'agens' => $agen,
             'jenis' => 'kemaskini',

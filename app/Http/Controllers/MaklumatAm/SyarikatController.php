@@ -52,6 +52,9 @@ class SyarikatController extends Controller
         // Data syarikat
         $syarikat = Syarikat::find($id);
         
+        // Reformat date 
+        $syarikat->syarikat_tarikh_roc = Carbon::createFromFormat('Y-m-d', $syarikat->syarikat_tarikh_roc)->format('d-m-Y');
+
         $data = array(
             'syarikats' => $syarikat,
             'jenis' => 'kemaskini',
