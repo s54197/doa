@@ -93,7 +93,7 @@
                             </li>
 
                             <li>
-                                <a href="{{ route('form.syarikat') }}">
+                                <a href="{{ route('form.pendaftaran') }}">
                                     <i class="fe-edit"></i>
                                     {{-- <span class="badge badge-danger float-right">3</span> --}}
                                     <span>Pendaftaran (Borang A)</span>
