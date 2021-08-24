@@ -28,6 +28,8 @@ class CreateAgensTable extends Migration
             $table->string('agen_no_tel');
             $table->string('agen_no_faks');
             $table->string('agen_emel');
+            $table->string('agen_status');
+            $table->foreignIdFor(User::class);
             $table->softDeletes();
             $table->timestamps();
         });

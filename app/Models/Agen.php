@@ -11,6 +11,12 @@ class Agen extends Model
     use HasFactory;
     use SoftDeletes;
 
+    // User relationship
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     protected $fillable = [
         'agen_nama',
         'agen_ic',
@@ -24,5 +30,6 @@ class Agen extends Model
         'agen_no_tel',
         'agen_no_faks',
         'agen_emel',
+        'agen_status',
     ];
 }
