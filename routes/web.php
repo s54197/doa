@@ -22,17 +22,21 @@ Route::middleware('auth')->group(function() {
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     /***********************************
-                syarikat
+                  borang A
+    ***********************************/
+    // view borang A
+    Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('form.pendaftaran');
+
+    /***********************************
+                   syarikat
     ***********************************/
     Route::get('syarikat', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'index'])->name('main.syarikat');
     Route::get('syarikat/papar/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'view'])->name('papar.syarikat');
     Route::get('syarikat/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'update_view'])->name('kemaskini.syarikat');
-        
     // view syarikat 
     Route::get('form/syarikat', function () {
         return view('maklumat_am.forms.syarikat')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);
     })->name('form.syarikat');
-
     // delete syarikat
     Route::delete('syarikat/delete/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'delete'])->name('syarikat.delete');
     // create syarikat
