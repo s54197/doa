@@ -16,8 +16,16 @@ class DatabaseSeeder extends Seeder
     {
         //\App\Models\User::factory(10)->create();
         User::create(array(
-            'name' => 'Aman',
-            'email' => 'aman@doa.gov.my',
+            'name' => 'user',
+            'role' => 'user',
+            'email' => 'user@doa.gov.my',
+            'password' => bcrypt('12345678'),
+        ));
+
+        User::create(array(
+            'name' => 'admin',
+            'role' => 'admin',
+            'email' => 'admin@doa.gov.my',
             'password' => bcrypt('12345678'),
         ));
     }

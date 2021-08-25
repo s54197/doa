@@ -15,6 +15,12 @@ class SyarikatController extends Controller
     
     // All data
     public function index() {
+
+        // Check user role
+        $role = User::find(Auth::user()->id);
+        $id = Auth::id();
+        dd($id);
+
         // All data syarikat
         $syarikats = Syarikat::all();
         // Summary

@@ -18,6 +18,26 @@ class User extends Authenticatable
         return $this->hasMany(Syarikat::class);
     }
 
+    // Agen relationship
+    public function agens(){
+        return $this->hasMany(Agen::class);
+    }
+
+    // Pembekal relationship
+    public function pembekals(){
+        return $this->hasMany(Pembekal::class);
+    }
+
+    // Pengilang relationship
+    public function pengilangs(){
+        return $this->hasMany(Pengilang::class);
+    }
+
+    // Penginvoisan relationship
+    public function penginvoisans(){
+        return $this->hasMany(Penginvoisan::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +45,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'role',
         'email',
         'password',
     ];
