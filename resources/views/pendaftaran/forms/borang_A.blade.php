@@ -298,6 +298,23 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_gudang"><span class="text-danger">*</span>Gudang:</label>
+                            <div class="col-md-9">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_gudang" id="borangA_gudang" multiple="multiple">
+                                    {{-- <optgroup label="Alaskan/Hawaiian Time Zone"></optgroup> --}}
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                </select>  
+                                @error('borangA_gudang') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
+                            </div>
+                        </div>
                     </section>
                     <h3>Butiran Perawis Aktif, Lengai, Kandungan & Rumusan</h3>
                     <section>
@@ -646,7 +663,7 @@
                                         <option value="AK">Alaska</option>
                                         <option value="HI">Hawaii</option>
                                 </select>  
-                                @error('borangA_penginvoisan') 
+                                @error('borangA_perawis_pengilang') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
                             </div>
@@ -678,13 +695,14 @@ $(document).ready(function(){
     $('.select2').select2({
         width:"100%",
         maximumSelectionLength: 4,
-        // placeholder: "Pilih Pengilang (maksimum 4)",
     });
-
     $('#borangA_pengilang_kontrak').select2({
         width:"100%",
         maximumSelectionLength: 10,
-        // placeholder: "Pilih Pengilang (maksimum 4)",
+    });
+    $('#borangA_gudang').select2({
+        width:"100%",
+        maximumSelectionLength: 5,
     });
 });
 </script>

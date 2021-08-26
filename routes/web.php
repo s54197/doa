@@ -21,6 +21,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Maklumat Am
 Route::get('/syarikat', function () { return view('maklumat_am.main_syarikat');})->name('main.syarikat');
+Route::get('/produk', function () { return view('maklumat_am.main_produk');})->name('main.produk');
 
 
 /***********************************
@@ -32,6 +33,10 @@ Route::get('/form/syarikat', function () { return view('maklumat_am.forms.syarik
 Route::post('/form/syarikat/create', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'store'])->name('syarikat.create')->middleware('auth');
 // delete syarikat
 Route::post('/form/syarikat/delete', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'delete'])->name('syarikat.delete')->middleware('auth');
+
+
+// view form produk 
+Route::get('/form/produk', function () { return view('maklumat_am.forms.produk');})->name('form.produk');
 
 // view borang A
 Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('form.pendaftaran');
