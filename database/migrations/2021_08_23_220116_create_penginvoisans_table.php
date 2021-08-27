@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
 
 class CreatePenginvoisansTable extends Migration
 {
@@ -29,7 +28,11 @@ class CreatePenginvoisansTable extends Migration
             $table->string('penginvoisan_no_faks');
             $table->string('penginvoisan_emel');
             $table->string('penginvoisan_status');
-            $table->foreignIdFor(User::class);
+
+            // one to many relation for user
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->softDeletes();
             $table->timestamps();
         });

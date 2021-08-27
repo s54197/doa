@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
 
 class CreatePembekalsTable extends Migration
 {
@@ -29,7 +28,11 @@ class CreatePembekalsTable extends Migration
             $table->string('pembekal_no_faks');
             $table->string('pembekal_emel');
             $table->string('pembekal_status');
-            $table->foreignIdFor(User::class);
+            
+            // one to many relation for user
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->softDeletes();
             $table->timestamps();
         });
