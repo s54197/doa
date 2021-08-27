@@ -94,6 +94,22 @@ Route::middleware('auth')->group(function() {
     Route::post('form/pengilang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'update'])->name('pengilang.update');
 
     /***********************************
+                gudang
+    ***********************************/
+    Route::get('gudang', [App\Http\Controllers\MaklumatAm\GudangController::class, 'index'])->name('main.gudang');
+    Route::get('gudang/papar/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'view'])->name('papar.gudang');
+    Route::get('gudang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'update_view'])->name('kemaskini.gudang');
+    // delete gudang
+    Route::delete('gudang/delete/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'delete'])->name('gudang.delete');
+    // view gudang 
+    Route::get('form/gudang', function () { 
+        return view('maklumat_am.forms.gudang')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.gudang');
+    // create gudang
+    Route::post('form/gudang/create', [App\Http\Controllers\MaklumatAm\GudangController::class, 'store'])->name('gudang.create');
+    // update gudang
+    Route::post('form/gudang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'update'])->name('gudang.update');
+
+    /***********************************
                penginvoisan
     ***********************************/
     Route::get('penginvoisan', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'index'])->name('main.penginvoisan');
