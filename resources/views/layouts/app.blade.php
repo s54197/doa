@@ -92,6 +92,7 @@
                                     <li><a href="apps-task-detail.html">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.pembekal') }}">Pembekal {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.pengilang') }}">Pengilang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="{{ route('main.gudang') }}">Gudang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.penginvoisan') }}">Invoicing {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                 </ul>
                             </li>
