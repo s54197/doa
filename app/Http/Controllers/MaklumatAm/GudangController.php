@@ -10,7 +10,7 @@ use App\Models\User;
 use Carbon\Carbon;
 
 
-class GudangContorller extends Controller
+class GudangController extends Controller
 {
     // All data
     public function index() {

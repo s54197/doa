@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return view('auth.login');});
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function() {
 
@@ -126,3 +126,7 @@ Route::middleware('auth')->group(function() {
     Route::post('form/penginvoisan/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'update'])->name('penginvoisan.update');
 
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
