@@ -64,7 +64,7 @@
 
                     <!-- User box -->
                     <div class="user-box">
-                        {{-- <img src="/assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle" height="48"> --}}
+                        <img src="/assets/images/logo-jabatan-dark.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="80">
                         {{-- <div class="dropdown">
                             <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">Maxine Kennedy</a>
                         </div>
