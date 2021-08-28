@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->hasMany(Pengilang::class);
     }
 
+    // Gudang relationship
+    public function gudangs(){
+        return $this->hasMany(Gudang::class);
+    }
+
     // Penginvoisan relationship
     public function penginvoisans(){
         return $this->hasMany(Penginvoisan::class);
