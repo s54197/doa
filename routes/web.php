@@ -22,6 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Maklumat Am
 Route::get('/syarikat', function () { return view('maklumat_am.main_syarikat');})->name('main.syarikat');
 Route::get('/produk', function () { return view('maklumat_am.main_produk');})->name('main.produk');
+Route::get('/perawis', function () { return view('maklumat_am.main_perawis');})->name('main.perawis');
 
 
 /***********************************
@@ -37,6 +38,9 @@ Route::post('/form/syarikat/delete', [App\Http\Controllers\MaklumatAm\SyarikatCo
 
 // view form produk 
 Route::get('/form/produk', function () { return view('maklumat_am.forms.produk');})->name('form.produk');
+
+// view form produk 
+Route::get('/form/perawis', function () { return view('maklumat_am.forms.perawis');})->name('form.perawis');
 
 // view borang A
 Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('form.pendaftaran');

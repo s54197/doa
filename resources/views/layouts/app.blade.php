@@ -89,7 +89,7 @@
                                     <li><a href="{{ route('main.syarikat') }}">Syarikat {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-tickets.html">Agen {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.produk') }}">Produk {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
-                                    <li><a href="apps-task-detail.html">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="{{ route('main.perawis') }}">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-contacts.html">Pembekal {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-projects.html">Pengilang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-companies.html">Invoicing {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
