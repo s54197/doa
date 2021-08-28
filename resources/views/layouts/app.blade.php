@@ -64,7 +64,7 @@
 
                     <!-- User box -->
                     <div class="user-box">
-                        {{-- <img src="/assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle" height="48"> --}}
+                        <img src="/assets/images/logo-jabatan-dark.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="80">
                         {{-- <div class="dropdown">
                             <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">Maxine Kennedy</a>
                         </div>
@@ -89,10 +89,11 @@
                                     <li><a href="{{ route('main.syarikat') }}">Syarikat {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-tickets.html">Agen {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.produk') }}">Produk {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
-                                    <li><a href="apps-task-detail.html">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="{{ route('main.perawis') }}">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-contacts.html">Pembekal {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-projects.html">Pengilang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-companies.html">Invoicing {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="apps-companies.html">Gudang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                 </ul>
                             </li>
 
