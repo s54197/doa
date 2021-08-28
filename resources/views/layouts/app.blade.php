@@ -93,6 +93,7 @@
                                     <li><a href="apps-contacts.html">Pembekal {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-projects.html">Pengilang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="apps-companies.html">Invoicing {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="apps-companies.html">Gudang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                 </ul>
                             </li>
 
