@@ -13,8 +13,19 @@ class AgenController extends Controller
 {
     // All data
     public function index() {
-        // All data Agen
-        $agens = Agen::all();
+
+        // Check user role
+        $role = Auth::user()->role;
+        // dd($id);
+
+        if ($role=='admin') {
+            // All data agen
+            $agens = Agen::all();
+        } else {
+            // All data agen
+            $agens = User::find(Auth::user()->id)->agens;
+        }
+
         // Summary
         $TotalAgen = Agen::count();
         $TotalAgenAktif = Agen::where('agen_status', '=', 'Aktif')->count();

@@ -51,7 +51,7 @@
                                     <div class="form-group row mb-0">
                                         <div class="col-12">
                                             <label for="emailaddress">Emel:</label>
-                                            <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" required placeholder="Sila Masukkan Emel" autofocus autocomplete="email">
+                                            <input class="form-control" type="email" name="email" id="email" required placeholder="Sila Masukkan Emel" autofocus autocomplete="email">
                                         </div>
                                     </div>
                                     @error('email')

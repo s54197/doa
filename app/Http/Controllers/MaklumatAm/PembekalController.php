@@ -13,8 +13,19 @@ class PembekalController extends Controller
 {
     // All data
     public function index() {
-        // All data Pembekal
-        $pembekals = Pembekal::all();
+
+        // Check user role
+        $role = Auth::user()->role;
+        // dd($id);
+
+        if ($role=='admin') {
+            // All data pembekal
+            $gudangs = Pembekal::all();
+        } else {
+            // All data pembekal
+            $pembekals = User::find(Auth::user()->id)->pembekals;
+        }
+
         // Summary
         $TotalPembekal = Pembekal::count();
         $TotalPembekalAktif = Pembekal::where('pembekal_status', '=', 'Aktif')->count();

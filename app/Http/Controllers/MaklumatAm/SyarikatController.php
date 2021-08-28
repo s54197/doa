@@ -17,13 +17,17 @@ class SyarikatController extends Controller
     public function index() {
 
         // Check user role
-        $role = User::find(Auth::user()->id);
-        $id = Auth::id();
-        dd($id);
+        $role = Auth::user()->role;
+        // dd($id);
 
-        // All data syarikat
-        $syarikats = Syarikat::all();
-        // Summary
+        if ($role=='admin') {
+            // All data syarikat
+            $syarikats = Syarikat::all();
+        } else {
+            // All data syarikat
+            $syarikats = User::find(Auth::user()->id)->syarikats;
+        }
+            // Summary
         $TotalSyarikat = Syarikat::count();
         $TotalSyarikatAktif = Syarikat::where('syarikat_status', '=', 'Aktif')->count();
         $TotalSyarikatTidakAktif = Syarikat::where('syarikat_status', '=', 'Tidak Aktif')->count();

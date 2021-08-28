@@ -37,30 +37,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    // Change default login view
-    public function showLoginForm()
-    {
-        return view('auth.login');
-    }
-
-    // include additional validation function to framework login
-    protected function validateLogin(Request $request)
-    {
-        // Get the user details from database and check if user is exist and active.
-        $user = User::where('email', $request->{$this->username()})->first();
-        if ($user && $user->status == 'inactive') {
-            throw ValidationException::withMessages([$this->username() => __('Your request is pending for approval. Please contact system admin.')]);
-        }
-        else if ($user && $user->status == 'disabled') {
-            throw ValidationException::withMessages([$this->username() => __('Your access has been disabled. Please contact system admin.')]);
-        }
-
-        // Then, validate input.
-        return $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-            'g-recaptcha-response' => 'required|captcha',
-        ]);
-    }
 }

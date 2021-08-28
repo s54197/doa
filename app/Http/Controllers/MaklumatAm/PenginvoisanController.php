@@ -13,8 +13,19 @@ class PenginvoisanController extends Controller
 {
     // All data
     public function index() {
-        // All data Penginvoisan
-        $penginvoisans = Penginvoisan::all();
+         
+        // Check user role
+        $role = Auth::user()->role;
+        // dd($id);
+
+        if ($role=='admin') {
+            // All data penginvoisan
+            $penginvoisans = Penginvoisan::all();
+        } else {
+            // All data penginvoisan
+            $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
+        }
+
         // Summary
         $TotalPenginvoisan = Penginvoisan::count();
         $TotalPenginvoisanAktif = Penginvoisan::where('penginvoisan_status', '=', 'Aktif')->count();

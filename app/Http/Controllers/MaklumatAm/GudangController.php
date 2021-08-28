@@ -14,8 +14,19 @@ class GudangController extends Controller
 {
     // All data
     public function index() {
-        // All data Gudang
-        $gudangs = Gudang::all();
+
+        // Check user role
+        $role = Auth::user()->role;
+        // dd($id);
+
+        if ($role=='admin') {
+            // All data gudang
+            $gudangs = Gudang::all();
+        } else {
+            // All data gudang
+            $gudangs = User::find(Auth::user()->id)->gudangs;
+        }
+
         // Summary
         $TotalGudang = Gudang::count();
         $TotalGudangAktif = Gudang::where('gudang_status', '=', 'Aktif')->count();
