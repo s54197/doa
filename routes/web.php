@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function() {
     // view borang A
     Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('form.pendaftaran');
 
+
     /***********************************
                    syarikat
     ***********************************/
@@ -45,6 +46,7 @@ Route::middleware('auth')->group(function() {
     // update syarikat
     Route::post('form/syarikat/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'update'])->name('syarikat.update');
 
+
     /***********************************
                    agen
     ***********************************/
@@ -60,6 +62,7 @@ Route::middleware('auth')->group(function() {
     Route::post('form/agen/create', [App\Http\Controllers\MaklumatAm\AgenController::class, 'store'])->name('agen.create');
     // update agen
     Route::post('form/agen/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'update'])->name('agen.update');
+
 
     /***********************************
                  pembekal
@@ -77,6 +80,7 @@ Route::middleware('auth')->group(function() {
     // update pembekal
     Route::post('formm/pembekal/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'update'])->name('pembekal.update');
 
+
     /***********************************
                 pengilang
     ***********************************/
@@ -92,6 +96,7 @@ Route::middleware('auth')->group(function() {
     Route::post('form/pengilang/create', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'store'])->name('pengilang.create');
     // update pengilang
     Route::post('form/pengilang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'update'])->name('pengilang.update');
+
 
     /***********************************
                 gudang
@@ -109,6 +114,7 @@ Route::middleware('auth')->group(function() {
     // update gudang
     Route::post('form/gudang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'update'])->name('gudang.update');
 
+
     /***********************************
                penginvoisan
     ***********************************/
@@ -125,12 +131,28 @@ Route::middleware('auth')->group(function() {
     // update penginvoisan
     Route::post('form/penginvoisan/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'update'])->name('penginvoisan.update');
 
+
+    /***********************************
+               produk
+    ***********************************/
+    Route::get('/produk', function () { return view('maklumat_am.main_produk');})->name('main.produk');
+    // view form produk 
+    Route::get('/form/produk', function () { return view('maklumat_am.forms.produk');})->name('form.produk');
+
+    /***********************************
+               perawis
+    ***********************************/
+    Route::get('/perawis', function () { return view('maklumat_am.main_perawis');})->name('main.perawis');
+    // view form produk 
+    Route::get('/form/perawis', function () { return view('maklumat_am.forms.perawis');})->name('form.perawis');
+
+
+    /***********************************
+               borang A
+    ***********************************/
+    // view borang A
+    Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('form.pendaftaran');
+
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

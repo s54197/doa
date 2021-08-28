@@ -39,8 +39,9 @@
                                         <span><img src="assets/images/logo-dark.png" alt="" height="26"></span>
                                     </a>
                                 </h2> --}}
-                                <div class="text-center mb-2 mt-4">
-                                    <img src="assets/images/jabatan_pertanian.png" alt="logo_jabatan_pertanian" height="80">
+                                {{-- <div class="text-center mb-2 mt-4"> --}}
+                                <div class="text-center mb-0">
+                                    <img src="assets/images/logo-jabatan-light.jpg" alt="logo_jabatan_pertanian" height="200">
                                 </div>
 
                                 <h3 class="text-center mt-0 mb-4">Sistem Rekod Maklumat Pendaftaran</h3>
@@ -92,7 +93,7 @@
     
                                 <div class="row mt-4">
                                     <div class="col-sm-12 text-center">
-                                        <p class="text-muted">Belum Ada Akaun?<a href="page-register.html" class="text-dark ml-1"><b>Daftar Akaun Anda</b></a></p>
+                                        <p class="text-muted">Belum Ada Akaun?<a href="{{ route('register') }}" class="text-dark ml-1"><b>Daftar Akaun Anda</b></a></p>
                                     </div>
                                 </div>
     
