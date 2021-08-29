@@ -23,6 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/syarikat', function () { return view('maklumat_am.main_syarikat');})->name('main.syarikat');
 Route::get('/produk', function () { return view('maklumat_am.main_produk');})->name('main.produk');
 Route::get('/perawis', function () { return view('maklumat_am.main_perawis');})->name('main.perawis');
+Route::get('/pendaftaran', function () { return view('pendaftaran.main_borang_A');})->name('main.pendaftaran');
 
 
 /***********************************
