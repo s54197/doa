@@ -139,6 +139,7 @@ Route::middleware('auth')->group(function() {
     // view form produk 
     Route::get('/form/produk', function () { return view('maklumat_am.forms.produk');})->name('form.produk');
 
+
     /***********************************
                perawis
     ***********************************/
