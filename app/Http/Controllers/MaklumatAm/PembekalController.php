@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MaklumatAm;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\ListNegara;
 use App\Models\Pembekal;
 use App\Models\User;
 use Carbon\Carbon;
@@ -60,9 +61,12 @@ class PembekalController extends Controller
     public function update_view($id) {
         // Data pembekal
         $pembekal = Pembekal::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
         
         $data = array(
             'pembekals' => $pembekal,
+            'list_negara' => $list_negara,
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
         );
