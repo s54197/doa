@@ -21,7 +21,7 @@ class PembekalController extends Controller
 
         if ($role=='admin') {
             // All data pembekal
-            $gudangs = Pembekal::all();
+            $pembekals = Pembekal::all();
         } else {
             // All data pembekal
             $pembekals = User::find(Auth::user()->id)->pembekals;
@@ -44,6 +44,20 @@ class PembekalController extends Controller
         
     }
     
+    // Show data
+    public function new_view() {
+        // Data negara
+        $list_negara = ListNegara::all();
+
+        $data = array(
+            'list_negara' => $list_negara,
+            'jenis' => 'new',
+            'tajuk' => 'Pendaftaran'
+        );
+        
+        return view('maklumat_am.forms.pembekal')->with($data);
+    }
+
     // Show data based on id
     public function view($id) {
         // Data pembekal

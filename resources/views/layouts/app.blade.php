@@ -88,8 +88,8 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="{{ route('main.syarikat') }}">Syarikat {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.agen') }}">Agen {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
-                                    <li><a href="apps-taskboard.html">Produk {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
-                                    <li><a href="apps-task-detail.html">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="{{ route('main.produk') }}">Produk {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="{{ route('main.perawis') }}">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.pembekal') }}">Pembekal {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.pengilang') }}">Pengilang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.gudang') }}">Gudang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>

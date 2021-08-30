@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MaklumatAm;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\ListNegara;
 use App\Models\Penginvoisan;
 use App\Models\User;
 use Carbon\Carbon;
@@ -42,6 +43,20 @@ class PenginvoisanController extends Controller
         ]);
         
     }
+
+    // Show data
+    public function new_view() {
+        // Data negara
+        $list_negara = ListNegara::all();
+
+        $data = array(
+            'list_negara' => $list_negara,
+            'jenis' => 'new',
+            'tajuk' => 'Pendaftaran'
+        );
+        
+        return view('maklumat_am.forms.penginvoisan')->with($data);
+    }
     
     // Show data based on id
     public function view($id) {
@@ -56,13 +71,16 @@ class PenginvoisanController extends Controller
         return view('maklumat_am.forms.penginvoisan')->with($data);
     }
 
-    // Show data based on id
+    // Update data based on id
     public function update_view($id) {
         // Data penginvoisan
         $penginvoisan = Penginvoisan::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
         
         $data = array(
             'penginvoisans' => $penginvoisan,
+            'list_negara' => $list_negara,
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
         );

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MaklumatAm;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\ListNegara;
 use App\Models\Gudang;
 use App\Models\User;
 use Carbon\Carbon;
@@ -44,6 +45,20 @@ class GudangController extends Controller
         
     }
     
+     // Show data
+     public function new_view() {
+        // Data negara
+        $list_negara = ListNegara::all();
+
+        $data = array(
+            'list_negara' => $list_negara,
+            'jenis' => 'new',
+            'tajuk' => 'Pendaftaran'
+        );
+        
+        return view('maklumat_am.forms.gudang')->with($data);
+    }
+
     // Show data based on id
     public function view($id) {
         // Data gudang
@@ -57,13 +72,16 @@ class GudangController extends Controller
         return view('maklumat_am.forms.gudang')->with($data);
     }
 
-    // Show data based on id
+    // Update data based on id
     public function update_view($id) {
         // Data gudang
         $gudang = Gudang::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
         
         $data = array(
             'gudangs' => $gudang,
+            'list_negara' => $list_negara,
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
         );

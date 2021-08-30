@@ -69,7 +69,7 @@
                     <div class="col-12 col-md-2">
                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah penginvoisan</button> --}}
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
-                        onclick="window.location='{{ route("form.penginvoisan") }}'">Daftar Baru</button>
+                        onclick="window.location='{{ route("baru.penginvoisan") }}'">Daftar Baru</button>
                     </div>
                 </div>
 
@@ -103,8 +103,8 @@
                     </thead>
     
                     <tbody>
-                        <tr>
                         @foreach($penginvoisans as $penginvoisan)
+                        <tr>
                             <td>{{$penginvoisan->penginvoisan_nama}}</td>
                             <td>{{$penginvoisan->penginvoisan_no_roc}}</td>
                             <td>{{$penginvoisan->penginvoisan_no_tel}}</td>

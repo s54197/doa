@@ -108,7 +108,12 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="gudang_negara"><span class="text-danger">*</span>Negara gudang:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="gudang_negara" name="gudang_negara" class="form-control" placeholder="Negara gudang" value="{{ old('gudang_negara',isset($gudangs->gudang_negara)?$gudangs->gudang_negara:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="gudang_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Negara...</option>
+                                            @foreach($list_negara as $negara)
+                                                <option value=" {{ $negara->negara_nama }}" {{ old('gudang_negara' , isset($gudangs->gudang_negara)?$gudangs->gudang_negara:null ) }} >{{ $negara->negara_nama }}</option>
+                                            @endforeach
+                                        </select>   
                                         @error('gudang_negara') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror

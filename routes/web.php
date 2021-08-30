@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return view('auth.login');});
 
-Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::middleware('auth')->group(function() {
 
@@ -68,13 +68,11 @@ Route::middleware('auth')->group(function() {
                  pembekal
     ***********************************/
     Route::get('pembekal', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'index'])->name('main.pembekal');
+    Route::get('pembekal/baru', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'new_view'])->name('baru.pembekal');
     Route::get('pembekal/papar/{id}', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'view'])->name('papar.pembekal');
     Route::get('pembekal/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'update_view'])->name('kemaskini.pembekal');
     // delete pembekal
     Route::delete('pembekal/delete/{id}', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'delete'])->name('pembekal.delete');
-    // view pembekal 
-    Route::get('form/pembekal', function () { 
-        return view('maklumat_am.forms.pembekal')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.pembekal');
     // create pembekal
     Route::post('form/pembekal/create', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'store'])->name('pembekal.create');
     // update pembekal
@@ -85,13 +83,11 @@ Route::middleware('auth')->group(function() {
                 pengilang
     ***********************************/
     Route::get('pengilang', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'index'])->name('main.pengilang');
+    Route::get('pengilang/baru', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'new_view'])->name('baru.pengilang');
     Route::get('pengilang/papar/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'view'])->name('papar.pengilang');
     Route::get('pengilang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'update_view'])->name('kemaskini.pengilang');
     // delete pengilang
     Route::delete('pengilang/delete/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'delete'])->name('pengilang.delete');
-    // view pengilang 
-    Route::get('form/pengilang', function () { 
-        return view('maklumat_am.forms.pengilang')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.pengilang');
     // create pengilang
     Route::post('form/pengilang/create', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'store'])->name('pengilang.create');
     // update pengilang
@@ -102,13 +98,11 @@ Route::middleware('auth')->group(function() {
                 gudang
     ***********************************/
     Route::get('gudang', [App\Http\Controllers\MaklumatAm\GudangController::class, 'index'])->name('main.gudang');
+    Route::get('gudang/baru', [App\Http\Controllers\MaklumatAm\GudangController::class, 'new_view'])->name('baru.gudang');
     Route::get('gudang/papar/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'view'])->name('papar.gudang');
     Route::get('gudang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'update_view'])->name('kemaskini.gudang');
     // delete gudang
     Route::delete('gudang/delete/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'delete'])->name('gudang.delete');
-    // view gudang 
-    Route::get('form/gudang', function () { 
-        return view('maklumat_am.forms.gudang')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.gudang');
     // create gudang
     Route::post('form/gudang/create', [App\Http\Controllers\MaklumatAm\GudangController::class, 'store'])->name('gudang.create');
     // update gudang
@@ -119,13 +113,11 @@ Route::middleware('auth')->group(function() {
                penginvoisan
     ***********************************/
     Route::get('penginvoisan', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'index'])->name('main.penginvoisan');
+    Route::get('penginvoisan/baru', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'new_view'])->name('baru.penginvoisan');
     Route::get('penginvoisan/papar/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'view'])->name('papar.penginvoisan');
     Route::get('penginvoisan/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'update_view'])->name('kemaskini.penginvoisan');
     // delete penginvoisan
     Route::delete('penginvoisan/delete/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'delete'])->name('penginvoisan.delete');
-    // view penginvoisan 
-    Route::get('form/penginvoisan', function () { 
-        return view('maklumat_am.forms.penginvoisan')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.penginvoisan');
     // create penginvoisan
     Route::post('form/penginvoisan/create', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'store'])->name('penginvoisan.create');
     // update penginvoisan
@@ -135,7 +127,7 @@ Route::middleware('auth')->group(function() {
     /***********************************
                produk
     ***********************************/
-    Route::get('/produk', function () { return view('maklumat_am.main_produk');})->name('main.produk');
+    Route::get('produk', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'index'])->name('main.produk');
     // view form produk 
     Route::get('/form/produk', function () { return view('maklumat_am.forms.produk');})->name('form.produk');
 
@@ -143,8 +135,7 @@ Route::middleware('auth')->group(function() {
     /***********************************
                perawis
     ***********************************/
-    Route::get('/perawis', function () { return view('maklumat_am.main_perawis');})->name('main.perawis');
-    // view form produk 
+    Route::get('perawis', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'index'])->name('main.perawis');
     Route::get('/form/perawis', function () { return view('maklumat_am.forms.perawis');})->name('form.perawis');
 
 
@@ -152,7 +143,7 @@ Route::middleware('auth')->group(function() {
                borang A
     ***********************************/
     // view borang A
-    Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('form.pendaftaran');
+    Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('main.pendaftaran');
 
 });
 

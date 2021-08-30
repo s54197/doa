@@ -103,8 +103,8 @@
                     </thead>
     
                     <tbody>
-                        <tr>
                         @foreach($syarikats as $syarikat)
+                        <tr>
                             <td>{{$syarikat->syarikat_nama}}</td>
                             <td>{{$syarikat->syarikat_no_roc}}</td>
                             <td>{{$syarikat->syarikat_no_tel}}</td>

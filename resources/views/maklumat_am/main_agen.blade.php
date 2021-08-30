@@ -103,8 +103,8 @@
                     </thead>
     
                     <tbody>
-                        <tr>
                         @foreach($agens as $agen)
+                        <tr>
                             <td>{{$agen->agen_nama}}</td>
                             <td>{{$agen->agen_no_roc}}</td>
                             <td>{{$agen->agen_no_tel}}</td>
