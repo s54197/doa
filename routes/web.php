@@ -133,13 +133,13 @@ Route::middleware('auth')->group(function() {
     Route::get('produk', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'index'])->name('main.produk');
     Route::get('produk/papar/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'view'])->name('papar.produk');
     Route::get('produk/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'update_view'])->name('kemaskini.produk');
-    // view penginvoisan
+    // view produk
     Route::get('form/produk/baru', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'new_view'])->name('baru.produk');
-    // delete penginvoisan
+    // delete produk
     Route::delete('form/produk/delete/{id}', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'delete'])->name('produk.delete');
-    // create penginvoisan
+    // create produk
     Route::post('form/produk/create', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'store'])->name('produk.create');
-    // update penginvoisan
+    // update produk
     Route::post('form/produk/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'update'])->name('produk.update');
     
 
@@ -150,13 +150,13 @@ Route::middleware('auth')->group(function() {
     Route::get('perawis', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'index'])->name('main.perawis');
     Route::get('perawis/papar/{id}', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'view'])->name('papar.perawis');
     Route::get('perawis/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'update_view'])->name('kemaskini.perawis');
-    // view penginvoisan
+    // view perawis
     Route::get('form/perawis/baru', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'new_view'])->name('baru.perawis');
-    // delete penginvoisan
+    // delete perawis
     Route::delete('form/perawis/delete/{id}', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'delete'])->name('perawis.delete');
-    // create penginvoisan
+    // create perawis
     Route::post('form/perawis/create', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'store'])->name('perawis.create');
-    // update penginvoisan
+    // update perawis
     Route::post('form/perawis/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'update'])->name('perawis.update');
 
 
