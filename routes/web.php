@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function() {
         return view('maklumat_am.forms.syarikat')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);
     })->name('form.syarikat');
     // delete syarikat
-    Route::delete('syarikat/delete/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'delete'])->name('syarikat.delete');
+    Route::delete('form/syarikat/delete/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'delete'])->name('syarikat.delete');
     // create syarikat
     Route::post('form/syarikat/create', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'store'])->name('syarikat.create');
     // update syarikat
@@ -53,11 +53,10 @@ Route::middleware('auth')->group(function() {
     Route::get('agen', [App\Http\Controllers\MaklumatAm\AgenController::class, 'index'])->name('main.agen');
     Route::get('agen/papar/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'view'])->name('papar.agen');
     Route::get('agen/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'update_view'])->name('kemaskini.agen');
-    // delete agen
-    Route::delete('agen/delete/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'delete'])->name('agen.delete');
     // view agen 
-    Route::get('form/agen', function () { 
-        return view('maklumat_am.forms.agen')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.agen');
+    Route::get('form/agen', function () {return view('maklumat_am.forms.agen')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.agen');
+    // delete agen
+    Route::delete('form/agen/delete/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'delete'])->name('agen.delete');
     // create agen
     Route::post('form/agen/create', [App\Http\Controllers\MaklumatAm\AgenController::class, 'store'])->name('agen.create');
     // update agen
@@ -68,11 +67,12 @@ Route::middleware('auth')->group(function() {
                  pembekal
     ***********************************/
     Route::get('pembekal', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'index'])->name('main.pembekal');
-    Route::get('pembekal/baru', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'new_view'])->name('baru.pembekal');
     Route::get('pembekal/papar/{id}', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'view'])->name('papar.pembekal');
     Route::get('pembekal/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'update_view'])->name('kemaskini.pembekal');
+    // view pembekal
+    Route::get('form/pembekal/baru', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'new_view'])->name('baru.pembekal');
     // delete pembekal
-    Route::delete('pembekal/delete/{id}', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'delete'])->name('pembekal.delete');
+    Route::delete('form/pembekal/delete/{id}', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'delete'])->name('pembekal.delete');
     // create pembekal
     Route::post('form/pembekal/create', [App\Http\Controllers\MaklumatAm\PembekalController::class, 'store'])->name('pembekal.create');
     // update pembekal
@@ -83,11 +83,12 @@ Route::middleware('auth')->group(function() {
                 pengilang
     ***********************************/
     Route::get('pengilang', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'index'])->name('main.pengilang');
-    Route::get('pengilang/baru', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'new_view'])->name('baru.pengilang');
     Route::get('pengilang/papar/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'view'])->name('papar.pengilang');
     Route::get('pengilang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'update_view'])->name('kemaskini.pengilang');
+    // view pengilang
+    Route::get('form/pengilang/baru', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'new_view'])->name('baru.pengilang');
     // delete pengilang
-    Route::delete('pengilang/delete/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'delete'])->name('pengilang.delete');
+    Route::delete('form/pengilang/delete/{id}', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'delete'])->name('pengilang.delete');
     // create pengilang
     Route::post('form/pengilang/create', [App\Http\Controllers\MaklumatAm\PengilangController::class, 'store'])->name('pengilang.create');
     // update pengilang
@@ -98,11 +99,12 @@ Route::middleware('auth')->group(function() {
                 gudang
     ***********************************/
     Route::get('gudang', [App\Http\Controllers\MaklumatAm\GudangController::class, 'index'])->name('main.gudang');
-    Route::get('gudang/baru', [App\Http\Controllers\MaklumatAm\GudangController::class, 'new_view'])->name('baru.gudang');
     Route::get('gudang/papar/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'view'])->name('papar.gudang');
     Route::get('gudang/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'update_view'])->name('kemaskini.gudang');
+    // view gudang
+    Route::get('form/gudang/baru', [App\Http\Controllers\MaklumatAm\GudangController::class, 'new_view'])->name('baru.gudang');
     // delete gudang
-    Route::delete('gudang/delete/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'delete'])->name('gudang.delete');
+    Route::delete('form/gudang/delete/{id}', [App\Http\Controllers\MaklumatAm\GudangController::class, 'delete'])->name('gudang.delete');
     // create gudang
     Route::post('form/gudang/create', [App\Http\Controllers\MaklumatAm\GudangController::class, 'store'])->name('gudang.create');
     // update gudang
@@ -113,11 +115,12 @@ Route::middleware('auth')->group(function() {
                penginvoisan
     ***********************************/
     Route::get('penginvoisan', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'index'])->name('main.penginvoisan');
-    Route::get('penginvoisan/baru', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'new_view'])->name('baru.penginvoisan');
     Route::get('penginvoisan/papar/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'view'])->name('papar.penginvoisan');
     Route::get('penginvoisan/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'update_view'])->name('kemaskini.penginvoisan');
+    // view penginvoisan
+    Route::get('form/penginvoisan/baru', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'new_view'])->name('baru.penginvoisan');
     // delete penginvoisan
-    Route::delete('penginvoisan/delete/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'delete'])->name('penginvoisan.delete');
+    Route::delete('form/penginvoisan/delete/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'delete'])->name('penginvoisan.delete');
     // create penginvoisan
     Route::post('form/penginvoisan/create', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'store'])->name('penginvoisan.create');
     // update penginvoisan
@@ -128,15 +131,33 @@ Route::middleware('auth')->group(function() {
                produk
     ***********************************/
     Route::get('produk', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'index'])->name('main.produk');
-    // view form produk 
-    Route::get('/form/produk', function () { return view('maklumat_am.forms.produk');})->name('form.produk');
+    Route::get('produk/papar/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'view'])->name('papar.produk');
+    Route::get('produk/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'update_view'])->name('kemaskini.produk');
+    // view penginvoisan
+    Route::get('form/produk/baru', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'new_view'])->name('baru.produk');
+    // delete penginvoisan
+    Route::delete('form/produk/delete/{id}', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'delete'])->name('produk.delete');
+    // create penginvoisan
+    Route::post('form/produk/create', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'store'])->name('produk.create');
+    // update penginvoisan
+    Route::post('form/produk/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'update'])->name('produk.update');
+    
 
 
     /***********************************
                perawis
     ***********************************/
     Route::get('perawis', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'index'])->name('main.perawis');
-    Route::get('/form/perawis', function () { return view('maklumat_am.forms.perawis');})->name('form.perawis');
+    Route::get('perawis/papar/{id}', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'view'])->name('papar.perawis');
+    Route::get('perawis/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'update_view'])->name('kemaskini.perawis');
+    // view penginvoisan
+    Route::get('form/perawis/baru', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'new_view'])->name('baru.perawis');
+    // delete penginvoisan
+    Route::delete('form/perawis/delete/{id}', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'delete'])->name('perawis.delete');
+    // create penginvoisan
+    Route::post('form/perawis/create', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'store'])->name('perawis.create');
+    // update penginvoisan
+    Route::post('form/perawis/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PerawisController::class, 'update'])->name('perawis.update');
 
 
     /***********************************

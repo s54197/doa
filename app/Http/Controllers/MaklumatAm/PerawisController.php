@@ -47,11 +47,8 @@ class PerawisController extends Controller
     
     // Show data
     public function new_view() {
-        // Data negara
-        $list_negara = ListNegara::all();
 
         $data = array(
-            'list_negara' => $list_negara,
             'jenis' => 'new',
             'tajuk' => 'Pendaftaran'
         );
@@ -76,12 +73,9 @@ class PerawisController extends Controller
     public function update_view($id) {
         // Data perawis
         $perawis = Perawis::find($id);
-        // Data negara
-        $list_negara = ListNegara::all();
         
         $data = array(
             'perawiss' => $perawis,
-            'list_negara' => $list_negara,
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
         );
@@ -94,18 +88,21 @@ class PerawisController extends Controller
         
         $request->validate([
             'perawis_nama' => 'required',
-            'perawis_no_roc' => 'required',
-            'perawis_bangunan' => 'required',
-            'perawis_jalan' => 'required',
-            'perawis_poskod' => 'required',
-            'perawis_bandar' => 'required',
-            'perawis_negeri' => 'required',
-            'perawis_negeri_luar_malaysia' => 'required',
-            'perawis_negara' => 'required',
-            'perawis_no_tel' => 'required',
-            'perawis_no_faks' => 'required',
-            'perawis_emel' => 'required|email',
-            // 'perawis_status' => 'required',
+            'perawis_nama_kimia' => 'required',
+            'perawis_sinonim' => 'required',
+            'perawis_cas' => 'required',
+            'perawis_hscode' => 'required',
+            'perawis_ahtncode' => 'required',
+            'perawis_piawaian' => 'required',
+            'perawis_sampel' => 'required',
+            'perawis_pihak_ketiga' => 'required',
+            'perawis_kumpulan_kimia' => 'required',
+            'perawis_kaedah' => 'required',
+            'perawis_tarikh_lulus' => 'required',
+            'perawis_tarikh_terhad' => 'required',
+            'perawis_peratusan' => 'required',
+            'perawis_unit' => 'required',
+            'perawis_unit_lain' => 'required',
         ]);
 
         // dd($request);
@@ -114,17 +111,20 @@ class PerawisController extends Controller
             $user = User::find(Auth::user()->id);
             $user->perawiss()->create([
                 'perawis_nama' => $request->perawis_nama,
-                'perawis_no_roc' => $request->perawis_no_roc,
-                'perawis_bangunan' => $request->perawis_bangunan,
-                'perawis_jalan' => $request->perawis_jalan,
-                'perawis_poskod' => $request->perawis_poskod,
-                'perawis_bandar' => $request->perawis_bandar,
-                'perawis_negeri' => $request->perawis_negeri,
-                'perawis_negeri_luar_malaysia' => $request->perawis_negeri_luar_malaysia,
-                'perawis_negara' => $request->perawis_negara,
-                'perawis_no_tel' => $request->perawis_no_tel,
-                'perawis_no_faks' => $request->perawis_no_faks,
-                'perawis_emel' => $request->perawis_emel,
+                'perawis_nama_kimia' => $request->perawis_nama_kimia,
+                'perawis_sinonim' => $request->perawis_sinonim,
+                'perawis_cas' => $request->perawis_cas,
+                'perawis_hscode' => $request->perawis_hscode,
+                'perawis_ahtncode' => $request->perawis_ahtncode,
+                'perawis_piawaian' => $request->perawis_piawaian,
+                'perawis_sampel' => $request->perawis_sampel,
+                'perawis_pihak_ketiga' => $request->perawis_pihak_ketiga,
+                'perawis_kumpulan_kimia' => $request->perawis_kumpulan_kimia,
+                'perawis_kaedah' => $request->perawis_kaedah,
+                'perawis_tarikh_lulus' => $request->perawis_tarikh_lulus,
+                'perawis_peratusan' => $request->perawis_peratusan,
+                'perawis_unit' => $request->perawis_unit,
+                'perawis_unit_lain' => $request->perawis_unit_lain,
                 'perawis_status' => 'Aktif',
                 'user_id' => $user->id,
             ]);
@@ -139,35 +139,41 @@ class PerawisController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'perawis_nama' => 'required',
-            'perawis_no_roc' => 'required',
-            'perawis_bangunan' => 'required',
-            'perawis_jalan' => 'required',
-            'perawis_poskod' => 'required',
-            'perawis_bandar' => 'required',
-            'perawis_negeri' => 'required',
-            'perawis_negeri_luar_malaysia' => 'required',
-            'perawis_negara' => 'required',
-            'perawis_no_tel' => 'required',
-            'perawis_no_faks' => 'required',
-            'perawis_emel' => 'required|email',
-            // 'perawis_status' => 'required',
+            'perawis_nama_kimia' => 'required',
+            'perawis_sinonim' => 'required',
+            'perawis_cas' => 'required',
+            'perawis_hscode' => 'required',
+            'perawis_ahtncode' => 'required',
+            'perawis_piawaian' => 'required',
+            'perawis_sampel' => 'required',
+            'perawis_pihak_ketiga' => 'required',
+            'perawis_kumpulan_kimia' => 'required',
+            'perawis_kaedah' => 'required',
+            'perawis_tarikh_lulus' => 'required',
+            'perawis_tarikh_terhad' => 'required',
+            'perawis_peratusan' => 'required',
+            'perawis_unit' => 'required',
+            'perawis_unit_lain' => 'required',
         ]);
 
         try {
             $perawis = Perawis::find($id);
             $perawis->update([
                 'perawis_nama' => $request->perawis_nama,
-                'perawis_no_roc' => $request->perawis_no_roc,
-                'perawis_bangunan' => $request->perawis_bangunan,
-                'perawis_jalan' => $request->perawis_jalan,
-                'perawis_poskod' => $request->perawis_poskod,
-                'perawis_bandar' => $request->perawis_bandar,
-                'perawis_negeri' => $request->perawis_negeri,
-                'perawis_negeri_luar_malaysia' => $request->perawis_negeri_luar_malaysia,
-                'perawis_negara' => $request->perawis_negara,
-                'perawis_no_tel' => $request->perawis_no_tel,
-                'perawis_no_faks' => $request->perawis_no_faks,
-                'perawis_emel' => $request->perawis_emel,
+                'perawis_nama_kimia' => $request->perawis_nama_kimia,
+                'perawis_sinonim' => $request->perawis_sinonim,
+                'perawis_cas' => $request->perawis_cas,
+                'perawis_hscode' => $request->perawis_hscode,
+                'perawis_ahtncode' => $request->perawis_ahtncode,
+                'perawis_piawaian' => $request->perawis_piawaian,
+                'perawis_sampel' => $request->perawis_sampel,
+                'perawis_pihak_ketiga' => $request->perawis_pihak_ketiga,
+                'perawis_kumpulan_kimia' => $request->perawis_kumpulan_kimia,
+                'perawis_kaedah' => $request->perawis_kaedah,
+                'perawis_tarikh_lulus' => $request->perawis_tarikh_lulus,
+                'perawis_peratusan' => $request->perawis_peratusan,
+                'perawis_unit' => $request->perawis_unit,
+                'perawis_unit_lain' => $request->perawis_unit_lain,
                 'perawis_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);
