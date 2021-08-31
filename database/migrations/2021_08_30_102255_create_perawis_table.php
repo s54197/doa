@@ -30,7 +30,7 @@ class CreatePerawisTable extends Migration
             $table->date('perawis_tarikh_terhad');
             $table->string('perawis_peratusan');
             $table->string('perawis_unit');
-            $table->string('perawis_unit_lain');
+            $table->string('perawis_unit_lain')->nullable();
             $table->string('perawis_status');
 
             // one to many relation for user
