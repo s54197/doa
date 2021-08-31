@@ -50,6 +50,7 @@
                         <h5 class="text-light">
                             Sistem Maklumat Rekod Pendaftaran
                         </h5>
+                        {{-- <img src="/assets/images/logo-dark-small-gap.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77"> --}}
                         {{-- <a href="index.html" class="logo">
                             <span class="logo-lg">
                                 <img src="/assets/images/logo-dark.png" alt="" height="22">
@@ -64,7 +65,10 @@
 
                     <!-- User box -->
                     <div class="user-box">
-                        <img src="/assets/images/logo-jabatan-dark.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="80">
+                        <img src="/assets/images/logo-dark-small-gap.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77">
+                        {{-- <h5 class="text-light">
+                            Sistem Maklumat Rekod Pendaftaran
+                        </h5> --}}
                         {{-- <div class="dropdown">
                             <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">Maxine Kennedy</a>
                         </div>
