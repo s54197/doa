@@ -43,6 +43,15 @@ class User extends Authenticatable
         return $this->hasMany(Penginvoisan::class);
     }
 
+    // Perawis relationship
+    public function perawiss(){
+        return $this->hasMany(Perawis::class);
+    }
+
+    // Produk relationship
+    public function produks(){
+        return $this->hasMany(Produk::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
