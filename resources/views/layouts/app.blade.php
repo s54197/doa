@@ -50,6 +50,7 @@
                         <h5 class="text-light">
                             Sistem Maklumat Rekod Pendaftaran
                         </h5>
+                        {{-- <img src="/assets/images/logo-dark-small-gap.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77"> --}}
                         {{-- <a href="index.html" class="logo">
                             <span class="logo-lg">
                                 <img src="/assets/images/logo-dark.png" alt="" height="22">
@@ -64,7 +65,10 @@
 
                     <!-- User box -->
                     <div class="user-box">
-                        <img src="/assets/images/logo-jabatan-dark.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="80">
+                        <img src="/assets/images/logo-dark-small-gap.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77">
+                        {{-- <h5 class="text-light">
+                            Sistem Maklumat Rekod Pendaftaran
+                        </h5> --}}
                         {{-- <div class="dropdown">
                             <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">Maxine Kennedy</a>
                         </div>
@@ -107,24 +111,19 @@
 
                             <li class="menu-title">LAIN-LAIN</li>
 
-                            {{-- <li>
+                            <li>
                                 <a href="javascript: void(0);">
-                                    <i class="fe-layers"></i>
-                                    <span> Rekod Maklumat Am </span>
+                                    <i class="fe-settings"></i>
+                                    <span> Tetapan </span>
                                     <span class="menu-arrow"></span>
                                 </a>
 
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="apps-calendar.html">Kilang</a></li>
-                                    <li><a href="apps-tickets.html">Tickets</a></li>
-                                    <li><a href="apps-taskboard.html">Task Board</a></li>
-                                    <li><a href="apps-task-detail.html">Task Detail</a></li>
-                                    <li><a href="apps-contacts.html">Contacts</a></li>
-                                    <li><a href="apps-projects.html">Projects</a></li>
-                                    <li><a href="apps-companies.html">Companies</a></li>
-                                    <li><a href="apps-file-manager.html">File Manager</a></li>
+                                    <li><a href="{{ route('view.password') }}">Tukar Kata Laluan</a></li>
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">Log Keluar</a></li>
                                 </ul>
-                            </li> --}}
+                            </li>
 
                         </ul>
 
@@ -233,20 +232,25 @@
 
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                    <img src="/assets/images/users/man.png" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ml-1">
+                                        {{-- <i class="mdi mdi-emoticon-happy-outline mdi-24px"></i> --}}
                                         {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                     <!-- item-->
                                     <div class="dropdown-item noti-title">
-                                        <h6 class="text-overflow m-0">Welcome !</h6>
+                                        <h6 class="text-overflow m-0">Selamat Datang !</h6>
                                     </div>
 
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <i class="fe-user"></i> <span>Profil Pengguna</span>
+                                    </a> --}}
+
+                                    <a href="{{ route('view.password') }}" class="dropdown-item notify-item">
+                                        <i class="fe-unlock"></i> <span>Tukar Kata Laluan</span>
                                     </a>
 
                                     <!-- item-->
