@@ -530,9 +530,9 @@
                                     <div class="col-8 offset-3">
                                     @if($jenis=='new' || $jenis=='kemaskini' )
                                         <button type="submit" name="produk_submit" id="produk_submit" class="btn btn-primary waves-effect waves-light mr-1">
-                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }}
+                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }} <i id="loading_icon" class="ml-1 mdi mdi-spin mdi-loading" style="display: none"></i>
                                         </button>
-                                        <button type="reset" name="pembekal_batal" id="produk_batal" class="btn btn-light waves-effect">Kosongkan</button>
+                                        <button type="reset" name="pembekal_batal" id="produk_batal" class="btn btn-light waves-effect mr-1">Kosongkan</button>
                                         @endif
                                         <button type="button" onclick="window.location='{{ route('main.produk') }}'" name="produk_batal" id="produk_batal" class="btn btn-light waves-effect">
                                             {{ $jenis == "papar" ? 'Kembali' : 'Batal' }}

@@ -74,22 +74,22 @@
                                     <div class="col-md-3">
                                         <select class="form-control" name="pengilang_negeri" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negeri...</option>
-                                            <option value="Johor" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
-                                            <option value="Melaka" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
-                                            <option value="Negeri Sembilan" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
-                                            <option value="Selangor" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
-                                            <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
-                                            <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
-                                            <option value="Pahang" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Pahang" ? 'selected' : '' }}>Pahang</option>
-                                            <option value="Terengganu" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Terengganu" ? 'selected' : '' }}>Terengganu</option>
-                                            <option value="Kelantan" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Kelantan" ? 'selected' : '' }}>Kelantan</option>
-                                            <option value="Perak" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Perak" ? 'selected' : '' }}>Perak</option>
-                                            <option value="Kedah" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Kedah" ? 'selected' : '' }}>Kedah</option>
-                                            <option value="Perlis" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Perlis" ? 'selected' : '' }}>Perlis</option>
-                                            <option value="Pulau Pinang" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Pulau Pinang" ? 'selected' : '' }}>Pulau Pinang</option>
-                                            <option value="Sabah" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Sabah" ? 'selected' : '' }}>Sabah</option>
-                                            <option value="Sarawak" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
-                                            <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('pengilang_negeri',isset($pengilangs->pengilang_surat_negeri)?$pengilangs->pengilang_surat_negeri:null) == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
+                                            <option value="Johor" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
+                                            <option value="Melaka" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
+                                            <option value="Negeri Sembilan" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
+                                            <option value="Selangor" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
+                                            <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
+                                            <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
+                                            <option value="Pahang" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Pahang" ? 'selected' : '' }}>Pahang</option>
+                                            <option value="Terengganu" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Terengganu" ? 'selected' : '' }}>Terengganu</option>
+                                            <option value="Kelantan" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Kelantan" ? 'selected' : '' }}>Kelantan</option>
+                                            <option value="Perak" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Perak" ? 'selected' : '' }}>Perak</option>
+                                            <option value="Kedah" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Kedah" ? 'selected' : '' }}>Kedah</option>
+                                            <option value="Perlis" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Perlis" ? 'selected' : '' }}>Perlis</option>
+                                            <option value="Pulau Pinang" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Pulau Pinang" ? 'selected' : '' }}>Pulau Pinang</option>
+                                            <option value="Sabah" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Sabah" ? 'selected' : '' }}>Sabah</option>
+                                            <option value="Sarawak" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
+                                            <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('pengilang_negeri',isset($pengilangs->pengilang_negeri)?$pengilangs->pengilang_negeri:null) == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
                                         </select>                                    
                                         @error('pengilang_negeri') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -111,7 +111,7 @@
                                         <select class="form-control" name="pengilang_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
                                             @foreach($list_negara as $negara)
-                                                <option value=" {{ $negara->negara_nama }}" {{ old('pengilang_negara' , isset($pengilangs->pengilang_negara)?$pengilangs->pengilang_negara:null ) }} >{{ $negara->negara_nama }}</option>
+                                                <option value=" {{ $negara->negara_nama }}" {{ old('pengilang_negara' , isset($pengilangs->pengilang_negara)?$pengilangs->pengilang_negara:null ) == $pengilangs->pengilang_negara ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
                                             @endforeach
                                         </select>   
                                         @error('pengilang_negara') 

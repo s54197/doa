@@ -134,12 +134,12 @@
 @component('components.modal_confirm', ['id'=>'id_syarikat'])
 Adakah anda bersetuju untuk memadam data?
 @endcomponent
-@endsection
 
 <form id="padam_submit" method='post'>
     @csrf
     @method('delete')
 </form>
+@endsection
 
 @section('local_js')
 <script>

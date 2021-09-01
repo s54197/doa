@@ -60,9 +60,12 @@ class PenginvoisanController extends Controller
     
     // Show data based on id
     public function view($id) {
+        // Data negara
+        $list_negara = ListNegara::all();
         // Data penginvoisan
         $penginvoisan = Penginvoisan::find($id);
         $data = array(
+            'list_negara' => $list_negara,
             'penginvoisans' => $penginvoisan,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'

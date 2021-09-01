@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Penginvoisan')
+@section('title', 'Invoicing')
 
 @section('local_css')
 <style>
@@ -13,11 +13,11 @@
 
 @section('breadcrumbs')
 <li>
-    <h4 class="page-title-main">Penginvoisan</h4>
+    <h4 class="page-title-main">Invoicing</h4>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">DOA</a></li>
         <li class="breadcrumb-item"><a href="#">Rekod Maklumat Am</a></li>
-        <li class="breadcrumb-item active">Penginvoisan</li>
+        <li class="breadcrumb-item active">Invoicing</li>
     </ol>
 </li>
 @endsection
@@ -65,7 +65,7 @@
             <div class="card-box">
                 <div class="row mb-2 mb-sm-3">
                     <div class="col-12 col-md-10">
-                        <h4 class="header-title">Senarai Penginvoisan</div></h4>
+                        <h4 class="header-title">Senarai Invoicing</div></h4>
                     <div class="col-12 col-md-2">
                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah penginvoisan</button> --}}
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
@@ -93,7 +93,7 @@
                 <table class="table table-bordered m-0 table-centered tickets-list table-actions-bar dt-responsive nowrap" cellspacing="0" width="100%" id="datatable">
                     <thead>
                         <tr>
-                            <th>Nama Penginvoisan</th>
+                            <th>Nama Invoicing</th>
                             <th>ROC</th>
                             <th>Telefon</th>
                             <th>Negeri</th>

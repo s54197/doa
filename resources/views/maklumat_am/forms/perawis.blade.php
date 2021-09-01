@@ -180,7 +180,7 @@
                                     <div class="col-8 offset-3">
                                     @if($jenis=='new' || $jenis=='kemaskini' )
                                         <button type="submit" name="perawis_submit" id="perawis_submit" class="btn btn-primary waves-effect waves-light mr-1">
-                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }}
+                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }} <i id="loading_icon" class="ml-1 mdi mdi-spin mdi-loading" style="display: none"></i>
                                         </button>
                                         <button type="reset" name="perawis_batal" id="perawis_batal" class="btn btn-light waves-effect mr-1">Kosongkan</button>
                                         @endif

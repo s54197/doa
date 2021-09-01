@@ -61,9 +61,12 @@ class GudangController extends Controller
 
     // Show data based on id
     public function view($id) {
+        // Data negara
+        $list_negara = ListNegara::all();
         // Data gudang
         $gudang = Gudang::find($id);
         $data = array(
+            'list_negara' => $list_negara,
             'gudangs' => $gudang,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'

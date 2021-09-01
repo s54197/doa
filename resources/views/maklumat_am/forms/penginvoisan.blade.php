@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Penginvoisan')
+@section('title', 'Invoicing')
 
 @section('breadcrumbs')
 <li>
-    <h4 class="page-title-main">Penginvoisan</h4>
+    <h4 class="page-title-main">Invoicing</h4>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">DOA</a></li>
         <li class="breadcrumb-item"><a href="#">Rekod Maklumat Am</a></li>
-        <li class="breadcrumb-item active">Penginvoisan</li>
+        <li class="breadcrumb-item active">Invoicing</li>
     </ol>
 </li>
 @endsection
@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card-box px-4">
-                <h4 class="header-title">{{$tajuk}} Penginvoisan</h4>
+                <h4 class="header-title">{{$tajuk}} Invoicing</h4>
                 <hr class="mb-3">
                 {{-- <p class="sub-header">
                     Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>, <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.
@@ -30,7 +30,7 @@
                             <form method="POST" class="form-horizontal" role="form" action="{{ $jenis == 'new' ? route('penginvoisan.create') : route('penginvoisan.update',$penginvoisans->id) }}">
                                 @csrf
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="penginvoisan_nama"><span class="text-danger">*</span>Nama penginvoisan:</label>
+                                    <label class="col-md-3 col-form-label" for="penginvoisan_nama"><span class="text-danger">*</span>Nama Invoicing:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="penginvoisan_nama" name="penginvoisan_nama" class="form-control" placeholder="Nama penginvoisan" value="{{ old('penginvoisan_nama',isset($penginvoisans->penginvoisan_nama)?$penginvoisans->penginvoisan_nama:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('penginvoisan_nama') 
@@ -74,22 +74,22 @@
                                     <div class="col-md-3">
                                         <select class="form-control" name="penginvoisan_negeri" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negeri...</option>
-                                            <option value="Johor" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
-                                            <option value="Melaka" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
-                                            <option value="Negeri Sembilan" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
-                                            <option value="Selangor" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
-                                            <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
-                                            <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
-                                            <option value="Pahang" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Pahang" ? 'selected' : '' }}>Pahang</option>
-                                            <option value="Terengganu" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Terengganu" ? 'selected' : '' }}>Terengganu</option>
-                                            <option value="Kelantan" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Kelantan" ? 'selected' : '' }}>Kelantan</option>
-                                            <option value="Perak" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Perak" ? 'selected' : '' }}>Perak</option>
-                                            <option value="Kedah" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Kedah" ? 'selected' : '' }}>Kedah</option>
-                                            <option value="Perlis" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Perlis" ? 'selected' : '' }}>Perlis</option>
-                                            <option value="Pulau Pinang" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Pulau Pinang" ? 'selected' : '' }}>Pulau Pinang</option>
-                                            <option value="Sabah" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Sabah" ? 'selected' : '' }}>Sabah</option>
-                                            <option value="Sarawak" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
-                                            <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_surat_negeri)?$penginvoisans->penginvoisan_surat_negeri:null) == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
+                                            <option value="Johor" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
+                                            <option value="Melaka" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
+                                            <option value="Negeri Sembilan" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
+                                            <option value="Selangor" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
+                                            <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
+                                            <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
+                                            <option value="Pahang" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Pahang" ? 'selected' : '' }}>Pahang</option>
+                                            <option value="Terengganu" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Terengganu" ? 'selected' : '' }}>Terengganu</option>
+                                            <option value="Kelantan" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Kelantan" ? 'selected' : '' }}>Kelantan</option>
+                                            <option value="Perak" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Perak" ? 'selected' : '' }}>Perak</option>
+                                            <option value="Kedah" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Kedah" ? 'selected' : '' }}>Kedah</option>
+                                            <option value="Perlis" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Perlis" ? 'selected' : '' }}>Perlis</option>
+                                            <option value="Pulau Pinang" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Pulau Pinang" ? 'selected' : '' }}>Pulau Pinang</option>
+                                            <option value="Sabah" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Sabah" ? 'selected' : '' }}>Sabah</option>
+                                            <option value="Sarawak" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
+                                            <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('penginvoisan_negeri',isset($penginvoisans->penginvoisan_negeri)?$penginvoisans->penginvoisan_negeri:null) == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
                                         </select>                                    
                                         @error('penginvoisan_negeri') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -111,7 +111,7 @@
                                         <select class="form-control" name="penginvoisan_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
                                             @foreach($list_negara as $negara)
-                                                <option value=" {{ $negara->negara_nama }}" {{ old('penginvoisan_negara' , isset($penginvoisans->penginvoisan_negara)?$penginvoisans->penginvoisan_negara:null ) }} >{{ $negara->negara_nama }}</option>
+                                                <option value=" {{ $negara->negara_nama }}" {{ old('penginvoisan_negara' , isset($penginvoisans->penginvoisan_negara)?$penginvoisans->penginvoisan_negara:null ) == $penginvoisans->penginvoisan_negara ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
                                             @endforeach
                                         </select>
                                         @error('penginvoisan_negara') 
