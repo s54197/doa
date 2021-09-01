@@ -28,6 +28,13 @@ class CreateAgensTable extends Migration
             $table->string('agen_no_tel');
             $table->string('agen_no_faks');
             $table->string('agen_emel');
+            $table->string('agen_status');
+             
+            // one to many relation for user
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Agen extends Model
+class Gudang extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -18,18 +18,18 @@ class Agen extends Model
     }
 
     protected $fillable = [
-        'agen_nama',
-        'agen_ic',
-        'agen_syarikat',
-        'agen_roc',
-        'agen_bangunan',
-        'agen_jalan',
-        'agen_poskod',
-        'agen_bandar',
-        'agen_negeri',
-        'agen_no_tel',
-        'agen_no_faks',
-        'agen_emel',
-        'agen_status',
+        'gudang_nama',
+        'gudang_no_roc',
+        'gudang_bangunan',
+        'gudang_jalan',
+        'gudang_poskod',
+        'gudang_bandar',
+        'gudang_negeri',
+        'gudang_negeri_luar_malaysia',
+        'gudang_negara',
+        'gudang_no_tel',
+        'gudang_no_faks',
+        'gudang_emel',
+        'gudang_status',
     ];
 }

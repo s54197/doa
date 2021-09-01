@@ -6,10 +6,42 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    use SoftDeletes;
+
+    // Syarikat relationship
+    public function syarikats(){
+        return $this->hasMany(Syarikat::class);
+    }
+
+    // Agen relationship
+    public function agens(){
+        return $this->hasMany(Agen::class);
+    }
+
+    // Pembekal relationship
+    public function pembekals(){
+        return $this->hasMany(Pembekal::class);
+    }
+
+    // Pengilang relationship
+    public function pengilangs(){
+        return $this->hasMany(Pengilang::class);
+    }
+
+    // Gudang relationship
+    public function gudangs(){
+        return $this->hasMany(Gudang::class);
+    }
+
+    // Penginvoisan relationship
+    public function penginvoisans(){
+        return $this->hasMany(Penginvoisan::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +50,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'role',
         'email',
         'password',
     ];
