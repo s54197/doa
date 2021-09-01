@@ -175,11 +175,6 @@ Route::middleware('auth')->group(function() {
 
 });
 
-
-
-// view borang A
-Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('form.pendaftaran');
-
 // change password function
 Route::get('/change_password', [App\Http\Controllers\ChangePasswordController::class, 'index'])->name('view.password');
 Route::post('/change_password', [App\Http\Controllers\ChangePasswordController::class, 'store'])->name('change.password');
