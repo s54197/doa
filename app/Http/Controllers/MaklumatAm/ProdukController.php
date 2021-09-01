@@ -81,7 +81,11 @@ class ProdukController extends Controller
         $produk = Produk::find($id);
         // Data negara
         $list_negara = ListNegara::all();
-        
+        // Reformat date 
+        $produk->produk_tarikh_gazet = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_gazet)->format('d-m-Y');
+        $produk->produk_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_tamat)->format('d-m-Y');
+        $produk->produk_tarikh_penwartaan = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_penwartaan)->format('d-m-Y');
+
         $data = array(
             'produks' => $produk,
             'list_negara' => $list_negara,
@@ -131,9 +135,9 @@ class ProdukController extends Controller
                 'produk_lrmp_r' => $request->produk_lrmp_r,
                 'produk_lrmp_no' => $request->produk_lrmp_no,
                 'produk_no_fail' => $request->produk_no_fail,
-                'produk_tarikh_gazet' => $request->produk_tarikh_gazet,
-                'produk_tarikh_tamat' => $request->produk_tarikh_tamat,
-                'produk_tarikh_penwartaan' => $request->produk_tarikh_penwartaan,
+                'produk_tarikh_gazet' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_gazet)->format('Y-m-d'),
+                'produk_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_tamat)->format('Y-m-d'),
+                'produk_tarikh_penwartaan' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_penwartaan)->format('Y-m-d'),
                 'produk_kelas_racun' => $request->produk_kelas_racun,
                 'produk_categori' => $request->produk_categori,
                 'produk_categori_lain' => $request->produk_categori_lain,
@@ -197,9 +201,9 @@ class ProdukController extends Controller
                 'produk_lrmp_r' => $request->produk_lrmp_r,
                 'produk_lrmp_no' => $request->produk_lrmp_no,
                 'produk_no_fail' => $request->produk_no_fail,
-                'produk_tarikh_gazet' => $request->produk_tarikh_gazet,
-                'produk_tarikh_tamat' => $request->produk_tarikh_tamat,
-                'produk_tarikh_penwartaan' => $request->produk_tarikh_penwartaan,
+                'produk_tarikh_gazet' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_gazet)->format('Y-m-d'),
+                'produk_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_tamat)->format('Y-m-d'),
+                'produk_tarikh_penwartaan' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_penwartaan)->format('Y-m-d'),
                 'produk_kelas_racun' => $request->produk_kelas_racun,
                 'produk_categori' => $request->produk_categori,
                 'produk_categori_lain' => $request->produk_categori_lain,

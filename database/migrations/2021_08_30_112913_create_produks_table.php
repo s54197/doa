@@ -18,7 +18,7 @@ class CreateProduksTable extends Migration
             $table->string('produk_nama');
             $table->string('produk_lrmp_r');
             $table->string('produk_lrmp_no');
-            $table->integer('produk_no_fail');
+            $table->string('produk_no_fail');
             $table->date('produk_tarikh_gazet');
             $table->date('produk_tarikh_tamat');
             $table->date('produk_tarikh_penwartaan');
