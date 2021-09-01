@@ -185,7 +185,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="syarikat_emel"><span class="text-danger">*</span>Emel:</label>
                                     <div class="col-md-8">
-                                        <input type="email" id="syarikat_emel" name="syarikat_emel" class="form-control" placeholder="Emel" value="{{ old('syarikat_emel',isset($syarikats->syarikat_nama)?$syarikats->syarikat_nama:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="email" id="syarikat_emel" name="syarikat_emel" class="form-control" placeholder="Emel" value="{{ old('syarikat_emel',isset($syarikats->syarikat_emel)?$syarikats->syarikat_emel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_emel') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror                                
@@ -205,9 +205,9 @@
                                     <div class="col-8 offset-3">
                                         @if($jenis=='new' || $jenis=='kemaskini' )
                                         <button type="submit" name="syarikat_submit" id="syarikat_submit" class="btn btn-primary waves-effect waves-light mr-1">
-                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }}
+                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }} <i id="loading_icon" class="ml-1 mdi mdi-spin mdi-loading" style="display: none"></i>
                                         </button>
-                                        <button type="reset" name="syarikat_batal" id="syarikat_batal" class="btn btn-light waves-effect">Kosongkan</button>
+                                        <button type="reset" name="syarikat_batal" id="syarikat_batal" class="btn btn-light waves-effect mr-1">Kosongkan</button>
                                         @endif
                                         <button type="button" onclick="window.location='{{ route('main.syarikat') }}'" name="syarikat_batal" id="syarikat_batal" class="btn btn-light waves-effect">
                                             {{ $jenis == "papar" ? 'Kembali' : 'Batal' }}

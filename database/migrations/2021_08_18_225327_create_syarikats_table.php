@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
 
 class CreateSyarikatsTable extends Migration
 {
@@ -32,9 +31,14 @@ class CreateSyarikatsTable extends Migration
             $table->string('syarikat_no_tel');
             $table->string('syarikat_no_faks');
             $table->string('syarikat_emel');
-            $table->string('syarikat_wakil');
+            $table->string('syarikat_wakil')->nullable();
             $table->string('syarikat_status');
-            $table->foreignIdFor(User::class);
+
+            // one to many relation for user
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

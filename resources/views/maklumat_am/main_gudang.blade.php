@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Produk')
+@section('title', 'Gudang')
 
 @section('local_css')
 <style>
@@ -13,11 +13,11 @@
 
 @section('breadcrumbs')
 <li>
-    <h4 class="page-title-main">Produk</h4>
+    <h4 class="page-title-main">Gudang</h4>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">DOA</a></li>
         <li class="breadcrumb-item"><a href="#">Rekod Maklumat Am</a></li>
-        <li class="breadcrumb-item active">Produk</li>
+        <li class="breadcrumb-item active">Gudang</li>
     </ol>
 </li>
 @endsection
@@ -29,7 +29,7 @@
             <div class="card-box tilebox-one">
                 <i class="mdi mdi-chart-pie float-right text-primary"></i>
                 <h6 class="text-muted text-uppercase mt-0">Jumlah Rekod</h6>
-                <h2 class="mb-1" data-plugin="counterup">{{$totalproduk}}</h2>
+                <h2 class="mb-1" data-plugin="counterup">{{$totalgudang}}</h2>
                 {{-- <span class="badge badge-primary"> +11% </span> <span class="text-muted">From previous period</span> --}}
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="card-box tilebox-one">
                 <i class=" mdi mdi-chart-arc float-right text-primary"></i>
                 <h6 class="text-muted text-uppercase mt-0">Rekod {{$bulan}} 2021</h6>
-                <h2 class="mb-1" data-plugin="counterup">{{$totalprodukbulanterkini}}</h2>
+                <h2 class="mb-1" data-plugin="counterup">{{$totalgudangbulanterkini}}</h2>
                 {{-- <span class="badge badge-primary"> +89% </span> <span class="text-muted">Last year</span> --}}
             </div>
         </div>
@@ -47,7 +47,7 @@
             <div class="card-box tilebox-one">
                 <i class="mdi mdi-battery-charging-100 float-right text-primary mt-0"></i>
                 <h6 class="text-muted text-uppercase mt-0">Aktif</h6>
-                <h2 class="mb-1"><span data-plugin="counterup">{{$totalprodukaktif}}</span></h2>
+                <h2 class="mb-1"><span data-plugin="counterup">{{$totalgudangaktif}}</span></h2>
                 {{-- <span class="badge badge-danger"> -29% </span> <span class="text-muted">From previous period</span> --}}
             </div>
         </div>
@@ -56,7 +56,7 @@
             <div class="card-box tilebox-one">
                 <i class="mdi mdi-battery-charging-10 float-right text-primary"></i>
                 <h6 class="text-muted text-uppercase mt-0">Tidak Aktif</h6>
-                <h2 class="mb-1"><span data-plugin="counterup">{{$totalproduktidakaktif}}</span></h2>
+                <h2 class="mb-1"><span data-plugin="counterup">{{$totalgudangtidakaktif}}</span></h2>
                 {{-- <span class="badge badge-primary"> 0% </span> <span class="text-muted">From previous period</span> --}}
             </div>
         </div>
@@ -65,11 +65,11 @@
             <div class="card-box">
                 <div class="row mb-2 mb-sm-3">
                     <div class="col-12 col-md-10">
-                        <h4 class="header-title">Senarai Syarikat</div></h4>
+                        <h4 class="header-title">Senarai gudang</div></h4>
                     <div class="col-12 col-md-2">
-                        {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah Syarikat</button> --}}
+                        {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah gudang</button> --}}
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
-                        onclick="window.location='{{ route("baru.produk") }}'">Daftar Baru</button>
+                        onclick="window.location='{{ route("baru.gudang") }}'">Daftar Baru</button>
                     </div>
                 </div>
 
@@ -80,6 +80,7 @@
                     </button>
                     {{ Session::get( 'success' ) }}
                 </div>
+
                 @elseif( Session::has( 'warning' ))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -92,32 +93,30 @@
                 <table class="table table-bordered m-0 table-centered tickets-list table-actions-bar dt-responsive nowrap" cellspacing="0" width="100%" id="datatable">
                     <thead>
                         <tr>
-                            <th>Nama Produk</th>
-                            <th>LRMP</th>
-                            <th>Nombor Fail</th>
-                            <th>Tarikh Gazet</th>
-                            <th>Tarikh Tamat</th>
+                            <th>Nama gudang</th>
+                            <th>ROC</th>
+                            <th>Telefon</th>
+                            <th>Negeri</th>
                             <th>Status</th>
                             <th class="hidden-sm">Tetapan</th>
                         </tr>
                     </thead>
     
                     <tbody>
-                        @foreach($produks as $produk)
+                        @foreach($gudangs as $gudang)
                         <tr>
-                            <td>{{$produk->produk_nama}}</td>
-                            <td>{{$produk->produk_lrmp_r}}</td>
-                            <td>{{$produk->produk_no_fail}}</td>
-                            <td>{{$produk->produk_tarikh_gazet}}</td>
-                            <td>{{$produk->produk_tarikh_tamat}}</td>
-                            <td>{{$produk->produk_status}}</td>
+                            <td>{{$gudang->gudang_nama}}</td>
+                            <td>{{$gudang->gudang_no_roc}}</td>
+                            <td>{{$gudang->gudang_no_tel}}</td>
+                            <td>{{$gudang->gudang_negeri}}</td>
+                            <td>{{$gudang->gudang_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{ route('papar.produk', $produk->id) }}"><i class="mdi mdi-file-document-box-search-outline mr-2 text-muted font-18 vertical-middle"></i>Papar</a>
-                                        <a class="dropdown-item" href="{{ route('papar.produk', $produk->id) }}"><i class="mdi mdi-file-document-box-plus-outline mr-2 text-muted font-18 vertical-middle"></i>Kemaskini</a>
-                                        <a class="dropdown-item padam" href="#" id="padam_{{ $produk->id }}" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="mdi mdi-file-document-box-remove-outline mr-2 text-muted font-18 vertical-middle"></i>Padam</a>
+                                        <a class="dropdown-item" href="{{ route('papar.gudang', $gudang->id) }}"><i class="mdi mdi-file-document-box-search-outline mr-2 text-muted font-18 vertical-middle"></i>Papar</a>
+                                        <a class="dropdown-item" href="{{ route('kemaskini.gudang', $gudang->id) }}"><i class="mdi mdi-file-document-box-plus-outline mr-2 text-muted font-18 vertical-middle"></i>Kemaskini</a>
+                                        <a class="dropdown-item padam" href="#" id="padam_{{ $gudang->id }}" ><i class="mdi mdi-file-document-box-remove-outline mr-2 text-muted font-18 vertical-middle"></i>Padam</a>
                                     </div>
                                 </div>
                             </td>
@@ -131,7 +130,7 @@
     <!-- end row -->
 </div>
 <!-- end div -->
-@component('components.modal_confirm', ['id'=>'id_syarikat'])
+@component('components.modal_confirm', ['id'=>'id_gudang'])
 Adakah anda bersetuju untuk memadam data?
 @endcomponent
 
@@ -140,7 +139,6 @@ Adakah anda bersetuju untuk memadam data?
     @method('delete')
 </form>
 @endsection
-
 @section('local_js')
 <script>
 $(document).ready(function () {
@@ -157,14 +155,14 @@ $(document).ready(function () {
         // }
     });
 
-    // To get pembekal id
+    // To get gudang id
     $('.padam').on('click', function(){
         
         id = $(this).attr('id');
         id = id.split('_');
 
         $('.bs-example-modal-sm').modal('show');
-        $('#padam_submit').attr('action','perawis/delete/' + id[1]);
+        $('#padam_submit').attr('action','gudang/delete/' + id[1]);
 
     });
 
@@ -172,6 +170,7 @@ $(document).ready(function () {
     $('#teruskan').on('click', function(){
         $('#padam_submit').submit();
     });
+
 });
 </script>
 @endsection

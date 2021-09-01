@@ -1,0 +1,52 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateProduksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('produks', function (Blueprint $table) {
+            $table->id();
+            $table->string('produk_nama');
+            $table->string('produk_lrmp_r');
+            $table->string('produk_lrmp_no');
+            $table->string('produk_no_fail');
+            $table->date('produk_tarikh_gazet');
+            $table->date('produk_tarikh_tamat');
+            $table->date('produk_tarikh_penwartaan');
+            $table->string('produk_kelas_racun');
+            $table->integer('produk_saiz');
+            $table->string('produk_saiz_lain');
+            $table->string('produk_categori');
+            $table->string('produk_categori_lain');
+            $table->string('produk_kegunaan');
+            $table->string('produk_kegunaan_lain');
+            $table->string('produk_status');
+
+            // one to many relation for user
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('produks');
+    }
+}

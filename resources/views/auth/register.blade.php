@@ -49,37 +49,37 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
     
-                                    <div class="form-group row">
+                                    <div class="form-group row mb-0">
                                         <div class="col-12">
                                             <label for="emailaddress">Nama Penuh:</label>
-                                            <input class="form-control" type="text" name="name" id="name" required placeholder="Nama Penuh" autofocus autocomplete="email" value="{{ old('name') }}">
+                                            <input class="form-control" type="text" name="name" id="name" placeholder="Nama Penuh" autofocus autocomplete="email" value="{{ old('name') }}">
                                         </div>
                                     </div>
                                     @error('name')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
 
-                                    <div class="form-group row">
+                                    <div class="form-group row mb-0 mt-2">
                                         <div class="col-12">
                                             <label for="emailaddress">Emel:</label>
-                                            <input class="form-control" type="email" name="email" id="email" required placeholder="Emel" autofocus autocomplete="email" value="{{ old('email') }}">
+                                            <input class="form-control" type="email" name="email" id="email" placeholder="Emel" autofocus autocomplete="email" value="{{ old('email') }}">
                                         </div>
                                     </div>
                                     @error('email')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
     
-                                    <div class="form-group row">
+                                    <div class="form-group row mt-2 mb-3">
                                         <div class="col-6">
                                             <label for="password">Kata Laluan:</label>
-                                            <input class="form-control mb-1" type="password" name="password" required id="password" placeholder="Kata Laluan" autocomplete="new-password">
+                                            <input class="form-control mb-1 mb-md-0" type="password" name="password" id="password" placeholder="Kata Laluan" autocomplete="new-password">
                                             @error('password')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="col-6">
                                             <label for="password">Pengesahan Kata Laluan:</label>
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required 
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" 
                                             placeholder="Kata Laluan"
                                             autocomplete="new-password">
                                             @error('password_confirmation')
@@ -90,7 +90,7 @@
     
                                     <div class="form-group row text-center">
                                         <div class="col-12">
-                                            <button class="btn btn-block btn-primary waves-effect waves-light" type="submit">Daftar Baru</button>
+                                            <button class="btn btn-block btn-primary waves-effect waves-light" type="submit">Daftar Baru <i id="loading_icon" class="ml-1 mdi mdi-spin mdi-loading" style="display: none"></i></button>
                                         </div>
                                     </div>
     
@@ -121,6 +121,15 @@
 
         <!-- App js -->
         <script src="assets/js/app.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                // show spinner before submitting form
+                $("button[type='submit']").on("click", function(){
+                    $('#loading_icon').show();
+                });
+            });
+        </script>
         
     </body>
 </html>
