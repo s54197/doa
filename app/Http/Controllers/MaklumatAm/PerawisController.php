@@ -73,6 +73,10 @@ class PerawisController extends Controller
     public function update_view($id) {
         // Data perawis
         $perawis = Perawis::find($id);
+
+        // Reformat date 
+        $perawis->perawis_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $perawis->perawis_tarikh_lulus)->format('d-m-Y');
+        $perawis->perawis_tarikh_terhad = Carbon::createFromFormat('Y-m-d', $perawis->perawis_tarikh_terhad)->format('d-m-Y');
         
         $data = array(
             'perawiss' => $perawis,

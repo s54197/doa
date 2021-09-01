@@ -111,7 +111,7 @@
                                         <select class="form-control" name="pengilang_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
                                             @foreach($list_negara as $negara)
-                                                <option value=" {{ $negara->negara_nama }}" {{ old('pengilang_negara' , isset($pengilangs->pengilang_negara)?$pengilangs->pengilang_negara:null ) }} >{{ $negara->negara_nama }}</option>
+                                                <option value=" {{ $negara->negara_nama }}" {{ old('pengilang_negara' , isset($pengilangs->pengilang_negara)?$pengilangs->pengilang_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
                                             @endforeach
                                         </select>   
                                         @error('pengilang_negara') 
