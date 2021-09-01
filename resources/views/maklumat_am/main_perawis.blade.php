@@ -36,6 +36,15 @@
     
         <div class="col-md-6 col-xl-3">
             <div class="card-box tilebox-one">
+                <i class=" mdi mdi-chart-arc float-right text-primary"></i>
+                <h6 class="text-muted text-uppercase mt-0">Rekod {{$bulan}} 2021</h6>
+                <h2 class="mb-1" data-plugin="counterup">{{$totalperawisbulanterkini}}</h2>
+                {{-- <span class="badge badge-primary"> +89% </span> <span class="text-muted">Last year</span> --}}
+            </div>
+        </div>
+    
+        <div class="col-md-6 col-xl-3">
+            <div class="card-box tilebox-one">
                 <i class="mdi mdi-battery-charging-100 float-right text-primary mt-0"></i>
                 <h6 class="text-muted text-uppercase mt-0">Aktif</h6>
                 <h2 class="mb-1"><span data-plugin="counterup">{{$totalperawisaktif}}</span></h2>
@@ -49,15 +58,6 @@
                 <h6 class="text-muted text-uppercase mt-0">Tidak Aktif</h6>
                 <h2 class="mb-1"><span data-plugin="counterup">{{$totalperawistidakaktif}}</span></h2>
                 {{-- <span class="badge badge-primary"> 0% </span> <span class="text-muted">From previous period</span> --}}
-            </div>
-        </div>
-    
-        <div class="col-md-6 col-xl-3">
-            <div class="card-box tilebox-one">
-                <i class=" mdi mdi-chart-arc float-right text-primary"></i>
-                <h6 class="text-muted text-uppercase mt-0">Rekod {{$bulan}} 2021</h6>
-                <h2 class="mb-1" data-plugin="counterup">{{$totalperawisbulanterkini}}</h2>
-                {{-- <span class="badge badge-primary"> +89% </span> <span class="text-muted">Last year</span> --}}
             </div>
         </div>
     

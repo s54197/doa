@@ -362,6 +362,16 @@
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
 
+        {{-- show loading icon for submit button --}}
+        <script>
+            $(document).ready(function(){
+                // show spinner before submitting form
+                $("button[type='submit']").on("click", function(){
+                    $('#loading_icon').show();
+                });
+            });
+        </script>
+
         @yield('local_js')
         
     </body>

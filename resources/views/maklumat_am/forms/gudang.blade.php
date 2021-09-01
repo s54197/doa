@@ -151,9 +151,9 @@
                                     <div class="col-8 offset-3">
                                         @if($jenis=='new' || $jenis=='kemaskini' )
                                         <button type="submit" name="gudang_submit" id="gudang_submit" class="btn btn-primary waves-effect waves-light mr-1">
-                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }}
+                                            {{ $jenis == "kemaskini" ? 'Kemaskini' : 'Daftar' }} <i id="loading_icon" class="ml-1 mdi mdi-spin mdi-loading" style="display: none"></i>
                                         </button>
-                                        <button type="reset" name="gudang_batal" id="gudang_batal" class="btn btn-light waves-effect">Kosongkan</button>
+                                        <button type="reset" name="gudang_batal" id="gudang_batal" class="btn btn-light waves-effect mr-1">Kosongkan</button>
                                         @endif
                                         <button type="button" onclick="window.location='{{ route('main.gudang') }}'" name="gudang_batal" id="gudang_batal" class="btn btn-light waves-effect">
                                             {{ $jenis == "papar" ? 'Kembali' : 'Batal' }}

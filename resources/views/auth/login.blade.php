@@ -52,25 +52,30 @@
                                     <div class="form-group row mb-0">
                                         <div class="col-12">
                                             <label for="emailaddress">Emel:</label>
-                                            <input class="form-control" type="email" name="email" id="email" required placeholder="Sila Masukkan Emel" autofocus autocomplete="email">
+                                            <input class="form-control" type="email" name="email" id="email" placeholder="Sila Masukkan Emel" autofocus autocomplete="email">
                                         </div>
                                     </div>
                                     @error('email')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
     
-                                    <div class="form-group row mt-2">
+                                    <div class="form-group row mb-0 mt-2">
                                         <div class="col-12">
                                             <a href="{{ route('password.request') }}" class="text-muted float-right"><small>Lupa Kata Laluan?</small></a>
                                             <label for="password">Kata Laluan:</label>
-                                            <input class="form-control" type="password" name="password" required id="password" placeholder="Sila Masukkan Kata Laluan" autocomplete="current-password">
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" name="password" id="password" placeholder="Sila Masukkan Kata Laluan" aria-label="Kata Laluan" aria-describedby="basic-addon2">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-light waves-effect waves-light" type="button" id="show_password"><i class="far fa-eye"></i></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     @error('password')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
     
-                                    <div class="form-group row">
+                                    <div class="form-group row mt-3">
                                         <div class="col-12">
     
                                             <div class="checkbox checkbox-primary">
@@ -85,7 +90,7 @@
     
                                     <div class="form-group row text-center">
                                         <div class="col-12">
-                                            <button class="btn btn-block btn-primary waves-effect waves-light" type="submit">Log Masuk</button>
+                                            <button class="btn btn-block btn-primary waves-effect waves-light" type="submit">Log Masuk <i id="loading_icon" class="ml-1 mdi mdi-spin mdi-loading" style="display: none"></i></button>
                                         </div>
                                     </div>
     
@@ -116,6 +121,22 @@
 
         <!-- App js -->
         <script src="assets/js/app.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                // display and undisplay password
+                $('#show_password').on('click', function(){
+                    $("i", this).toggleClass('fa-eye-slash');
+                    if ($("#password").attr("type") === "password") $("#password").attr('type', 'text');
+                    else $("#password").attr('type', 'password');
+                });
+                
+                // show spinner before submitting form
+                $("button[type='submit']").on("click", function(){
+                    $('#loading_icon').show();
+                });
+            });
+        </script>
         
     </body>
 </html>

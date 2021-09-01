@@ -529,9 +529,9 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-8 offset-3">
                                         <button type="submit" name="produk_submit" id="produk_submit" class="btn btn-primary waves-effect waves-light mr-1">
-                                            Daftar
+                                            Daftar <i id="loading_icon" class="ml-1 mdi mdi-spin mdi-loading" style="display: none"></i>
                                         </button>
-                                        <button type="reset" name="produk_batal" id="produk_batal" class="btn btn-light waves-effect">
+                                        <button type="reset" name="produk_batal" id="produk_batal" class="btn btn-light waves-effect mr-1">
                                             Batal
                                         </button>
                                     </div>
