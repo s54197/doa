@@ -131,8 +131,8 @@ Route::middleware('auth')->group(function() {
                produk
     ***********************************/
     Route::get('produk', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'index'])->name('main.produk');
-    Route::get('produk/papar/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'view'])->name('papar.produk');
-    Route::get('produk/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\PenginvoisanController::class, 'update_view'])->name('kemaskini.produk');
+    Route::get('produk/papar/{id}', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'view'])->name('papar.produk');
+    Route::get('produk/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'update_view'])->name('kemaskini.produk');
     // view produk
     Route::get('form/produk/baru', [App\Http\Controllers\MaklumatAm\ProdukController::class, 'new_view'])->name('baru.produk');
     // delete produk
