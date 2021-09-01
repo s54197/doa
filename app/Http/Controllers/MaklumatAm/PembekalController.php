@@ -62,8 +62,11 @@ class PembekalController extends Controller
     public function view($id) {
         // Data pembekal
         $pembekal = Pembekal::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
         $data = array(
             'pembekals' => $pembekal,
+            'list_negara' => $list_negara,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );

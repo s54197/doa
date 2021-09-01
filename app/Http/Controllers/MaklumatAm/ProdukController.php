@@ -62,8 +62,12 @@ class ProdukController extends Controller
     public function view($id) {
         // Data produk
         $produk = Produk::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
+
         $data = array(
             'produks' => $produk,
+            'list_negara' => $list_negara,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );

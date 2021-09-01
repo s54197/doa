@@ -63,8 +63,12 @@ class GudangController extends Controller
     public function view($id) {
         // Data gudang
         $gudang = Gudang::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
+        
         $data = array(
             'gudangs' => $gudang,
+            'list_negara' => $list_negara,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );
