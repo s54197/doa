@@ -73,6 +73,10 @@ class PerawisController extends Controller
     public function update_view($id) {
         // Data perawis
         $perawis = Perawis::find($id);
+
+        // Reformat date 
+        $perawis->perawis_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $perawis->perawis_tarikh_lulus)->format('d-m-Y');
+        $perawis->perawis_tarikh_terhad = Carbon::createFromFormat('Y-m-d', $perawis->perawis_tarikh_terhad)->format('d-m-Y');
         
         $data = array(
             'perawiss' => $perawis,
@@ -121,7 +125,8 @@ class PerawisController extends Controller
                 'perawis_pihak_ketiga' => $request->perawis_pihak_ketiga,
                 'perawis_kumpulan_kimia' => $request->perawis_kumpulan_kimia,
                 'perawis_kaedah' => $request->perawis_kaedah,
-                'perawis_tarikh_lulus' => $request->perawis_tarikh_lulus,
+                'perawis_tarikh_lulus' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_lulus)->format('Y-m-d'),
+                'perawis_tarikh_terhad' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_terhad)->format('Y-m-d'),
                 'perawis_peratusan' => $request->perawis_peratusan,
                 'perawis_unit' => $request->perawis_unit,
                 'perawis_unit_lain' => $request->perawis_unit_lain,
@@ -170,7 +175,8 @@ class PerawisController extends Controller
                 'perawis_pihak_ketiga' => $request->perawis_pihak_ketiga,
                 'perawis_kumpulan_kimia' => $request->perawis_kumpulan_kimia,
                 'perawis_kaedah' => $request->perawis_kaedah,
-                'perawis_tarikh_lulus' => $request->perawis_tarikh_lulus,
+                'perawis_tarikh_lulus' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_lulus)->format('Y-m-d'),
+                'perawis_tarikh_terhad' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_terhad)->format('Y-m-d'),
                 'perawis_peratusan' => $request->perawis_peratusan,
                 'perawis_unit' => $request->perawis_unit,
                 'perawis_unit_lain' => $request->perawis_unit_lain,

@@ -18,7 +18,7 @@ class CreateAgensTable extends Migration
             $table->id();
             $table->string('agen_nama');
             $table->string('agen_ic');
-            $table->date('agen_syarikat');
+            $table->string('agen_syarikat');
             $table->string('agen_roc');
             $table->string('agen_bangunan');
             $table->string('agen_jalan');

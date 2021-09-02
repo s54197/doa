@@ -62,8 +62,12 @@ class ProdukController extends Controller
     public function view($id) {
         // Data produk
         $produk = Produk::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
+
         $data = array(
             'produks' => $produk,
+            'list_negara' => $list_negara,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );
@@ -77,7 +81,11 @@ class ProdukController extends Controller
         $produk = Produk::find($id);
         // Data negara
         $list_negara = ListNegara::all();
-        
+        // Reformat date 
+        $produk->produk_tarikh_gazet = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_gazet)->format('d-m-Y');
+        $produk->produk_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_tamat)->format('d-m-Y');
+        $produk->produk_tarikh_penwartaan = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_penwartaan)->format('d-m-Y');
+
         $data = array(
             'produks' => $produk,
             'list_negara' => $list_negara,
@@ -100,12 +108,22 @@ class ProdukController extends Controller
             'produk_tarikh_tamat' => 'required',
             'produk_tarikh_penwartaan' => 'required',
             'produk_kelas_racun' => 'required',
-            'produk_saiz' => 'required',
-            'produk_saiz_lain' => 'required',
             'produk_categori' => 'required',
             'produk_categori_lain' => 'required',
             'produk_kegunaan' => 'required',
             'produk_kegunaan_lain' => 'required',
+            'produk_saiz_isian_1' => 'required',
+            'produk_saiz_lain_1' => 'required',
+            // 'produk_saiz_isian_2' => 'required',
+            // 'produk_saiz_lain_2' => 'required',
+            // 'produk_saiz_isian_3' => 'required',
+            // 'produk_saiz_lain_3' => 'required',
+            // 'produk_saiz_isian_4' => 'required',
+            // 'produk_saiz_lain_4' => 'required',
+            // 'produk_saiz_isian_5' => 'required',
+            // 'produk_saiz_lain_5' => 'required',
+            // 'produk_saiz_isian_6' => 'required',
+            // 'produk_saiz_lain_6' => 'required',
         ]);
 
         // dd($request);
@@ -117,16 +135,26 @@ class ProdukController extends Controller
                 'produk_lrmp_r' => $request->produk_lrmp_r,
                 'produk_lrmp_no' => $request->produk_lrmp_no,
                 'produk_no_fail' => $request->produk_no_fail,
-                'produk_tarikh_gazet' => $request->produk_tarikh_gazet,
-                'produk_tarikh_tamat' => $request->produk_tarikh_tamat,
-                'produk_tarikh_penwartaan' => $request->produk_tarikh_penwartaan,
+                'produk_tarikh_gazet' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_gazet)->format('Y-m-d'),
+                'produk_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_tamat)->format('Y-m-d'),
+                'produk_tarikh_penwartaan' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_penwartaan)->format('Y-m-d'),
                 'produk_kelas_racun' => $request->produk_kelas_racun,
-                'produk_saiz' => $request->produk_saiz,
-                'produk_saiz_lain' => $request->produk_saiz_lain,
                 'produk_categori' => $request->produk_categori,
                 'produk_categori_lain' => $request->produk_categori_lain,
                 'produk_kegunaan' => $request->produk_kegunaan,
                 'produk_kegunaan_lain' => $request->produk_kegunaan_lain,
+                'produk_saiz_isian_1' => $request->produk_saiz_isian_1,
+                'produk_saiz_lain_1' => $request->produk_saiz_lain_1,
+                'produk_saiz_isian_2' => $request->produk_saiz_isian_2,
+                'produk_saiz_lain_2' => $request->produk_saiz_lain_2,
+                'produk_saiz_isian_3' => $request->produk_saiz_isian_3,
+                'produk_saiz_lain_3' => $request->produk_saiz_lain_3,
+                'produk_saiz_isian_4' => $request->produk_saiz_isian_4,
+                'produk_saiz_lain_4' => $request->produk_saiz_lain_4,
+                'produk_saiz_isian_5' => $request->produk_saiz_isian_5,
+                'produk_saiz_lain_5' => $request->produk_saiz_lain_5,
+                'produk_saiz_isian_6' => $request->produk_saiz_isian_6,
+                'produk_saiz_lain_6' => $request->produk_saiz_lain_6,
                 'produk_status' => 'Aktif',
                 'user_id' => $user->id,
             ]);
@@ -148,12 +176,22 @@ class ProdukController extends Controller
             'produk_tarikh_tamat' => 'required',
             'produk_tarikh_penwartaan' => 'required',
             'produk_kelas_racun' => 'required',
-            'produk_saiz' => 'required',
-            'produk_saiz_lain' => 'required',
             'produk_categori' => 'required',
             'produk_categori_lain' => 'required',
             'produk_kegunaan' => 'required',
             'produk_kegunaan_lain' => 'required',
+            'produk_saiz_isian_1' => 'required',
+            'produk_saiz_lain_1' => 'required',
+            // 'produk_saiz_isian_2' => 'required',
+            // 'produk_saiz_lain_2' => 'required',
+            // 'produk_saiz_isian_3' => 'required',
+            // 'produk_saiz_lain_3' => 'required',
+            // 'produk_saiz_isian_4' => 'required',
+            // 'produk_saiz_lain_4' => 'required',
+            // 'produk_saiz_isian_5' => 'required',
+            // 'produk_saiz_lain_5' => 'required',
+            // 'produk_saiz_isian_6' => 'required',
+            // 'produk_saiz_lain_6' => 'required',
         ]);
 
         try {
@@ -163,16 +201,26 @@ class ProdukController extends Controller
                 'produk_lrmp_r' => $request->produk_lrmp_r,
                 'produk_lrmp_no' => $request->produk_lrmp_no,
                 'produk_no_fail' => $request->produk_no_fail,
-                'produk_tarikh_gazet' => $request->produk_tarikh_gazet,
-                'produk_tarikh_tamat' => $request->produk_tarikh_tamat,
-                'produk_tarikh_penwartaan' => $request->produk_tarikh_penwartaan,
+                'produk_tarikh_gazet' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_gazet)->format('Y-m-d'),
+                'produk_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_tamat)->format('Y-m-d'),
+                'produk_tarikh_penwartaan' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_penwartaan)->format('Y-m-d'),
                 'produk_kelas_racun' => $request->produk_kelas_racun,
-                'produk_saiz' => $request->produk_saiz,
-                'produk_saiz_lain' => $request->produk_saiz_lain,
                 'produk_categori' => $request->produk_categori,
                 'produk_categori_lain' => $request->produk_categori_lain,
                 'produk_kegunaan' => $request->produk_kegunaan,
                 'produk_kegunaan_lain' => $request->produk_kegunaan_lain,
+                'produk_saiz_isian_1' => $request->produk_saiz_isian_1,
+                'produk_saiz_lain_1' => $request->produk_saiz_lain_1,
+                'produk_saiz_isian_2' => $request->produk_saiz_isian_2,
+                'produk_saiz_lain_2' => $request->produk_saiz_lain_2,
+                'produk_saiz_isian_3' => $request->produk_saiz_isian_3,
+                'produk_saiz_lain_3' => $request->produk_saiz_lain_3,
+                'produk_saiz_isian_4' => $request->produk_saiz_isian_4,
+                'produk_saiz_lain_4' => $request->produk_saiz_lain_4,
+                'produk_saiz_isian_5' => $request->produk_saiz_isian_5,
+                'produk_saiz_lain_5' => $request->produk_saiz_lain_5,
+                'produk_saiz_isian_6' => $request->produk_saiz_isian_6,
+                'produk_saiz_lain_6' => $request->produk_saiz_lain_6,
                 'produk_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);

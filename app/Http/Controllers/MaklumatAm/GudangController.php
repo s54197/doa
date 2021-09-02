@@ -65,9 +65,13 @@ class GudangController extends Controller
         $list_negara = ListNegara::all();
         // Data gudang
         $gudang = Gudang::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
+        
         $data = array(
             'list_negara' => $list_negara,
             'gudangs' => $gudang,
+            'list_negara' => $list_negara,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );

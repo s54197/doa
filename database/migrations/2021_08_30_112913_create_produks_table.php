@@ -23,13 +23,23 @@ class CreateProduksTable extends Migration
             $table->date('produk_tarikh_tamat');
             $table->date('produk_tarikh_penwartaan');
             $table->string('produk_kelas_racun');
-            $table->integer('produk_saiz');
-            $table->string('produk_saiz_lain');
             $table->string('produk_categori');
-            $table->string('produk_categori_lain');
+            $table->string('produk_categori_lain')->nullable();
             $table->string('produk_kegunaan');
-            $table->string('produk_kegunaan_lain');
+            $table->string('produk_kegunaan_lain')->nullable();
             $table->string('produk_status');
+            $table->string('produk_saiz_isian_1');
+            $table->string('produk_saiz_lain_1')->nullable();
+            $table->string('produk_saiz_isian_2')->nullable();
+            $table->string('produk_saiz_lain_2')->nullable();
+            $table->string('produk_saiz_isian_3')->nullable();
+            $table->string('produk_saiz_lain_3')->nullable();
+            $table->string('produk_saiz_isian_4')->nullable();
+            $table->string('produk_saiz_lain_4')->nullable();
+            $table->string('produk_saiz_isian_5')->nullable();
+            $table->string('produk_saiz_lain_5')->nullable();
+            $table->string('produk_saiz_isian_6')->nullable();
+            $table->string('produk_saiz_lain_6')->nullable();
 
             // one to many relation for user
             $table->unsignedBigInteger('user_id');

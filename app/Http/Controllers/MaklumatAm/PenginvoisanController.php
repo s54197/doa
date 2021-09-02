@@ -64,9 +64,13 @@ class PenginvoisanController extends Controller
         $list_negara = ListNegara::all();
         // Data penginvoisan
         $penginvoisan = Penginvoisan::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
+
         $data = array(
             'list_negara' => $list_negara,
             'penginvoisans' => $penginvoisan,
+            'list_negara' => $list_negara,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );

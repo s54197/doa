@@ -162,7 +162,7 @@ $(document).ready(function () {
         id = id.split('_');
 
         $('.bs-example-modal-sm').modal('show');
-        $('#padam_submit').attr('action','pengilang/delete/' + id[1]);
+        $('#padam_submit').attr('action','form/pengilang/delete/' + id[1]);
 
     });
 

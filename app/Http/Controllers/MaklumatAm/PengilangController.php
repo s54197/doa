@@ -65,9 +65,13 @@ class PengilangController extends Controller
 
         // Data pengilang
         $pengilang = Pengilang::find($id);
+        // Data negara
+        $list_negara = ListNegara::all();
+        
         $data = array(
             'list_negara' => $list_negara,
             'pengilangs' => $pengilang,
+            'list_negara' => $list_negara,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );
