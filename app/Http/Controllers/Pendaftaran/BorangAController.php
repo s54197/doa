@@ -5,7 +5,14 @@ namespace App\Http\Controllers\Pendaftaran;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\BorangA;
+use App\Models\Syarikat;
+use App\Models\Pembekal;
+use App\Models\Pengilang;
+use App\Models\Gudang;
 use App\Models\Produk;
+use App\Models\Perawis;
+use App\Models\Agen;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -19,25 +26,25 @@ class BorangAController extends Controller
         // dd($id);
 
         if ($role=='admin') {
-            // All data produk
-            $produks = Produk::all();
+            // All data borangA
+            $borangAs = BorangA::all();
         } else {
-            // All data produk
-            $produks = User::find(Auth::user()->id)->produks;
+            // All data borangA
+            $borangAs = User::find(Auth::user()->id)->borangAs;
         }
 
         // Summary
-        $TotalProduk = Produk::count();
-        $TotalProdukAktif = Produk::where('produk_status', '=', 'Aktif')->count();
-        $TotalProdukTidakAktif = Produk::where('produk_status', '=', 'Tidak Aktif')->count();
-        $TotalProdukBulanTerkini = Produk::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
+        $TotalBorangA = BorangA::count();
+        $TotalBorangAAktif = BorangA::where('borangA_status', '=', 'Aktif')->count();
+        $TotalBorangATidakAktif = BorangA::where('borangA_status', '=', 'Tidak Aktif')->count();
+        $TotalBorangABulanTerkini = BorangA::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
 
-        return view('maklumat_am.main_produk', [
-            'produks' => $produks,
-            'totalproduk' => $TotalProduk,
-            'totalprodukaktif' => $TotalProdukAktif, 
-            'totalproduktidakaktif' => $TotalProdukTidakAktif, 
-            'totalprodukbulanterkini' => $TotalProdukBulanTerkini,
+        return view('pendaftaran.main_borang_A', [
+            'borangAs' => $borangAs,
+            'totalborangA' => $TotalBorangA,
+            'totalborangAaktif' => $TotalBorangAAktif, 
+            'totalborangAtidakaktif' => $TotalBorangATidakAktif, 
+            'totalborangAbulanterkini' => $TotalBorangABulanTerkini,
             'bulan' => date('M')
         ]);
         
@@ -45,194 +52,219 @@ class BorangAController extends Controller
     
     // Show data
     public function new_view() {
-        // Data negara
-        $list_negara = ListNegara::all();
+
+        // Check user role
+        $role = Auth::user()->role;
+        // dd($id);
+
+        if ($role=='admin') {
+            // All data
+            $syarikats = Syarikat::all();
+            $agens = Agen::all();
+            $produks = Produk::all();
+            $pengilangs = Pengilang::all();
+            $pembekals = Pembekal::all();
+            $gudangs = Gudang::all();
+            $perawiss = Perawis::all()->pluck('perawis_nama')->toArray();
+            dd($perawiss);
+        } else {
+            // All data user
+            $syarikats = User::find(Auth::user()->id)->Syarikat::all();
+            $agens = User::find(Auth::user()->id)->Agen::all();
+            $produks = User::find(Auth::user()->id)->Produk::all();
+            $pengilangs = User::find(Auth::user()->id)->Pengilang::all();
+            $pembekals = User::find(Auth::user()->id)->Pembekal::all();
+            $gudangs = User::find(Auth::user()->id)->Gudang::all();
+            $perawiss = User::find(Auth::user()->id)->Perawis::all();
+        }
+
+
 
         $data = array(
-            'list_negara' => $list_negara,
             'jenis' => 'new',
-            'tajuk' => 'Pendaftaran'
+            'tajuk' => 'BorangA'
         );
         
-        return view('maklumat_am.forms.produk')->with($data);
+        return view('pendaftaran.forms.borang_A')->with($data);
     }
 
     // Show data based on id
     public function view($id) {
-        // Data produk
-        $produk = Produk::find($id);
+        // Data borangA
+        $borangA = BorangA::find($id);
 
         $data = array(
-            'produks' => $produk,
+            'borangAs' => $borangA,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );
         
-        return view('maklumat_am.forms.produk')->with($data);
+        return view('pendaftaran.forms.borang_A')->with($data);
     }
 
     // Show data based on id
     public function update_view($id) {
-        // Data produk
-        $produk = Produk::find($id);
+        // Data borangA
+        $borangA = BorangA::find($id);
 
         // Reformat date 
-        $produk->produk_tarikh_gazet = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_gazet)->format('d-m-Y');
-        $produk->produk_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_tamat)->format('d-m-Y');
-        $produk->produk_tarikh_penwartaan = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_penwartaan)->format('d-m-Y');
+        $borangA->borangA_tarikh_gazet = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_gazet)->format('d-m-Y');
+        $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
+        $borangA->borangA_tarikh_penwartaan = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_penwartaan)->format('d-m-Y');
 
         $data = array(
-            'produks' => $produk,
+            'borangAs' => $borangA,
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
         );
         // dd($data);
-        return view('maklumat_am.forms.produk')->with($data);
+        return view('pendaftaran.forms.borang_A')->with($data);
     }
 
     // Store data
     public function store(Request $request){
         
         $request->validate([
-            'produk_nama' => 'required',
-            'produk_lrmp_r' => 'required',
-            'produk_lrmp_no' => 'required',
-            'produk_no_fail' => 'required',
-            'produk_tarikh_gazet' => 'required',
-            'produk_tarikh_tamat' => 'required',
-            'produk_tarikh_penwartaan' => 'required',
-            'produk_kelas_racun' => 'required',
-            'produk_categori' => 'required',
-            'produk_categori_lain' => 'required',
-            'produk_kegunaan' => 'required',
-            'produk_kegunaan_lain' => 'required',
-            'produk_saiz_isian_1' => 'required',
-            'produk_saiz_lain_1' => 'required',
-            // 'produk_saiz_isian_2' => 'required',
-            // 'produk_saiz_lain_2' => 'required',
-            // 'produk_saiz_isian_3' => 'required',
-            // 'produk_saiz_lain_3' => 'required',
-            // 'produk_saiz_isian_4' => 'required',
-            // 'produk_saiz_lain_4' => 'required',
-            // 'produk_saiz_isian_5' => 'required',
-            // 'produk_saiz_lain_5' => 'required',
-            // 'produk_saiz_isian_6' => 'required',
-            // 'produk_saiz_lain_6' => 'required',
+            'borangA_nama' => 'required',
+            'borangA_lrmp_r' => 'required',
+            'borangA_lrmp_no' => 'required',
+            'borangA_no_fail' => 'required',
+            'borangA_tarikh_gazet' => 'required',
+            'borangA_tarikh_tamat' => 'required',
+            'borangA_tarikh_penwartaan' => 'required',
+            'borangA_kelas_racun' => 'required',
+            'borangA_categori' => 'required',
+            'borangA_categori_lain' => 'required',
+            'borangA_kegunaan' => 'required',
+            'borangA_kegunaan_lain' => 'required',
+            'borangA_saiz_isian_1' => 'required',
+            'borangA_saiz_lain_1' => 'required',
+            // 'borangA_saiz_isian_2' => 'required',
+            // 'borangA_saiz_lain_2' => 'required',
+            // 'borangA_saiz_isian_3' => 'required',
+            // 'borangA_saiz_lain_3' => 'required',
+            // 'borangA_saiz_isian_4' => 'required',
+            // 'borangA_saiz_lain_4' => 'required',
+            // 'borangA_saiz_isian_5' => 'required',
+            // 'borangA_saiz_lain_5' => 'required',
+            // 'borangA_saiz_isian_6' => 'required',
+            // 'borangA_saiz_lain_6' => 'required',
         ]);
 
         // dd($request);
 
         try {
             $user = User::find(Auth::user()->id);
-            $user->produks()->create([
-                'produk_nama' => $request->produk_nama,
-                'produk_lrmp_r' => $request->produk_lrmp_r,
-                'produk_lrmp_no' => $request->produk_lrmp_no,
-                'produk_no_fail' => $request->produk_no_fail,
-                'produk_tarikh_gazet' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_gazet)->format('Y-m-d'),
-                'produk_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_tamat)->format('Y-m-d'),
-                'produk_tarikh_penwartaan' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_penwartaan)->format('Y-m-d'),
-                'produk_kelas_racun' => $request->produk_kelas_racun,
-                'produk_categori' => $request->produk_categori,
-                'produk_categori_lain' => $request->produk_categori_lain,
-                'produk_kegunaan' => $request->produk_kegunaan,
-                'produk_kegunaan_lain' => $request->produk_kegunaan_lain,
-                'produk_saiz_isian_1' => $request->produk_saiz_isian_1,
-                'produk_saiz_lain_1' => $request->produk_saiz_lain_1,
-                'produk_saiz_isian_2' => $request->produk_saiz_isian_2,
-                'produk_saiz_lain_2' => $request->produk_saiz_lain_2,
-                'produk_saiz_isian_3' => $request->produk_saiz_isian_3,
-                'produk_saiz_lain_3' => $request->produk_saiz_lain_3,
-                'produk_saiz_isian_4' => $request->produk_saiz_isian_4,
-                'produk_saiz_lain_4' => $request->produk_saiz_lain_4,
-                'produk_saiz_isian_5' => $request->produk_saiz_isian_5,
-                'produk_saiz_lain_5' => $request->produk_saiz_lain_5,
-                'produk_saiz_isian_6' => $request->produk_saiz_isian_6,
-                'produk_saiz_lain_6' => $request->produk_saiz_lain_6,
-                'produk_status' => 'Aktif',
+            $user->borangAs()->create([
+                'borangA_nama' => $request->borangA_nama,
+                'borangA_lrmp_r' => $request->borangA_lrmp_r,
+                'borangA_lrmp_no' => $request->borangA_lrmp_no,
+                'borangA_no_fail' => $request->borangA_no_fail,
+                'borangA_tarikh_gazet' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_gazet)->format('Y-m-d'),
+                'borangA_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_tamat)->format('Y-m-d'),
+                'borangA_tarikh_penwartaan' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_penwartaan)->format('Y-m-d'),
+                'borangA_kelas_racun' => $request->borangA_kelas_racun,
+                'borangA_categori' => $request->borangA_categori,
+                'borangA_categori_lain' => $request->borangA_categori_lain,
+                'borangA_kegunaan' => $request->borangA_kegunaan,
+                'borangA_kegunaan_lain' => $request->borangA_kegunaan_lain,
+                'borangA_saiz_isian_1' => $request->borangA_saiz_isian_1,
+                'borangA_saiz_lain_1' => $request->borangA_saiz_lain_1,
+                'borangA_saiz_isian_2' => $request->borangA_saiz_isian_2,
+                'borangA_saiz_lain_2' => $request->borangA_saiz_lain_2,
+                'borangA_saiz_isian_3' => $request->borangA_saiz_isian_3,
+                'borangA_saiz_lain_3' => $request->borangA_saiz_lain_3,
+                'borangA_saiz_isian_4' => $request->borangA_saiz_isian_4,
+                'borangA_saiz_lain_4' => $request->borangA_saiz_lain_4,
+                'borangA_saiz_isian_5' => $request->borangA_saiz_isian_5,
+                'borangA_saiz_lain_5' => $request->borangA_saiz_lain_5,
+                'borangA_saiz_isian_6' => $request->borangA_saiz_isian_6,
+                'borangA_saiz_lain_6' => $request->borangA_saiz_lain_6,
+                'borangA_status' => 'Aktif',
                 'user_id' => $user->id,
             ]);
-            return redirect('/produk')->withSuccess('Produk '.$request->produk_nama.' telah berjaya didaftarkan!');
+            return redirect('/borangA')->withSuccess('borangA '.$request->borangA_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/produk')->withWarning('Produk '.$request->produk_nama.' tidak berjaya didaftarkan!');
+            return redirect('/borangA')->withWarning('borangA '.$request->borangA_nama.' tidak berjaya didaftarkan!');
         }
         
     }
     
-    // Update produk based on id
+    // Update borangA based on id
     public function update(Request $request, $id){
         $request->validate([
-            'produk_nama' => 'required',
-            'produk_lrmp_r' => 'required',
-            'produk_lrmp_no' => 'required',
-            'produk_no_fail' => 'required',
-            'produk_tarikh_gazet' => 'required',
-            'produk_tarikh_tamat' => 'required',
-            'produk_tarikh_penwartaan' => 'required',
-            'produk_kelas_racun' => 'required',
-            'produk_categori' => 'required',
-            'produk_categori_lain' => 'required',
-            'produk_kegunaan' => 'required',
-            'produk_kegunaan_lain' => 'required',
-            'produk_saiz_isian_1' => 'required',
-            'produk_saiz_lain_1' => 'required',
-            // 'produk_saiz_isian_2' => 'required',
-            // 'produk_saiz_lain_2' => 'required',
-            // 'produk_saiz_isian_3' => 'required',
-            // 'produk_saiz_lain_3' => 'required',
-            // 'produk_saiz_isian_4' => 'required',
-            // 'produk_saiz_lain_4' => 'required',
-            // 'produk_saiz_isian_5' => 'required',
-            // 'produk_saiz_lain_5' => 'required',
-            // 'produk_saiz_isian_6' => 'required',
-            // 'produk_saiz_lain_6' => 'required',
+            'borangA_nama' => 'required',
+            'borangA_lrmp_r' => 'required',
+            'borangA_lrmp_no' => 'required',
+            'borangA_no_fail' => 'required',
+            'borangA_tarikh_gazet' => 'required',
+            'borangA_tarikh_tamat' => 'required',
+            'borangA_tarikh_penwartaan' => 'required',
+            'borangA_kelas_racun' => 'required',
+            'borangA_categori' => 'required',
+            'borangA_categori_lain' => 'required',
+            'borangA_kegunaan' => 'required',
+            'borangA_kegunaan_lain' => 'required',
+            'borangA_saiz_isian_1' => 'required',
+            'borangA_saiz_lain_1' => 'required',
+            // 'borangA_saiz_isian_2' => 'required',
+            // 'borangA_saiz_lain_2' => 'required',
+            // 'borangA_saiz_isian_3' => 'required',
+            // 'borangA_saiz_lain_3' => 'required',
+            // 'borangA_saiz_isian_4' => 'required',
+            // 'borangA_saiz_lain_4' => 'required',
+            // 'borangA_saiz_isian_5' => 'required',
+            // 'borangA_saiz_lain_5' => 'required',
+            // 'borangA_saiz_isian_6' => 'required',
+            // 'borangA_saiz_lain_6' => 'required',
         ]);
 
         try {
-            $produk = Produk::find($id);
-            $produk->update([
-                'produk_nama' => $request->produk_nama,
-                'produk_lrmp_r' => $request->produk_lrmp_r,
-                'produk_lrmp_no' => $request->produk_lrmp_no,
-                'produk_no_fail' => $request->produk_no_fail,
-                'produk_tarikh_gazet' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_gazet)->format('Y-m-d'),
-                'produk_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_tamat)->format('Y-m-d'),
-                'produk_tarikh_penwartaan' => Carbon::createFromFormat('d-m-Y', $request->produk_tarikh_penwartaan)->format('Y-m-d'),
-                'produk_kelas_racun' => $request->produk_kelas_racun,
-                'produk_categori' => $request->produk_categori,
-                'produk_categori_lain' => $request->produk_categori_lain,
-                'produk_kegunaan' => $request->produk_kegunaan,
-                'produk_kegunaan_lain' => $request->produk_kegunaan_lain,
-                'produk_saiz_isian_1' => $request->produk_saiz_isian_1,
-                'produk_saiz_lain_1' => $request->produk_saiz_lain_1,
-                'produk_saiz_isian_2' => $request->produk_saiz_isian_2,
-                'produk_saiz_lain_2' => $request->produk_saiz_lain_2,
-                'produk_saiz_isian_3' => $request->produk_saiz_isian_3,
-                'produk_saiz_lain_3' => $request->produk_saiz_lain_3,
-                'produk_saiz_isian_4' => $request->produk_saiz_isian_4,
-                'produk_saiz_lain_4' => $request->produk_saiz_lain_4,
-                'produk_saiz_isian_5' => $request->produk_saiz_isian_5,
-                'produk_saiz_lain_5' => $request->produk_saiz_lain_5,
-                'produk_saiz_isian_6' => $request->produk_saiz_isian_6,
-                'produk_saiz_lain_6' => $request->produk_saiz_lain_6,
-                'produk_status' => 'Aktif',
+            $borangA = borangA::find($id);
+            $borangA->update([
+                'borangA_nama' => $request->borangA_nama,
+                'borangA_lrmp_r' => $request->borangA_lrmp_r,
+                'borangA_lrmp_no' => $request->borangA_lrmp_no,
+                'borangA_no_fail' => $request->borangA_no_fail,
+                'borangA_tarikh_gazet' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_gazet)->format('Y-m-d'),
+                'borangA_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_tamat)->format('Y-m-d'),
+                'borangA_tarikh_penwartaan' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_penwartaan)->format('Y-m-d'),
+                'borangA_kelas_racun' => $request->borangA_kelas_racun,
+                'borangA_categori' => $request->borangA_categori,
+                'borangA_categori_lain' => $request->borangA_categori_lain,
+                'borangA_kegunaan' => $request->borangA_kegunaan,
+                'borangA_kegunaan_lain' => $request->borangA_kegunaan_lain,
+                'borangA_saiz_isian_1' => $request->borangA_saiz_isian_1,
+                'borangA_saiz_lain_1' => $request->borangA_saiz_lain_1,
+                'borangA_saiz_isian_2' => $request->borangA_saiz_isian_2,
+                'borangA_saiz_lain_2' => $request->borangA_saiz_lain_2,
+                'borangA_saiz_isian_3' => $request->borangA_saiz_isian_3,
+                'borangA_saiz_lain_3' => $request->borangA_saiz_lain_3,
+                'borangA_saiz_isian_4' => $request->borangA_saiz_isian_4,
+                'borangA_saiz_lain_4' => $request->borangA_saiz_lain_4,
+                'borangA_saiz_isian_5' => $request->borangA_saiz_isian_5,
+                'borangA_saiz_lain_5' => $request->borangA_saiz_lain_5,
+                'borangA_saiz_isian_6' => $request->borangA_saiz_isian_6,
+                'borangA_saiz_lain_6' => $request->borangA_saiz_lain_6,
+                'borangA_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/produk')->withSuccess('Produk '.$produk->produk_nama.' telah berjaya dikemaskinikan!');
+            return redirect('/borangA')->withSuccess('borangA '.$borangA->borangA_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/produk')->withWarning('Produk '.$produk->produk_nama.' tidak berjaya dikemaskinikan!');
+            return redirect('/borangA')->withWarning('borangA '.$borangA->borangA_nama.' tidak berjaya dikemaskinikan!');
         }
     }
 
-    // Delete produk based on id
+    // Delete borangA based on id
     public function delete($id){
         try{
-            $produk = Produk::find($id);
-            $produk->delete();
-            return redirect('/produk')->withSuccess('Produk '.$produk->produk_nama.' telah berjaya dipadamkan!');
+            $borangA = borangA::find($id);
+            $borangA->delete();
+            return redirect('/borangA')->withSuccess('borangA '.$borangA->borangA_nama.' telah berjaya dipadamkan!');
         }
         catch (\Illuminate\Database\QueryException $error){
-            return redirect('/produk')->withWarning('Produk '.$produk->produk_nama.' tidak berjaya dipadamkan!');
+            return redirect('/borangA')->withWarning('borangA '.$borangA->borangA_nama.' tidak berjaya dipadamkan!');
         }
     }
+
 }

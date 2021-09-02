@@ -28,7 +28,7 @@
             <div class="card-box tilebox-one">
                 <i class="mdi mdi-chart-pie float-right text-primary"></i>
                 <h6 class="text-muted text-uppercase mt-0">Jumlah Rekod</h6>
-                <h2 class="mb-1" data-plugin="counterup">{{$totalsyarikat}}</h2>
+                <h2 class="mb-1" data-plugin="counterup">{{$totalborangA}}</h2>
                 {{-- <span class="badge badge-primary"> +11% </span> <span class="text-muted">From previous period</span> --}}
             </div>
         </div>
@@ -37,7 +37,7 @@
             <div class="card-box tilebox-one">
                 <i class=" mdi mdi-chart-arc float-right text-primary"></i>
                 <h6 class="text-muted text-uppercase mt-0">Rekod {{$bulan}} 2021</h6>
-                <h2 class="mb-1" data-plugin="counterup">{{$totalsyarikatbulanterkini}}</h2>
+                <h2 class="mb-1" data-plugin="counterup">{{$totalborangAbulanterkini}}</h2>
                 {{-- <span class="badge badge-primary"> +89% </span> <span class="text-muted">Last year</span> --}}
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="card-box tilebox-one">
                 <i class="mdi mdi-battery-charging-100 float-right text-primary mt-0"></i>
                 <h6 class="text-muted text-uppercase mt-0">Aktif</h6>
-                <h2 class="mb-1"><span data-plugin="counterup">{{$totalsyarikataktif}}</span></h2>
+                <h2 class="mb-1"><span data-plugin="counterup">{{$totalborangAaktif}}</span></h2>
                 {{-- <span class="badge badge-danger"> -29% </span> <span class="text-muted">From previous period</span> --}}
             </div>
         </div>
@@ -55,7 +55,7 @@
             <div class="card-box tilebox-one">
                 <i class="mdi mdi-battery-charging-10 float-right text-primary"></i>
                 <h6 class="text-muted text-uppercase mt-0">Tidak Aktif</h6>
-                <h2 class="mb-1"><span data-plugin="counterup">{{$totalsyarikattidakaktif}}</span></h2>
+                <h2 class="mb-1"><span data-plugin="counterup">{{$totalborangAtidakaktif}}</span></h2>
                 {{-- <span class="badge badge-primary"> 0% </span> <span class="text-muted">From previous period</span> --}}
             </div>
         </div>
@@ -68,7 +68,7 @@
                     <div class="col-12 col-md-2">
                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah Syarikat</button> --}}
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
-                        onclick="window.location='{{ route("form.pendaftaran") }}'">Daftar Baru</button>
+                        onclick="window.location='{{ route("baru.pendaftaran") }}'">Daftar Baru</button>
                     </div>
                 </div>
 
@@ -104,15 +104,15 @@
                     </thead>
     
                     <tbody>
-                        @foreach($pendaftaranss as $pendaftaran)
+                        @foreach($borangAs as $borangA)
                         <tr>
-                            <td>{{$pendaftaran->pendaftaran_nama}}</td>
-                            <td>{{$pendaftaran->pendaftaran_nama}}</td>
-                            <td>{{$pendaftaran->pendaftaran_nama}}</td>
-                            <td>{{$pendaftaran->pendaftaran_nama}}</td>
-                            <td>{{$pendaftaran->pendaftaran_nama}}</td>
-                            <td>{{$pendaftaran->pendaftaran_nama}}</td>
-                            <td>{{$pendaftaran->pendaftaran_nama}}</td>
+                            <td>{{$borangA->borangA_syarikat}}</td>
+                            <td>{{$borangA->borangA_agen}}</td>
+                            <td>{{$borangA->borangA_tarikh_lulus}}</td>
+                            <td>{{$borangA->borangA_tarikh_tamat}}</td>
+                            <td>{{$borangA->borangA_dagangan}}</td>
+                            <td>{{$borangA->borangA_no_pendaftaran}}</td>
+                            <td>{{$borangA->borangA_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
@@ -124,7 +124,7 @@
                                 </div>
                             </td>
                         </tr>
-    
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -133,7 +133,7 @@
     <!-- end row -->
 </div>
 <!-- end div -->
-@component('components.modal_confirm', ['id'=>'id_syarikat'])
+@component('components.modal_confirm', ['id'=>'id_borangA'])
 Adakah anda bersetuju untuk memadam data?
 @endcomponent
 

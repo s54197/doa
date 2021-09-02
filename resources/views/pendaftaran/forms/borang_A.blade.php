@@ -36,14 +36,14 @@
                 {{-- <p class="sub-header">
                     Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.
                 </p> --}}
-                {{-- @if ($errors->any()) --}}
+                @if ($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                         Terdapat kesilapan pada data semasa mengisi borang, sila semak.
                     </div>
-                {{-- @endif --}}
+                @endif
 
                 <form method="post" id="wizard-vertical">
                     @csrf

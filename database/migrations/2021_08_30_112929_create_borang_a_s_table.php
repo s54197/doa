@@ -56,6 +56,8 @@ class CreateBorangASTable extends Migration
             $table->string('borangA_perawis_perumusan_lain');
             $table->string('borangA_perawis_pengilang');
 
+            $table->string('borangA_status');
+
             // one to many relation for user
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

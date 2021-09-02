@@ -109,7 +109,7 @@ class PerawisController extends Controller
             'perawis_unit_lain' => 'required',
         ]);
 
-        // dd($request);
+        dd($request);
 
         try {
             $user = User::find(Auth::user()->id);
