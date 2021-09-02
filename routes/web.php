@@ -164,7 +164,9 @@ Route::middleware('auth')->group(function() {
                borang A
     ***********************************/
     // view borang A
-    Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('main.pendaftaran');
+    Route::get('/form/pendaftaran', function () { return view('pendaftaran.forms.borang_A');})->name('form.pendaftaran');
+    // view borang A
+    Route::get('/pendaftaran/papar', function () { return view('pendaftaran.main_borang_A');})->name('main.pendaftaran');
 
 
     /***********************************
