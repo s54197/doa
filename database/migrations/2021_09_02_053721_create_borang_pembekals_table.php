@@ -19,6 +19,7 @@ class CreateBorangPembekalsTable extends Migration
             $table->unsignedBigInteger('pembekal_id');
             $table->foreign('borang_id')->references('id')->on('borang_a_s')->onDelete('cascade');
             $table->foreign('pembekal_id')->references('id')->on('pembekals')->onDelete('cascade');
+            $table->softDeletes(); 
             $table->timestamps();
         });
     }

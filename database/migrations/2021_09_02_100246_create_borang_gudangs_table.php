@@ -19,6 +19,7 @@ class CreateBorangGudangsTable extends Migration
             $table->unsignedBigInteger('gudang_id');
             $table->foreign('borang_id')->references('id')->on('borang_a_s')->onDelete('cascade');
             $table->foreign('gudang_id')->references('id')->on('gudangs')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

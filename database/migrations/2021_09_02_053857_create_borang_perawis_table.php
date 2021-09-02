@@ -19,6 +19,7 @@ class CreateBorangPerawisTable extends Migration
             $table->unsignedBigInteger('perawis_id');
             $table->foreign('borang_id')->references('id')->on('borang_a_s')->onDelete('cascade');
             $table->foreign('perawis_id')->references('id')->on('perawis')->onDelete('cascade');
+            $table->softDeletes(); 
             $table->timestamps();
         });
     }

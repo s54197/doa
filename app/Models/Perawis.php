@@ -17,6 +17,11 @@ class Perawis extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function borangAs()
+    {
+        return $this->belongsToMany(BorangA::class, 'borang_perawis');
+    }
+    
     protected $fillable = [
         'perawis_nama',
         'perawis_nama_kimia',
@@ -36,4 +41,5 @@ class Perawis extends Model
         'perawis_unit_lain',
         'perawis_status',
     ];
+
 }

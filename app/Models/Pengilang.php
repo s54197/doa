@@ -17,6 +17,11 @@ class Pengilang extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function borangAs()
+    {
+        return $this->belongsToMany(BorangA::class, 'borang_pengilang');
+    }
+
     protected $fillable = [
         'pengilang_nama',
         'pengilang_no_roc',
@@ -32,4 +37,5 @@ class Pengilang extends Model
         'pengilang_emel',
         'pengilang_status'
     ];
+
 }

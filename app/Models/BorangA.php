@@ -17,6 +17,31 @@ class BorangA extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function pembekals()
+    {
+        return $this->belongsToMany(Pembekal::class, 'borang_pembekal');
+    }
+
+    public function pengilangs()
+    {
+        return $this->belongsToMany(Pengilang::class, 'borang_pengilang');
+    }
+
+    public function penginvoisans()
+    {
+        return $this->belongsToMany(Penginvoisan::class, 'borang_penginvoisan');
+    }
+
+    public function perawiss()
+    {
+        return $this->belongsToMany(Perawis::class, 'borang_perawis');
+    }
+
+    public function gudangs()
+    {
+        return $this->belongsToMany(Gudang::class, 'borang_gudang');
+    }
+    
     protected $fillable = [
         'borangA_syarikat',
         'borangA_agen',
@@ -52,4 +77,5 @@ class BorangA extends Model
         'borangA_perniagaan_jalan',
         'borangA_perniagaan_poskod',
     ];
+
 }

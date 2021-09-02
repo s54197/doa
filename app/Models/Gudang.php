@@ -17,6 +17,11 @@ class Gudang extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function borangAs()
+    {
+        return $this->belongsToMany(BorangA::class, 'borang_gudang');
+    }
+
     protected $fillable = [
         'gudang_nama',
         'gudang_no_roc',

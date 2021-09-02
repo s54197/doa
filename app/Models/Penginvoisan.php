@@ -17,6 +17,11 @@ class Penginvoisan extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function borangAs()
+    {
+        return $this->belongsToMany(BorangA::class, 'borang_penginvoisan');
+    }
+
     protected $fillable = [
         'penginvoisan_nama',
         'penginvoisan_no_roc',
@@ -32,4 +37,5 @@ class Penginvoisan extends Model
         'penginvoisan_emel',
         'penginvoisan_status',
     ];
+
 }

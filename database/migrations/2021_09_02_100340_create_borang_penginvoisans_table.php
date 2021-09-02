@@ -19,6 +19,7 @@ class CreateBorangPenginvoisansTable extends Migration
             $table->unsignedBigInteger('penginvoisan_id');
             $table->foreign('borang_id')->references('id')->on('borang_a_s')->onDelete('cascade');
             $table->foreign('penginvoisan_id')->references('id')->on('penginvoisans')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
