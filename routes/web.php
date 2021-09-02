@@ -164,16 +164,16 @@ Route::middleware('auth')->group(function() {
                borang A
     ***********************************/
     Route::get('pendaftaran', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'index'])->name('main.pendaftaran');
-    Route::get('pendaftaran/papar/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'view'])->name('papar.perawis');
-    Route::get('pendaftaran/kemaskini/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'update_view'])->name('kemaskini.perawis');
+    Route::get('pendaftaran/papar/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'view'])->name('papar.pendaftaran');
+    Route::get('pendaftaran/kemaskini/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'update_view'])->name('kemaskini.pendaftaran');
     // view pendaftaran
     Route::get('form/pendaftaran/baru', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'new_view'])->name('baru.pendaftaran');
     // delete pendaftaran
-    Route::delete('form/pendaftaran/delete/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'delete'])->name('perawis.delete');
+    Route::delete('form/pendaftaran/delete/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'delete'])->name('pendaftaran.delete');
     // create pendaftaran
-    Route::post('form/pendaftaran/create', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'store'])->name('perawis.create');
+    Route::post('form/pendaftaran/create', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'store'])->name('pendaftaran.create');
     // update pendaftaran
-    Route::post('form/pendaftaran/kemaskini/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'update'])->name('perawis.update');
+    Route::post('form/pendaftaran/kemaskini/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'update'])->name('pendaftaran.update');
 
 
     /***********************************
