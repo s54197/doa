@@ -164,7 +164,7 @@ $(document).ready(function () {
         id = id.split('_');
 
         $('.bs-example-modal-sm').modal('show');
-        $('#padam_submit').attr('action','form/perawis/delete/' + id[1]);
+        $('#padam_submit').attr('action','form/produk/delete/' + id[1]);
 
     });
 

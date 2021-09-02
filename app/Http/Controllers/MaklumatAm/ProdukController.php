@@ -62,12 +62,9 @@ class ProdukController extends Controller
     public function view($id) {
         // Data produk
         $produk = Produk::find($id);
-        // Data negara
-        $list_negara = ListNegara::all();
 
         $data = array(
             'produks' => $produk,
-            'list_negara' => $list_negara,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );
@@ -79,8 +76,7 @@ class ProdukController extends Controller
     public function update_view($id) {
         // Data produk
         $produk = Produk::find($id);
-        // Data negara
-        $list_negara = ListNegara::all();
+
         // Reformat date 
         $produk->produk_tarikh_gazet = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_gazet)->format('d-m-Y');
         $produk->produk_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $produk->produk_tarikh_tamat)->format('d-m-Y');
@@ -88,7 +84,6 @@ class ProdukController extends Controller
 
         $data = array(
             'produks' => $produk,
-            'list_negara' => $list_negara,
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
         );

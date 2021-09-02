@@ -283,7 +283,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-2">
-                                        <select class="form-control" name="produk_saiz_metrik_1" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="produk_saiz_isian_1" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Saiz Metrik...</option>
                                             <option value='%w/w' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
                                             <option value='cans' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'cans' ? 'selected' : '' }}>cans</option>
@@ -325,7 +325,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-2">
-                                        <select class="form-control" name="produk_saiz_metrik_2" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="produk_saiz_isian_2" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Saiz Metrik...</option>
                                             <option value='%w/w' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
                                             <option value='cans' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'cans' ? 'selected' : '' }}>cans</option>
