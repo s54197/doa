@@ -109,7 +109,7 @@ class PenginvoisanController extends Controller
             'penginvoisan_negeri_luar_malaysia' => 'required',
             'penginvoisan_negara' => 'required',
             'penginvoisan_no_tel' => 'required',
-            'penginvoisan_no_faks' => 'required',
+            // 'penginvoisan_no_faks' => 'required',
             'penginvoisan_emel' => 'required|email',
             // 'penginvoisan_status' => 'required',
         ]);
@@ -154,7 +154,7 @@ class PenginvoisanController extends Controller
             'penginvoisan_negeri_luar_malaysia' => 'required',
             'penginvoisan_negara' => 'required',
             'penginvoisan_no_tel' => 'required',
-            'penginvoisan_no_faks' => 'required',
+            // 'penginvoisan_no_faks' => 'required',
             'penginvoisan_emel' => 'required|email',
             // 'penginvoisan_status' => 'required',
         ]);

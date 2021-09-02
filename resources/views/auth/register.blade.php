@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/logo-tab v1.ico">
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -41,7 +41,7 @@
                                 </h2> --}}
                                 {{-- <div class="text-center mb-2 mt-4"> --}}
                                 <div class="text-center mb-0">
-                                    <img src="assets/images/logo-jabatan-light.jpg" alt="logo_jabatan_pertanian" height="200">
+                                    <img src="assets/images/logo-white v1.jpg" alt="logo_jabatan_pertanian" height="200">
                                 </div>
 
                                 <h3 class="text-center mt-0 mb-4">Sistem Rekod Maklumat Pendaftaran</h3>

@@ -167,16 +167,16 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="syarikat_no_tel"><span class="text-danger">*</span>Nombor telefon:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="syarikat_no_tel" name="syarikat_no_tel" class="form-control" placeholder="Nama Syarikat" value="{{ old('syarikat_no_tel',isset($syarikats->syarikat_no_tel)?$syarikats->syarikat_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="text" id="syarikat_no_tel" name="syarikat_no_tel" class="form-control" placeholder="Nombor telefon" value="{{ old('syarikat_no_tel',isset($syarikats->syarikat_no_tel)?$syarikats->syarikat_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_no_tel') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror                                
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="syarikat_no_faks"><span class="text-danger">*</span>Nombor faks:</label>
+                                    <label class="col-md-3 col-form-label" for="syarikat_no_faks">Nombor faks:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="syarikat_no_faks" name="syarikat_no_faks" class="form-control" placeholder="Nombor telefon" value="{{ old('syarikat_no_faks',isset($syarikats->syarikat_no_faks)?$syarikats->syarikat_no_faks:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="text" id="syarikat_no_faks" name="syarikat_no_faks" class="form-control" placeholder="Nombor faks" value="{{ old('syarikat_no_faks',isset($syarikats->syarikat_no_faks)?$syarikats->syarikat_no_faks:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_no_faks') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror                                

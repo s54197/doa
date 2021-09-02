@@ -84,7 +84,7 @@ class AgenController extends Controller
             'agen_bandar' => 'required',
             'agen_negeri' => 'required',
             'agen_no_tel' => 'required',
-            'agen_no_faks' => 'required',
+            // 'agen_no_faks' => 'required',
             'agen_emel' => 'required|email',
             // 'agen_status' => 'required',
         ]);
@@ -129,7 +129,7 @@ class AgenController extends Controller
             'agen_bandar' => 'required',
             'agen_negeri' => 'required',
             'agen_no_tel' => 'required',
-            'agen_no_faks' => 'required',
+            // 'agen_no_faks' => 'required',
             'agen_emel' => 'required|email',
             // 'agen_status' => 'required',
         ]);

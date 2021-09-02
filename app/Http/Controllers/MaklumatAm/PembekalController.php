@@ -108,7 +108,7 @@ class PembekalController extends Controller
             'pembekal_negeri_luar_malaysia' => 'required',
             'pembekal_negara' => 'required',
             'pembekal_no_tel' => 'required',
-            'pembekal_no_faks' => 'required',
+            // 'pembekal_no_faks' => 'required',
             'pembekal_emel' => 'required|email',
             // 'pembekal_status' => 'required',
         ]);
@@ -153,7 +153,7 @@ class PembekalController extends Controller
             'pembekal_negeri_luar_malaysia' => 'required',
             'pembekal_negara' => 'required',
             'pembekal_no_tel' => 'required',
-            'pembekal_no_faks' => 'required',
+            // 'pembekal_no_faks' => 'required',
             'pembekal_emel' => 'required|email',
             // 'pembekal_status' => 'required',
         ]);

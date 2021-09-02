@@ -92,22 +92,22 @@
                                     <div class="col-md-3">
                                         <select class="form-control" name="agen_negeri" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negeri...</option>
-                                            <option value="Johor" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
-                                            <option value="Melaka" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
-                                            <option value="Negeri Sembilan" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
-                                            <option value="Selangor" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
-                                            <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
-                                            <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
-                                            <option value="Pahang" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Pahang" ? 'selected' : '' }}>Pahang</option>
-                                            <option value="Terengganu" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Terengganu" ? 'selected' : '' }}>Terengganu</option>
-                                            <option value="Kelantan" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Kelantan" ? 'selected' : '' }}>Kelantan</option>
-                                            <option value="Perak" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Perak" ? 'selected' : '' }}>Perak</option>
-                                            <option value="Kedah" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Kedah" ? 'selected' : '' }}>Kedah</option>
-                                            <option value="Perlis" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Perlis" ? 'selected' : '' }}>Perlis</option>
-                                            <option value="Pulau Pinang" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Pulau Pinang" ? 'selected' : '' }}>Pulau Pinang</option>
-                                            <option value="Sabah" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Sabah" ? 'selected' : '' }}>Sabah</option>
-                                            <option value="Sarawak" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
-                                            <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('agen_negeri',isset($agens->agen_surat_negeri)?$agens->agen_surat_negeri:null) == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
+                                            <option value="Johor" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
+                                            <option value="Melaka" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
+                                            <option value="Negeri Sembilan" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
+                                            <option value="Selangor" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
+                                            <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
+                                            <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
+                                            <option value="Pahang" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Pahang" ? 'selected' : '' }}>Pahang</option>
+                                            <option value="Terengganu" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Terengganu" ? 'selected' : '' }}>Terengganu</option>
+                                            <option value="Kelantan" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Kelantan" ? 'selected' : '' }}>Kelantan</option>
+                                            <option value="Perak" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Perak" ? 'selected' : '' }}>Perak</option>
+                                            <option value="Kedah" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Kedah" ? 'selected' : '' }}>Kedah</option>
+                                            <option value="Perlis" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Perlis" ? 'selected' : '' }}>Perlis</option>
+                                            <option value="Pulau Pinang" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Pulau Pinang" ? 'selected' : '' }}>Pulau Pinang</option>
+                                            <option value="Sabah" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Sabah" ? 'selected' : '' }}>Sabah</option>
+                                            <option value="Sarawak" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
+                                            <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('agen_negeri',isset($agens->agen_negeri)?$agens->agen_negeri:null) == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
                                         </select>                                    
                                         @error('agen_negeri') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -124,7 +124,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="agen_no_faks"><span class="text-danger">*</span>Nombor faks:</label>
+                                    <label class="col-md-3 col-form-label" for="agen_no_faks">Nombor faks:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="agen_no_faks" name="agen_no_faks" class="form-control" placeholder="Nombor faks" value="{{ old('agen_no_faks',isset($agens->agen_no_faks)?$agens->agen_no_faks:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('agen_no_faks') 
@@ -201,7 +201,7 @@ $("input[name='agen_bandar']").keyup(function(){
 });
 $("select[name='agen_negeri']").on('change', function(){
     if ($('#agen_surat').is(":checked")){
-        $("select[name='agen_surat_negeri']").val($(this).val());
+        $("select[name='agen_negeri']").val($(this).val());
     }
 });
 
@@ -225,7 +225,7 @@ function changeInputReadonly(){
                                             .attr('readonly', true);
         $("input[name='agen_surat_bandar']").val($("input[name='agen_bandar']").val())
                                             .attr('readonly', true);
-        $("select[name='agen_surat_negeri']").val($("select[name='agen_negeri'] option:selected").val())
+        $("select[name='agen_negeri']").val($("select[name='agen_negeri'] option:selected").val())
                                             .attr('readonly', true);
     }
     else {     
@@ -233,7 +233,7 @@ function changeInputReadonly(){
         $("input[name='agen_surat_jalan']").attr('readonly', false);
         $("input[name='agen_surat_poskod']").attr('readonly', false);
         $("input[name='agen_surat_bandar']").attr('readonly', false);
-        $("select[name='agen_surat_negeri']").attr('readonly', false);
+        $("select[name='agen_negeri']").attr('readonly', false);
     }
 }
 </script>  

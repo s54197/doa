@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="gudang_no_faks"><span class="text-danger">*</span>Nombor faks:</label>
+                                    <label class="col-md-3 col-form-label" for="gudang_no_faks">Nombor faks:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="gudang_no_faks" name="gudang_no_faks" class="form-control" placeholder="Nombor faks" value="{{ old('gudang_no_faks',isset($gudangs->gudang_no_faks)?$gudangs->gudang_no_faks:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('gudang_no_faks') 

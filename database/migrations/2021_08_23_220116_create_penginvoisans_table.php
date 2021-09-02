@@ -25,7 +25,7 @@ class CreatePenginvoisansTable extends Migration
             $table->string('penginvoisan_negeri_luar_malaysia');
             $table->string('penginvoisan_negara');
             $table->string('penginvoisan_no_tel');
-            $table->string('penginvoisan_no_faks');
+            $table->string('penginvoisan_no_faks')->nullable();
             $table->string('penginvoisan_emel');
             $table->string('penginvoisan_status');
 

@@ -110,7 +110,7 @@ class PengilangController extends Controller
             'pengilang_negeri_luar_malaysia' => 'required',
             'pengilang_negara' => 'required',
             'pengilang_no_tel' => 'required',
-            'pengilang_no_faks' => 'required',
+            // 'pengilang_no_faks' => 'required',
             'pengilang_emel' => 'required|email',
             // 'pengilang_status' => 'required',
         ]);
@@ -155,7 +155,7 @@ class PengilangController extends Controller
             'pengilang_negeri_luar_malaysia' => 'required',
             'pengilang_negara' => 'required',
             'pengilang_no_tel' => 'required',
-            'pengilang_no_faks' => 'required',
+            // 'pengilang_no_faks' => 'required',
             'pengilang_emel' => 'required|email',
             // 'pengilang_status' => 'required',
         ]);

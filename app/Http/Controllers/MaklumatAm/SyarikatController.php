@@ -92,7 +92,7 @@ class SyarikatController extends Controller
             'syarikat_surat_bandar' => 'required',
             'syarikat_surat_negeri' => 'required',
             'syarikat_no_tel' => 'required',
-            'syarikat_no_faks' => 'required',
+            // 'syarikat_no_faks' => 'required',
             'syarikat_emel' => 'required|email',
             // 'syarikat_wakil' => 'required',
         ]);

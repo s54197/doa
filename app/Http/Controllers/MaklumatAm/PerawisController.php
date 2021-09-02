@@ -106,10 +106,8 @@ class PerawisController extends Controller
             'perawis_tarikh_terhad' => 'required',
             'perawis_peratusan' => 'required',
             'perawis_unit' => 'required',
-            'perawis_unit_lain' => 'required',
+            'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
         ]);
-
-        dd($request);
 
         try {
             $user = User::find(Auth::user()->id);
@@ -158,7 +156,7 @@ class PerawisController extends Controller
             'perawis_tarikh_terhad' => 'required',
             'perawis_peratusan' => 'required',
             'perawis_unit' => 'required',
-            'perawis_unit_lain' => 'required',
+            'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
         ]);
 
         try {

@@ -8,7 +8,7 @@
         {{-- <meta content="Coderthemes" name="author" /> --}}
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="/assets/images/logo-tab v1.ico">
 
         <!-- third party css -->
         <link href="/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
@@ -65,7 +65,7 @@
 
                     <!-- User box -->
                     <div class="user-box">
-                        <img src="/assets/images/logo-dark-small-gap.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77">
+                        <img src="/assets/images/logo-dark v1.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77">
                         {{-- <h5 class="text-light">
                             Sistem Maklumat Rekod Pendaftaran
                         </h5> --}}

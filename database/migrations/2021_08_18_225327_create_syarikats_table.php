@@ -29,7 +29,7 @@ class CreateSyarikatsTable extends Migration
             $table->string('syarikat_surat_bandar');
             $table->string('syarikat_surat_negeri');
             $table->string('syarikat_no_tel');
-            $table->string('syarikat_no_faks');
+            $table->string('syarikat_no_faks')->nullable();
             $table->string('syarikat_emel');
             $table->string('syarikat_wakil')->nullable();
             $table->string('syarikat_status');
