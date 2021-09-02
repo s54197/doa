@@ -109,8 +109,6 @@ class PerawisController extends Controller
             'perawis_unit_lain' => 'required',
         ]);
 
-        dd($request);
-
         try {
             $user = User::find(Auth::user()->id);
             $user->perawiss()->create([

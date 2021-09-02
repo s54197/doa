@@ -65,7 +65,7 @@ class BorangAController extends Controller
             $pengilangs = Pengilang::all();
             $pembekals = Pembekal::all();
             $gudangs = Gudang::all();
-            $perawiss = Perawis::all()->pluck('perawis_nama')->toArray();
+            $perawiss = Perawis::all()->pluck('perawis_nama','id');
             dd($perawiss);
         } else {
             // All data user
