@@ -132,37 +132,37 @@
                                     <div class="col-md-8 pt-md-2"> 
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='pertanian' name='produk_categori' class='custom-control-input' value='Pertanian'
-                                            {{ old('produk_categori', $produk_categori ?? '') == 'Pertanian' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_categori', isset($produks->produk_categori)?$produks->produk_categori:null) == 'Pertanian' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='pertanian'>Pertanian</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='isi-rumah' name='produk_categori' class='custom-control-input' value='Isi rumah'
-                                            {{ old('produk_categori', $produk_categori ?? '') == 'Isi rumah' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_categori', isset($produks->produk_categori)?$produks->produk_categori:null) == 'Isi rumah' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='isi-rumah'>Isi rumah</label>
                                         </div>                                      
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='kesihatan-awam' name='produk_categori' class='custom-control-input' value='Kesihatan Awam'
-                                            {{ old('produk_categori', $produk_categori ?? '') == 'Kesihatan Awam' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_categori', isset($produks->produk_categori)?$produks->produk_categori:null) == 'Kesihatan Awam' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='kesihatan-awam'>Kesihatan Awam</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='perindustrian' name='produk_categori' class='custom-control-input' value='Perindustrian'
-                                            {{ old('produk_categori', $produk_categori ?? '') == 'Perindustrian' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_categori', isset($produks->produk_categori)?$produks->produk_categori:null) == 'Perindustrian' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='perindustrian'>Perindustrian</label>
                                         </div>        
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='veterinar' name='produk_categori' class='custom-control-input' value='Veterinar'
-                                            {{ old('produk_categori', $produk_categori ?? '') == 'Veterinar' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_categori', isset($produks->produk_categori)?$produks->produk_categori:null) == 'Veterinar' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='veterinar'>Veterinar</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='perkilangan' name='produk_categori' class='custom-control-input' value='Perkilangan'
-                                            {{ old('produk_categori', $produk_categori ?? '') == 'Perkilangan' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_categori', isset($produks->produk_categori)?$produks->produk_categori:null) == 'Perkilangan' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='perkilangan'>Perkilangan</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='lain-lain-nyatakan' name='produk_categori' class='custom-control-input' value='Lain-lain (nyatakan)'
-                                            {{ old('produk_categori', $produk_categori ?? '') == 'Lain-lain (nyatakan)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_categori',isset($produks->produk_categori)?$produks->produk_categori:null) == 'Lain-lain (nyatakan)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='lain-lain-nyatakan'>Lain-lain (nyatakan)</label>
                                         </div>                                          
                                     </div>
@@ -183,82 +183,82 @@
                                     <div class="col-md-8 pt-md-2">
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-rumpai' name='produk_kegunaan' class='custom-control-input' value='Racun rumpai'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun rumpai' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun rumpai' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-rumpai'>Racun rumpai</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-serangga' name='produk_kegunaan' class='custom-control-input' value='Racun serangga'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun serangga' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun serangga' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-serangga'>Racun serangga</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-kulat' name='produk_kegunaan' class='custom-control-input' value='Racun kulat'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun kulat' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun kulat' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-kulat'>Racun kulat</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-hamama' name='produk_kegunaan' class='custom-control-input' value='Racun hamama'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun hamama' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun hamama' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-hamama'>Racun hamama</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-nematod' name='produk_kegunaan' class='custom-control-input' value='Racun nematod'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun nematod' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun nematod' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-nematod'>Racun nematod</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-tikus' name='produk_kegunaan' class='custom-control-input' value='Racun tikus'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun tikus' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun tikus' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-tikus'>Racun tikus</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-siput' name='produk_kegunaan' class='custom-control-input' value='Racun siput'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun siput' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun siput' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-siput'>Racun siput</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-bakteria' name='produk_kegunaan' class='custom-control-input' value='Racun bakteria'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun bakteria' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun bakteria' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-bakteria'>Racun bakteria</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='fumigan' name='produk_kegunaan' class='custom-control-input' value='Fumigan'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Fumigan' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Fumigan' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='fumigan'>Fumigan</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='fumigan-tanah' name='produk_kegunaan' class='custom-control-input' value='Fumigan tanah'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Fumigan tanah' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Fumigan tanah' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='fumigan-tanah'>Fumigan tanah</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-kutu/pinjal' name='produk_kegunaan' class='custom-control-input' value='Racun kutu/pinjal'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun kutu/pinjal' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun kutu/pinjal' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-kutu/pinjal'>Racun kutu/pinjal</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='pengawet' name='produk_kegunaan' class='custom-control-input' value='Pengawet'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Pengawet' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Pengawet' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='pengawet'>Pengawet</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='penghalau' name='produk_kegunaan' class='custom-control-input' value='Penghalau'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Penghalau' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Penghalau' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='penghalau'>Penghalau</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='racun-anai-anai' name='produk_kegunaan' class='custom-control-input' value='Racun anai-anai'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Racun anai-anai' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Racun anai-anai' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='racun-anai-anai'>Racun anai-anai</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='bahan-teknikal-untuk-tujuan-perkilangan-sahaja' name='produk_kegunaan' class='custom-control-input' value='Bahan teknikal untuk tujuan perkilangan sahaja'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Bahan teknikal untuk tujuan perkilangan sahaja' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Bahan teknikal untuk tujuan perkilangan sahaja' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='bahan-teknikal-untuk-tujuan-perkilangan-sahaja'>Bahan teknikal untuk tujuan perkilangan sahaja</label>
                                         </div>
                                         <div class='custom-control custom-radio custom-control-inline'>
                                             <input type='radio' id='lain-lain-nyatakan' name='produk_kegunaan' class='custom-control-input' value='Lain-lain (nyatakan)'
-                                            {{ old('produk_kegunaan', $produk_kegunaan ?? '') == 'Lain-lain (nyatakan)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            {{ old('produk_kegunaan', isset($produks->produk_kegunaan)?$produks->produk_kegunaan:null) == 'Lain-lain (nyatakan)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label class='custom-control-label' for='lain-lain-nyatakan'>Lain-lain (nyatakan)</label>
                                         </div>                                     
                                     </div>
