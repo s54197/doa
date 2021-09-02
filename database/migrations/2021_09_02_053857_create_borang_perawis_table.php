@@ -15,6 +15,10 @@ class CreateBorangPerawisTable extends Migration
     {
         Schema::create('borang_perawis', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('borang_id');
+            $table->unsignedBigInteger('perawis_id');
+            $table->foreign('borang_id')->references('id')->on('borang_a_s')->onDelete('cascade');
+            $table->foreign('perawis_id')->references('id')->on('perawis')->onDelete('cascade');
             $table->timestamps();
         });
     }

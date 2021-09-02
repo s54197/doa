@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBorangPembekalsTable extends Migration
+class CreateBorangPenginvoisansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBorangPembekalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('borang_pembekals', function (Blueprint $table) {
+        Schema::create('borang_penginvoisans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('borang_id');
-            $table->unsignedBigInteger('pembekal_id');
+            $table->unsignedBigInteger('penginvoisan_id');
             $table->foreign('borang_id')->references('id')->on('borang_a_s')->onDelete('cascade');
-            $table->foreign('pembekal_id')->references('id')->on('pembekals')->onDelete('cascade');
+            $table->foreign('penginvoisan_id')->references('id')->on('penginvoisans')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateBorangPembekalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('borang_pembekals');
+        Schema::dropIfExists('borang_penginvoisans');
     }
 }

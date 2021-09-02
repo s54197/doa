@@ -15,6 +15,10 @@ class CreateBorangPengilangsTable extends Migration
     {
         Schema::create('borang_pengilangs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('borang_id');
+            $table->unsignedBigInteger('pengilang_id');
+            $table->foreign('borang_id')->references('id')->on('borang_a_s')->onDelete('cascade');
+            $table->foreign('pengilang_id')->references('id')->on('pengilangs')->onDelete('cascade');
             $table->timestamps();
         });
     }
