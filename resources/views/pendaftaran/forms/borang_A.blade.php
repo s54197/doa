@@ -54,7 +54,9 @@
                             <div class="col-md-9">
                                 <select class="form-control" name="borangA_syarikat">
                                     <option value="">Pilih Syarikat...</option>
-                                    {{-- <option value="Johor" {{ old('borangA_syarikat') == "Johor" ? 'selected' : '' }}>Johor</option> --}}
+                                    @foreach($syarikats as $syarikat)
+                                        <option value=" {{ $syarikat->syarikat_nama }}" {{ old('borangA_syarikat' , isset($borangAs->borangA_syarikat)?$borangAs->borangA_syarikat:null ) == $syarikat->syarikat_nama ? 'selected' : '' }} >{{ $syarikat->syarikat_nama }}</option>
+                                    @endforeach
                                 </select>    
                                 @error('borangA_syarikat') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -66,7 +68,9 @@
                             <div class="col-md-9">
                                 <select class="form-control" name="borangA_agen">
                                     <option value="">Pilih Agen/Wakil...</option>
-                                    {{-- <option value="Johor" {{ old('borangA_agen') == "Johor" ? 'selected' : '' }}>Johor</option> --}}
+                                    @foreach($agens as $agen)
+                                        <option value=" {{ $agen->agen_nama }}" {{ old('borangA_agen' , isset($borangAs->borangA_agen)?$borangAs->borangA_agen:null ) == $agen->agen_nama ? 'selected' : '' }} >{{ $agen->agen_nama }}</option>
+                                    @endforeach
                                 </select>    
                                 @error('borangA_agen') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -117,6 +121,9 @@
                             <div class="col-md-9">
                                 <select class="form-control" name="borangA_dagangan">
                                     <option value="">Pilih Dagangan...</option>
+                                    @foreach($produks as $produk)
+                                        <option value=" {{ $produk->produk_nama }}" {{ old('borangA_dagangan' , isset($borangAs->borangA_dagangan)?$borangAs->borangA_dagangan:null ) == $produk->produk_nama ? 'selected' : '' }} >{{ $produk->produk_nama }}</option>
+                                    @endforeach
                                     {{-- <option value="Johor" {{ old('borangA_dagangan') == "Johor" ? 'selected' : '' }}>Johor</option> --}}
                                 </select>    
                                 @error('borangA_dagangan') 
@@ -251,13 +258,12 @@
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang"><span class="text-danger">*</span>Pengilang/Pembekal:</label>
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang" id="borangA_pengilang" multiple="multiple">
-                                    {{-- <optgroup label="Alaskan/Hawaiian Time Zone"></optgroup> --}}
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
+                                    @foreach($pengilangs as $pengilang)
+                                        <option value="{{ $pengilang->pengilang_nama }}">{{ $pengilang->pengilang_nama }}</option>
+                                    @endforeach
+                                    @foreach($pembekals as $pembekal)
+                                        <option value="{{ $pembekal->pembekal_nama }}">{{ $pembekal->pembekal_nama }}</option>
+                                    @endforeach
                                 </select>  
                                 @error('borangA_pengilang') 
                                 <small class='text-danger'>{{ $message }}</small> 

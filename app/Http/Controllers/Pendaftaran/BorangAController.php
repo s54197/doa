@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\BorangA;
 use App\Models\Syarikat;
 use App\Models\Pembekal;
+use App\Models\Penginvoisan;
 use App\Models\Pengilang;
 use App\Models\Gudang;
 use App\Models\Produk;
@@ -60,13 +61,14 @@ class BorangAController extends Controller
         if ($role=='admin') {
             // All data
             $syarikats = Syarikat::all();
-            $agens = Agen::all();
-            $produks = Produk::all();
-            $pengilangs = Pengilang::all();
-            $pembekals = Pembekal::all();
-            $gudangs = Gudang::all();
-            $perawiss = Perawis::all()->pluck('perawis_nama','id');
-            dd($perawiss);
+            $agens = Agen::all('id', 'agen_nama');
+            $produks = Produk::all('id', 'produk_nama');
+            $pengilangs = Pengilang::all('id', 'pengilang_nama');
+            $pembekals = Pembekal::all('id', 'pembekal_nama');
+            $gudangs = Gudang::all('id', 'gudang_nama');
+            $perawiss = Perawis::all('id', 'perawis_nama');
+            $penginvoisans = Penginvoisan::all('id', 'penginvoisan_nama');
+
         } else {
             // All data user
             $syarikats = User::find(Auth::user()->id)->Syarikat::all();
@@ -76,11 +78,19 @@ class BorangAController extends Controller
             $pembekals = User::find(Auth::user()->id)->Pembekal::all();
             $gudangs = User::find(Auth::user()->id)->Gudang::all();
             $perawiss = User::find(Auth::user()->id)->Perawis::all();
+            $penginvoisans = User::find(Auth::user()->id)->Penginvoisan::all();
         }
 
 
 
         $data = array(
+            'syarikats' => $syarikats,
+            'agens' => $agens,
+            'produks' => $produks,
+            'pengilangs' => $pengilangs,
+            'pembekals' => $pembekals,
+            'penginvoisan' => $penginvoisans,
+            'gudangs' => $gudangs,
             'jenis' => 'new',
             'tajuk' => 'BorangA'
         );
