@@ -23,10 +23,8 @@ class CreateBorangASTable extends Migration
             $table->date('borangA_tarikh_tamat');
             $table->string('borangA_wakil_syarikat');
             $table->string('borangA_jenis_pendaftaran');
-
             $table->string('borangA_dagangan');
             $table->string('borangA_no_pendaftaran');
-
             $table->string('borangA_perniagaan_mengimport');
             $table->string('borangA_perniagaan_mengilang');
             $table->string('borangA_perniagaan_lain');
@@ -49,7 +47,6 @@ class CreateBorangASTable extends Migration
             $table->string('borangA_pengilang_kontrak');
             $table->string('borangA_penginvoisan');
             $table->string('borangA_gudang');
-
             $table->string('borangA_perawis_aktif');
             $table->string('borangA_perawis_kod');
             $table->string('borangA_perawis_perumusan');
