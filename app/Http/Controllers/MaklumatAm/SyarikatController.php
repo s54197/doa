@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Syarikat;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 
 use Illuminate\Support\Facades\Auth;
 

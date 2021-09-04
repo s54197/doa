@@ -87,7 +87,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="produk_tarikh_gazet"><span class="text-danger">*</span>Tarikh Gazet:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" id="produk_tarikh_gazet" type="text" name="produk_tarikh_gazet" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_gazet',isset($produks->produk_tarikh_gazet)?$produks->produk_tarikh_gazet:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input class="form-control" id="produk_tarikh_gazet" type="text" name="produk_tarikh_gazet" data-date-orientation="bottom" autocomplete="off" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_gazet',isset($produks->produk_tarikh_gazet)?$produks->produk_tarikh_gazet:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_tarikh_gazet') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -96,7 +96,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="produk_tarikh_tamat"><span class="text-danger">*</span>Tarikh Tamat:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" id="produk_tarikh_tamat" type="text" name="produk_tarikh_tamat" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_tamat',isset($produks->produk_tarikh_tamat)?$produks->produk_tarikh_tamat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input class="form-control" id="produk_tarikh_tamat" type="text" name="produk_tarikh_tamat" data-date-orientation="bottom" autocomplete="off" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_tamat',isset($produks->produk_tarikh_tamat)?$produks->produk_tarikh_tamat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_tarikh_tamat') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -105,7 +105,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="produk_tarikh_penwartaan"><span class="text-danger">*</span>Tarikh Penwartaan:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" id="produk_tarikh_penwartaan" type="text" name="produk_tarikh_penwartaan" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_penwartaan',isset($produks->produk_tarikh_penwartaan)?$produks->produk_tarikh_penwartaan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input class="form-control" id="produk_tarikh_penwartaan" type="text" name="produk_tarikh_penwartaan" data-date-orientation="bottom" autocomplete="off" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_penwartaan',isset($produks->produk_tarikh_penwartaan)?$produks->produk_tarikh_penwartaan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_tarikh_penwartaan') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -289,33 +289,33 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="produk_saiz"><span class="text-danger">*</span>Saiz Bungkusan 1:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="produk_saiz_isian_1" name="produk_saiz_isian_1" class="form-control" placeholder="Saiz Bungkusan 1" value="{{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) }}">
+                                        <input type="number" id="produk_saiz_isian_1" name="produk_saiz_isian_1" class="form-control" placeholder="Saiz Bungkusan 1" value="{{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_saiz_isian_1') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
                                     </div>
                                     <div class="col-md-2">
-                                        <select class="form-control" name="produk_saiz_isian_1" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="produk_saiz_metrik_1" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Saiz Metrik...</option>
-                                            <option value='%w/w' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                            <option value='cans' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'cans' ? 'selected' : '' }}>cans</option>
-                                            <option value='CFU' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
-                                            <option value='coils' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'coils' ? 'selected' : '' }}>coils</option>
-                                            <option value='g/l' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
-                                            <option value='gm' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'gm' ? 'selected' : '' }}>gm</option>
-                                            <option value='i.t.u/mg' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
-                                            <option value='i.u/mg' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
-                                            <option value='kg' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'kg' ? 'selected' : '' }}>kg</option>
-                                            <option value='liter' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'liter' ? 'selected' : '' }}>liter</option>
-                                            <option value='mats' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'mats' ? 'selected' : '' }}>mats</option>
-                                            <option value='metric tan' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
-                                            <option value='mg' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'mg' ? 'selected' : '' }}>mg</option>
-                                            <option value='mg/mat' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                            <option value='mg/ml' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
-                                            <option value='mg/unit' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                            <option value='mi ' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'mi ' ? 'selected' : '' }}>mi </option>
-                                            <option value='sheets' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
-                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                            <option value='%w/w' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                            <option value='cans' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'cans' ? 'selected' : '' }}>cans</option>
+                                            <option value='CFU' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
+                                            <option value='coils' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'coils' ? 'selected' : '' }}>coils</option>
+                                            <option value='g/l' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
+                                            <option value='gm' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'gm' ? 'selected' : '' }}>gm</option>
+                                            <option value='i.t.u/mg' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
+                                            <option value='i.u/mg' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
+                                            <option value='kg' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'kg' ? 'selected' : '' }}>kg</option>
+                                            <option value='liter' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'liter' ? 'selected' : '' }}>liter</option>
+                                            <option value='mats' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'mats' ? 'selected' : '' }}>mats</option>
+                                            <option value='metric tan' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
+                                            <option value='mg' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'mg' ? 'selected' : '' }}>mg</option>
+                                            <option value='mg/mat' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                            <option value='mg/ml' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
+                                            <option value='mg/unit' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                            <option value='mi ' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'mi ' ? 'selected' : '' }}>mi </option>
+                                            <option value='sheets' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
+                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_metrik_1',isset($produks->produk_saiz_metrik_1)?$produks->produk_saiz_metrik_1:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
                                         </select>
                                         @error('produk_saiz_metrik_1') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -337,27 +337,27 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-2">
-                                        <select class="form-control" name="produk_saiz_isian_2" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="produk_saiz_metrik_2" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Saiz Metrik...</option>
-                                            <option value='%w/w' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                            <option value='cans' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'cans' ? 'selected' : '' }}>cans</option>
-                                            <option value='CFU' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
-                                            <option value='coils' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'coils' ? 'selected' : '' }}>coils</option>
-                                            <option value='g/l' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
-                                            <option value='gm' {{ old('produk_saiz_isian_2,isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null') == 'gm' ? 'selected' : '' }}>gm</option>
-                                            <option value='i.t.u/mg' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
-                                            <option value='i.u/mg' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
-                                            <option value='kg' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'kg' ? 'selected' : '' }}>kg</option>
-                                            <option value='liter' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'liter' ? 'selected' : '' }}>liter</option>
-                                            <option value='mats' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'mats' ? 'selected' : '' }}>mats</option>
-                                            <option value='metric tan' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
-                                            <option value='mg' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'mg' ? 'selected' : '' }}>mg</option>
-                                            <option value='mg/mat' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                            <option value='mg/ml' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
-                                            <option value='mg/unit' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                            <option value='mi ' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'mi ' ? 'selected' : '' }}>mi </option>
-                                            <option value='sheets' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
-                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                            <option value='%w/w' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                            <option value='cans' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'cans' ? 'selected' : '' }}>cans</option>
+                                            <option value='CFU' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
+                                            <option value='coils' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'coils' ? 'selected' : '' }}>coils</option>
+                                            <option value='g/l' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
+                                            <option value='gm' {{ old('produk_saiz_metrik_2,isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null') == 'gm' ? 'selected' : '' }}>gm</option>
+                                            <option value='i.t.u/mg' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
+                                            <option value='i.u/mg' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
+                                            <option value='kg' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'kg' ? 'selected' : '' }}>kg</option>
+                                            <option value='liter' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'liter' ? 'selected' : '' }}>liter</option>
+                                            <option value='mats' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'mats' ? 'selected' : '' }}>mats</option>
+                                            <option value='metric tan' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
+                                            <option value='mg' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'mg' ? 'selected' : '' }}>mg</option>
+                                            <option value='mg/mat' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                            <option value='mg/ml' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
+                                            <option value='mg/unit' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                            <option value='mi ' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'mi ' ? 'selected' : '' }}>mi </option>
+                                            <option value='sheets' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
+                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_metrik_2',isset($produks->produk_saiz_metrik_2)?$produks->produk_saiz_metrik_2:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
                                         </select>
                                         @error('produk_saiz_metrik_2') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -381,25 +381,25 @@
                                     <div class="col-md-2">
                                         <select class="form-control" name="produk_saiz_metrik_3" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Saiz Metrik...</option>
-                                            <option value='%w/w' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                            <option value='cans' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'cans' ? 'selected' : '' }}>cans</option>
-                                            <option value='CFU' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
-                                            <option value='coils' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'coils' ? 'selected' : '' }}>coils</option>
-                                            <option value='g/l' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
-                                            <option value='gm' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'gm' ? 'selected' : '' }}>gm</option>
-                                            <option value='i.t.u/mg' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
-                                            <option value='i.u/mg' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
-                                            <option value='kg' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'kg' ? 'selected' : '' }}>kg</option>
-                                            <option value='liter' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'liter' ? 'selected' : '' }}>liter</option>
-                                            <option value='mats' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'mats' ? 'selected' : '' }}>mats</option>
-                                            <option value='metric tan' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
-                                            <option value='mg' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'mg' ? 'selected' : '' }}>mg</option>
-                                            <option value='mg/mat' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                            <option value='mg/ml' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
-                                            <option value='mg/unit' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                            <option value='mi ' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'mi ' ? 'selected' : '' }}>mi </option>
-                                            <option value='sheets' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
-                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                            <option value='%w/w' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                            <option value='cans' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'cans' ? 'selected' : '' }}>cans</option>
+                                            <option value='CFU' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
+                                            <option value='coils' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'coils' ? 'selected' : '' }}>coils</option>
+                                            <option value='g/l' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
+                                            <option value='gm' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'gm' ? 'selected' : '' }}>gm</option>
+                                            <option value='i.t.u/mg' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
+                                            <option value='i.u/mg' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
+                                            <option value='kg' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'kg' ? 'selected' : '' }}>kg</option>
+                                            <option value='liter' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'liter' ? 'selected' : '' }}>liter</option>
+                                            <option value='mats' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'mats' ? 'selected' : '' }}>mats</option>
+                                            <option value='metric tan' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
+                                            <option value='mg' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'mg' ? 'selected' : '' }}>mg</option>
+                                            <option value='mg/mat' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                            <option value='mg/ml' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
+                                            <option value='mg/unit' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                            <option value='mi ' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'mi ' ? 'selected' : '' }}>mi </option>
+                                            <option value='sheets' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
+                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_metrik_3',isset($produks->produk_saiz_metrik_3)?$produks->produk_saiz_metrik_3:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
                                         </select>
                                         @error('produk_saiz_metrik_3') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -423,25 +423,25 @@
                                     <div class="col-md-2">
                                         <select class="form-control" name="produk_saiz_metrik_4" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Saiz Metrik...</option>
-                                            <option value='%w/w' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                            <option value='cans' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'cans' ? 'selected' : '' }}>cans</option>
-                                            <option value='CFU' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
-                                            <option value='coils' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'coils' ? 'selected' : '' }}>coils</option>
-                                            <option value='g/l' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
-                                            <option value='gm' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'gm' ? 'selected' : '' }}>gm</option>
-                                            <option value='i.t.u/mg' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
-                                            <option value='i.u/mg' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
-                                            <option value='kg' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'kg' ? 'selected' : '' }}>kg</option>
-                                            <option value='liter' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'liter' ? 'selected' : '' }}>liter</option>
-                                            <option value='mats' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'mats' ? 'selected' : '' }}>mats</option>
-                                            <option value='metric tan' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
-                                            <option value='mg' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'mg' ? 'selected' : '' }}>mg</option>
-                                            <option value='mg/mat' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                            <option value='mg/ml' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
-                                            <option value='mg/unit' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                            <option value='mi ' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'mi ' ? 'selected' : '' }}>mi </option>
-                                            <option value='sheets' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
-                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                            <option value='%w/w' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                            <option value='cans' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'cans' ? 'selected' : '' }}>cans</option>
+                                            <option value='CFU' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
+                                            <option value='coils' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'coils' ? 'selected' : '' }}>coils</option>
+                                            <option value='g/l' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
+                                            <option value='gm' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'gm' ? 'selected' : '' }}>gm</option>
+                                            <option value='i.t.u/mg' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
+                                            <option value='i.u/mg' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
+                                            <option value='kg' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'kg' ? 'selected' : '' }}>kg</option>
+                                            <option value='liter' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'liter' ? 'selected' : '' }}>liter</option>
+                                            <option value='mats' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'mats' ? 'selected' : '' }}>mats</option>
+                                            <option value='metric tan' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
+                                            <option value='mg' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'mg' ? 'selected' : '' }}>mg</option>
+                                            <option value='mg/mat' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                            <option value='mg/ml' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
+                                            <option value='mg/unit' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                            <option value='mi ' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'mi ' ? 'selected' : '' }}>mi </option>
+                                            <option value='sheets' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
+                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_metrik_4',isset($produks->produk_saiz_metrik_4)?$produks->produk_saiz_metrik_4:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
                                         </select>
                                         @error('produk_saiz_metrik_4') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -465,25 +465,25 @@
                                     <div class="col-md-2">
                                         <select class="form-control" name="produk_saiz_metrik_5" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Saiz Metrik...</option>
-                                            <option value='%w/w' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                            <option value='cans' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'cans' ? 'selected' : '' }}>cans</option>
-                                            <option value='CFU' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
-                                            <option value='coils' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'coils' ? 'selected' : '' }}>coils</option>
-                                            <option value='g/l' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
-                                            <option value='gm' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'gm' ? 'selected' : '' }}>gm</option>
-                                            <option value='i.t.u/mg' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
-                                            <option value='i.u/mg' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
-                                            <option value='kg' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'kg' ? 'selected' : '' }}>kg</option>
-                                            <option value='liter' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'liter' ? 'selected' : '' }}>liter</option>
-                                            <option value='mats' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'mats' ? 'selected' : '' }}>mats</option>
-                                            <option value='metric tan' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
-                                            <option value='mg' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'mg' ? 'selected' : '' }}>mg</option>
-                                            <option value='mg/mat' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                            <option value='mg/ml' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
-                                            <option value='mg/unit' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                            <option value='mi ' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'mi ' ? 'selected' : '' }}>mi </option>
-                                            <option value='sheets' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
-                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                            <option value='%w/w' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                            <option value='cans' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'cans' ? 'selected' : '' }}>cans</option>
+                                            <option value='CFU' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
+                                            <option value='coils' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'coils' ? 'selected' : '' }}>coils</option>
+                                            <option value='g/l' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
+                                            <option value='gm' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'gm' ? 'selected' : '' }}>gm</option>
+                                            <option value='i.t.u/mg' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
+                                            <option value='i.u/mg' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
+                                            <option value='kg' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'kg' ? 'selected' : '' }}>kg</option>
+                                            <option value='liter' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'liter' ? 'selected' : '' }}>liter</option>
+                                            <option value='mats' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'mats' ? 'selected' : '' }}>mats</option>
+                                            <option value='metric tan' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
+                                            <option value='mg' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'mg' ? 'selected' : '' }}>mg</option>
+                                            <option value='mg/mat' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                            <option value='mg/ml' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
+                                            <option value='mg/unit' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                            <option value='mi ' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'mi ' ? 'selected' : '' }}>mi </option>
+                                            <option value='sheets' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
+                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_metrik_5',isset($produks->produk_saiz_metrik_5)?$produks->produk_saiz_metrik_5:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
                                         </select>
                                         @error('produk_saiz_metrik_5') 
                                         <small class='text-danger'>{{ $message }}</small> 
@@ -507,25 +507,25 @@
                                     <div class="col-md-2">
                                         <select class="form-control" name="produk_saiz_metrik_6" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Saiz Metrik...</option>
-                                            <option value='%w/w' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                            <option value='cans' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'cans' ? 'selected' : '' }}>cans</option>
-                                            <option value='CFU' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
-                                            <option value='coils' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'coils' ? 'selected' : '' }}>coils</option>
-                                            <option value='g/l' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
-                                            <option value='gm' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'gm' ? 'selected' : '' }}>gm</option>
-                                            <option value='i.t.u/mg' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
-                                            <option value='i.u/mg' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
-                                            <option value='kg' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'kg' ? 'selected' : '' }}>kg</option>
-                                            <option value='liter' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'liter' ? 'selected' : '' }}>liter</option>
-                                            <option value='mats' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'mats' ? 'selected' : '' }}>mats</option>
-                                            <option value='metric tan' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
-                                            <option value='mg' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'mg' ? 'selected' : '' }}>mg</option>
-                                            <option value='mg/mat' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                            <option value='mg/ml' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
-                                            <option value='mg/unit' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                            <option value='mi ' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'mi ' ? 'selected' : '' }}>mi </option>
-                                            <option value='sheets' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
-                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                            <option value='%w/w' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                            <option value='cans' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'cans' ? 'selected' : '' }}>cans</option>
+                                            <option value='CFU' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'CFU' ? 'selected' : '' }}>CFU</option>
+                                            <option value='coils' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'coils' ? 'selected' : '' }}>coils</option>
+                                            <option value='g/l' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'g/l' ? 'selected' : '' }}>g/l</option>
+                                            <option value='gm' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'gm' ? 'selected' : '' }}>gm</option>
+                                            <option value='i.t.u/mg' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'i.t.u/mg' ? 'selected' : '' }}>i.t.u/mg</option>
+                                            <option value='i.u/mg' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'i.u/mg' ? 'selected' : '' }}>i.u/mg</option>
+                                            <option value='kg' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'kg' ? 'selected' : '' }}>kg</option>
+                                            <option value='liter' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'liter' ? 'selected' : '' }}>liter</option>
+                                            <option value='mats' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'mats' ? 'selected' : '' }}>mats</option>
+                                            <option value='metric tan' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'metric tan' ? 'selected' : '' }}>metric tan</option>
+                                            <option value='mg' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'mg' ? 'selected' : '' }}>mg</option>
+                                            <option value='mg/mat' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                            <option value='mg/ml' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'mg/ml' ? 'selected' : '' }}>mg/ml</option>
+                                            <option value='mg/unit' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                            <option value='mi ' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'mi ' ? 'selected' : '' }}>mi </option>
+                                            <option value='sheets' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'sheets' ? 'selected' : '' }}>sheets</option>
+                                            <option value='Lain-lain (nyatakan)' {{ old('produk_saiz_metrik_6',isset($produks->produk_saiz_metrik_6)?$produks->produk_saiz_metrik_6:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
                                         </select>
                                         @error('produk_saiz_metrik_6') 
                                         <small class='text-danger'>{{ $message }}</small> 
