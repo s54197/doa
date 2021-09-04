@@ -45,17 +45,18 @@
                     </div>
                 @endif
 
-                <form method="post" id="wizard-vertical">
+                <form method="post" id="wizard-vertical" action="{{ $jenis == 'new' ? route('pendaftaran.create') : route('pendaftaran.update',$pendaftars->id) }}">
                     @csrf
+                    @method('post')
                     <h3>Butiran Pemohon</h3>
                     <section>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_syarikat"><span class="text-danger">*</span>Syarikat Pendaftar:</label>
                             <div class="col-md-9">
-                                <select class="form-control" name="borangA_syarikat">
+                                <select class="form-control" name="borangA_syarikat" id="borangA_syarikat">
                                     <option value="">Pilih Syarikat...</option>
                                     @foreach($syarikats as $syarikat)
-                                        <option value=" {{ $syarikat->syarikat_nama }}" {{ old('borangA_syarikat' , isset($borangAs->borangA_syarikat)?$borangAs->borangA_syarikat:null ) == $syarikat->syarikat_nama ? 'selected' : '' }} >{{ $syarikat->syarikat_nama }}</option>
+                                        <option value=" {{ $syarikat->syarikat_nama }}" id="{{ $syarikat->id }}" {{ old('borangA_syarikat' , isset($borangAs->borangA_syarikat)?$borangAs->borangA_syarikat:null ) == $syarikat->syarikat_nama ? 'selected' : '' }} >{{ $syarikat->syarikat_nama }}</option>
                                     @endforeach
                                 </select>    
                                 @error('borangA_syarikat') 
@@ -107,7 +108,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_wakil_syarikat">Wakil Syarikat:</label>
                             <div class="col-md-9">
-                                <input type="text" id="borangA_wakil_syarikat" name="borangA_wakil_syarikat" class="form-control custom_border" placeholder="Nama wakil" value="{{ old('borangA_wakil_syarikat') }}">
+                                <input type="text" id="borangA_wakil_syarikat" name="borangA_wakil_syarikat" class="form-control custom_border" placeholder="Nama wakil" value="{{ old('borangA_wakil_syarikat') }}" disabled>
                                 @error('borangA_wakil_syarikat') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror                                
@@ -257,12 +258,12 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang"><span class="text-danger">*</span>Pengilang/Pembekal:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang" id="borangA_pengilang" multiple="multiple">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang[]" id="borangA_pengilang" multiple="multiple">
                                     @foreach($pengilangs as $pengilang)
-                                        <option value="{{ $pengilang->pengilang_nama }}">{{ $pengilang->pengilang_nama }}</option>
+                                        <option value="{{ $pengilang->id }}">{{ $pengilang->pengilang_nama }}</option>
                                     @endforeach
                                     @foreach($pembekals as $pembekal)
-                                        <option value="{{ $pembekal->pembekal_nama }}">{{ $pembekal->pembekal_nama }}</option>
+                                        <option value="{{ $pembekal->id }}">{{ $pembekal->pembekal_nama }}</option>
                                     @endforeach
                                 </select>  
                                 @error('borangA_pengilang') 
@@ -273,14 +274,10 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang_kontrak"><span class="text-danger">*</span>Pengilang Kontrak:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang_kontrak" id="borangA_pengilang_kontrak" multiple="multiple">
-                                    {{-- <optgroup label="Alaskan/Hawaiian Time Zone"></optgroup> --}}
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang_kontrak[]" id="borangA_pengilang_kontrak" multiple="multiple">
+                                    @foreach($pengilangs as $pengilang)
+                                        <option value="{{ $pengilang->id }}">{{ $pengilang->pengilang_nama }}</option>
+                                    @endforeach
                                 </select>  
                                 @error('borangA_pengilang_kontrak') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -290,14 +287,10 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_penginvoisan"><span class="text-danger">*</span>Invoicing:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_penginvoisan" id="borangA_penginvoisan" multiple="multiple">
-                                    {{-- <optgroup label="Alaskan/Hawaiian Time Zone"></optgroup> --}}
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_penginvoisan[]" id="borangA_penginvoisan" multiple="multiple">
+                                    @foreach($penginvoisans as $penginvoisan)
+                                        <option value="{{ $penginvoisan->id }}">{{ $penginvoisan->penginvoisan_nama }}</option>
+                                    @endforeach
                                 </select>  
                                 @error('borangA_penginvoisan') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -307,14 +300,10 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_gudang"><span class="text-danger">*</span>Gudang:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_gudang" id="borangA_gudang" multiple="multiple">
-                                    {{-- <optgroup label="Alaskan/Hawaiian Time Zone"></optgroup> --}}
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_gudang[]" id="borangA_gudang" multiple="multiple">
+                                    @foreach($gudangs as $gudang)
+                                        <option value="{{ $gudang->id }}">{{ $gudang->gudang_nama }}</option>
+                                    @endforeach
                                 </select>  
                                 @error('borangA_gudang') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -338,14 +327,10 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_aktif"><span class="text-danger">*</span>Perawis Aktif:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_aktif" id="borangA_perawis_aktif" multiple="multiple">
-                                    {{-- <optgroup label="Alaskan/Hawaiian Time Zone"></optgroup> --}}
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_aktif[]" id="borangA_perawis_aktif" multiple="multiple">
+                                    @foreach($perawiss as $perawis)
+                                        <option value="{{ $perawis->id }}">{{ $perawis->perawis_nama }}</option>
+                                    @endforeach
                                 </select>  
                                 @error('borangA_perawis_aktif') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -660,14 +645,10 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_pengilang"><span class="text-danger">*</span>Sumber bagi racun makhluk perosak (Pengilang):</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_pengilang" id="borangA_perawis_pengilang" multiple="multiple">
-                                    {{-- <optgroup label="Alaskan/Hawaiian Time Zone"></optgroup> --}}
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_pengilang[]" id="borangA_perawis_pengilang" multiple="multiple">
+                                    @foreach($pengilangs as $pengilang)
+                                        <option value="{{ $pengilang->id }}">{{ $pengilang->pengilang_nama }}</option>
+                                    @endforeach
                                 </select>  
                                 @error('borangA_perawis_pengilang') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -710,6 +691,22 @@ $(document).ready(function(){
         width:"100%",
         maximumSelectionLength: 5,
     });
+
+    $('#borangA_syarikat').on("change",function() {
+        var id = $(this).find(':selected')[0].id;
+        console.log(id);
+        $.ajax({
+            url : "getWakil/"+id,
+            type : "GET",
+            datatype: 'json',
+            success : function(data) {
+                $.each(data.data, function(key, resp) {    
+                    $('#borangA_wakil_syarikat').val(resp.syarikat_wakil);
+                });
+            }  
+        });
+    });
+
 });
 </script>
 @endsection

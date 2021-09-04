@@ -35,7 +35,8 @@ $(document).ready(function(){
     $(".actions").on("click",".submitBtn",function(){
         $("#spinner_submit_patient_form").show();
         // replace submit form route with laravel route
-        // $("#form_patient").attr('action', "<submit form route>");   
+        // $("#form_patient").attr('action', "<submit form route>");
+        // $('#wizard-vertical').attr('action','/create');  
         $("#wizard-vertical").submit();
     });
     

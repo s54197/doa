@@ -89,13 +89,23 @@ class BorangAController extends Controller
             'produks' => $produks,
             'pengilangs' => $pengilangs,
             'pembekals' => $pembekals,
-            'penginvoisan' => $penginvoisans,
+            'penginvoisans' => $penginvoisans,
+            'perawiss' => $perawiss,
             'gudangs' => $gudangs,
             'jenis' => 'new',
             'tajuk' => 'BorangA'
         );
         
         return view('pendaftaran.forms.borang_A')->with($data);
+    }
+
+    // Get wakil based on id
+    public function get_wakil($id) {
+        $wakil  = Syarikat::where('id', $id)->get();
+        return array(
+            'status' => 'success',
+            'data' => $wakil,
+        );
     }
 
     // Show data based on id
@@ -135,34 +145,46 @@ class BorangAController extends Controller
     public function store(Request $request){
         
         $request->validate([
-            'borangA_nama' => 'required',
-            'borangA_lrmp_r' => 'required',
-            'borangA_lrmp_no' => 'required',
-            'borangA_no_fail' => 'required',
-            'borangA_tarikh_gazet' => 'required',
+            'borangA_syarikat' => 'required',
+            'borangA_agen' => 'required',
+            'borangA_tarikh_terima_kaunter' => 'required',
+            'borangA_tarikh_lulus' => 'required',
             'borangA_tarikh_tamat' => 'required',
-            'borangA_tarikh_penwartaan' => 'required',
-            'borangA_kelas_racun' => 'required',
-            'borangA_categori' => 'required',
-            'borangA_categori_lain' => 'required',
-            'borangA_kegunaan' => 'required',
-            'borangA_kegunaan_lain' => 'required',
-            'borangA_saiz_isian_1' => 'required',
-            'borangA_saiz_lain_1' => 'required',
-            // 'borangA_saiz_isian_2' => 'required',
-            // 'borangA_saiz_lain_2' => 'required',
-            // 'borangA_saiz_isian_3' => 'required',
-            // 'borangA_saiz_lain_3' => 'required',
-            // 'borangA_saiz_isian_4' => 'required',
-            // 'borangA_saiz_lain_4' => 'required',
-            // 'borangA_saiz_isian_5' => 'required',
-            // 'borangA_saiz_lain_5' => 'required',
-            // 'borangA_saiz_isian_6' => 'required',
-            // 'borangA_saiz_lain_6' => 'required',
+            'borangA_wakil_syarikat' => 'required',
+            'borangA_jenis_pendaftaran' => 'required',
+            'borangA_dagangan' => 'required',
+            'borangA_no_pendaftaran' => 'required',
+            'borangA_perniagaan_mengimport' => 'required',
+            'borangA_perniagaan_mengilang' => 'required',
+            'borangA_perniagaan_lain' => 'required',
+            'borangA_perniagaan_lain_maklumat' => 'required_if:borangA_perniagaan_lain,Lain-lain (nyatakan)',
+            'borangA_mengilang_merumus' => 'required',
+            'borangA_mengilang_menyedia  ' => 'required',
+            'borangA_mengilang_mensebati' => 'required',
+            'borangA_mengilang_mencampur' => 'required',
+            'borangA_mengilang_melabel' => 'required',
+            'borangA_mengilang_mempek' => 'required',
+            'borangA_mengilang_membuat' => 'required',
+            'borangA_mengilang_lain' => 'required',
+            'borangA_mengilang_lain_maklumat' => 'required_if:borangA_mengilang_lain,Lain-lain (nyatakan)',
+            'borangA_perniagaan_bangunan' => 'required',
+            'borangA_perniagaan_jalan' => 'required',
+            'borangA_perniagaan_poskod' => 'required',
+            'borangA_perniagaan_bandar' => 'required',
+            'borangA_perniagaan_negeri  ' => 'required',
+            'borangA_pengilang' => 'required',
+            'borangA_pengilang_kontrak' => 'required',
+            'borangA_penginvoisan' => 'required',
+            'borangA_gudang' => 'required',
+            'borangA_perawis_aktif' => 'required',
+            'borangA_perawis_kod' => 'required',
+            'borangA_perawis_perumusan' => 'required',
+            'borangA_perawis_perumusan_lain' => 'required_if:borangA_perawis_perumusan,Lain-lain (nyatakan)',
+            'borangA_perawis_pengilang' => 'required',
         ]);
 
-        // dd($request);
-
+        // borangA_perawis_aktif,borangA_perawis_pengilang,borangA_pengilang,borangA_gudang,borangA_penginvoisan,
+        
         try {
             $user = User::find(Auth::user()->id);
             $user->borangAs()->create([

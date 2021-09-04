@@ -19,27 +19,27 @@ class BorangA extends Model
 
     public function pembekals()
     {
-        return $this->belongsToMany(Pembekal::class, 'borang_pembekal');
+        return $this->belongsToMany(Pembekal::class, 'borang_pembekals');
     }
 
     public function pengilangs()
     {
-        return $this->belongsToMany(Pengilang::class, 'borang_pengilang');
+        return $this->belongsToMany(Pengilang::class, 'borang_pengilangs');
     }
 
     public function penginvoisans()
     {
-        return $this->belongsToMany(Penginvoisan::class, 'borang_penginvoisan');
+        return $this->belongsToMany(Penginvoisan::class, 'borang_penginvoisans');
     }
 
     public function perawiss()
     {
-        return $this->belongsToMany(Perawis::class, 'borang_perawis');
+        return $this->belongsToMany(Perawis::class, 'borang_perawiss');
     }
 
     public function gudangs()
     {
-        return $this->belongsToMany(Gudang::class, 'borang_gudang');
+        return $this->belongsToMany(Gudang::class, 'borang_gudangs');
     }
     
     protected $fillable = [
