@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Agen;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 
 class AgenController extends Controller
 {

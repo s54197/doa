@@ -9,6 +9,7 @@ use App\Models\ListNegara;
 use App\Models\Gudang;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 
 
 class GudangController extends Controller
