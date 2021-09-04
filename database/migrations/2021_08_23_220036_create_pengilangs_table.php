@@ -22,8 +22,8 @@ class CreatePengilangsTable extends Migration
             $table->string('pengilang_poskod');
             $table->string('pengilang_bandar');
             $table->string('pengilang_negeri');
-            $table->string('pengilang_negeri_luar_malaysia');
-            $table->string('pengilang_negara');
+            $table->string('pengilang_negeri_luar_malaysia')->nullable();
+            $table->string('pengilang_negara')->nullable();
             $table->string('pengilang_no_tel');
             $table->string('pengilang_no_faks')->nullable();
             $table->string('pengilang_emel');

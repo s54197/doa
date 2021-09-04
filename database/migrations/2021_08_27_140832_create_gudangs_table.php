@@ -22,8 +22,8 @@ class CreateGudangsTable extends Migration
             $table->string('gudang_poskod');
             $table->string('gudang_bandar');
             $table->string('gudang_negeri');
-            $table->string('gudang_negeri_luar_malaysia');
-            $table->string('gudang_negara');
+            $table->string('gudang_negeri_luar_malaysia')->nullable();
+            $table->string('gudang_negara')->nullable();
             $table->string('gudang_no_tel');
             $table->string('gudang_no_faks')->nullable();
             $table->string('gudang_emel');

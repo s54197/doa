@@ -46,8 +46,8 @@ class GudangController extends Controller
         
     }
     
-     // Show data
-     public function new_view() {
+    // Show data
+    public function new_view() {
         // Data negara
         $list_negara = ListNegara::all();
 
@@ -108,8 +108,8 @@ class GudangController extends Controller
             'gudang_poskod' => 'required',
             'gudang_bandar' => 'required',
             'gudang_negeri' => 'required',
-            'gudang_negeri_luar_malaysia' => 'required',
-            'gudang_negara' => 'required',
+            // 'gudang_negeri_luar_malaysia' => 'required',
+            // 'gudang_negara' => 'required',
             'gudang_no_tel' => 'required',
             // 'gudang_no_faks' => 'required',
             'gudang_emel' => 'required|email',
@@ -153,8 +153,8 @@ class GudangController extends Controller
             'gudang_poskod' => 'required',
             'gudang_bandar' => 'required',
             'gudang_negeri' => 'required',
-            'gudang_negeri_luar_malaysia' => 'required',
-            'gudang_negara' => 'required',
+            // 'gudang_negeri_luar_malaysia' => 'required',
+            // 'gudang_negara' => 'required',
             'gudang_no_tel' => 'required',
             // 'gudang_no_faks' => 'required',
             'gudang_emel' => 'required|email',

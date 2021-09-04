@@ -23,11 +23,15 @@ class CreateSyarikatsTable extends Migration
             $table->string('syarikat_poskod');
             $table->string('syarikat_bandar');
             $table->string('syarikat_negeri');
+            $table->string('syarikat_negeri_luar_malaysia')->nullable();
+            $table->string('syarikat_negara')->nullable();
             $table->string('syarikat_surat_bangunan');
             $table->string('syarikat_surat_jalan');
             $table->string('syarikat_surat_poskod');
             $table->string('syarikat_surat_bandar');
             $table->string('syarikat_surat_negeri');
+            $table->string('syarikat_surat_negeri_luar_malaysia')->nullable();
+            $table->string('syarikat_surat_negara')->nullable();
             $table->string('syarikat_no_tel');
             $table->string('syarikat_no_faks')->nullable();
             $table->string('syarikat_emel');

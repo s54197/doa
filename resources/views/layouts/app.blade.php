@@ -10,6 +10,9 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="/assets/images/logo-tab v1.ico">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- third party css -->
         <link href="/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
         <link href="/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />

@@ -36,5 +36,9 @@ class Syarikat extends Model
         'syarikat_emel',
         'syarikat_wakil',
         'syarikat_status',
+        'syarikat_negeri_luar_malaysia',
+        'syarikat_surat_negeri_luar_malaysia',
+        'syarikat_surat_negara',
+        'syarikat_negara',
     ];
 }
