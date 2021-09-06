@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Syarikat;
 use App\Models\User;
 use Carbon\Carbon;
-// use Exception;
+use Exception;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -69,8 +69,6 @@ class SyarikatController extends Controller
 
     // Show data
     public function new_view() {
-        // Data negara
-        $list_negara = ListNegara::all();
 
         $data = array(
             'list_negara' => $this->list_negara,
@@ -109,13 +107,15 @@ class SyarikatController extends Controller
             'syarikat_bangunan' => 'required',
             'syarikat_jalan' => 'required',
             'syarikat_poskod' => 'required',
-            'syarikat_bandar' => 'required',
-            'syarikat_negeri' => 'required',
+            // 'syarikat_bandar' => 'required',
+            // 'syarikat_negeri' => 'required',
+            'syarikat_negara' => 'required',
             'syarikat_surat_bangunan' => 'required',
             'syarikat_surat_jalan' => 'required',
             'syarikat_surat_poskod' => 'required',
-            'syarikat_surat_bandar' => 'required',
-            'syarikat_surat_negeri' => 'required',
+            // 'syarikat_surat_bandar' => 'required',
+            // 'syarikat_surat_negeri' => 'required',
+            'syarikat_surat_negara' => 'required',
             'syarikat_no_tel' => 'required',
             // 'syarikat_no_faks' => 'required',
             'syarikat_emel' => 'required|email',
@@ -167,13 +167,15 @@ class SyarikatController extends Controller
             'syarikat_bangunan' => 'required',
             'syarikat_jalan' => 'required',
             'syarikat_poskod' => 'required',
-            'syarikat_bandar' => 'required',
-            'syarikat_negeri' => 'required',
+            // 'syarikat_bandar' => 'required',
+            // 'syarikat_negeri' => 'required',
+            'syarikat_negara' => 'required',
             'syarikat_surat_bangunan' => 'required',
             'syarikat_surat_jalan' => 'required',
             'syarikat_surat_poskod' => 'required',
-            'syarikat_surat_bandar' => 'required',
-            'syarikat_surat_negeri' => 'required',
+            // 'syarikat_surat_bandar' => 'required',
+            // 'syarikat_surat_negeri' => 'required',
+            'syarikat_surat_negara' => 'required',
             'syarikat_no_tel' => 'required',
             // 'syarikat_no_faks' => 'required',
             'syarikat_emel' => 'required|email',

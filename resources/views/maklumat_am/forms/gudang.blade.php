@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="gudang_negeri_luar_malaysia"><span class="text-danger">*</span>Negeri (luar malaysia) gudang:</label>
+                                    <label class="col-md-3 col-form-label" for="gudang_negeri_luar_malaysia">Negeri (luar malaysia) gudang:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="gudang_negeri_luar_malaysia" name="gudang_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia) gudang" value="{{ old('gudang_negeri_luar_malaysia',isset($gudangs->gudang_negeri_luar_malaysia)?$gudangs->gudang_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('gudang_negeri_luar_malaysia') 
@@ -111,7 +111,7 @@
                                         <select class="form-control" name="gudang_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
                                             @foreach($list_negara as $negara)
-                                                <option value=" {{ $negara->negara_nama }}" {{ old('gudang_negara' , isset($gudangs->gudang_negara)?$gudangs->gudang_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
+                                                <option value="{{ $negara->negara_nama }}" {{ old('gudang_negara' , isset($gudangs->gudang_negara)?$gudangs->gudang_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
                                             @endforeach
                                         </select>   
                                         @error('gudang_negara') 
@@ -181,6 +181,41 @@
 <script>
 $(document).ready(function(){
    
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
+    // search poskod in DB
+    $("input[name='gudang_poskod']").on('blur', function(){
+        // alert(poskod = $(this).val());
+        $.ajax({
+            url : "{{ route('poskod.info') }}",
+            type : "post",
+            data: {'poskod': $(this).val()},
+            datatype: 'json',
+            // beforeSend: function() {
+            //     $('#spinner_confirm_delete').show();
+            // },
+            success : function(data) {
+                // $('#spinner_confirm_delete').hide();
+                console.log(data);
+                if (data.length>0){
+                    $("input[name='gudang_bandar']").val(data[0].bandar);
+                    $("select[name='gudang_negeri']").val(data[0].negeri);
+                    $("select[name='gudang_negara']").val('Malaysia');
+                }
+                else {
+                    $("input[name='gudang_bandar']").val('');
+                    $("select[name='gudang_negeri']").val('');
+                    $("select[name='gudang_negara']").val('');
+                }
+                // alert(data);
+            }  
+        });
+    });
+
+});
 </script>  
 @endsection
