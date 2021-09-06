@@ -105,10 +105,6 @@ class BorangA extends Model
         'borangA_mengilang_membuat',
         'borangA_mengilang_lain',
         'borangA_mengilang_lain_maklumat',
-        'borangA_perniagaan_bangunan',
-        'borangA_perniagaan_jalan',
-        'borangA_perniagaan_poskod',
-        'borangA_perniagaan_negeri',
         'borangA_pengilang',
         'borangA_pengilang_kontrak',
         'borangA_penginvoisan',
@@ -118,6 +114,7 @@ class BorangA extends Model
         'borangA_perawis_perumusan',
         'borangA_perawis_perumusan_lain',
         'borangA_perawis_pengilang',
+        'borangA_status'
     ];
 
 }

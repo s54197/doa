@@ -52,6 +52,11 @@ class User extends Authenticatable
     public function produks(){
         return $this->hasMany(Produk::class);
     }
+
+    // BorangA relationship
+    public function borangAs(){
+        return $this->hasMany(BorangA::class);
+    }
     /**
      * The attributes that are mass assignable.
      *

@@ -45,7 +45,7 @@
                     </div>
                 @endif
 
-                <form method="post" id="wizard-vertical" action="{{ $jenis == 'new' ? route('pendaftaran.create') : route('pendaftaran.update',$pendaftars->id) }}">
+                <form method="post" id="wizard-vertical" action="{{ $jenis == 'new' ? route('pendaftaran.create') : route('pendaftaran.update',$borangAs->id) }}">
                     @csrf
                     @method('post')
                     <h3>Butiran Pemohon</h3>
@@ -53,7 +53,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_syarikat"><span class="text-danger">*</span>Syarikat Pendaftar:</label>
                             <div class="col-md-9">
-                                <select class="form-control" name="borangA_syarikat" id="borangA_syarikat">
+                                <select class="form-control" name="borangA_syarikat" id="borangA_syarikat" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <option value="">Pilih Syarikat...</option>
                                     @foreach($syarikats as $syarikat)
                                         <option value=" {{ $syarikat->syarikat_nama }}" id="{{ $syarikat->id }}" {{ old('borangA_syarikat' , isset($borangAs->borangA_syarikat)?$borangAs->borangA_syarikat:null ) == $syarikat->syarikat_nama ? 'selected' : '' }} >{{ $syarikat->syarikat_nama }}</option>
@@ -67,7 +67,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_agen"><span class="text-danger">*</span>Wakil/Agen:</label>
                             <div class="col-md-9">
-                                <select class="form-control" name="borangA_agen">
+                                <select class="form-control" name="borangA_agen" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <option value="">Pilih Agen/Wakil...</option>
                                     @foreach($agens as $agen)
                                         <option value=" {{ $agen->agen_nama }}" {{ old('borangA_agen' , isset($borangAs->borangA_agen)?$borangAs->borangA_agen:null ) == $agen->agen_nama ? 'selected' : '' }} >{{ $agen->agen_nama }}</option>
@@ -81,7 +81,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_terima_kaunter"><span class="text-danger">*</span>Tarikh Terima Kaunter:</label>
                             <div class="col-md-9">
-                                <input class="form-control custom_border" id="borangA_tarikh_terima_kaunter" type="text" name="borangA_tarikh_terima_kaunter" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_terima_kaunter') }}">
+                                <input class="form-control custom_border" id="borangA_tarikh_terima_kaunter" type="text" name="borangA_tarikh_terima_kaunter" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_terima_kaunter',isset($borangAs->borangA_tarikh_terima_kaunter)?$borangAs->borangA_tarikh_terima_kaunter:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_tarikh_terima_kaunter') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -90,7 +90,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_lulus"><span class="text-danger">*</span>Tarikh Lulus:</label>
                             <div class="col-md-9">
-                                <input class="form-control custom_border" id="borangA_tarikh_lulus" type="text" name="borangA_tarikh_lulus" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_lulus') }}">
+                                <input class="form-control custom_border" id="borangA_tarikh_lulus" type="text" name="borangA_tarikh_lulus" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_lulus',isset($borangAs->borangA_tarikh_lulus)?$borangAs->borangA_tarikh_lulus:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_tarikh_lulus') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -99,7 +99,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_tamat"><span class="text-danger">*</span>Tarikh Tamat:</label>
                             <div class="col-md-9">
-                                <input class="form-control custom_border" id="borangA_tarikh_tamat" type="text" name="borangA_tarikh_tamat" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_tamat') }}">
+                                <input class="form-control custom_border" id="borangA_tarikh_tamat" type="text" name="borangA_tarikh_tamat" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_tamat',isset($borangAs->borangA_tarikh_tamat)?$borangAs->borangA_tarikh_tamat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_tarikh_tamat') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -108,7 +108,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_wakil_syarikat">Wakil Syarikat:</label>
                             <div class="col-md-9">
-                                <input type="text" id="borangA_wakil_syarikat" name="borangA_wakil_syarikat" class="form-control custom_border" placeholder="Nama wakil" value="test" >
+                                <input type="text" id="borangA_wakil_syarikat" name="borangA_wakil_syarikat" class="form-control custom_border" placeholder="Nama wakil" value="{{ old('borangA_wakil_syarikat',isset($borangAs->borangA_wakil_syarikat)?$borangAs->borangA_wakil_syarikat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_wakil_syarikat') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror                                
@@ -120,7 +120,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_dagangan"><span class="text-danger">*</span>Nama Dagangan:</label>
                             <div class="col-md-9">
-                                <select class="form-control" name="borangA_dagangan">
+                                <select class="form-control" name="borangA_dagangan" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <option value="">Pilih Dagangan...</option>
                                     @foreach($produks as $produk)
                                         <option value=" {{ $produk->produk_nama }}" {{ old('borangA_dagangan' , isset($borangAs->borangA_dagangan)?$borangAs->borangA_dagangan:null ) == $produk->produk_nama ? 'selected' : '' }} >{{ $produk->produk_nama }}</option>
@@ -132,7 +132,7 @@
                                 @enderror
                             </div>
                         </div>
-                        {{-- <div class="form-group row">
+                        <!-- {{-- <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_dagangan"><span class="text-danger">*</span>Nama Dagangan:</label>
                             <div class="col-md-9">
                                 <input class="form-control custom_border" id="borangA_dagangan" type="text" name="borangA_dagangan" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_dagangan') }}">
@@ -140,11 +140,20 @@
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
                             </div>
-                        </div> --}}
+                        </div> --}} -->
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_jenis_pendaftaran"><span class="text-danger">*</span>Jenis Pendaftaran:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_jenis_pendaftaran" name="borangA_jenis_pendaftaran" class="form-control custom_border" placeholder="Jenis Pendaftaran " value="{{ old('borangA_jenis_pendaftaran',isset($borangAs->borangA_jenis_pendaftaran)?$borangAs->borangA_jenis_pendaftaran:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_jenis_pendaftaran') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_no_pendaftaran"><span class="text-danger">*</span>Nombor Pendaftaran:</label>
                             <div class="col-md-9">
-                                <input type="text" id="borangA_no_pendaftaran" name="borangA_no_pendaftaran" class="form-control custom_border" placeholder="Nombor Pendaftaran " value="{{ old('borangA_no_pendaftaran') }}">
+                                <input type="text" id="borangA_no_pendaftaran" name="borangA_no_pendaftaran" class="form-control custom_border" placeholder="Nombor Pendaftaran " value="{{ old('borangA_no_pendaftaran',isset($borangAs->borangA_no_pendaftaran)?$borangAs->borangA_no_pendaftaran:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_no_pendaftaran') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -157,21 +166,25 @@
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perniagaan_aktiviti"><span class="text-danger">*</span>Nyatakan aktiviti utama perniagaan:</label>
                             <div class="col-md-5">
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_perniagaan_mengimport" name="borangA_perniagaan_mengimport" type="checkbox" value="TRUE" {{ old('borangA_perniagaan_mengimport') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_perniagaan_mengimport" name="borangA_perniagaan_mengimport" type="checkbox" value="1" {{ old('borangA_perniagaan_mengimport',isset($borangAs->borangA_perniagaan_mengimport)?$borangAs->borangA_perniagaan_mengimport:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_perniagaan_mengimport">
                                         Mengimport
                                     </label>
                                 </div>
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_perniagaan_lain" name="borangA_perniagaan_lain" type="checkbox" value="TRUE" {{ old('borangA_perniagaan_lain') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_perniagaan_lain" name="borangA_perniagaan_lain" type="checkbox" value="1" {{ old('borangA_perniagaan_lain',isset($borangAs->borangA_perniagaan_lain)?$borangAs->borangA_perniagaan_lain:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_perniagaan_lain">
                                         Lain-lain (nyatakan)
                                     </label>
                                 </div>
+                                @error('borangA_perniagaan_lain') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
                             </div>
+
                             <div class="col-md-4">
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_perniagaan_mengilang" name="borangA_perniagaan_mengilang" type="checkbox" value="TRUE" {{ old('borangA_perniagaan_mengilang') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_perniagaan_mengilang" name="borangA_perniagaan_mengilang" type="checkbox" value="1" {{ old('borangA_perniagaan_mengilang',isset($borangAs->borangA_perniagaan_mengilang)?$borangAs->borangA_perniagaan_mengilang:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_perniagaan_mengilang">
                                         Mengilang
                                     </label>
@@ -183,7 +196,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-9 offset-md-3">
-                                <input type="text" id="borangA_perniagaan_lain_maklumat" name="borangA_perniagaan_lain_maklumat" class="form-control custom_border" placeholder="Lain-lain Aktiviti" value="{{ old('borangA_perniagaan_lain_maklumat') }}">
+                                <input type="text" id="borangA_perniagaan_lain_maklumat" name="borangA_perniagaan_lain_maklumat" class="form-control custom_border" placeholder="Lain-lain Aktiviti" value="{{ old('borangA_perniagaan_lain_maklumat',isset($borangAs->borangA_perniagaan_lain_maklumat)?$borangAs->borangA_perniagaan_lain_maklumat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_perniagaan_lain_maklumat') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -193,25 +206,25 @@
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_mengilang"><span class="text-danger">*</span>Jika aktiviti adalah mengilang, nyatakan aktiviti yang ingin dijalankan:</label>
                             <div class="col-md-5">
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_mengilang_menyedia" name="borangA_mengilang_menyedia" type="checkbox" value="TRUE" {{ old('borangA_mengilang_menyedia') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_mengilang_menyedia" name="borangA_mengilang_menyedia" type="checkbox" value="1" {{ old('borangA_mengilang_menyedia',isset($borangAs->borangA_mengilang_menyedia)?$borangAs->borangA_mengilang_menyedia:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_mengilang_menyedia">
                                         Menyedia
                                     </label>
                                 </div>
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_mengilang_merumus" name="borangA_mengilang_merumus" type="checkbox" value="TRUE" {{ old('borangA_mengilang_merumus') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_mengilang_merumus" name="borangA_mengilang_merumus" type="checkbox" value="1" {{ old('borangA_mengilang_merumus',isset($borangAs->borangA_mengilang_merumus)?$borangAs->borangA_mengilang_merumus:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_mengilang_merumus">
                                         Merumus
                                     </label>
                                 </div>
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_mengilang_mensebati" name="borangA_mengilang_mensebati" type="checkbox" value="TRUE" {{ old('borangA_mengilang_mensebati') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_mengilang_mensebati" name="borangA_mengilang_mensebati" type="checkbox" value="1" {{ old('borangA_mengilang_mensebati',isset($borangAs->borangA_mengilang_mensebati)?$borangAs->borangA_mengilang_mensebati:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_mengilang_mensebati">
                                         Mensebati
                                     </label>
                                 </div>
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_mengilang_mencampur" name="borangA_mengilang_mencampur" type="checkbox" value="TRUE" {{ old('borangA_mengilang_mencampur') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_mengilang_mencampur" name="borangA_mengilang_mencampur" type="checkbox" value="1" {{ old('borangA_mengilang_mencampur',isset($borangAs->borangA_mengilang_mencampur)?$borangAs->borangA_mengilang_mencampur:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_mengilang_mencampur">
                                         Mencampur
                                     </label>
@@ -219,25 +232,25 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_mengilang_melabel" name="borangA_mengilang_melabel" type="checkbox" value="TRUE" {{ old('borangA_mengilang_melabel') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_mengilang_melabel" name="borangA_mengilang_melabel" type="checkbox" value="1" {{ old('borangA_mengilang_melabel',isset($borangAs->borangA_mengilang_melabel)?$borangAs->borangA_mengilang_melabel:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_mengilang_melabel">
                                         Melabel/Melabel semula
                                     </label>
                                 </div>
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_mengilang_mempek" name="borangA_mengilang_mempek" type="checkbox" value="TRUE" {{ old('borangA_mengilang_mempek') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_mengilang_mempek" name="borangA_mengilang_mempek" type="checkbox" value="1" {{ old('borangA_mengilang_mempek',isset($borangAs->borangA_mengilang_mempek)?$borangAs->borangA_mengilang_mempek:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_mengilang_mempek">
                                         Mempek/Mempek semula
                                     </label>
                                 </div>
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_mengilang_membuat" name="borangA_mengilang_membuat" type="checkbox" value="TRUE" {{ old('borangA_mengilang_membuat') == "TRUE" ? 'checked' : '' }}>
+                                    <input id="borangA_mengilang_membuat" name="borangA_mengilang_membuat" type="checkbox" value="1" {{ old('borangA_mengilang_membuat',isset($borangAs->borangA_mengilang_membuat)?$borangAs->borangA_mengilang_membuat:null) == "TRUE" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_mengilang_membuat">
                                         Membuat
                                     </label>
                                 </div>
                                 <div class="checkbox checkbox-primary">
-                                    <input id="borangA_mengilang_lain" name="borangA_mengilang_lain" type="checkbox" value="TRUE" {{ old('borangA_mengilang_lain') == "Lain-lain (nyatakan)" ? 'checked' : '' }}>
+                                    <input id="borangA_mengilang_lain" name="borangA_mengilang_lain" type="checkbox" value="1" {{ old('borangA_mengilang_lain',isset($borangAs->borangA_mengilang_lain)?$borangAs->borangA_mengilang_lain:null) == "Lain-lain (nyatakan)" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label for="borangA_mengilang_lain">
                                         Lain-lain (nyatakan)
                                     </label>
@@ -249,7 +262,7 @@
                         </div>
                         <div class="form-group row" id="borangA_mengilang_lain_maklumat_div">
                             <div class="col-md-9 offset-md-3">
-                                <input type="text" id="borangA_mengilang_lain_maklumat" name="borangA_mengilang_lain_maklumat" class="form-control custom_border" placeholder="Lain-lain Aktiviti" value="{{ old('borangA_mengilang_lain_maklumat') }}">
+                                <input type="text" id="borangA_mengilang_lain_maklumat" name="borangA_mengilang_lain_maklumat" class="form-control custom_border" placeholder="Lain-lain Aktiviti" value="{{ old('borangA_mengilang_lain_maklumat',isset($borangAs->borangA_mengilang_lain_maklumat)?$borangAs->borangA_mengilang_lain_maklumat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_mengilang_lain_maklumat') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -260,10 +273,15 @@
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang[]" id="borangA_pengilang" multiple="multiple">
                                     @foreach($pengilangs as $pengilang)
-                                        <option value="{{ $pengilang->pengilang_nama }}">{{ $pengilang->pengilang_nama }}</option>
+                                        @foreach($borangAs->borangA_pengilang as $value) 
+                                        <option value="{{ $pengilang->pengilang_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pengilang->pengilang_nama }} </option>
+                                        @endforeach
                                     @endforeach
                                     @foreach($pembekals as $pembekal)
-                                        <option value="{{ $pembekal->pembekal_nama }}">{{ $pembekal->pembekal_nama }}</option>
+                                        @foreach($borangAs->borangA_pengilang as $value)
+                                        <option value="{{ $pembekal->pengilang_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pembekal->pembekal_nama }} </option>
+                                        @endforeach
+                                        <!-- <option value="{{ $pembekal->pembekal_nama }}">{{ $pembekal->pembekal_nama }}</option> -->
                                     @endforeach
                                 </select>  
                                 @error('borangA_pengilang') 
@@ -276,7 +294,7 @@
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang_kontrak[]" id="borangA_pengilang_kontrak" multiple="multiple">
                                     @foreach($pengilangs as $pengilang)
-                                        <option value="{{ $pengilang->pengilang_nama }}">{{ $pengilang->pengilang_nama }}</option>
+                                        <option value="{{ $pengilang->pengilang_nama }}" >{{ $pengilang->pengilang_nama }}</option>
                                     @endforeach
                                 </select>  
                                 @error('borangA_pengilang_kontrak') 
@@ -289,7 +307,7 @@
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_penginvoisan[]" id="borangA_penginvoisan" multiple="multiple">
                                     @foreach($penginvoisans as $penginvoisan)
-                                        <option value="{{ $penginvoisan->penginvoisan_nama }}">{{ $penginvoisan->penginvoisan_nama }}</option>
+                                        <option value="{{ $penginvoisan->penginvoisan_nama }}" >{{ $penginvoisan->penginvoisan_nama }}</option>                                       
                                     @endforeach
                                 </select>  
                                 @error('borangA_penginvoisan') 
@@ -692,20 +710,20 @@ $(document).ready(function(){
         maximumSelectionLength: 5,
     });
 
-    // $('#borangA_syarikat').on("change",function() {
-    //     var id = $(this).find(':selected')[0].id;
-    //     console.log(id);
-    //     $.ajax({
-    //         url : "getWakil/"+id,
-    //         type : "GET",
-    //         datatype: 'json',
-    //         success : function(data) {
-    //             $.each(data.data, function(key, resp) {    
-    //                 $('#borangA_wakil_syarikat').val(resp.syarikat_wakil);
-    //             });
-    //         }  
-    //     });
-    // });
+    $('#borangA_syarikat').on("change",function() {
+        var id = $(this).find(':selected')[0].id;
+        console.log(id);
+        $.ajax({
+            url : "getWakil/"+id,
+            type : "GET",
+            datatype: 'json',
+            success : function(data) {
+                $.each(data.data, function(key, resp) {    
+                    $('#borangA_wakil_syarikat').val(resp.syarikat_wakil);
+                });
+            }  
+        });
+    });
 
 });
 </script>
