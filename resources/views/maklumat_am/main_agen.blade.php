@@ -69,7 +69,7 @@
                     <div class="col-12 col-md-2">
                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah Agen</button> --}}
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
-                        onclick="window.location='{{ route("form.agen") }}'">Daftar Baru</button>
+                        onclick="window.location='{{ route("baru.agen") }}'">Daftar Baru</button>
                     </div>
                 </div>
 

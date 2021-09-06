@@ -3,15 +3,24 @@
 namespace App\Http\Controllers\MaklumatAm;
 
 use App\Http\Controllers\Controller;
+use App\Models\ListNegara;
+use App\Models\ListPoskod;
 use Illuminate\Http\Request;
 use App\Models\Syarikat;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 
 use Illuminate\Support\Facades\Auth;
 
 class SyarikatController extends Controller
 {
+
+    public $list_negara;
+
+    public function __construct(){
+        $this->list_negara = ListNegara::all();
+    }
     
     // All data
     public function index() {
@@ -49,9 +58,22 @@ class SyarikatController extends Controller
         // Data syarikat
         $syarikat = Syarikat::find($id);
         $data = array(
+            'list_negara' => $this->list_negara,
             'syarikats' => $syarikat,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
+        );
+        
+        return view('maklumat_am.forms.syarikat')->with($data);
+    }
+
+    // Show data
+    public function new_view() {
+
+        $data = array(
+            'list_negara' => $this->list_negara,
+            'jenis' => 'new',
+            'tajuk' => 'Pendaftaran'
         );
         
         return view('maklumat_am.forms.syarikat')->with($data);
@@ -66,6 +88,7 @@ class SyarikatController extends Controller
         $syarikat->syarikat_tarikh_roc = Carbon::createFromFormat('Y-m-d', $syarikat->syarikat_tarikh_roc)->format('d-m-Y');
 
         $data = array(
+            'list_negara' => $this->list_negara,
             'syarikats' => $syarikat,
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
@@ -84,15 +107,17 @@ class SyarikatController extends Controller
             'syarikat_bangunan' => 'required',
             'syarikat_jalan' => 'required',
             'syarikat_poskod' => 'required',
-            'syarikat_bandar' => 'required',
-            'syarikat_negeri' => 'required',
+            // 'syarikat_bandar' => 'required',
+            // 'syarikat_negeri' => 'required',
+            'syarikat_negara' => 'required',
             'syarikat_surat_bangunan' => 'required',
             'syarikat_surat_jalan' => 'required',
             'syarikat_surat_poskod' => 'required',
-            'syarikat_surat_bandar' => 'required',
-            'syarikat_surat_negeri' => 'required',
+            // 'syarikat_surat_bandar' => 'required',
+            // 'syarikat_surat_negeri' => 'required',
+            'syarikat_surat_negara' => 'required',
             'syarikat_no_tel' => 'required',
-            'syarikat_no_faks' => 'required',
+            // 'syarikat_no_faks' => 'required',
             'syarikat_emel' => 'required|email',
             // 'syarikat_wakil' => 'required',
         ]);
@@ -110,11 +135,15 @@ class SyarikatController extends Controller
                 'syarikat_poskod' => $request->syarikat_poskod,
                 'syarikat_bandar' => $request->syarikat_bandar,
                 'syarikat_negeri' => $request->syarikat_negeri,
+                'syarikat_negeri_luar_malaysia' => $request->syarikat_negeri_luar_malaysia,
+                'syarikat_negara' => $request->syarikat_syarikat_negaranegeri,
                 'syarikat_surat_bangunan' => $request->syarikat_surat_bangunan,
                 'syarikat_surat_jalan' => $request->syarikat_surat_jalan,
                 'syarikat_surat_poskod' => $request->syarikat_surat_poskod,
                 'syarikat_surat_bandar' => $request->syarikat_surat_bandar,
                 'syarikat_surat_negeri' => $request->syarikat_surat_negeri,
+                'syarikat_surat_negeri_luar_malaysia' => $request->syarikat_surat_negeri_luar_malaysia,
+                'syarikat_surat_negara' => $request->syarikat_surat_negara,
                 'syarikat_no_tel' => $request->syarikat_no_tel,
                 'syarikat_no_faks' => $request->syarikat_no_faks,
                 'syarikat_emel' => $request->syarikat_emel,
@@ -138,15 +167,17 @@ class SyarikatController extends Controller
             'syarikat_bangunan' => 'required',
             'syarikat_jalan' => 'required',
             'syarikat_poskod' => 'required',
-            'syarikat_bandar' => 'required',
-            'syarikat_negeri' => 'required',
+            // 'syarikat_bandar' => 'required',
+            // 'syarikat_negeri' => 'required',
+            'syarikat_negara' => 'required',
             'syarikat_surat_bangunan' => 'required',
             'syarikat_surat_jalan' => 'required',
             'syarikat_surat_poskod' => 'required',
-            'syarikat_surat_bandar' => 'required',
-            'syarikat_surat_negeri' => 'required',
+            // 'syarikat_surat_bandar' => 'required',
+            // 'syarikat_surat_negeri' => 'required',
+            'syarikat_surat_negara' => 'required',
             'syarikat_no_tel' => 'required',
-            'syarikat_no_faks' => 'required',
+            // 'syarikat_no_faks' => 'required',
             'syarikat_emel' => 'required|email',
             // 'syarikat_wakil' => 'required',
         ]);
@@ -162,11 +193,15 @@ class SyarikatController extends Controller
                 'syarikat_poskod' => $request->syarikat_poskod,
                 'syarikat_bandar' => $request->syarikat_bandar,
                 'syarikat_negeri' => $request->syarikat_negeri,
+                'syarikat_negeri_luar_malaysia' => $request->syarikat_negeri_luar_malaysia,
+                'syarikat_negara' => $request->syarikat_negara,
                 'syarikat_surat_bangunan' => $request->syarikat_surat_bangunan,
                 'syarikat_surat_jalan' => $request->syarikat_surat_jalan,
                 'syarikat_surat_poskod' => $request->syarikat_surat_poskod,
                 'syarikat_surat_bandar' => $request->syarikat_surat_bandar,
                 'syarikat_surat_negeri' => $request->syarikat_surat_negeri,
+                'syarikat_surat_negeri_luar_malaysia' => $request->syarikat_surat_negeri_luar_malaysia,
+                'syarikat_surat_negara' => $request->syarikat_surat_negara,
                 'syarikat_no_tel' => $request->syarikat_no_tel,
                 'syarikat_no_faks' => $request->syarikat_no_faks,
                 'syarikat_emel' => $request->syarikat_emel,
@@ -190,5 +225,10 @@ class SyarikatController extends Controller
         catch (\Illuminate\Database\QueryException $error){
             return redirect('/syarikat')->withWarning('Syarikat '.$syarikat->syarikat_nama.' tidak berjaya dipadamkan!');
         }
+    }
+
+    // Return poskod info
+    public function poskod_info(Request $request){
+        return $poskod_info = ListPoskod::where('poskod', $request->poskod)->get();
     }
 }

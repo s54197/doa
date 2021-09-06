@@ -50,7 +50,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="syarikat_tarikh_roc"><span class="text-danger">*</span>Tarikh pendaftaran (ROC)</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" id="syarikat_tarikh_roc" type="text" name="syarikat_tarikh_roc" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('syarikat_tarikh_roc',isset($syarikats->syarikat_tarikh_roc)?$syarikats->syarikat_tarikh_roc:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input class="form-control" id="syarikat_tarikh_roc" type="text" autocomplete="off" name="syarikat_tarikh_roc" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('syarikat_tarikh_roc',isset($syarikats->syarikat_tarikh_roc)?$syarikats->syarikat_tarikh_roc:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_tarikh_roc') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -83,26 +83,49 @@
                                     <div class="col-md-3">
                                         <select class="form-control" name="syarikat_negeri" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negeri...</option>
-                                            <option value="Johor" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
-                                            <option value="Melaka" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
-                                            <option value="Negeri Sembilan" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
-                                            <option value="Selangor" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
-                                            <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
-                                            <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
-                                            <option value="Pahang" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Pahang" ? 'selected' : '' }}>Pahang</option>
-                                            <option value="Terengganu" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Terengganu" ? 'selected' : '' }}>Terengganu</option>
-                                            <option value="Kelantan" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Kelantan" ? 'selected' : '' }}>Kelantan</option>
-                                            <option value="Perak" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Perak" ? 'selected' : '' }}>Perak</option>
-                                            <option value="Kedah" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Kedah" ? 'selected' : '' }}>Kedah</option>
-                                            <option value="Perlis" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Perlis" ? 'selected' : '' }}>Perlis</option>
-                                            <option value="Pulau Pinang" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Pulau Pinang" ? 'selected' : '' }}>Pulau Pinang</option>
-                                            <option value="Sabah" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Sabah" ? 'selected' : '' }}>Sabah</option>
-                                            <option value="Sarawak" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
-                                            <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('syarikat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
+                                            <option value="Johor" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
+                                            <option value="Melaka" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
+                                            <option value="Negeri Sembilan" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
+                                            <option value="Selangor" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
+                                            <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
+                                            <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
+                                            <option value="Pahang" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Pahang" ? 'selected' : '' }}>Pahang</option>
+                                            <option value="Terengganu" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Terengganu" ? 'selected' : '' }}>Terengganu</option>
+                                            <option value="Kelantan" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Kelantan" ? 'selected' : '' }}>Kelantan</option>
+                                            <option value="Perak" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Perak" ? 'selected' : '' }}>Perak</option>
+                                            <option value="Kedah" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Kedah" ? 'selected' : '' }}>Kedah</option>
+                                            <option value="Perlis" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Perlis" ? 'selected' : '' }}>Perlis</option>
+                                            <option value="Pulau Pinang" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Pulau Pinang" ? 'selected' : '' }}>Pulau Pinang</option>
+                                            <option value="Sabah" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Sabah" ? 'selected' : '' }}>Sabah</option>
+                                            <option value="Sarawak" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Sarawak" ? 'selected' : '' }}>Sarawak</option>
+                                            <option value="Wilayah Persekutuan Labuan, Sabah" {{ old('syarikat_negeri',isset($syarikats->syarikat_negeri)?$syarikats->syarikat_negeri:null) == "Wilayah Persekutuan Labuan, Sabah" ? 'selected' : '' }}>Wilayah Persekutuan Labuan, Sabah</option>
                                         </select>                                    
                                         @error('syarikat_negeri') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror                                
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="syarikat_negeri_luar_malaysia">Negeri (luar malaysia):</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="syarikat_negeri_luar_malaysia" name="syarikat_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia) syarikat" value="{{ old('syarikat_negeri_luar_malaysia',isset($syarikats->syarikat_negeri_luar_malaysia)?$syarikats->syarikat_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        @error('syarikat_negeri_luar_malaysia') 
+                                        <small class='text-danger'>{{ $message }}</small> 
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="syarikat_negara"><span class="text-danger">*</span>Negara:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name="syarikat_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Negara...</option>
+                                            @foreach($list_negara as $negara)
+                                                <option value="{{ $negara->negara_nama }}" {{ old('syarikat_negara' , isset($syarikats->syarikat_negara)?$syarikats->syarikat_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
+                                            @endforeach
+                                        </select>   
+                                        @error('syarikat_negara') 
+                                        <small class='text-danger'>{{ $message }}</small> 
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 mb-sm-2">
@@ -165,18 +188,41 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="syarikat_surat_negeri_luar_malaysia">Negeri (luar malaysia):</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="syarikat_surat_negeri_luar_malaysia" name="syarikat_surat_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia)" value="{{ old('syarikat_surat_negeri_luar_malaysia',isset($syarikats->syarikat_surat_negeri_luar_malaysia)?$syarikats->syarikat_surat_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        @error('syarikat_surat_negeri_luar_malaysia') 
+                                        <small class='text-danger'>{{ $message }}</small> 
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="syarikat_surat_negara"><span class="text-danger">*</span>Negara:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name="syarikat_surat_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Negara...</option>
+                                            @foreach($list_negara as $negara)
+                                                <option value="{{ $negara->negara_nama }}" {{ old('syarikat_surat_negara' , isset($syarikats->syarikat_surat_negara)?$syarikats->syarikat_surat_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
+                                            @endforeach
+                                        </select>   
+                                        @error('syarikat_surat_negara') 
+                                        <small class='text-danger'>{{ $message }}</small> 
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="syarikat_no_tel"><span class="text-danger">*</span>Nombor telefon:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="syarikat_no_tel" name="syarikat_no_tel" class="form-control" placeholder="Nama Syarikat" value="{{ old('syarikat_no_tel',isset($syarikats->syarikat_no_tel)?$syarikats->syarikat_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="text" id="syarikat_no_tel" name="syarikat_no_tel" class="form-control" placeholder="Nombor telefon" value="{{ old('syarikat_no_tel',isset($syarikats->syarikat_no_tel)?$syarikats->syarikat_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_no_tel') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror                                
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="syarikat_no_faks"><span class="text-danger">*</span>Nombor faks:</label>
+                                    <label class="col-md-3 col-form-label" for="syarikat_no_faks">Nombor faks:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="syarikat_no_faks" name="syarikat_no_faks" class="form-control" placeholder="Nombor telefon" value="{{ old('syarikat_no_faks',isset($syarikats->syarikat_no_faks)?$syarikats->syarikat_no_faks:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="text" id="syarikat_no_faks" name="syarikat_no_faks" class="form-control" placeholder="Nombor faks" value="{{ old('syarikat_no_faks',isset($syarikats->syarikat_no_faks)?$syarikats->syarikat_no_faks:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_no_faks') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror                                
@@ -234,6 +280,13 @@
 @section('local_js')
 <script>
 $(document).ready(function(){
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $('input[name="syarikat_tarikh_roc"]').datepicker();
     $('input[name="syarikat_tarikh_roc"]').attr("placeholder","Tarikh Pendaftaran (ROC) - Pilih dari kalendar");
 
@@ -258,9 +311,19 @@ $("input[name='syarikat_bandar']").keyup(function(){
         $("input[name='syarikat_surat_bandar']").val($(this).val());
     }
 });
+$("input[name='syarikat_negeri_luar_malaysia']").keyup(function(){
+    if ($('#syarikat_surat').is(":checked")){
+        $("input[name='syarikat_surat_negeri_luar_malaysia']").val($(this).val());
+    }
+});
 $("select[name='syarikat_negeri']").on('change', function(){
     if ($('#syarikat_surat').is(":checked")){
         $("select[name='syarikat_surat_negeri']").val($(this).val());
+    }
+});
+$("select[name='syarikat_negara']").on('change', function(){
+    if ($('#syarikat_surat').is(":checked")){
+        $("select[name='syarikat_surat_negara']").val($(this).val());
     }
 });
 
@@ -271,6 +334,61 @@ $('#syarikat_surat').click(function(){
 
 // everytime page is reloaded check if the same alamat surat-menyurat is checked
 changeInputReadonly();
+
+// search poskod in DB
+$("input[name='syarikat_poskod']").on('blur', function(){
+    // alert(poskod = $(this).val());
+    $.ajax({
+            url : "{{ route('poskod.info') }}",
+            type : "post",
+            data: {'poskod': $(this).val()},
+            datatype: 'json',
+            // beforeSend: function() {
+            //     $('#spinner_confirm_delete').show();
+            // },
+            success : function(data) {
+                // $('#spinner_confirm_delete').hide();
+                console.log(data);
+                if (data.length>0){
+                    $("input[name='syarikat_bandar']").val(data[0].bandar);
+                    $("select[name='syarikat_negeri']").val(data[0].negeri);
+                    $("select[name='syarikat_negara']").val('Malaysia');
+                }
+                else {
+                    $("input[name='syarikat_bandar']").val('');
+                    $("select[name='syarikat_negeri']").val('');
+                    $("select[name='syarikat_negara']").val('');
+                }
+                // alert(data);
+            }  
+        });
+});
+$("input[name='syarikat_surat_poskod']").on('blur', function(){
+    // alert(poskod = $(this).val());
+    $.ajax({
+            url : "{{ route('poskod.info') }}",
+            type : "post",
+            data: {'poskod': $(this).val()},
+            datatype: 'json',
+            // beforeSend: function() {
+            //     $('#spinner_confirm_delete').show();
+            // },
+            success : function(data) {
+                // $('#spinner_confirm_delete').hide();
+                console.log(data);
+                if (data.length>0){
+                    $("input[name='syarikat_surat_bandar']").val(data[0].bandar);
+                    $("select[name='syarikat_surat_negeri']").val(data[0].negeri);
+                    $("select[name='syarikat_surat_negara']").val('Malaysia');
+                }
+                else {
+                    $("input[name='syarikat_surat_bandar']").val('');
+                    $("select[name='syarikat_surat_negeri']").val('');
+                    $("select[name='syarikat_surat_negara']").val('');
+                }
+            }  
+        });
+});
 
 });
 
@@ -284,7 +402,11 @@ function changeInputReadonly(){
                                             .attr('readonly', true);
         $("input[name='syarikat_surat_bandar']").val($("input[name='syarikat_bandar']").val())
                                             .attr('readonly', true);
+        $("input[name='syarikat_surat_negeri_luar_malaysia']").val($("input[name='syarikat_negeri_luar_malaysia']").val())
+                                            .attr('readonly', true);
         $("select[name='syarikat_surat_negeri']").val($("select[name='syarikat_negeri'] option:selected").val())
+                                            .attr('readonly', true);
+        $("select[name='syarikat_surat_negara']").val($("select[name='syarikat_negara'] option:selected").val())
                                             .attr('readonly', true);
     }
     else {     
@@ -292,7 +414,9 @@ function changeInputReadonly(){
         $("input[name='syarikat_surat_jalan']").attr('readonly', false);
         $("input[name='syarikat_surat_poskod']").attr('readonly', false);
         $("input[name='syarikat_surat_bandar']").attr('readonly', false);
+        $("input[name='syarikat_surat_negeri_luar_malaysia']").attr('readonly', false);
         $("select[name='syarikat_surat_negeri']").attr('readonly', false);
+        $("select[name='syarikat_surat_negara']").attr('readonly', false);
     }
 }
 </script>  

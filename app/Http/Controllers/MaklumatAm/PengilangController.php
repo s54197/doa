@@ -9,6 +9,7 @@ use App\Models\ListNegara;
 use App\Models\Pengilang;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 
 class PengilangController extends Controller
 {
@@ -105,12 +106,12 @@ class PengilangController extends Controller
             'pengilang_bangunan' => 'required',
             'pengilang_jalan' => 'required',
             'pengilang_poskod' => 'required',
-            'pengilang_bandar' => 'required',
-            'pengilang_negeri' => 'required',
-            'pengilang_negeri_luar_malaysia' => 'required',
+            // 'pengilang_bandar' => 'required',
+            // 'pengilang_negeri' => 'required',
+            // 'pengilang_negeri_luar_malaysia' => 'required',
             'pengilang_negara' => 'required',
             'pengilang_no_tel' => 'required',
-            'pengilang_no_faks' => 'required',
+            // 'pengilang_no_faks' => 'required',
             'pengilang_emel' => 'required|email',
             // 'pengilang_status' => 'required',
         ]);
@@ -150,12 +151,12 @@ class PengilangController extends Controller
             'pengilang_bangunan' => 'required',
             'pengilang_jalan' => 'required',
             'pengilang_poskod' => 'required',
-            'pengilang_bandar' => 'required',
-            'pengilang_negeri' => 'required',
-            'pengilang_negeri_luar_malaysia' => 'required',
+            // 'pengilang_bandar' => 'required',
+            // 'pengilang_negeri' => 'required',
+            // 'pengilang_negeri_luar_malaysia' => 'required',
             'pengilang_negara' => 'required',
             'pengilang_no_tel' => 'required',
-            'pengilang_no_faks' => 'required',
+            // 'pengilang_no_faks' => 'required',
             'pengilang_emel' => 'required|email',
             // 'pengilang_status' => 'required',
         ]);

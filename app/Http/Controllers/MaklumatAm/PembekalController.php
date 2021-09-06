@@ -9,6 +9,7 @@ use App\Models\ListNegara;
 use App\Models\Pembekal;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 
 class PembekalController extends Controller
 {
@@ -103,12 +104,12 @@ class PembekalController extends Controller
             'pembekal_bangunan' => 'required',
             'pembekal_jalan' => 'required',
             'pembekal_poskod' => 'required',
-            'pembekal_bandar' => 'required',
-            'pembekal_negeri' => 'required',
-            'pembekal_negeri_luar_malaysia' => 'required',
+            // 'pembekal_bandar' => 'required',
+            // 'pembekal_negeri' => 'required',
+            // 'pembekal_negeri_luar_malaysia' => 'required',
             'pembekal_negara' => 'required',
             'pembekal_no_tel' => 'required',
-            'pembekal_no_faks' => 'required',
+            // 'pembekal_no_faks' => 'required',
             'pembekal_emel' => 'required|email',
             // 'pembekal_status' => 'required',
         ]);
@@ -148,12 +149,12 @@ class PembekalController extends Controller
             'pembekal_bangunan' => 'required',
             'pembekal_jalan' => 'required',
             'pembekal_poskod' => 'required',
-            'pembekal_bandar' => 'required',
-            'pembekal_negeri' => 'required',
-            'pembekal_negeri_luar_malaysia' => 'required',
+            // 'pembekal_bandar' => 'required',
+            // 'pembekal_negeri' => 'required',
+            // 'pembekal_negeri_luar_malaysia' => 'required',
             'pembekal_negara' => 'required',
             'pembekal_no_tel' => 'required',
-            'pembekal_no_faks' => 'required',
+            // 'pembekal_no_faks' => 'required',
             'pembekal_emel' => 'required|email',
             // 'pembekal_status' => 'required',
         ]);

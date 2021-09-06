@@ -131,7 +131,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_tarikh_lulus"><span class="text-danger">*</span>Tarikh Lulus:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" id="perawis_tarikh_lulus" type="text" name="perawis_tarikh_lulus" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('perawis_tarikh_lulus',isset($perawiss->perawis_tarikh_lulus)?$perawiss->perawis_tarikh_lulus:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input class="form-control" id="perawis_tarikh_lulus" type="text" autocomplete="off" name="perawis_tarikh_lulus" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('perawis_tarikh_lulus',isset($perawiss->perawis_tarikh_lulus)?$perawiss->perawis_tarikh_lulus:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_tarikh_lulus') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -140,7 +140,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_tarikh_terhad"><span class="text-danger">*</span>Tarikh Terhad:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" id="perawis_tarikh_terhad" type="text" name="perawis_tarikh_terhad" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('perawis_tarikh_terhad',isset($perawiss->perawis_tarikh_terhad)?$perawiss->perawis_tarikh_terhad:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input class="form-control" id="perawis_tarikh_terhad" type="text" autocomplete="off" name="perawis_tarikh_terhad" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('perawis_tarikh_terhad',isset($perawiss->perawis_tarikh_terhad)?$perawiss->perawis_tarikh_terhad:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_tarikh_terhad') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror

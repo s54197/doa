@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pembekal_negeri_luar_malaysia"><span class="text-danger">*</span>Negeri (luar malaysia) pembekal:</label>
+                                    <label class="col-md-3 col-form-label" for="pembekal_negeri_luar_malaysia">Negeri (luar malaysia) pembekal:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pembekal_negeri_luar_malaysia" name="pembekal_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia) pembekal" value="{{ old('pembekal_negeri_luar_malaysia',isset($pembekals->pembekal_negeri_luar_malaysia)?$pembekals->pembekal_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pembekal_negeri_luar_malaysia') 
@@ -111,7 +111,7 @@
                                         <select class="form-control" name="pembekal_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
                                             @foreach($list_negara as $negara)
-                                                <option value=" {{ $negara->negara_nama }}" {{ old('pembekal_negara' , isset($pembekals->pembekal_negara)?$pembekals->pembekal_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
+                                                <option value="{{ $negara->negara_nama }}" {{ old('pembekal_negara' , isset($pembekals->pembekal_negara)?$pembekals->pembekal_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
                                             @endforeach
                                         </select>   
                                         @error('pembekal_negara') 
@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pembekal_no_faks"><span class="text-danger">*</span>Nombor faks:</label>
+                                    <label class="col-md-3 col-form-label" for="pembekal_no_faks">Nombor faks:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pembekal_no_faks" name="pembekal_no_faks" class="form-control" placeholder="Nombor faks" value="{{ old('pembekal_no_faks',isset($pembekals->pembekal_no_faks)?$pembekals->pembekal_no_faks:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pembekal_no_faks') 
@@ -180,7 +180,41 @@
 @section('local_js')
 <script>
 $(document).ready(function(){
-   
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+   
+// search poskod in DB
+$("input[name='pembekal_poskod']").on('blur', function(){
+    // alert(poskod = $(this).val());
+    $.ajax({
+            url : "{{ route('poskod.info') }}",
+            type : "post",
+            data: {'poskod': $(this).val()},
+            datatype: 'json',
+            // beforeSend: function() {
+            //     $('#spinner_confirm_delete').show();
+            // },
+            success : function(data) {
+                // $('#spinner_confirm_delete').hide();
+                console.log(data);
+                if (data.length>0){
+                    $("input[name='pembekal_bandar']").val(data[0].bandar);
+                    $("select[name='pembekal_negeri']").val(data[0].negeri);
+                    $("select[name='pembekal_negara']").val('Malaysia');
+                }
+                else {
+                    $("input[name='pembekal_bandar']").val('');
+                    $("select[name='pembekal_negeri']").val('');
+                    $("select[name='pembekal_negara']").val('');
+                }
+                // alert(data);
+            }  
+        });
+    });
+});
 </script>  
 @endsection

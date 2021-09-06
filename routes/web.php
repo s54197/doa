@@ -36,15 +36,17 @@ Route::middleware('auth')->group(function() {
     Route::get('syarikat/papar/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'view'])->name('papar.syarikat');
     Route::get('syarikat/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'update_view'])->name('kemaskini.syarikat');
     // view syarikat 
-    Route::get('form/syarikat', function () {
-        return view('maklumat_am.forms.syarikat')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);
-    })->name('form.syarikat');
+    // Route::get('form/syarikat', function () {
+    //     return view('maklumat_am.forms.syarikat')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);
+    // })->name('form.syarikat');
+     Route::get('form/syarikat/baru', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'new_view'])->name('baru.syarikat');
     // delete syarikat
     Route::delete('form/syarikat/delete/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'delete'])->name('syarikat.delete');
     // create syarikat
     Route::post('form/syarikat/create', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'store'])->name('syarikat.create');
     // update syarikat
     Route::post('form/syarikat/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'update'])->name('syarikat.update');
+    Route::post('form/syarikat/poskod', [App\Http\Controllers\MaklumatAm\SyarikatController::class, 'poskod_info'])->name('poskod.info');
 
 
     /***********************************
@@ -54,13 +56,15 @@ Route::middleware('auth')->group(function() {
     Route::get('agen/papar/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'view'])->name('papar.agen');
     Route::get('agen/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'update_view'])->name('kemaskini.agen');
     // view agen 
-    Route::get('form/agen', function () {return view('maklumat_am.forms.agen')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.agen');
+    // Route::get('form/agen', function () {return view('maklumat_am.forms.agen')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.agen');
     // delete agen
     Route::delete('form/agen/delete/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'delete'])->name('agen.delete');
     // create agen
     Route::post('form/agen/create', [App\Http\Controllers\MaklumatAm\AgenController::class, 'store'])->name('agen.create');
     // update agen
     Route::post('form/agen/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'update'])->name('agen.update');
+    // new agen
+    Route::get('form/agen/baru', [App\Http\Controllers\MaklumatAm\AgenController::class, 'new_view'])->name('baru.agen');
 
 
     /***********************************

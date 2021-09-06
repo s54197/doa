@@ -12,7 +12,10 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="/assets/images/logo-tab v1.ico">
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- third party css -->
         <link href="/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
@@ -69,7 +72,7 @@
 
                     <!-- User box -->
                     <div class="user-box">
-                        <img src="/assets/images/logo-dark-small-gap.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77">
+                        <img src="/assets/images/logo-dark v1.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77">
                         {{-- <h5 class="text-light">
                             Sistem Maklumat Rekod Pendaftaran
                         </h5> --}}

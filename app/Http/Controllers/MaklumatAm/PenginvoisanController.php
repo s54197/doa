@@ -9,6 +9,7 @@ use App\Models\ListNegara;
 use App\Models\Penginvoisan;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 
 class PenginvoisanController extends Controller
 {
@@ -104,12 +105,12 @@ class PenginvoisanController extends Controller
             'penginvoisan_bangunan' => 'required',
             'penginvoisan_jalan' => 'required',
             'penginvoisan_poskod' => 'required',
-            'penginvoisan_bandar' => 'required',
-            'penginvoisan_negeri' => 'required',
-            'penginvoisan_negeri_luar_malaysia' => 'required',
+            // 'penginvoisan_bandar' => 'required',
+            // 'penginvoisan_negeri' => 'required',
+            // 'penginvoisan_negeri_luar_malaysia' => 'required',
             'penginvoisan_negara' => 'required',
             'penginvoisan_no_tel' => 'required',
-            'penginvoisan_no_faks' => 'required',
+            // 'penginvoisan_no_faks' => 'required',
             'penginvoisan_emel' => 'required|email',
             // 'penginvoisan_status' => 'required',
         ]);
@@ -149,12 +150,12 @@ class PenginvoisanController extends Controller
             'penginvoisan_bangunan' => 'required',
             'penginvoisan_jalan' => 'required',
             'penginvoisan_poskod' => 'required',
-            'penginvoisan_bandar' => 'required',
-            'penginvoisan_negeri' => 'required',
-            'penginvoisan_negeri_luar_malaysia' => 'required',
+            // 'penginvoisan_bandar' => 'required',
+            // 'penginvoisan_negeri' => 'required',
+            // 'penginvoisan_negeri_luar_malaysia' => 'required',
             'penginvoisan_negara' => 'required',
             'penginvoisan_no_tel' => 'required',
-            'penginvoisan_no_faks' => 'required',
+            // 'penginvoisan_no_faks' => 'required',
             'penginvoisan_emel' => 'required|email',
             // 'penginvoisan_status' => 'required',
         ]);

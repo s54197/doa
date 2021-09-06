@@ -9,6 +9,7 @@ use App\Models\ListNegara;
 use App\Models\Perawis;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 
 
 class PerawisController extends Controller
@@ -106,7 +107,7 @@ class PerawisController extends Controller
             'perawis_tarikh_terhad' => 'required',
             'perawis_peratusan' => 'required',
             'perawis_unit' => 'required',
-            'perawis_unit_lain' => 'required',
+            'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
         ]);
 
         try {
@@ -156,7 +157,7 @@ class PerawisController extends Controller
             'perawis_tarikh_terhad' => 'required',
             'perawis_peratusan' => 'required',
             'perawis_unit' => 'required',
-            'perawis_unit_lain' => 'required',
+            'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
         ]);
 
         try {
