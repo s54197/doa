@@ -23,8 +23,10 @@ class CreateAgensTable extends Migration
             $table->string('agen_bangunan');
             $table->string('agen_jalan');
             $table->string('agen_poskod');
-            $table->string('agen_bandar');
-            $table->string('agen_negeri');
+            $table->string('agen_bandar')->nullable();
+            $table->string('agen_negeri')->nullable(); 
+            $table->string('syarikat_negeri_luar_malaysia')->nullable();
+            $table->string('syarikat_negara');
             $table->string('agen_no_tel');
             $table->string('agen_no_faks')->nullable();
             $table->string('agen_emel');

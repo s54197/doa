@@ -56,13 +56,15 @@ Route::middleware('auth')->group(function() {
     Route::get('agen/papar/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'view'])->name('papar.agen');
     Route::get('agen/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'update_view'])->name('kemaskini.agen');
     // view agen 
-    Route::get('form/agen', function () {return view('maklumat_am.forms.agen')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.agen');
+    // Route::get('form/agen', function () {return view('maklumat_am.forms.agen')->with(['jenis' => 'new','tajuk' => 'Pendaftaran']);})->name('form.agen');
     // delete agen
     Route::delete('form/agen/delete/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'delete'])->name('agen.delete');
     // create agen
     Route::post('form/agen/create', [App\Http\Controllers\MaklumatAm\AgenController::class, 'store'])->name('agen.create');
     // update agen
     Route::post('form/agen/kemaskini/{id}', [App\Http\Controllers\MaklumatAm\AgenController::class, 'update'])->name('agen.update');
+    // new agen
+    Route::get('form/agen/baru', [App\Http\Controllers\MaklumatAm\AgenController::class, 'new_view'])->name('baru.agen');
 
 
     /***********************************

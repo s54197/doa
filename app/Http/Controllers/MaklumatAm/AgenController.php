@@ -6,12 +6,32 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Agen;
+use App\Models\ListNegara;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 
 class AgenController extends Controller
 {
+
+    public $list_negara;
+
+    public function __construct(){
+        $this->list_negara = ListNegara::all();
+    }
+
+    // Show data
+    public function new_view() {
+
+        $data = array(
+            'list_negara' => $this->list_negara,
+            'jenis' => 'new',
+            'tajuk' => 'Pendaftaran'
+        );
+        
+        return view('maklumat_am.forms.agen')->with($data);
+    }
+
     // All data
     public function index() {
 
@@ -82,8 +102,9 @@ class AgenController extends Controller
             'agen_bangunan' => 'required',
             'agen_jalan' => 'required',
             'agen_poskod' => 'required',
-            'agen_bandar' => 'required',
-            'agen_negeri' => 'required',
+            // 'agen_bandar' => 'required',
+            // 'agen_negeri' => 'required',
+            'agen_negara' => 'required',
             'agen_no_tel' => 'required',
             // 'agen_no_faks' => 'required',
             'agen_emel' => 'required|email',
@@ -104,6 +125,8 @@ class AgenController extends Controller
                 'agen_poskod' => $request->agen_poskod,
                 'agen_bandar' => $request->agen_bandar,
                 'agen_negeri' => $request->agen_negeri,
+                'agen_negeri_luar_malaysia' => $request->agen_negeri_luar_malaysia,
+                'agen_negara' => $request->agen_negara,
                 'agen_no_tel' => $request->agen_no_tel,
                 'agen_no_faks' => $request->agen_no_faks,
                 'agen_emel' => $request->agen_emel,
@@ -127,8 +150,9 @@ class AgenController extends Controller
             'agen_bangunan' => 'required',
             'agen_jalan' => 'required',
             'agen_poskod' => 'required',
-            'agen_bandar' => 'required',
-            'agen_negeri' => 'required',
+            // 'agen_bandar' => 'required',
+            // 'agen_negeri' => 'required',
+            'agen_negara' => 'required',
             'agen_no_tel' => 'required',
             // 'agen_no_faks' => 'required',
             'agen_emel' => 'required|email',
@@ -147,6 +171,8 @@ class AgenController extends Controller
                 'agen_poskod' => $request->agen_poskod,
                 'agen_bandar' => $request->agen_bandar,
                 'agen_negeri' => $request->agen_negeri,
+                'agen_negeri_luar_malaysia' => $request->agen_negeri_luar_malaysia,
+                'agen_negara' => $request->agen_negara,
                 'agen_no_tel' => $request->agen_no_tel,
                 'agen_no_faks' => $request->agen_no_faks,
                 'agen_emel' => $request->agen_emel,

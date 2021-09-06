@@ -115,6 +115,29 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="agen_negeri_luar_malaysia">Negeri (luar malaysia):</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="agen_negeri_luar_malaysia" name="agen_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia)" value="{{ old('agen_negeri_luar_malaysia',isset($agens->agen_negeri_luar_malaysia)?$agens->agen_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        @error('agen_negeri_luar_malaysia') 
+                                        <small class='text-danger'>{{ $message }}</small> 
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="agen_negara"><span class="text-danger">*</span>Negara:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name="agen_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Negara...</option>
+                                            @foreach($list_negara as $negara)
+                                                <option value="{{ $negara->negara_nama }}" {{ old('agen_negara' , isset($agens->agen_negara)?$agens->agen_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
+                                            @endforeach
+                                        </select>   
+                                        @error('agen_negara') 
+                                        <small class='text-danger'>{{ $message }}</small> 
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="agen_no_tel"><span class="text-danger">*</span>Nombor telefon:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="agen_no_tel" name="agen_no_tel" class="form-control" placeholder="Nama telefon" value="{{ old('agen_no_tel',isset($agens->agen_no_tel)?$agens->agen_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
@@ -175,6 +198,13 @@
 @section('local_js')
 <script>
 $(document).ready(function(){
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $('input[name="agen_tarikh_roc"]').datepicker();
     $('input[name="agen_tarikh_roc"]').attr("placeholder","Tarikh Pendaftaran (ROC) - Pilih dari kalendar");
 
@@ -212,6 +242,35 @@ $('#agen_surat').click(function(){
 
 // everytime page is reloaded check if the same alamat surat-menyurat is checked
 changeInputReadonly();
+
+// search poskod in DB
+$("input[name='agen_poskod']").on('blur', function(){
+    // alert(poskod = $(this).val());
+    $.ajax({
+            url : "{{ route('poskod.info') }}",
+            type : "post",
+            data: {'poskod': $(this).val()},
+            datatype: 'json',
+            // beforeSend: function() {
+            //     $('#spinner_confirm_delete').show();
+            // },
+            success : function(data) {
+                // $('#spinner_confirm_delete').hide();
+                console.log(data);
+                if (data.length>0){
+                    $("input[name='agen_bandar']").val(data[0].bandar);
+                    $("select[name='agen_negeri']").val(data[0].negeri);
+                    $("select[name='agen_negara']").val('Malaysia');
+                }
+                else {
+                    $("input[name='agen_bandar']").val('');
+                    $("select[name='agen_negeri']").val('');
+                    $("select[name='agen_negara']").val('');
+                }
+                // alert(data);
+            }  
+        });
+});
 
 });
 

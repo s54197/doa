@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="penginvoisan_negeri_luar_malaysia"><span class="text-danger">*</span>Negeri (luar malaysia) penginvoisan:</label>
+                                    <label class="col-md-3 col-form-label" for="penginvoisan_negeri_luar_malaysia">Negeri (luar malaysia) penginvoisan:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="penginvoisan_negeri_luar_malaysia" name="penginvoisan_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia) penginvoisan" value="{{ old('penginvoisan_negeri_luar_malaysia',isset($penginvoisans->penginvoisan_negeri_luar_malaysia)?$penginvoisans->penginvoisan_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('penginvoisan_negeri_luar_malaysia') 
@@ -111,7 +111,7 @@
                                         <select class="form-control" name="penginvoisan_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
                                             @foreach($list_negara as $negara)
-                                                <option value=" {{ $negara->negara_nama }}" {{ old('penginvoisan_negara' , isset($penginvoisans->penginvoisan_negara)?$penginvoisans->penginvoisan_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
+                                                <option value="{{ $negara->negara_nama }}" {{ old('penginvoisan_negara' , isset($penginvoisans->penginvoisan_negara)?$penginvoisans->penginvoisan_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
                                             @endforeach
                                         </select>
                                         @error('penginvoisan_negara') 
@@ -180,7 +180,40 @@
 @section('local_js')
 <script>
 $(document).ready(function(){
-   
-
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    
+    // search poskod in DB
+    $("input[name='penginvoisan_poskod']").on('blur', function(){
+        // alert(poskod = $(this).val());
+        $.ajax({
+            url : "{{ route('poskod.info') }}",
+            type : "post",
+            data: {'poskod': $(this).val()},
+            datatype: 'json',
+            // beforeSend: function() {
+            //     $('#spinner_confirm_delete').show();
+            // },
+            success : function(data) {
+                // $('#spinner_confirm_delete').hide();
+                console.log(data);
+                if (data.length>0){
+                    $("input[name='penginvoisan_bandar']").val(data[0].bandar);
+                    $("select[name='penginvoisan_negeri']").val(data[0].negeri);
+                    $("select[name='penginvoisan_negara']").val('Malaysia');
+                }
+                else {
+                    $("input[name='penginvoisan_bandar']").val('');
+                    $("select[name='penginvoisan_negeri']").val('');
+                    $("select[name='penginvoisan_negara']").val('');
+                }
+                // alert(data);
+            }  
+        });
+    });
+});
 </script>  
 @endsection

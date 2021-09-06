@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="syarikat_negeri_luar_malaysia"><span class="text-danger">*</span>Negeri (luar malaysia):</label>
+                                    <label class="col-md-3 col-form-label" for="syarikat_negeri_luar_malaysia">Negeri (luar malaysia):</label>
                                     <div class="col-md-8">
                                         <input type="text" id="syarikat_negeri_luar_malaysia" name="syarikat_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia) syarikat" value="{{ old('syarikat_negeri_luar_malaysia',isset($syarikats->syarikat_negeri_luar_malaysia)?$syarikats->syarikat_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_negeri_luar_malaysia') 
@@ -120,7 +120,7 @@
                                         <select class="form-control" name="syarikat_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
                                             @foreach($list_negara as $negara)
-                                                <option value=" {{ $negara->negara_nama }}" {{ old('syarikat_negara' , isset($syarikats->syarikat_negara)?$syarikats->syarikat_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
+                                                <option value="{{ $negara->negara_nama }}" {{ old('syarikat_negara' , isset($syarikats->syarikat_negara)?$syarikats->syarikat_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
                                             @endforeach
                                         </select>   
                                         @error('syarikat_negara') 
@@ -188,7 +188,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="syarikat_surat_negeri_luar_malaysia"><span class="text-danger">*</span>Negeri (luar malaysia):</label>
+                                    <label class="col-md-3 col-form-label" for="syarikat_surat_negeri_luar_malaysia">Negeri (luar malaysia):</label>
                                     <div class="col-md-8">
                                         <input type="text" id="syarikat_surat_negeri_luar_malaysia" name="syarikat_surat_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia)" value="{{ old('syarikat_surat_negeri_luar_malaysia',isset($syarikats->syarikat_surat_negeri_luar_malaysia)?$syarikats->syarikat_surat_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_surat_negeri_luar_malaysia') 
@@ -202,7 +202,7 @@
                                         <select class="form-control" name="syarikat_surat_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
                                             @foreach($list_negara as $negara)
-                                                <option value=" {{ $negara->negara_nama }}" {{ old('syarikat_surat_negara' , isset($syarikats->syarikat_surat_negara)?$syarikats->syarikat_surat_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
+                                                <option value="{{ $negara->negara_nama }}" {{ old('syarikat_surat_negara' , isset($syarikats->syarikat_surat_negara)?$syarikats->syarikat_surat_negara:null ) == $negara->negara_nama ? 'selected' : '' }} >{{ $negara->negara_nama }}</option>
                                             @endforeach
                                         </select>   
                                         @error('syarikat_surat_negara') 
@@ -349,8 +349,16 @@ $("input[name='syarikat_poskod']").on('blur', function(){
             success : function(data) {
                 // $('#spinner_confirm_delete').hide();
                 console.log(data);
-                $("input[name='syarikat_bandar']").val(data[0].bandar);
-                $("select[name='syarikat_negeri']").val(data[0].negeri);
+                if (data.length>0){
+                    $("input[name='syarikat_bandar']").val(data[0].bandar);
+                    $("select[name='syarikat_negeri']").val(data[0].negeri);
+                    $("select[name='syarikat_negara']").val('Malaysia');
+                }
+                else {
+                    $("input[name='syarikat_bandar']").val('');
+                    $("select[name='syarikat_negeri']").val('');
+                    $("select[name='syarikat_negara']").val('');
+                }
                 // alert(data);
             }  
         });
@@ -368,9 +376,16 @@ $("input[name='syarikat_surat_poskod']").on('blur', function(){
             success : function(data) {
                 // $('#spinner_confirm_delete').hide();
                 console.log(data);
-                $("input[name='syarikat_surat_bandar']").val(data[0].bandar);
-                $("select[name='syarikat_surat_negeri']").val(data[0].negeri);
-                // alert(data);
+                if (data.length>0){
+                    $("input[name='syarikat_surat_bandar']").val(data[0].bandar);
+                    $("select[name='syarikat_surat_negeri']").val(data[0].negeri);
+                    $("select[name='syarikat_surat_negara']").val('Malaysia');
+                }
+                else {
+                    $("input[name='syarikat_surat_bandar']").val('');
+                    $("select[name='syarikat_surat_negeri']").val('');
+                    $("select[name='syarikat_surat_negara']").val('');
+                }
             }  
         });
 });

@@ -20,10 +20,10 @@ class CreatePembekalsTable extends Migration
             $table->string('pembekal_bangunan');
             $table->string('pembekal_jalan');
             $table->string('pembekal_poskod');
-            $table->string('pembekal_bandar');
-            $table->string('pembekal_negeri');
+            $table->string('pembekal_bandar')->nullable();
+            $table->string('pembekal_negeri')->nullable();
             $table->string('pembekal_negeri_luar_malaysia')->nullable();
-            $table->string('pembekal_negara')->nullable();
+            $table->string('pembekal_negara');
             $table->string('pembekal_no_tel');
             $table->string('pembekal_no_faks')->nullable();
             $table->string('pembekal_emel');

@@ -20,10 +20,10 @@ class CreatePenginvoisansTable extends Migration
             $table->string('penginvoisan_bangunan');
             $table->string('penginvoisan_jalan');
             $table->string('penginvoisan_poskod');
-            $table->string('penginvoisan_bandar');
-            $table->string('penginvoisan_negeri');
+            $table->string('penginvoisan_bandar')->nullable();
+            $table->string('penginvoisan_negeri')->nullable();
             $table->string('penginvoisan_negeri_luar_malaysia')->nullable();
-            $table->string('penginvoisan_negara')->nullable();
+            $table->string('penginvoisan_negara');
             $table->string('penginvoisan_no_tel');
             $table->string('penginvoisan_no_faks')->nullable();
             $table->string('penginvoisan_emel');
