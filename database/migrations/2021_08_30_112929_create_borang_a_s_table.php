@@ -38,15 +38,15 @@ class CreateBorangASTable extends Migration
             $table->boolean('borangA_mengilang_membuat');
             $table->string('borangA_mengilang_lain');
             $table->string('borangA_mengilang_lain_maklumat');
-            $table->string('borangA_pengilang');
-            $table->string('borangA_pengilang_kontrak');
-            $table->string('borangA_penginvoisan');
-            $table->string('borangA_gudang');
-            $table->string('borangA_perawis_aktif');
+            $table->unsignedBigInteger('borangA_pengilang_pembekal')->unique()->increments();
+            $table->unsignedBigInteger('borangA_pengilang_kontrak')->unique()->increments();;
+            $table->unsignedBigInteger('borangA_penginvoisan')->unique()->increments();;
+            $table->unsignedBigInteger('borangA_gudang')->unique()->increments();;
+            $table->unsignedBigInteger('borangA_perawis_aktif')->unique()->increments();;
             $table->string('borangA_perawis_kod');
             $table->string('borangA_perawis_perumusan');
             $table->string('borangA_perawis_perumusan_lain');
-            $table->string('borangA_perawis_pengilang');
+            $table->unsignedBigInteger('borangA_perawis_pengilang')->unique()->increments();;
 
             $table->string('borangA_status');
 
