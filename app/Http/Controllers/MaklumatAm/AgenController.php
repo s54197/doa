@@ -111,7 +111,7 @@ class AgenController extends Controller
             // 'agen_status' => 'required',
         ]);
 
-        // dd($request);
+        // dd($request->agen_negara);
 
         try {
             $user = User::find(Auth::user()->id);
@@ -135,7 +135,7 @@ class AgenController extends Controller
             ]);
             return redirect('/agen')->withSuccess('Agen '.$request->agen_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/agen')->withWarning('Agen '.$request->agen_nama.' tidak berjaya didaftarkan!');
+            return redirect('/agen')->withWarning('Agen '.$request->agen_nama.' tidak berjaya didaftarkan!'.$e);
         }
         
     }
