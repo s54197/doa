@@ -65,7 +65,7 @@ class BorangA extends Model
         'borangA_mengilang_membuat',
         'borangA_mengilang_lain',
         'borangA_mengilang_lain_maklumat',
-        'borangA_pengilang',
+        'borangA_pengilang_pembekal',
         'borangA_pengilang_kontrak',
         'borangA_penginvoisan',
         'borangA_gudang',

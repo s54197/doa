@@ -255,6 +255,9 @@
                                         Lain-lain (nyatakan)
                                     </label>
                                 </div>
+                                @error('borangA_mengilang_lain') 
+                                    <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
                             </div>
                             @error('borangA_mengilang') 
                             <small class='text-danger'>{{ $message }}</small> 
@@ -271,16 +274,24 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang"><span class="text-danger">*</span>Pengilang/Pembekal:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang[]" id="borangA_pengilang" multiple="multiple">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang[]" id="borangA_pengilang" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($pengilangs as $pengilang)
-                                        @foreach($borangAs->borangA_pengilang as $value) 
-                                        <option value="{{ $pengilang->pengilang_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pengilang->pengilang_nama }} </option>
-                                        @endforeach
+                                        @if(isset($borangAs))
+                                            @foreach($borangAs->borangA_pengilang_pembekal as $value) 
+                                                <option value="{{ $pengilang->pengilang_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pengilang->pengilang_nama }} </option>
+                                            @endforeach
+                                        @else
+                                            <option value="{{ $pengilang->pengilang_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pengilang->pengilang_nama }} </option>
+                                        @endif
                                     @endforeach
                                     @foreach($pembekals as $pembekal)
-                                        @foreach($borangAs->borangA_pengilang as $value)
-                                        <option value="{{ $pembekal->pengilang_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pembekal->pembekal_nama }} </option>
-                                        @endforeach
+                                        @if(isset($borangAs)) 
+                                            @foreach($borangAs->borangA_pengilang_pembekal as $value)
+                                                <option value="{{ $pembekal->pengilang_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pembekal->pembekal_nama }} </option>
+                                            @endforeach
+                                        @else
+                                            <option value="{{ $pembekal->pengilang_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pembekal->pembekal_nama }} </option>
+                                        @endif
                                         <!-- <option value="{{ $pembekal->pembekal_nama }}">{{ $pembekal->pembekal_nama }}</option> -->
                                     @endforeach
                                 </select>  
@@ -292,9 +303,15 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang_kontrak"><span class="text-danger">*</span>Pengilang Kontrak:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang_kontrak[]" id="borangA_pengilang_kontrak" multiple="multiple">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang_kontrak[]" id="borangA_pengilang_kontrak" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($pengilangs as $pengilang)
-                                        <option value="{{ $pengilang->pengilang_nama }}" >{{ $pengilang->pengilang_nama }}</option>
+                                        @if(isset($borangAs)) 
+                                            @foreach($borangAs->borangA_pengilang_kontrak as $value)
+                                                <option value="{{ $pengilang->pengilang_nama }}" {{ old('borangA_pengilang_kontrak[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }} >{{ $pengilang->pengilang_nama }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="{{ $pengilang->pengilang_nama }}" {{ old('borangA_pengilang_kontrak[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pengilang->pengilang_nama }} </option>
+                                        @endif
                                     @endforeach
                                 </select>  
                                 @error('borangA_pengilang_kontrak') 
@@ -305,9 +322,15 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_penginvoisan"><span class="text-danger">*</span>Invoicing:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_penginvoisan[]" id="borangA_penginvoisan" multiple="multiple">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_penginvoisan[]" id="borangA_penginvoisan" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($penginvoisans as $penginvoisan)
-                                        <option value="{{ $penginvoisan->penginvoisan_nama }}" >{{ $penginvoisan->penginvoisan_nama }}</option>                                       
+                                        @if(isset($borangAs))
+                                            @foreach($borangAs->borangA_penginvoisan as $value)
+                                                <option value="{{ $penginvoisan->penginvoisan_nama }}" {{ old('borangA_penginvoisan[]' , isset($value)?$value:null ) == $penginvoisan->penginvoisan_nama ? 'selected' : '' }} >{{ $penginvoisan->penginvoisan_nama }}</option>                                       
+                                            @endforeach
+                                        @else
+                                            <option value="{{ $penginvoisan->penginvoisan_nama }}" {{ old('borangA_penginvoisan[]' , isset($value)?$value:null ) == $penginvoisan->penginvoisan_nama ? 'selected' : '' }}>{{ $penginvoisan->penginvoisan_nama }} </option>
+                                        @endif     
                                     @endforeach
                                 </select>  
                                 @error('borangA_penginvoisan') 
@@ -318,9 +341,15 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_gudang"><span class="text-danger">*</span>Gudang:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_gudang[]" id="borangA_gudang" multiple="multiple">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_gudang[]" id="borangA_gudang" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($gudangs as $gudang)
-                                        <option value="{{ $gudang->gudang_nama }}">{{ $gudang->gudang_nama }}</option>
+                                        @if(isset($borangAs))
+                                            @foreach($borangAs->borangA_gudang as $value)
+                                                <option value="{{ $gudang->gudang_nama }}" {{ old('borangA_gudang[]' , isset($value)?$value:null ) == $gudang->gudang_nama ? 'selected' : '' }}>{{ $gudang->gudang_nama }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="{{ $gudang->gudang_nama }}" {{ old('borangA_gudang[]' , isset($value)?$value:null ) == $gudang->gudang_nama ? 'selected' : '' }}>{{ $gudang->gudang_nama }} </option>
+                                        @endif
                                     @endforeach
                                 </select>  
                                 @error('borangA_gudang') 
@@ -345,9 +374,15 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_aktif"><span class="text-danger">*</span>Perawis Aktif:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_aktif[]" id="borangA_perawis_aktif" multiple="multiple">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_aktif[]" id="borangA_perawis_aktif" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($perawiss as $perawis)
-                                        <option value="{{ $perawis->perawis_nama }}">{{ $perawis->perawis_nama }}</option>
+                                        @if(isset($borangAs))
+                                            @foreach($borangAs->borangA_perawis_aktif as $value)
+                                                <option value="{{ $perawis->perawis_nama }}" {{ old('borangA_perawis_aktif[]' , isset($value)?$value:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="{{ $perawis->perawis_nama }}" {{ old('borangA_perawis_aktif[]' , isset($value)?$value:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
+                                        @endif
                                     @endforeach
                                 </select>  
                                 @error('borangA_perawis_aktif') 
@@ -358,7 +393,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_kod"><span class="text-danger">*</span>Nombor Kod:</label>
                             <div class="col-md-9">
-                                <input type="text" id="borangA_perawis_kod" name="borangA_perawis_kod" class="form-control custom_border" placeholder="Nombor Kod" value="{{ old('borangA_perawis_kod') }}">
+                                <input type="text" id="borangA_perawis_kod" name="borangA_perawis_kod" class="form-control custom_border" placeholder="Nombor Kod" value="{{ old('borangA_perawis_kod',isset($borangAs->borangA_perawis_kod)?$borangAs->borangA_perawis_kod:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_perawis_kod') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -369,282 +404,282 @@
                             <div class="col-md-9">
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_bahan_teknikal_pepejal_tc' name='borangA_perawis_perumusan' class='custom-control-input' value='Bahan Teknikal Pepejal (TC)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Bahan Teknikal Pepejal (TC)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Bahan Teknikal Pepejal (TC)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_bahan_teknikal_pepejal_tc'>Bahan Teknikal Pepejal (TC)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_bahan_teknikal_separa_pepejal_tc' name='borangA_perawis_perumusan' class='custom-control-input' value='Bahan Teknikal Separa Pepejal (TC)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Bahan Teknikal Separa Pepejal (TC)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Bahan Teknikal Separa Pepejal (TC)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_bahan_teknikal_separa_pepejal_tc'>Bahan Teknikal Separa Pepejal (TC)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_bahan_teknikal_cecair_tc' name='borangA_perawis_perumusan' class='custom-control-input' value='Bahan Teknikal Cecair (TC)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Bahan Teknikal Cecair (TC)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Bahan Teknikal Cecair (TC)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_bahan_teknikal_cecair_tc'>Bahan Teknikal Cecair (TC)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_teknikal_pepejal_tk' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Teknikal Pepejal (TK)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Teknikal Pepejal (TK)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Teknikal Pepejal (TK)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_teknikal_pepejal_tk'>Pekatan Teknikal Pepejal (TK)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_teknikal_separa_pepejal_tk' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Teknikal Separa Pepejal (TK)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Teknikal Separa Pepejal (TK)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Teknikal Separa Pepejal (TK)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_teknikal_separa_pepejal_tk'>Pekatan Teknikal Separa Pepejal (TK)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_teknikal_cecair_tk' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Teknikal Cecair (TK)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Teknikal Cecair (TK)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Teknikal Cecair (TK)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_teknikal_cecair_tk'>Pekatan Teknikal Cecair (TK)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_serbuk_bancuh_wp' name='borangA_perawis_perumusan' class='custom-control-input' value='Serbuk Bancuh (WP)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Serbuk Bancuh (WP)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Serbuk Bancuh (WP)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_serbuk_bancuh_wp'>Serbuk Bancuh (WP)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_serbuk_bancuh_sp' name='borangA_perawis_perumusan' class='custom-control-input' value='Serbuk Bancuh (SP)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Serbuk Bancuh (SP)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Serbuk Bancuh (SP)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_serbuk_bancuh_sp'>Serbuk Bancuh (SP)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_butir_terserak_air_wg' name='borangA_perawis_perumusan' class='custom-control-input' value='Butir Terserak Air (WG)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Butir Terserak Air (WG)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Butir Terserak Air (WG)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_butir_terserak_air_wg'>Butir Terserak Air (WG)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_butir_larut_air_sg' name='borangA_perawis_perumusan' class='custom-control-input' value='Butir Larut Air (SG)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Butir Larut Air (SG)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Butir Larut Air (SG)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_butir_larut_air_sg'>Butir Larut Air (SG)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_butir_gr' name='borangA_perawis_perumusan' class='custom-control-input' value='Butir (GR)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Butir (GR)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Butir (GR)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_butir_gr'>Butir (GR)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_butir_terkapsul_cg' name='borangA_perawis_perumusan' class='custom-control-input' value='Butir Terkapsul (CG)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Butir Terkapsul (CG)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Butir Terkapsul (CG)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_butir_terkapsul_cg'>Butir Terkapsul (CG)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_larut_air_sl' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Larut Air (SL)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Larut Air (SL)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Larut Air (SL)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_larut_air_sl'>Pekatan Larut Air (SL)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_cecair_larut_minyak_ol' name='borangA_perawis_perumusan' class='custom-control-input' value='Cecair Larut Minyak (OL)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Cecair Larut Minyak (OL)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Cecair Larut Minyak (OL)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_cecair_larut_minyak_ol'>Cecair Larut Minyak (OL)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_cecair_isipadu_ultrarendah_ul' name='borangA_perawis_perumusan' class='custom-control-input' value='Cecair Isipadu Ultrarendah (UL)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Cecair Isipadu Ultrarendah (UL)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Cecair Isipadu Ultrarendah (UL)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_cecair_isipadu_ultrarendah_ul'>Cecair Isipadu Ultrarendah (UL)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_teremulsi_ec' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Teremulsi (EC)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Teremulsi (EC)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Teremulsi (EC)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_teremulsi_ec'>Pekatan Teremulsi (EC)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_mikro-emulsi_me' name='borangA_perawis_perumusan' class='custom-control-input' value='Mikro-emulsi (ME)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Mikro-emulsi (ME)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Mikro-emulsi (ME)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_mikro-emulsi_me'>Mikro-emulsi (ME)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_emulsi,_minyak_dalam_air_ew' name='borangA_perawis_perumusan' class='custom-control-input' value='Emulsi, Minyak Dalam Air (EW)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Emulsi, Minyak Dalam Air (EW)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Emulsi, Minyak Dalam Air (EW)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_emulsi,_minyak_dalam_air_ew'>Emulsi, Minyak Dalam Air (EW)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_emulsi,_air_dalam_minyak_eo' name='borangA_perawis_perumusan' class='custom-control-input' value='Emulsi, Air Dalam Minyak (EO)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Emulsi, Air Dalam Minyak (EO)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Emulsi, Air Dalam Minyak (EO)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_emulsi,_air_dalam_minyak_eo'>Emulsi, Air Dalam Minyak (EO)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_ampaian_sc' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Ampaian (SC)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Ampaian (SC)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Ampaian (SC)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_ampaian_sc'>Pekatan Ampaian (SC)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_ampaian_od' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Ampaian (OD)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Ampaian (OD)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Ampaian (OD)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_ampaian_od'>Pekatan Ampaian (OD)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_ampaian_kapsul_cs' name='borangA_perawis_perumusan' class='custom-control-input' value='Ampaian Kapsul (CS)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Ampaian Kapsul (CS)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Ampaian Kapsul (CS)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_ampaian_kapsul_cs'>Ampaian Kapsul (CS)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_terserak_air_dc' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Terserak Air (DC)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Terserak Air (DC)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Terserak Air (DC)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_terserak_air_dc'>Pekatan Terserak Air (DC)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_ampaian-emulsi_se' name='borangA_perawis_perumusan' class='custom-control-input' value='Ampaian-emulsi (SE)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Ampaian-emulsi (SE)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Ampaian-emulsi (SE)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_ampaian-emulsi_se'>Ampaian-emulsi (SE)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_lingkaran_nyamuk_mc' name='borangA_perawis_perumusan' class='custom-control-input' value='Lingkaran Nyamuk (MC)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Lingkaran Nyamuk (MC)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Lingkaran Nyamuk (MC)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_lingkaran_nyamuk_mc'>Lingkaran Nyamuk (MC)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_kepingan_meruap_mv' name='borangA_perawis_perumusan' class='custom-control-input' value='Kepingan Meruap (MV)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Kepingan Meruap (MV)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Kepingan Meruap (MV)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_kepingan_meruap_mv'>Kepingan Meruap (MV)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_aerosol_ae' name='borangA_perawis_perumusan' class='custom-control-input' value='Aerosol (AE)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Aerosol (AE)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Aerosol (AE)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_aerosol_ae'>Aerosol (AE)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_cecair_meruap_lv' name='borangA_perawis_perumusan' class='custom-control-input' value='Cecair Meruap (LV)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Cecair Meruap (LV)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Cecair Meruap (LV)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_cecair_meruap_lv'>Cecair Meruap (LV)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_serbuk_sentuh_cp' name='borangA_perawis_perumusan' class='custom-control-input' value='Serbuk Sentuh (CP)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Serbuk Sentuh (CP)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Serbuk Sentuh (CP)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_serbuk_sentuh_cp'>Serbuk Sentuh (CP)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_tin_asap_fd' name='borangA_perawis_perumusan' class='custom-control-input' value='Tin Asap (FD)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Tin Asap (FD)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Tin Asap (FD)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_tin_asap_fd'>Tin Asap (FD)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_gas_ga' name='borangA_perawis_perumusan' class='custom-control-input' value='Gas (GA)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Gas (GA)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Gas (GA)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_gas_ga'>Gas (GA)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_perekat_pa' name='borangA_perawis_perumusan' class='custom-control-input' value='Perekat (PA)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Perekat (PA)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Perekat (PA)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_perekat_pa'>Perekat (PA)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_cecair_titis_sa' name='borangA_perawis_perumusan' class='custom-control-input' value='Cecair Titis (SA)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Cecair Titis (SA)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Cecair Titis (SA)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_cecair_titis_sa'>Cecair Titis (SA)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_cecair_curah_po' name='borangA_perawis_perumusan' class='custom-control-input' value='Cecair Curah (PO)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Cecair Curah (PO)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Cecair Curah (PO)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_cecair_curah_po'>Cecair Curah (PO)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_umpan_rb' name='borangA_perawis_perumusan' class='custom-control-input' value='Umpan (RB)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Umpan (RB)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Umpan (RB)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_umpan_rb'>Umpan (RB)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_umpan_berbutir_gb' name='borangA_perawis_perumusan' class='custom-control-input' value='Umpan Berbutir (GB)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Umpan Berbutir (GB)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Umpan Berbutir (GB)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_umpan_berbutir_gb'>Umpan Berbutir (GB)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_umpan_berbungkah_bb' name='borangA_perawis_perumusan' class='custom-control-input' value='Umpan Berbungkah (BB)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Umpan Berbungkah (BB)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Umpan Berbungkah (BB)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_umpan_berbungkah_bb'>Umpan Berbungkah (BB)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_umpan_cb' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Umpan (CB)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Umpan (CB)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Umpan (CB)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_umpan_cb'>Pekatan Umpan (CB)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_gris_gs' name='borangA_perawis_perumusan' class='custom-control-input' value='Gris (GS)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Gris (GS)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Gris (GS)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_gris_gs'>Gris (GS)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_pekatan_pengabutan_panas_hn' name='borangA_perawis_perumusan' class='custom-control-input' value='Pekatan Pengabutan Panas (HN)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Pekatan Pengabutan Panas (HN)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Pekatan Pengabutan Panas (HN)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_pekatan_pengabutan_panas_hn'>Pekatan Pengabutan Panas (HN)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_debu_dp' name='borangA_perawis_perumusan' class='custom-control-input' value='Debu (DP)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Debu (DP)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Debu (DP)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_debu_dp'>Debu (DP)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_tablet_dt' name='borangA_perawis_perumusan' class='custom-control-input' value='Tablet (DT)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Tablet (DT)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Tablet (DT)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_tablet_dt'>Tablet (DT)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_cecair_al' name='borangA_perawis_perumusan' class='custom-control-input' value='Cecair (AL)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Cecair (AL)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Cecair (AL)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_cecair_al'>Cecair (AL)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_serbuk_ap' name='borangA_perawis_perumusan' class='custom-control-input' value='Serbuk (AP)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Serbuk (AP)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Serbuk (AP)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_serbuk_ap'>Serbuk (AP)</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_krim' name='borangA_perawis_perumusan' class='custom-control-input' value='Krim'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Krim' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Krim' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_krim'>Krim</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_syampu' name='borangA_perawis_perumusan' class='custom-control-input' value='Syampu'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Syampu' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Syampu' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_syampu'>Syampu</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_kapur_tulis' name='borangA_perawis_perumusan' class='custom-control-input' value='Kapur Tulis'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Kapur Tulis' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Kapur Tulis' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_kapur_tulis'>Kapur Tulis</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_ceper' name='borangA_perawis_perumusan' class='custom-control-input' value='Ceper'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Ceper' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Ceper' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_ceper'>Ceper</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_until' name='borangA_perawis_perumusan' class='custom-control-input' value='Until'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Until' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Until' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_until'>Until</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_relang_leher' name='borangA_perawis_perumusan' class='custom-control-input' value='Relang Leher'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Relang Leher' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Relang Leher' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_relang_leher'>Relang Leher</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_umpan_lipas_pepejal' name='borangA_perawis_perumusan' class='custom-control-input' value='Umpan Lipas Pepejal'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Umpan Lipas Pepejal' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Umpan Lipas Pepejal' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_umpan_lipas_pepejal'>Umpan Lipas Pepejal</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_gel' name='borangA_perawis_perumusan' class='custom-control-input' value='Gel'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Gel' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Gel' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_gel'>Gel</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_uncang_butir' name='borangA_perawis_perumusan' class='custom-control-input' value='Uncang Butir'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Uncang Butir' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Uncang Butir' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_uncang_butir'>Uncang Butir</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_umpan_anai-anai' name='borangA_perawis_perumusan' class='custom-control-input' value='Umpan Anai-anai'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Umpan Anai-anai' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Umpan Anai-anai' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_umpan_anai-anai'>Umpan Anai-anai</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_kelambu' name='borangA_perawis_perumusan' class='custom-control-input' value='Kelambu'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Kelambu' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Kelambu' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_kelambu'>Kelambu</label>
                                 </div>
                                 <div class='custom-control custom-radio custom-control-inline'>
                                     <input type='radio' id='borangA_perawis_perumusan_lain-lain_nyatakan' name='borangA_perawis_perumusan' class='custom-control-input' value='Lain-lain (nyatakan)'
-                                    {{ old('borangA_perawis_perumusan', $borangA_perawis_perumusan ?? '') == 'Lain-lain (nyatakan)' ? 'checked' : '' }}>
+                                    {{ old('borangA_perawis_perumusan', isset($borangAs->borangA_perawis_perumusan)?$borangAs->borangA_perawis_perumusan:null) == 'Lain-lain (nyatakan)' ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <label class='custom-control-label' for='borangA_perawis_perumusan_lain-lain_nyatakan'>Lain-lain (nyatakan)</label>
                                 </div>
                                 @error('borangA_perawis_perumusan') 
@@ -654,7 +689,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-9 offset-md-3">
-                                <input type="text" id="borangA_perawis_perumusan_lain" name="borangA_perawis_perumusan_lain" class="form-control custom_border" placeholder="Lain-lain Perumusan" value="{{ old('borangA_perawis_perumusan_lain') }}">
+                                <input type="text" id="borangA_perawis_perumusan_lain" name="borangA_perawis_perumusan_lain" class="form-control custom_border" placeholder="Lain-lain Perumusan" value="{{ old('borangA_perawis_perumusan_lain',isset($borangAs->borangA_perawis_perumusan_lain)?$$borangAs->borangA_perawis_perumusan_lain:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_perawis_perumusan_lain') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
@@ -663,9 +698,15 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_pengilang"><span class="text-danger">*</span>Sumber bagi racun makhluk perosak (Pengilang):</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_pengilang[]" id="borangA_perawis_pengilang" multiple="multiple">
+                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_pengilang[]" id="borangA_perawis_pengilang" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($pengilangs as $pengilang)
-                                        <option value="{{ $pengilang->pengilang_nama }}">{{ $pengilang->pengilang_nama }}</option>
+                                        @if(isset($borangAs))
+                                            @foreach($borangAs->borangA_perawis_pengilang as $value)
+                                                <option value="{{ $pengilang->pengilang_nama }}" {{ old('borangA_perawis_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pengilang->pengilang_nama }}</option>
+                                            @endforeach
+                                        @else
+                                            <option value="{{ $pengilang->pengilang_nama }}" {{ old('borangA_perawis_pengilang[]' , isset($value)?$value:null ) == $pengilang->pengilang_nama ? 'selected' : '' }}>{{ $pengilang->pengilang_nama }} </option>
+                                        @endif
                                     @endforeach
                                 </select>  
                                 @error('borangA_perawis_pengilang') 

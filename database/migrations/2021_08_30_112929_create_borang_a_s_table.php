@@ -29,24 +29,24 @@ class CreateBorangASTable extends Migration
             $table->boolean('borangA_perniagaan_mengilang');
             $table->boolean('borangA_perniagaan_lain')->nullable();
             $table->string('borangA_perniagaan_lain_maklumat')->nullable();
-            $table->boolean('borangA_mengilang_merumus');
-            $table->boolean('borangA_mengilang_menyedia');
-            $table->boolean('borangA_mengilang_mensebati');
-            $table->boolean('borangA_mengilang_mencampur');
-            $table->boolean('borangA_mengilang_melabel');
-            $table->boolean('borangA_mengilang_mempek');
-            $table->boolean('borangA_mengilang_membuat');
+            $table->boolean('borangA_mengilang_merumus')->default(false);
+            $table->boolean('borangA_mengilang_menyedia')->default(false);
+            $table->boolean('borangA_mengilang_mensebati')->default(false);
+            $table->boolean('borangA_mengilang_mencampur')->default(false);
+            $table->boolean('borangA_mengilang_melabel')->default(false);
+            $table->boolean('borangA_mengilang_mempek')->default(false);
+            $table->boolean('borangA_mengilang_membuat')->default(false);
             $table->string('borangA_mengilang_lain')->nullable();
             $table->string('borangA_mengilang_lain_maklumat')->nullable();
-            $table->unsignedBigInteger('borangA_pengilang_pembekal')->unique()->increments();
-            $table->unsignedBigInteger('borangA_pengilang_kontrak')->unique()->increments();;
-            $table->unsignedBigInteger('borangA_penginvoisan')->unique()->increments();;
-            $table->unsignedBigInteger('borangA_gudang')->unique()->increments();;
-            $table->unsignedBigInteger('borangA_perawis_aktif')->unique()->increments();;
+            $table->string('borangA_pengilang_pembekal');
+            $table->string('borangA_pengilang_kontrak');
+            $table->string('borangA_penginvoisan');
+            $table->string('borangA_gudang');
+            $table->string('borangA_perawis_aktif');
             $table->string('borangA_perawis_kod');
             $table->string('borangA_perawis_perumusan');
             $table->string('borangA_perawis_perumusan_lain')->nullable();
-            $table->unsignedBigInteger('borangA_perawis_pengilang')->unique()->increments();;
+            $table->string('borangA_perawis_pengilang');
 
             $table->string('borangA_status');
 

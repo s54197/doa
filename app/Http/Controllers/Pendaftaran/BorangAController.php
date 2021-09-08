@@ -145,9 +145,14 @@ class BorangAController extends Controller
         $borangA->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_lulus)->format('d-m-Y');
         $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
 
-        // Reformat stringArray to Array
-        $borangA->borangA_pengilang = explode(',', $borangA->borangA_pengilang);
-        // $borangA->borangA_pengilang = explode(',', $borangA->borangA_pengilang);
+        // Reformat string to array
+        $borangA->borangA_pengilang_pembekal = explode(',', $borangA->borangA_pengilang_pembekal);
+        $borangA->borangA_pengilang_kontrak = explode(',', $borangA->borangA_pengilang_kontrak);
+        $borangA->borangA_penginvoisan = explode(',', $borangA->borangA_penginvoisan);
+        $borangA->borangA_gudang = explode(',', $borangA->borangA_gudang);
+        $borangA->borangA_perawis_aktif = explode(',', $borangA->borangA_perawis_aktif);
+        $borangA->borangA_perawis_pengilang = explode(',', $borangA->borangA_perawis_pengilang);
+
 
         $data = array(
             'syarikats' => $syarikats,
@@ -188,19 +193,6 @@ class BorangAController extends Controller
     // Store data
     public function store(Request $request){
 
-        // dd($request);
-        // $borangA_perniagaan_mengimport = $request->has('borangA_perniagaan_mengimport') ? true : false;
-        // $borangA_perniagaan_mengilang = $request->has('borangA_perniagaan_mengilang') ? true : false;
-        // $borangA_perniagaan_lain = $request->has('borangA_perniagaan_lain') ? true : false;
-        // $borangA_mengilang_lain = $request->has('borangA_mengilang_lain') ? true : false;
-        // $borangA_mengilang_merumus = $request->has('borangA_mengilang_merumus') ? true : false;
-        // $borangA_mengilang_menyedia = $request->has('borangA_mengilang_menyedia') ? true : false;
-        // $borangA_mengilang_mensebati = $request->has('borangA_mengilang_mensebati') ? true : false;
-        // $borangA_mengilang_mencampur = $request->has('borangA_mengilang_mencampur') ? true : false;
-        // $borangA_mengilang_melabel = $request->has('borangA_mengilang_melabel') ? true : false;
-        // $borangA_mengilang_mempek = $request->has('borangA_mengilang_mempek') ? true : false;
-        // $borangA_mengilang_membuat = $request->has('borangA_mengilang_membuat') ? true : false;
-
         $request->validate([
             'borangA_syarikat' => 'required',
             'borangA_agen' => 'required',
@@ -211,18 +203,9 @@ class BorangAController extends Controller
             'borangA_jenis_pendaftaran' => 'required',
             'borangA_dagangan' => 'required',
             'borangA_no_pendaftaran' => 'required',
-            // 'borangA_perniagaan_mengimport' => 'required',
-            // 'borangA_perniagaan_mengilang' => 'required',
-            'borangA_perniagaan_lain' => 'required_without:borangA_perniagaan_mengimport,borangA_perniagaan_mengilang',
+            'borangA_perniagaan_lain' => 'required_without_all:borangA_perniagaan_mengimport,borangA_perniagaan_mengilang',
             'borangA_perniagaan_lain_maklumat' => 'required_if:borangA_perniagaan_lain,Lain-lain (nyatakan)',
-            // 'borangA_mengilang_merumus' => 'required',
-            // 'borangA_mengilang_menyedia  ' => 'required',
-            // 'borangA_mengilang_mensebati' => 'required',
-            // 'borangA_mengilang_mencampur' => 'required',
-            // 'borangA_mengilang_melabel' => 'required',
-            // 'borangA_mengilang_mempek' => 'required',
-            // 'borangA_mengilang_membuat' => 'required',
-            // 'borangA_mengilang_lain' => 'required',
+            'borangA_mengilang_lain' => 'required_without_all:borangA_mengilang_merumus,borangA_mengilang_menyedia,borangA_mengilang_mensebati,borangA_mengilang_mencampur,borangA_mengilang_melabel,borangA_mengilang_mempek,borangA_mengilang_membuat',
             'borangA_mengilang_lain_maklumat' => 'required_if:borangA_mengilang_lain,Lain-lain (nyatakan)',
             'borangA_pengilang' => 'required',
             'borangA_pengilang_kontrak' => 'required',
@@ -234,7 +217,19 @@ class BorangAController extends Controller
             'borangA_perawis_perumusan_lain' => 'required_if:borangA_perawis_perumusan,Lain-lain (nyatakan)',
             'borangA_perawis_pengilang' => 'required',
         ]);
-        
+
+        $request->borangA_perniagaan_mengimport = $request->has('borangA_perniagaan_mengimport') ? true : false;
+        $request->borangA_perniagaan_mengilang = $request->has('borangA_perniagaan_mengilang') ? true : false;
+        $request->borangA_perniagaan_lain = $request->has('borangA_perniagaan_lain') ? true : false;
+        $request->borangA_mengilang_lain = $request->has('borangA_mengilang_lain') ? true : false;
+        $request->borangA_mengilang_merumus = $request->has('borangA_mengilang_merumus') ? true : false;
+        $request->borangA_mengilang_menyedia = $request->has('borangA_mengilang_menyedia') ? true : false;
+        $request->borangA_mengilang_mensebati = $request->has('borangA_mengilang_mensebati') ? true : false;
+        $request->borangA_mengilang_mencampur = $request->has('borangA_mengilang_mencampur') ? true : false;
+        $request->borangA_mengilang_melabel = $request->has('borangA_mengilang_melabel') ? true : false;
+        $request->borangA_mengilang_mempek = $request->has('borangA_mengilang_mempek') ? true : false;
+        $request->borangA_mengilang_membuat = $request->has('borangA_mengilang_membuat') ? true : false;
+       
         try {
             $user = User::find(Auth::user()->id);
             $user->borangAs()->create([
@@ -247,20 +242,20 @@ class BorangAController extends Controller
                 'borangA_jenis_pendaftaran' => $request->borangA_jenis_pendaftaran,
                 'borangA_dagangan' => $request->borangA_dagangan,
                 'borangA_no_pendaftaran' => $request->borangA_no_pendaftaran,
-                'borangA_perniagaan_mengimport' => $borangA_perniagaan_mengimport,
-                'borangA_perniagaan_mengilang' =>$borangA_perniagaan_mengilang,
+                'borangA_perniagaan_mengimport' => $request->borangA_perniagaan_mengimport,
+                'borangA_perniagaan_mengilang' => $request->borangA_perniagaan_mengilang,
                 'borangA_perniagaan_lain' => $request->borangA_perniagaan_lain,
-                'borangA_perniagaan_lain_maklumat' => $request->borangA_perniagaan_lain,
-                'borangA_mengilang_merumus' => $borangA_mengilang_merumus,
-                'borangA_mengilang_menyedia' => $borangA_mengilang_menyedia,
-                'borangA_mengilang_mensebati' => $borangA_mengilang_mensebati,
-                'borangA_mengilang_mencampur' => $borangA_mengilang_mencampur,
-                'borangA_mengilang_melabel' => $borangA_mengilang_melabel,
-                'borangA_mengilang_mempek' => $borangA_mengilang_mempek,
-                'borangA_mengilang_membuat' =>$borangA_mengilang_membuat,
+                'borangA_perniagaan_lain_maklumat' => $request->borangA_perniagaan_lain_maklumat,
+                'borangA_mengilang_merumus' => $request->borangA_mengilang_merumus,
+                'borangA_mengilang_menyedia' => $request->borangA_mengilang_menyedia,
+                'borangA_mengilang_mensebati' => $request->borangA_mengilang_mensebati,
+                'borangA_mengilang_mencampur' => $request->borangA_mengilang_mencampur,
+                'borangA_mengilang_melabel' => $request->borangA_mengilang_melabel,
+                'borangA_mengilang_mempek' => $request->borangA_mengilang_mempek,
+                'borangA_mengilang_membuat' => $request->borangA_mengilang_membuat,
                 'borangA_mengilang_lain' => $request->borangA_mengilang_lain,
                 'borangA_mengilang_lain_maklumat' =>  $request->borangA_mengilang_lain_maklumat,
-                'borangA_pengilang' => implode(',', $request->borangA_pengilang),
+                'borangA_pengilang_pembekal' => implode(',', $request->borangA_pengilang),
                 'borangA_pengilang_kontrak' => implode(',', $request->borangA_pengilang_kontrak),
                 'borangA_penginvoisan' => implode(',', $request->borangA_penginvoisan),
                 'borangA_gudang' => implode(',', $request->borangA_gudang),
