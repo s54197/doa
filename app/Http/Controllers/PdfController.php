@@ -28,4 +28,15 @@ class PdfController extends Controller
      
         return $pdf->download($certName);
     }
+
+    public function letter(){
+        $data = [];
+
+        $pdf = PDF::loadView('pdf.letter', $data);
+
+        $letterName = 'auto-generate-letter-name.pdf';
+     
+        return $pdf->download($letterName);
+    }
+
 }
