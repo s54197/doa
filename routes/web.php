@@ -186,9 +186,12 @@ Route::middleware('auth')->group(function() {
     Route::get('/change_password', [App\Http\Controllers\ChangePasswordController::class, 'index'])->name('view.password');
     Route::post('/change_password', [App\Http\Controllers\ChangePasswordController::class, 'store'])->name('change.password');
 
+    /***********************************
+                   pdf
+    ***********************************/
+    Route::get('/create_cert', [App\Http\Controllers\PDFController::class, 'certificate'])->name('create.cert');
+
 });
 
-// change password function
-Route::get('/change_password', [App\Http\Controllers\ChangePasswordController::class, 'index'])->name('view.password');
-Route::post('/change_password', [App\Http\Controllers\ChangePasswordController::class, 'store'])->name('change.password');
+
 
