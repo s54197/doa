@@ -49,6 +49,7 @@ class BorangA extends Model
         'borangA_tarikh_lulus',
         'borangA_tarikh_tamat',
         'borangA_wakil_syarikat',
+        'borangA_sijil_no_siri',
         'borangA_jenis_pendaftaran',
         'borangA_dagangan',
         'borangA_no_pendaftaran',

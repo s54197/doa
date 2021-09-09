@@ -173,6 +173,34 @@ class BorangAController extends Controller
 
     // Show data based on id
     public function update_view($id) {
+
+        // Check user role
+        $role = Auth::user()->role;
+        // dd($id);
+
+        if ($role=='admin') {
+            // All data
+            $syarikats = Syarikat::all();
+            $agens = Agen::all('id', 'agen_nama');
+            $produks = Produk::all('id', 'produk_nama');
+            $pengilangs = Pengilang::all('id', 'pengilang_nama');
+            $pembekals = Pembekal::all('id', 'pembekal_nama');
+            $gudangs = Gudang::all('id', 'gudang_nama');
+            $perawiss = Perawis::all('id', 'perawis_nama');
+            $penginvoisans = Penginvoisan::all('id', 'penginvoisan_nama');
+
+        } else {
+            // All data user
+            $syarikats = User::find(Auth::user()->id)->Syarikat::all();
+            $agens = User::find(Auth::user()->id)->Agen::all();
+            $produks = User::find(Auth::user()->id)->Produk::all();
+            $pengilangs = User::find(Auth::user()->id)->Pengilang::all();
+            $pembekals = User::find(Auth::user()->id)->Pembekal::all();
+            $gudangs = User::find(Auth::user()->id)->Gudang::all();
+            $perawiss = User::find(Auth::user()->id)->Perawis::all();
+            $penginvoisans = User::find(Auth::user()->id)->Penginvoisan::all();
+        }
+
         // Data borangA
         $borangA = BorangA::find($id);
 
@@ -255,6 +283,7 @@ class BorangAController extends Controller
                 'borangA_tarikh_lulus' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_lulus)->format('Y-m-d'),
                 'borangA_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_tamat)->format('Y-m-d'),
                 'borangA_wakil_syarikat' => $request->borangA_wakil_syarikat,
+                'borangA_sijil_no_siri' => $request->borangA_sijil_no_siri,
                 'borangA_jenis_pendaftaran' => $request->borangA_jenis_pendaftaran,
                 'borangA_dagangan' => $request->borangA_dagangan,
                 'borangA_no_pendaftaran' => $request->borangA_no_pendaftaran,
@@ -338,6 +367,7 @@ class BorangAController extends Controller
                 'borangA_tarikh_lulus' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_lulus)->format('Y-m-d'),
                 'borangA_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_tamat)->format('Y-m-d'),
                 'borangA_wakil_syarikat' => $request->borangA_wakil_syarikat,
+                'borangA_sijil_no_siri' => $request->borangA_sijil_no_siri,
                 'borangA_jenis_pendaftaran' => $request->borangA_jenis_pendaftaran,
                 'borangA_dagangan' => $request->borangA_dagangan,
                 'borangA_no_pendaftaran' => $request->borangA_no_pendaftaran,
@@ -366,9 +396,9 @@ class BorangAController extends Controller
                 'borangA_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/borangA')->withSuccess('borangA '.$borangA->borangA_nama.' telah berjaya dikemaskinikan!');
+            return redirect('/pendaftaran')->withSuccess('borangA '.$borangA->borangA_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/borangA')->withWarning('borangA '.$borangA->borangA_nama.' tidak berjaya dikemaskinikan!');
+            return redirect('/pendaftaran')->withWarning('borangA '.$borangA->borangA_nama.' tidak berjaya dikemaskinikan!');
         }
     }
 

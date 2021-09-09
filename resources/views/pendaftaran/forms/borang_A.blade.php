@@ -114,6 +114,15 @@
                                 @enderror                                
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_sijil_no_siri">Sijil Nombor Siri:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_sijil_no_siri" name="borangA_sijil_no_siri" class="form-control custom_border" placeholder="Sijil Nombor Siri" value="{{ old('borangA_sijil_no_siri',isset($borangAs->borangA_sijil_no_siri)?$borangAs->borangA_sijil_no_siri:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_sijil_no_siri') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                        </div>
                     </section>
                     <h3>Butiran Keluaran</h3>
                     <section>
