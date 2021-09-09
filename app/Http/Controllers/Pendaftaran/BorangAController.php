@@ -398,7 +398,7 @@ class BorangAController extends Controller
             ]);
             return redirect('/pendaftaran')->withSuccess('borangA '.$borangA->borangA_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/pendaftaran')->withWarning('borangA '.$borangA->borangA_nama.' tidak berjaya dikemaskinikan!');
+            return redirect('/pendaftaran')->withWarning('borangA '.$borangA->borangA_nama.' tidak berjaya dikemaskinikan!'.$e);
         }
     }
 

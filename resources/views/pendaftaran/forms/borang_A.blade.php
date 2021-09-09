@@ -723,6 +723,7 @@
                                 @enderror
                             </div>
                         </div>
+                        <input id="borang_A" type="text" value="{{ $jenis }}"/>
                     </section>
                 </form>
                 <!-- End #wizard-vertical -->
