@@ -23,6 +23,11 @@ class User extends Authenticatable
         return $this->hasMany(Agen::class);
     }
 
+    // PihakKetiga relationship
+    public function pihakketigas(){
+        return $this->hasMany(PihakKetiga::class);
+    }
+
     // Pembekal relationship
     public function pembekals(){
         return $this->hasMany(Pembekal::class);

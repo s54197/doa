@@ -105,11 +105,11 @@
                     <tbody>
                         @foreach($pembekals as $pembekal)
                         <tr>
-                            <td>{{$pembekal->pembekal_nama}}</td>
-                            <td>{{$pembekal->pembekal_no_roc}}</td>
-                            <td>{{$pembekal->pembekal_no_tel}}</td>
-                            <td>{{$pembekal->pembekal_negeri}}</td>
-                            <td>{{$pembekal->pembekal_status}}</td>
+                            <td>{{$pembekal->pihak_ketiga_nama}}</td>
+                            <td>{{$pembekal->pihak_ketiga_no_roc}}</td>
+                            <td>{{$pembekal->pihak_ketiga_no_tel}}</td>
+                            <td>{{$pembekal->pihak_ketiga_negeri}}</td>
+                            <td>{{$pembekal->pihak_ketiga_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
