@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\BorangA;
 use App\Models\Syarikat;
+use App\Models\Produk;
+use App\Models\Perawis;
 use App\Models\Pembekal;
 use App\Models\Penginvoisan;
 use App\Models\Pengilang;
 use App\Models\Gudang;
-use App\Models\Produk;
-use App\Models\Perawis;
+use App\Models\PihakKetiga;
 use App\Models\Agen;
 use App\Models\User;
 use Carbon\Carbon;
@@ -63,23 +64,25 @@ class BorangAController extends Controller
             // All data
             $syarikats = Syarikat::all();
             $agens = Agen::all('id', 'agen_nama');
-            $produks = Produk::all('id', 'produk_nama');
-            $pengilangs = Pengilang::all('id', 'pengilang_nama');
-            $pembekals = Pembekal::all('id', 'pembekal_nama');
-            $gudangs = Gudang::all('id', 'gudang_nama');
             $perawiss = Perawis::all('id', 'perawis_nama');
-            $penginvoisans = Penginvoisan::all('id', 'penginvoisan_nama');
+            $produks = Produk::all('id', 'produk_nama');
+            $pengilangs = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilang_pembekals = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $gudangs = PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
+            $penginvoisans = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
+
+            // dd($pengilang_pembekals[0]->pihak_ketiga_nama);
 
         } else {
             // All data user
             $syarikats = User::find(Auth::user()->id)->Syarikat::all();
             $agens = User::find(Auth::user()->id)->Agen::all();
             $produks = User::find(Auth::user()->id)->Produk::all();
-            $pengilangs = User::find(Auth::user()->id)->Pengilang::all();
-            $pembekals = User::find(Auth::user()->id)->Pembekal::all();
-            $gudangs = User::find(Auth::user()->id)->Gudang::all();
             $perawiss = User::find(Auth::user()->id)->Perawis::all();
-            $penginvoisans = User::find(Auth::user()->id)->Penginvoisan::all();
+            $pengilangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilang_pembekals = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $gudangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
+            $penginvoisans = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
         }
 
         $data = array(
@@ -87,7 +90,7 @@ class BorangAController extends Controller
             'agens' => $agens,
             'produks' => $produks,
             'pengilangs' => $pengilangs,
-            'pembekals' => $pembekals,
+            'pengilang_pembekals' => $pengilang_pembekals,
             'penginvoisans' => $penginvoisans,
             'perawiss' => $perawiss,
             'gudangs' => $gudangs,
@@ -118,23 +121,23 @@ class BorangAController extends Controller
             // All data
             $syarikats = Syarikat::all();
             $agens = Agen::all('id', 'agen_nama');
-            $produks = Produk::all('id', 'produk_nama');
-            $pengilangs = Pengilang::all('id', 'pengilang_nama');
-            $pembekals = Pembekal::all('id', 'pembekal_nama');
-            $gudangs = Gudang::all('id', 'gudang_nama');
             $perawiss = Perawis::all('id', 'perawis_nama');
-            $penginvoisans = Penginvoisan::all('id', 'penginvoisan_nama');
+            $produks = Produk::all('id', 'produk_nama');
+            $pengilangs = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilang_pembekals = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $gudangs = PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
+            $penginvoisans = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
 
         } else {
             // All data user
             $syarikats = User::find(Auth::user()->id)->Syarikat::all();
             $agens = User::find(Auth::user()->id)->Agen::all();
             $produks = User::find(Auth::user()->id)->Produk::all();
-            $pengilangs = User::find(Auth::user()->id)->Pengilang::all();
-            $pembekals = User::find(Auth::user()->id)->Pembekal::all();
-            $gudangs = User::find(Auth::user()->id)->Gudang::all();
             $perawiss = User::find(Auth::user()->id)->Perawis::all();
-            $penginvoisans = User::find(Auth::user()->id)->Penginvoisan::all();
+            $pengilangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilang_pembekals = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $gudangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
+            $penginvoisans = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
         }
 
         // Data borangA
@@ -159,7 +162,7 @@ class BorangAController extends Controller
             'agens' => $agens,
             'produks' => $produks,
             'pengilangs' => $pengilangs,
-            'pembekals' => $pembekals,
+            'pembekals' => $pengilang_pembekals,
             'penginvoisans' => $penginvoisans,
             'perawiss' => $perawiss,
             'gudangs' => $gudangs,
@@ -182,23 +185,23 @@ class BorangAController extends Controller
             // All data
             $syarikats = Syarikat::all();
             $agens = Agen::all('id', 'agen_nama');
-            $produks = Produk::all('id', 'produk_nama');
-            $pengilangs = Pengilang::all('id', 'pengilang_nama');
-            $pembekals = Pembekal::all('id', 'pembekal_nama');
-            $gudangs = Gudang::all('id', 'gudang_nama');
             $perawiss = Perawis::all('id', 'perawis_nama');
-            $penginvoisans = Penginvoisan::all('id', 'penginvoisan_nama');
+            $produks = Produk::all('id', 'produk_nama');
+            $pengilangs = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilang_pembekals = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $gudangs = PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
+            $penginvoisans = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
 
         } else {
             // All data user
             $syarikats = User::find(Auth::user()->id)->Syarikat::all();
             $agens = User::find(Auth::user()->id)->Agen::all();
             $produks = User::find(Auth::user()->id)->Produk::all();
-            $pengilangs = User::find(Auth::user()->id)->Pengilang::all();
-            $pembekals = User::find(Auth::user()->id)->Pembekal::all();
-            $gudangs = User::find(Auth::user()->id)->Gudang::all();
             $perawiss = User::find(Auth::user()->id)->Perawis::all();
-            $penginvoisans = User::find(Auth::user()->id)->Penginvoisan::all();
+            $pengilangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilang_pembekals = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $gudangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
+            $penginvoisans = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
         }
 
         // Data borangA
@@ -222,7 +225,7 @@ class BorangAController extends Controller
             'agens' => $agens,
             'produks' => $produks,
             'pengilangs' => $pengilangs,
-            'pembekals' => $pembekals,
+            'pembekals' => $pengilang_pembekals,
             'penginvoisans' => $penginvoisans,
             'perawiss' => $perawiss,
             'gudangs' => $gudangs,
