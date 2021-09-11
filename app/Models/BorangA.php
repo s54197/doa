@@ -19,27 +19,27 @@ class BorangA extends Model
 
     public function pembekals()
     {
-        return $this->belongsToMany(Pembekal::class, 'borang_pembekal');
+        return $this->belongsToMany(Pembekal::class, 'borang_pembekals');
     }
 
     public function pengilangs()
     {
-        return $this->belongsToMany(Pengilang::class, 'borang_pengilang');
+        return $this->belongsToMany(Pengilang::class, 'borang_pengilangs');
     }
 
     public function penginvoisans()
     {
-        return $this->belongsToMany(Penginvoisan::class, 'borang_penginvoisan');
+        return $this->belongsToMany(Penginvoisan::class, 'borang_penginvoisans');
     }
 
     public function perawiss()
     {
-        return $this->belongsToMany(Perawis::class, 'borang_perawis');
+        return $this->belongsToMany(Perawis::class, 'borang_perawiss');
     }
 
     public function gudangs()
     {
-        return $this->belongsToMany(Gudang::class, 'borang_gudang');
+        return $this->belongsToMany(Gudang::class, 'borang_gudangs');
     }
     
     protected $fillable = [
@@ -49,6 +49,7 @@ class BorangA extends Model
         'borangA_tarikh_lulus',
         'borangA_tarikh_tamat',
         'borangA_wakil_syarikat',
+        'borangA_sijil_no_siri',
         'borangA_jenis_pendaftaran',
         'borangA_dagangan',
         'borangA_no_pendaftaran',
@@ -65,17 +66,16 @@ class BorangA extends Model
         'borangA_mengilang_membuat',
         'borangA_mengilang_lain',
         'borangA_mengilang_lain_maklumat',
-        'borangA_perniagaan_bangunan',
-        'borangA_perniagaan_jalan',
-        'borangA_perniagaan_poskod',
-
-        'borangA_mengilang_mempek',
-        'borangA_mengilang_membuat',
-        'borangA_mengilang_lain',
-        'borangA_mengilang_lain_maklumat',
-        'borangA_perniagaan_bangunan',
-        'borangA_perniagaan_jalan',
-        'borangA_perniagaan_poskod',
+        'borangA_pengilang_pembekal',
+        'borangA_pengilang_kontrak',
+        'borangA_penginvoisan',
+        'borangA_gudang',
+        'borangA_perawis_aktif',
+        'borangA_perawis_kod',
+        'borangA_perawis_perumusan',
+        'borangA_perawis_perumusan_lain',
+        'borangA_perawis_pengilang',
+        'borangA_status'
     ];
 
 }

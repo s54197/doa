@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8" />
-        <title>DOA - Test Generate PDF</title>
+        <title>DOA - Generate Certificate</title>
 
         <style>
             .cert{

@@ -19,7 +19,7 @@ class Pembekal extends Model
 
     public function borangAs()
     {
-        return $this->belongsToMany(BorangA::class, 'borang_pembekal');
+        return $this->belongsToMany(BorangA::class, 'borang_pembekals');
     }
 
     protected $fillable = [

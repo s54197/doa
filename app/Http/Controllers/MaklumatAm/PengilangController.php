@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\ListNegara;
-use App\Models\Pengilang;
+use App\Models\PihakKetiga;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -18,21 +18,20 @@ class PengilangController extends Controller
 
         // Check user role
         $role = Auth::user()->role;
-        // dd($id);
 
         if ($role=='admin') {
             // All data pengilang
-            $pengilangs = Pengilang::all();
+            $pengilangs = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
         } else {
             // All data pengilang
-            $pengilangs = User::find(Auth::user()->id)->pengilangs;
+            $pengilangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->get();
         }
 
         // Summary
-        $TotalPengilang = Pengilang::count();
-        $TotalPengilangAktif = Pengilang::where('pengilang_status', '=', 'Aktif')->count();
-        $TotalPengilangTidakAktif = Pengilang::where('pengilang_status', '=', 'Tidak Aktif')->count();
-        $TotalPengilangBulanTerkini = Pengilang::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
+        $TotalPengilang = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->count();
+        $TotalPengilangAktif = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->where('pihak_ketiga_status', '=', 'Aktif')->count();
+        $TotalPengilangTidakAktif = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->where('pihak_ketiga_status', '=', 'Tidak Aktif')->count();
+        $TotalPengilangBulanTerkini = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
 
         return view('maklumat_am.main_pengilang', [
             'pengilangs' => $pengilangs,
@@ -65,7 +64,7 @@ class PengilangController extends Controller
         $list_negara = ListNegara::all();
 
         // Data pengilang
-        $pengilang = Pengilang::find($id);
+        $pengilang = PihakKetiga::find($id);
         // Data negara
         $list_negara = ListNegara::all();
         
@@ -83,7 +82,7 @@ class PengilangController extends Controller
     // Update data based on id
     public function update_view($id) {
         // Data pengilang
-        $pengilang = Pengilang::find($id);
+        $pengilang = PihakKetiga::find($id);
         // Data negara
         $list_negara = ListNegara::all();
         
@@ -101,44 +100,45 @@ class PengilangController extends Controller
     public function store(Request $request){
         
         $request->validate([
-            'pengilang_nama' => 'required',
-            'pengilang_no_roc' => 'required',
-            'pengilang_bangunan' => 'required',
-            'pengilang_jalan' => 'required',
-            'pengilang_poskod' => 'required',
-            // 'pengilang_bandar' => 'required',
-            // 'pengilang_negeri' => 'required',
-            // 'pengilang_negeri_luar_malaysia' => 'required',
-            'pengilang_negara' => 'required',
-            'pengilang_no_tel' => 'required',
-            // 'pengilang_no_faks' => 'required',
-            'pengilang_emel' => 'required|email',
-            // 'pengilang_status' => 'required',
+            'pihak_ketiga_nama' => 'required',
+            'pihak_ketiga_no_roc' => 'required',
+            'pihak_ketiga_bangunan' => 'required',
+            'pihak_ketiga_jalan' => 'required',
+            'pihak_ketiga_poskod' => 'required',
+            // 'pihak_ketiga_bandar' => 'required',
+            // 'pihak_ketiga_negeri' => 'required',
+            // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
+            'pihak_ketiga_negara' => 'required',
+            'pihak_ketiga_no_tel' => 'required',
+            // 'pihak_ketiga_no_faks' => 'required',
+            'pihak_ketiga_emel' => 'required|email',
+            // 'pihak_ketiga_status' => 'required',
         ]);
 
         // dd($request);
 
         try {
             $user = User::find(Auth::user()->id);
-            $user->pengilangs()->create([
-                'pengilang_nama' => $request->pengilang_nama,
-                'pengilang_no_roc' => $request->pengilang_no_roc,
-                'pengilang_bangunan' => $request->pengilang_bangunan,
-                'pengilang_jalan' => $request->pengilang_jalan,
-                'pengilang_poskod' => $request->pengilang_poskod,
-                'pengilang_bandar' => $request->pengilang_bandar,
-                'pengilang_negeri' => $request->pengilang_negeri,
-                'pengilang_negeri_luar_malaysia' => $request->pengilang_negeri_luar_malaysia,
-                'pengilang_negara' => $request->pengilang_negara,
-                'pengilang_no_tel' => $request->pengilang_no_tel,
-                'pengilang_no_faks' => $request->pengilang_no_faks,
-                'pengilang_emel' => $request->pengilang_emel,
-                'pengilang_status' => 'Aktif',
+            $user->pihakketigas()->create([
+                'pihak_ketiga_nama' => $request->pihak_ketiga_nama,
+                'pihak_ketiga_no_roc' => $request->pihak_ketiga_no_roc,
+                'pihak_ketiga_bangunan' => $request->pihak_ketiga_bangunan,
+                'pihak_ketiga_jalan' => $request->pihak_ketiga_jalan,
+                'pihak_ketiga_poskod' => $request->pihak_ketiga_poskod,
+                'pihak_ketiga_bandar' => $request->pihak_ketiga_bandar,
+                'pihak_ketiga_negeri' => $request->pihak_ketiga_negeri,
+                'pihak_ketiga_negeri_luar_malaysia' => $request->pihak_ketiga_negeri_luar_malaysia,
+                'pihak_ketiga_negara' => $request->pihak_ketiga_negara,
+                'pihak_ketiga_no_tel' => $request->pihak_ketiga_no_tel,
+                'pihak_ketiga_no_faks' => $request->pihak_ketiga_no_faks,
+                'pihak_ketiga_emel' => $request->pihak_ketiga_emel,
+                'pihak_ketiga_status' => 'Aktif',
+                'pihak_ketiga_jenis' => 'pengilang',
                 'user_id' => $user->id,
             ]);
-            return redirect('/pengilang')->withSuccess('Pengilang '.$request->pengilang_nama.' telah berjaya didaftarkan!');
+            return redirect('/pengilang')->withSuccess('Pengilang '.$request->pihak_ketiga_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/pengilang')->withWarning('Pengilang '.$request->pengilang_nama.' tidak berjaya didaftarkan!');
+            return redirect('/pengilang')->withWarning('Pengilang '.$request->pihak_ketiga_nama.' tidak berjaya didaftarkan!');
         }
         
     }
@@ -146,54 +146,55 @@ class PengilangController extends Controller
     // Update pengilang based on id
     public function update(Request $request, $id){
         $request->validate([
-            'pengilang_nama' => 'required',
-            'pengilang_no_roc' => 'required',
-            'pengilang_bangunan' => 'required',
-            'pengilang_jalan' => 'required',
-            'pengilang_poskod' => 'required',
-            // 'pengilang_bandar' => 'required',
-            // 'pengilang_negeri' => 'required',
-            // 'pengilang_negeri_luar_malaysia' => 'required',
-            'pengilang_negara' => 'required',
-            'pengilang_no_tel' => 'required',
-            // 'pengilang_no_faks' => 'required',
-            'pengilang_emel' => 'required|email',
-            // 'pengilang_status' => 'required',
+            'pihak_ketiga_nama' => 'required',
+            'pihak_ketiga_no_roc' => 'required',
+            'pihak_ketiga_bangunan' => 'required',
+            'pihak_ketiga_jalan' => 'required',
+            'pihak_ketiga_poskod' => 'required',
+            // 'pihak_ketiga_bandar' => 'required',
+            // 'pihak_ketiga_negeri' => 'required',
+            // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
+            'pihak_ketiga_negara' => 'required',
+            'pihak_ketiga_no_tel' => 'required',
+            // 'pihak_ketiga_no_faks' => 'required',
+            'pihak_ketiga_emel' => 'required|email',
+            // 'pihak_ketiga_status' => 'required',
         ]);
 
         try {
-            $pengilang = Pengilang::find($id);
+            $pengilang = PihakKetiga::find($id);
             $pengilang->update([
-                'pengilang_nama' => $request->pengilang_nama,
-                'pengilang_no_roc' => $request->pengilang_no_roc,
-                'pengilang_bangunan' => $request->pengilang_bangunan,
-                'pengilang_jalan' => $request->pengilang_jalan,
-                'pengilang_poskod' => $request->pengilang_poskod,
-                'pengilang_bandar' => $request->pengilang_bandar,
-                'pengilang_negeri' => $request->pengilang_negeri,
-                'pengilang_negeri_luar_malaysia' => $request->pengilang_negeri_luar_malaysia,
-                'pengilang_negara' => $request->pengilang_negara,
-                'pengilang_no_tel' => $request->pengilang_no_tel,
-                'pengilang_no_faks' => $request->pengilang_no_faks,
-                'pengilang_emel' => $request->pengilang_emel,
-                'pengilang_status' => 'Aktif',
+                'pihak_ketiga_nama' => $request->pihak_ketiga_nama,
+                'pihak_ketiga_no_roc' => $request->pihak_ketiga_no_roc,
+                'pihak_ketiga_bangunan' => $request->pihak_ketiga_bangunan,
+                'pihak_ketiga_jalan' => $request->pihak_ketiga_jalan,
+                'pihak_ketiga_poskod' => $request->pihak_ketiga_poskod,
+                'pihak_ketiga_bandar' => $request->pihak_ketiga_bandar,
+                'pihak_ketiga_negeri' => $request->pihak_ketiga_negeri,
+                'pihak_ketiga_negeri_luar_malaysia' => $request->pihak_ketiga_negeri_luar_malaysia,
+                'pihak_ketiga_negara' => $request->pihak_ketiga_negara,
+                'pihak_ketiga_no_tel' => $request->pihak_ketiga_no_tel,
+                'pihak_ketiga_no_faks' => $request->pihak_ketiga_no_faks,
+                'pihak_ketiga_emel' => $request->pihak_ketiga_emel,
+                'pihak_ketiga_status' => 'Aktif',
+                'pihak_ketiga_jenis' => 'pengilang',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/pengilang')->withSuccess('Pengilang '.$pengilang->pengilang_nama.' telah berjaya dikemaskinikan!');
+            return redirect('/pengilang')->withSuccess('Pengilang '.$pengilang->pihak_ketiga_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/pengilang')->withWarning('Pengilang '.$pengilang->pengilang_nama.' tidak berjaya dikemaskinikan!');
+            return redirect('/pengilang')->withWarning('Pengilang '.$pengilang->pihak_ketiga_nama.' tidak berjaya dikemaskinikan!');
         }
     }
 
     // Delete pengilang based on id
     public function delete($id){
         try{
-            $pengilang = Pengilang::find($id);
+            $pengilang = PihakKetiga::find($id);
             $pengilang->delete();
-            return redirect('/pengilang')->withSuccess('Pengilang '.$pengilang->pengilang_nama.' telah berjaya dipadamkan!');
+            return redirect('/pengilang')->withSuccess('Pengilang '.$pengilang->pihak_ketiga_nama.' telah berjaya dipadamkan!');
         }
         catch (\Illuminate\Database\QueryException $error){
-            return redirect('/pengilang')->withWarning('Pengilang '.$pengilang->pengilang_nama.' tidak berjaya dipadamkan!');
+            return redirect('/pengilang')->withWarning('Pengilang '.$pengilang->pihak_ketiga_nama.' tidak berjaya dipadamkan!');
         }
     }
 }

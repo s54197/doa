@@ -178,6 +178,8 @@ Route::middleware('auth')->group(function() {
     Route::post('form/pendaftaran/create', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'store'])->name('pendaftaran.create');
     // update pendaftaran
     Route::post('form/pendaftaran/kemaskini/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'update'])->name('pendaftaran.update');
+    // uget wakil
+    Route::get('form/pendaftaran/getWakil/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'get_wakil'])->name('pendaftaran.wakil');
 
 
     /***********************************
@@ -190,6 +192,7 @@ Route::middleware('auth')->group(function() {
                    pdf
     ***********************************/
     Route::get('/create_cert', [App\Http\Controllers\PDFController::class, 'certificate'])->name('create.cert');
+    Route::get('/create_letter', [App\Http\Controllers\PDFController::class, 'letter'])->name('create.letter');
 
 });
 

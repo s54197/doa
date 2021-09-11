@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\ListNegara;
-use App\Models\Penginvoisan;
+use App\Models\PihakKetiga;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -22,17 +22,17 @@ class PenginvoisanController extends Controller
 
         if ($role=='admin') {
             // All data penginvoisan
-            $penginvoisans = Penginvoisan::all();
+            $penginvoisans =  PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
         } else {
             // All data penginvoisan
-            $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
+            $penginvoisans = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','penginvoisan')->get();
         }
 
         // Summary
-        $TotalPenginvoisan = Penginvoisan::count();
-        $TotalPenginvoisanAktif = Penginvoisan::where('penginvoisan_status', '=', 'Aktif')->count();
-        $TotalPenginvoisanTidakAktif = Penginvoisan::where('penginvoisan_status', '=', 'Tidak Aktif')->count();
-        $TotalPenginvoisanBulanTerkini = Penginvoisan::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
+        $TotalPenginvoisan = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->count();
+        $TotalPenginvoisanAktif = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->where('pihak_ketiga_status', '=', 'Aktif')->count();
+        $TotalPenginvoisanTidakAktif = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->where('pihak_ketiga_status', '=', 'Tidak Aktif')->count();
+        $TotalPenginvoisanBulanTerkini = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
 
         return view('maklumat_am.main_penginvoisan', [
             'penginvoisans' => $penginvoisans,
@@ -64,7 +64,7 @@ class PenginvoisanController extends Controller
         // Data negara
         $list_negara = ListNegara::all();
         // Data penginvoisan
-        $penginvoisan = Penginvoisan::find($id);
+        $penginvoisan = PihakKetiga::find($id);
         // Data negara
         $list_negara = ListNegara::all();
 
@@ -82,7 +82,7 @@ class PenginvoisanController extends Controller
     // Update data based on id
     public function update_view($id) {
         // Data penginvoisan
-        $penginvoisan = Penginvoisan::find($id);
+        $penginvoisan = PihakKetiga::find($id);
         // Data negara
         $list_negara = ListNegara::all();
         
@@ -100,44 +100,45 @@ class PenginvoisanController extends Controller
     public function store(Request $request){
         
         $request->validate([
-            'penginvoisan_nama' => 'required',
-            'penginvoisan_no_roc' => 'required',
-            'penginvoisan_bangunan' => 'required',
-            'penginvoisan_jalan' => 'required',
-            'penginvoisan_poskod' => 'required',
-            // 'penginvoisan_bandar' => 'required',
-            // 'penginvoisan_negeri' => 'required',
-            // 'penginvoisan_negeri_luar_malaysia' => 'required',
-            'penginvoisan_negara' => 'required',
-            'penginvoisan_no_tel' => 'required',
-            // 'penginvoisan_no_faks' => 'required',
-            'penginvoisan_emel' => 'required|email',
-            // 'penginvoisan_status' => 'required',
+            'pihak_ketiga_nama' => 'required',
+            'pihak_ketiga_no_roc' => 'required',
+            'pihak_ketiga_bangunan' => 'required',
+            'pihak_ketiga_jalan' => 'required',
+            'pihak_ketiga_poskod' => 'required',
+            // 'pihak_ketiga_bandar' => 'required',
+            // 'pihak_ketiga_negeri' => 'required',
+            // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
+            'pihak_ketiga_negara' => 'required',
+            'pihak_ketiga_no_tel' => 'required',
+            // 'pihak_ketiga_no_faks' => 'required',
+            'pihak_ketiga_emel' => 'required|email',
+            // 'pihak_ketiga_status' => 'required',
         ]);
 
         // dd($request);
 
         try {
             $user = User::find(Auth::user()->id);
-            $user->penginvoisans()->create([
-                'penginvoisan_nama' => $request->penginvoisan_nama,
-                'penginvoisan_no_roc' => $request->penginvoisan_no_roc,
-                'penginvoisan_bangunan' => $request->penginvoisan_bangunan,
-                'penginvoisan_jalan' => $request->penginvoisan_jalan,
-                'penginvoisan_poskod' => $request->penginvoisan_poskod,
-                'penginvoisan_bandar' => $request->penginvoisan_bandar,
-                'penginvoisan_negeri' => $request->penginvoisan_negeri,
-                'penginvoisan_negeri_luar_malaysia' => $request->penginvoisan_negeri_luar_malaysia,
-                'penginvoisan_negara' => $request->penginvoisan_negara,
-                'penginvoisan_no_tel' => $request->penginvoisan_no_tel,
-                'penginvoisan_no_faks' => $request->penginvoisan_no_faks,
-                'penginvoisan_emel' => $request->penginvoisan_emel,
-                'penginvoisan_status' => 'Aktif',
+            $user->pihakketigas()->create([
+                'pihak_ketiga_nama' => $request->pihak_ketiga_nama,
+                'pihak_ketiga_no_roc' => $request->pihak_ketiga_no_roc,
+                'pihak_ketiga_bangunan' => $request->pihak_ketiga_bangunan,
+                'pihak_ketiga_jalan' => $request->pihak_ketiga_jalan,
+                'pihak_ketiga_poskod' => $request->pihak_ketiga_poskod,
+                'pihak_ketiga_bandar' => $request->pihak_ketiga_bandar,
+                'pihak_ketiga_negeri' => $request->pihak_ketiga_negeri,
+                'pihak_ketiga_negeri_luar_malaysia' => $request->pihak_ketiga_negeri_luar_malaysia,
+                'pihak_ketiga_negara' => $request->pihak_ketiga_negara,
+                'pihak_ketiga_no_tel' => $request->pihak_ketiga_no_tel,
+                'pihak_ketiga_no_faks' => $request->pihak_ketiga_no_faks,
+                'pihak_ketiga_emel' => $request->pihak_ketiga_emel,
+                'pihak_ketiga_status' => 'Aktif',
+                'pihak_ketiga_jenis' => 'penginvoisan',
                 'user_id' => $user->id,
             ]);
-            return redirect('/penginvoisan')->withSuccess('Penginvoisan '.$request->penginvoisan_nama.' telah berjaya didaftarkan!');
+            return redirect('/penginvoisan')->withSuccess('Penginvoisan '.$request->pihak_ketiga_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/penginvoisan')->withWarning('Penginvoisan '.$request->penginvoisan_nama.' tidak berjaya didaftarkan!');
+            return redirect('/penginvoisan')->withWarning('Penginvoisan '.$request->pihak_ketiga_nama.' tidak berjaya didaftarkan!');
         }
         
     }
@@ -145,54 +146,55 @@ class PenginvoisanController extends Controller
     // Update penginvoisan based on id
     public function update(Request $request, $id){
         $request->validate([
-            'penginvoisan_nama' => 'required',
-            'penginvoisan_no_roc' => 'required',
-            'penginvoisan_bangunan' => 'required',
-            'penginvoisan_jalan' => 'required',
-            'penginvoisan_poskod' => 'required',
-            // 'penginvoisan_bandar' => 'required',
-            // 'penginvoisan_negeri' => 'required',
-            // 'penginvoisan_negeri_luar_malaysia' => 'required',
-            'penginvoisan_negara' => 'required',
-            'penginvoisan_no_tel' => 'required',
-            // 'penginvoisan_no_faks' => 'required',
-            'penginvoisan_emel' => 'required|email',
-            // 'penginvoisan_status' => 'required',
+            'pihak_ketiga_nama' => 'required',
+            'pihak_ketiga_no_roc' => 'required',
+            'pihak_ketiga_bangunan' => 'required',
+            'pihak_ketiga_jalan' => 'required',
+            'pihak_ketiga_poskod' => 'required',
+            // 'pihak_ketiga_bandar' => 'required',
+            // 'pihak_ketiga_negeri' => 'required',
+            // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
+            'pihak_ketiga_negara' => 'required',
+            'pihak_ketiga_no_tel' => 'required',
+            // 'pihak_ketiga_no_faks' => 'required',
+            'pihak_ketiga_emel' => 'required|email',
+            // 'pihak_ketiga_status' => 'required',
         ]);
 
         try {
-            $penginvoisan = Penginvoisan::find($id);
+            $penginvoisan = PihakKetiga::find($id);
             $penginvoisan->update([
-                'penginvoisan_nama' => $request->penginvoisan_nama,
-                'penginvoisan_no_roc' => $request->penginvoisan_no_roc,
-                'penginvoisan_bangunan' => $request->penginvoisan_bangunan,
-                'penginvoisan_jalan' => $request->penginvoisan_jalan,
-                'penginvoisan_poskod' => $request->penginvoisan_poskod,
-                'penginvoisan_bandar' => $request->penginvoisan_bandar,
-                'penginvoisan_negeri' => $request->penginvoisan_negeri,
-                'penginvoisan_negeri_luar_malaysia' => $request->penginvoisan_negeri_luar_malaysia,
-                'penginvoisan_negara' => $request->penginvoisan_negara,
-                'penginvoisan_no_tel' => $request->penginvoisan_no_tel,
-                'penginvoisan_no_faks' => $request->penginvoisan_no_faks,
-                'penginvoisan_emel' => $request->penginvoisan_emel,
-                'penginvoisan_status' => 'Aktif',
+                'pihak_ketiga_nama' => $request->pihak_ketiga_nama,
+                'pihak_ketiga_no_roc' => $request->pihak_ketiga_no_roc,
+                'pihak_ketiga_bangunan' => $request->pihak_ketiga_bangunan,
+                'pihak_ketiga_jalan' => $request->pihak_ketiga_jalan,
+                'pihak_ketiga_poskod' => $request->pihak_ketiga_poskod,
+                'pihak_ketiga_bandar' => $request->pihak_ketiga_bandar,
+                'pihak_ketiga_negeri' => $request->pihak_ketiga_negeri,
+                'pihak_ketiga_negeri_luar_malaysia' => $request->pihak_ketiga_negeri_luar_malaysia,
+                'pihak_ketiga_negara' => $request->pihak_ketiga_negara,
+                'pihak_ketiga_no_tel' => $request->pihak_ketiga_no_tel,
+                'pihak_ketiga_no_faks' => $request->pihak_ketiga_no_faks,
+                'pihak_ketiga_emel' => $request->pihak_ketiga_emel,
+                'pihak_ketiga_status' => 'Aktif',
+                'pihak_ketiga_jenis' => 'penginvoisan',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/penginvoisan')->withSuccess('Penginvoisan '.$penginvoisan->penginvoisan_nama.' telah berjaya dikemaskinikan!');
+            return redirect('/penginvoisan')->withSuccess('Penginvoisan '.$penginvoisan->pihak_ketiga_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/penginvoisan')->withWarning('Penginvoisan '.$penginvoisan->penginvoisan_nama.' tidak berjaya dikemaskinikan!');
+            return redirect('/penginvoisan')->withWarning('Penginvoisan '.$penginvoisan->pihak_ketiga_nama.' tidak berjaya dikemaskinikan!');
         }
     }
 
     // Delete penginvoisan based on id
     public function delete($id){
         try{
-            $penginvoisan = Penginvoisan::find($id);
+            $penginvoisan = PihakKetiga::find($id);
             $penginvoisan->delete();
-            return redirect('/penginvoisan')->withSuccess('Penginvoisan '.$penginvoisan->penginvoisan_nama.' telah berjaya dipadamkan!');
+            return redirect('/penginvoisan')->withSuccess('Penginvoisan '.$penginvoisan->pihak_ketiga_nama.' telah berjaya dipadamkan!');
         }
         catch (\Illuminate\Database\QueryException $error){
-            return redirect('/penginvoisan')->withWarning('Penginvoisan '.$penginvoisan->penginvoisan_nama.' tidak berjaya dipadamkan!');
+            return redirect('/penginvoisan')->withWarning('Penginvoisan '.$penginvoisan->pihak_ketiga_nama.' tidak berjaya dipadamkan!');
         }
     }
 }

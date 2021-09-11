@@ -31,5 +31,6 @@ class Agen extends Model
         'agen_no_faks',
         'agen_emel',
         'agen_status',
+        'agen_negara'
     ];
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\ListNegara;
-use App\Models\Pembekal;
+use App\Models\PihakKetiga;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -22,17 +22,18 @@ class PembekalController extends Controller
 
         if ($role=='admin') {
             // All data pembekal
-            $pembekals = Pembekal::all();
+            $pembekals = PihakKetiga::where('pihak_ketiga_jenis','pembekal')->get();
         } else {
             // All data pembekal
-            $pembekals = User::find(Auth::user()->id)->pembekals;
+            // $pembekals = User::find(Auth::user()->id)->pembekals;
+            $pembekals = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pembekal')->get();
         }
 
         // Summary
-        $TotalPembekal = Pembekal::count();
-        $TotalPembekalAktif = Pembekal::where('pembekal_status', '=', 'Aktif')->count();
-        $TotalPembekalTidakAktif = Pembekal::where('pembekal_status', '=', 'Tidak Aktif')->count();
-        $TotalPembekalBulanTerkini = Pembekal::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
+        $TotalPembekal = PihakKetiga::where('pihak_ketiga_jenis','pembekal')->count();
+        $TotalPembekalAktif = PihakKetiga::where('pihak_ketiga_jenis','pembekal')->where('pihak_ketiga_status', '=', 'Aktif')->count();
+        $TotalPembekalTidakAktif = PihakKetiga::where('pihak_ketiga_jenis','pembekal')->where('pihak_ketiga_status', '=', 'Tidak Aktif')->count();
+        $TotalPembekalBulanTerkini = PihakKetiga::where('pihak_ketiga_jenis','pembekal')->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
 
         return view('maklumat_am.main_pembekal', [
             'pembekals' => $pembekals,
@@ -64,7 +65,7 @@ class PembekalController extends Controller
         // Data negara
         $list_negara = ListNegara::all();
         // Data pembekal
-        $pembekal = Pembekal::find($id);
+        $pembekal = PihakKetiga::find($id);
         // Data negara
         $list_negara = ListNegara::all();
         $data = array(
@@ -81,7 +82,7 @@ class PembekalController extends Controller
     // Show data based on id
     public function update_view($id) {
         // Data pembekal
-        $pembekal = Pembekal::find($id);
+        $pembekal = PihakKetiga::find($id);
         // Data negara
         $list_negara = ListNegara::all();
         
@@ -99,44 +100,40 @@ class PembekalController extends Controller
     public function store(Request $request){
         
         $request->validate([
-            'pembekal_nama' => 'required',
-            'pembekal_no_roc' => 'required',
-            'pembekal_bangunan' => 'required',
-            'pembekal_jalan' => 'required',
-            'pembekal_poskod' => 'required',
-            // 'pembekal_bandar' => 'required',
-            // 'pembekal_negeri' => 'required',
-            // 'pembekal_negeri_luar_malaysia' => 'required',
-            'pembekal_negara' => 'required',
-            'pembekal_no_tel' => 'required',
-            // 'pembekal_no_faks' => 'required',
-            'pembekal_emel' => 'required|email',
-            // 'pembekal_status' => 'required',
+            'pihak_ketiga_nama' => 'required',
+            'pihak_ketiga_no_roc' => 'required',
+            'pihak_ketiga_bangunan' => 'required',
+            'pihak_ketiga_jalan' => 'required',
+            'pihak_ketiga_poskod' => 'required',
+            'pihak_ketiga_negara' => 'required',
+            'pihak_ketiga_no_tel' => 'required',
+            'pihak_ketiga_emel' => 'required|email',
         ]);
 
         // dd($request);
 
         try {
             $user = User::find(Auth::user()->id);
-            $user->pembekals()->create([
-                'pembekal_nama' => $request->pembekal_nama,
-                'pembekal_no_roc' => $request->pembekal_no_roc,
-                'pembekal_bangunan' => $request->pembekal_bangunan,
-                'pembekal_jalan' => $request->pembekal_jalan,
-                'pembekal_poskod' => $request->pembekal_poskod,
-                'pembekal_bandar' => $request->pembekal_bandar,
-                'pembekal_negeri' => $request->pembekal_negeri,
-                'pembekal_negeri_luar_malaysia' => $request->pembekal_negeri_luar_malaysia,
-                'pembekal_negara' => $request->pembekal_negara,
-                'pembekal_no_tel' => $request->pembekal_no_tel,
-                'pembekal_no_faks' => $request->pembekal_no_faks,
-                'pembekal_emel' => $request->pembekal_emel,
-                'pembekal_status' => 'Aktif',
+            $user->pihakketigas()->create([
+                'pihak_ketiga_nama' => $request->pihak_ketiga_nama,
+                'pihak_ketiga_no_roc' => $request->pihak_ketiga_no_roc,
+                'pihak_ketiga_bangunan' => $request->pihak_ketiga_bangunan,
+                'pihak_ketiga_jalan' => $request->pihak_ketiga_jalan,
+                'pihak_ketiga_poskod' => $request->pihak_ketiga_poskod,
+                'pihak_ketiga_bandar' => $request->pihak_ketiga_bandar,
+                'pihak_ketiga_negeri' => $request->pihak_ketiga_negeri,
+                'pihak_ketiga_negeri_luar_malaysia' => $request->pihak_ketiga_negeri_luar_malaysia,
+                'pihak_ketiga_negara' => $request->pihak_ketiga_negara,
+                'pihak_ketiga_no_tel' => $request->pihak_ketiga_no_tel,
+                'pihak_ketiga_no_faks' => $request->pihak_ketiga_no_faks,
+                'pihak_ketiga_emel' => $request->pihak_ketiga_emel,
+                'pihak_ketiga_status' => 'Aktif',
+                'pihak_ketiga_jenis' => 'pembekal',
                 'user_id' => $user->id,
             ]);
-            return redirect('/pembekal')->withSuccess('Pembekal '.$request->pembekal_nama.' telah berjaya didaftarkan!');
+            return redirect('/pembekal')->withSuccess('Pembekal '.$request->pihak_ketiga_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/pembekal')->withWarning('Pembekal '.$request->pembekal_nama.' tidak berjaya didaftarkan!');
+            return redirect('/pembekal')->withWarning('Pembekal '.$request->pihak_ketiga_nama.' tidak berjaya didaftarkan!');
         }
         
     }
@@ -144,54 +141,50 @@ class PembekalController extends Controller
     // Update pembekal based on id
     public function update(Request $request, $id){
         $request->validate([
-            'pembekal_nama' => 'required',
-            'pembekal_no_roc' => 'required',
-            'pembekal_bangunan' => 'required',
-            'pembekal_jalan' => 'required',
-            'pembekal_poskod' => 'required',
-            // 'pembekal_bandar' => 'required',
-            // 'pembekal_negeri' => 'required',
-            // 'pembekal_negeri_luar_malaysia' => 'required',
-            'pembekal_negara' => 'required',
-            'pembekal_no_tel' => 'required',
-            // 'pembekal_no_faks' => 'required',
-            'pembekal_emel' => 'required|email',
-            // 'pembekal_status' => 'required',
+            'pihak_ketiga_nama' => 'required',
+            'pihak_ketiga_no_roc' => 'required',
+            'pihak_ketiga_bangunan' => 'required',
+            'pihak_ketiga_jalan' => 'required',
+            'pihak_ketiga_poskod' => 'required',
+            'pihak_ketiga_negara' => 'required',
+            'pihak_ketiga_no_tel' => 'required',
+            'pihak_ketiga_emel' => 'required|email',
         ]);
 
         try {
-            $pembekal = Pembekal::find($id);
+            $pembekal = PihakKetiga::find($id);
             $pembekal->update([
-                'pembekal_nama' => $request->pembekal_nama,
-                'pembekal_no_roc' => $request->pembekal_no_roc,
-                'pembekal_bangunan' => $request->pembekal_bangunan,
-                'pembekal_jalan' => $request->pembekal_jalan,
-                'pembekal_poskod' => $request->pembekal_poskod,
-                'pembekal_bandar' => $request->pembekal_bandar,
-                'pembekal_negeri' => $request->pembekal_negeri,
-                'pembekal_negeri_luar_malaysia' => $request->pembekal_negeri_luar_malaysia,
-                'pembekal_negara' => $request->pembekal_negara,
-                'pembekal_no_tel' => $request->pembekal_no_tel,
-                'pembekal_no_faks' => $request->pembekal_no_faks,
-                'pembekal_emel' => $request->pembekal_emel,
-                'pembekal_status' => 'Aktif',
+                'pihak_ketiga_nama' => $request->pihak_ketiga_nama,
+                'pihak_ketiga_no_roc' => $request->pihak_ketiga_no_roc,
+                'pihak_ketiga_bangunan' => $request->pihak_ketiga_bangunan,
+                'pihak_ketiga_jalan' => $request->pihak_ketiga_jalan,
+                'pihak_ketiga_poskod' => $request->pihak_ketiga_poskod,
+                'pihak_ketiga_bandar' => $request->pihak_ketiga_bandar,
+                'pihak_ketiga_negeri' => $request->pihak_ketiga_negeri,
+                'pihak_ketiga_negeri_luar_malaysia' => $request->pihak_ketiga_negeri_luar_malaysia,
+                'pihak_ketiga_negara' => $request->pihak_ketiga_negara,
+                'pihak_ketiga_no_tel' => $request->pihak_ketiga_no_tel,
+                'pihak_ketiga_no_faks' => $request->pihak_ketiga_no_faks,
+                'pihak_ketiga_emel' => $request->pihak_ketiga_emel,
+                'pihak_ketiga_status' => 'Aktif',
+                'pihak_ketiga_jenis' => 'pembekal',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/pembekal')->withSuccess('Pembekal '.$pembekal->pembekal_nama.' telah berjaya dikemaskinikan!');
+            return redirect('/pembekal')->withSuccess('Pembekal '.$pembekal->pihak_ketiga_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/pembekal')->withWarning('Pembekal '.$pembekal->pembekal_nama.' tidak berjaya dikemaskinikan!');
+            return redirect('/pembekal')->withWarning('Pembekal '.$pembekal->pihak_ketiga_nama.' tidak berjaya dikemaskinikan!');
         }
     }
 
     // Delete pembekal based on id
     public function delete($id){
         try{
-            $pembekal = Pembekal::find($id);
+            $pembekal = PihakKetiga::find($id);
             $pembekal->delete();
-            return redirect('/pembekal')->withSuccess('Pembekal '.$pembekal->pembekal_nama.' telah berjaya dipadamkan!');
+            return redirect('/pembekal')->withSuccess('Pembekal '.$pembekal->pihak_ketiga_nama.' telah berjaya dipadamkan!');
         }
         catch (\Illuminate\Database\QueryException $error){
-            return redirect('/pembekal')->withWarning('Pembekal '.$pembekal->pembekal_nama.' tidak berjaya dipadamkan!');
+            return redirect('/pembekal')->withWarning('Pembekal '.$pembekal->pihak_ketiga_nama.' tidak berjaya dipadamkan!');
         }
     }
 }
