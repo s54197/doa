@@ -7,6 +7,10 @@
         {{-- <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" /> --}}
         {{-- <meta content="Coderthemes" name="author" /> --}}
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- For AJAX request -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- App favicon -->
         <link rel="shortcut icon" href="/assets/images/logo-tab v1.ico">
 
@@ -360,7 +364,7 @@
         <script src="/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
         <script src="/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
         <script src="/assets/libs/bootstrap-filestyle2/bootstrap-filestyle.min.js"></script>
-        <script src="/assets/js/pages/form-advanced.init.js"></script>
+        <!-- <script src="/assets/js/pages/form-advanced.init.js"></script> -->
 
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
@@ -368,6 +372,12 @@
         {{-- show loading icon for submit button --}}
         <script>
             $(document).ready(function(){
+                    // for ajax to function in laravel
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
                 // show spinner before submitting form
                 $("button[type='submit']").on("click", function(){
                     $('#loading_icon').show();

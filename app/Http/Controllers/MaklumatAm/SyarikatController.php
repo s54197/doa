@@ -136,7 +136,7 @@ class SyarikatController extends Controller
                 'syarikat_bandar' => $request->syarikat_bandar,
                 'syarikat_negeri' => $request->syarikat_negeri,
                 'syarikat_negeri_luar_malaysia' => $request->syarikat_negeri_luar_malaysia,
-                'syarikat_negara' => $request->syarikat_syarikat_negaranegeri,
+                'syarikat_negara' => $request->syarikat_negara,
                 'syarikat_surat_bangunan' => $request->syarikat_surat_bangunan,
                 'syarikat_surat_jalan' => $request->syarikat_surat_jalan,
                 'syarikat_surat_poskod' => $request->syarikat_surat_poskod,
