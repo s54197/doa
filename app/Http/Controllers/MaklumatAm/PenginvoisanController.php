@@ -98,7 +98,6 @@ class PenginvoisanController extends Controller
 
     // Store data
     public function store(Request $request){
-        dd($request);
         $request->validate([
             'penginvoisan_nama' => 'required',
             'penginvoisan_no_roc' => 'required',
@@ -114,9 +113,7 @@ class PenginvoisanController extends Controller
             'penginvoisan_emel' => 'required|email',
             // 'penginvoisan_status' => 'required',
         ]);
-
         
-
         try {
             $user = User::find(Auth::user()->id);
             $user->penginvoisans()->create([

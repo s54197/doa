@@ -105,11 +105,11 @@
                     <tbody>
                         @foreach($penginvoisans as $penginvoisan)
                         <tr>
-                            <td>{{$penginvoisan->pihak_ketiga_nama}}</td>
-                            <td>{{$penginvoisan->pihak_ketiga_no_roc}}</td>
-                            <td>{{$penginvoisan->pihak_ketiga_no_tel}}</td>
-                            <td>{{$penginvoisan->pihak_ketiga_negeri}}</td>
-                            <td>{{$penginvoisan->pihak_ketiga_status}}</td>
+                            <td>{{$penginvoisan->penginvoisan_nama}}</td>
+                            <td>{{$penginvoisan->penginvoisan_no_roc}}</td>
+                            <td>{{$penginvoisan->penginvoisan_no_tel}}</td>
+                            <td>{{$penginvoisan->penginvoisan_negeri}}</td>
+                            <td>{{$penginvoisan->penginvoisan_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>

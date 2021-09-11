@@ -105,11 +105,11 @@
                     <tbody>
                         @foreach($gudangs as $gudang)
                         <tr>
-                            <td>{{$gudang->pihak_ketiga_nama}}</td>
-                            <td>{{$gudang->pihak_ketiga_no_roc}}</td>
-                            <td>{{$gudang->pihak_ketiga_no_tel}}</td>
-                            <td>{{$gudang->pihak_ketiga_negeri}}</td>
-                            <td>{{$gudang->pihak_ketiga_status}}</td>
+                            <td>{{$gudang->gudang_nama}}</td>
+                            <td>{{$gudang->gudang_no_roc}}</td>
+                            <td>{{$gudang->gudang_no_tel}}</td>
+                            <td>{{$gudang->gudang_negeri}}</td>
+                            <td>{{$gudang->gudang_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
