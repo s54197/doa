@@ -19,7 +19,7 @@ class PihakKetiga extends Model
 
     public function borangAs()
     {
-        return $this->belongsToMany(BorangA::class, 'borang_pihak_ketiga');
+        return $this->belongsToMany(BorangA::class, BorangPihakKetiga::class);
     }
 
     protected $fillable = [

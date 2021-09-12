@@ -15,16 +15,15 @@ class CreateBorangASTable extends Migration
     {
         Schema::create('borang_a_s', function (Blueprint $table) {
             $table->id();
-
-            $table->string('borangA_syarikat');
-            $table->string('borangA_agen');
+            // $table->string('borangA_syarikat');
+            // $table->string('borangA_agen');
             $table->date('borangA_tarikh_terima_kaunter');
             $table->date('borangA_tarikh_lulus');
             $table->date('borangA_tarikh_tamat');
             $table->string('borangA_wakil_syarikat');
             $table->string('borangA_sijil_no_siri')->nullable();
             $table->string('borangA_jenis_pendaftaran');
-            $table->string('borangA_dagangan');
+            // $table->string('borangA_dagangan');
             $table->string('borangA_no_pendaftaran');
             $table->boolean('borangA_perniagaan_mengimport');
             $table->boolean('borangA_perniagaan_mengilang');
@@ -51,9 +50,21 @@ class CreateBorangASTable extends Migration
 
             $table->string('borangA_status');
 
-            // one to many relation for user
+            // Relation for user
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            // Relation for syarikat
+            $table->unsignedBigInteger('syarikat_id');
+            $table->foreign('syarikat_id')->references('id')->on('syarikats')->onDelete('cascade');
+
+            // Relation for agen
+            $table->unsignedBigInteger('agen_id');
+            $table->foreign('agen_id')->references('id')->on('agens')->onDelete('cascade');
+
+            // Relation for agen
+            $table->unsignedBigInteger('produk_id');
+            $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
             
             $table->softDeletes();           
             $table->timestamps();

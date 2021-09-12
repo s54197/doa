@@ -128,14 +128,14 @@ class BorangAController extends Controller
 
         } else {
             // All data user
-            $syarikats = User::find(Auth::user()->id)->Syarikat::all();
-            $agens = User::find(Auth::user()->id)->Agen::all();
-            $produks = User::find(Auth::user()->id)->Produk::all();
-            $perawiss = User::find(Auth::user()->id)->Perawis::all();
-            $pengilangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
-            $pengilang_pembekals = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
-            $gudangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
-            $penginvoisans = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
+            $syarikats = User::find(Auth::user()->id)->syarikats;
+            $agens = User::find(Auth::user()->id)->agens;
+            $produks = User::find(Auth::user()->id)->produks;
+            $perawiss = User::find(Auth::user()->id)->perawiss;
+            $pengilangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilang_pembekals = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $gudangs = User::find(Auth::user()->id)->gudangs;
+            $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
         }
 
         // Data borangA
@@ -192,14 +192,14 @@ class BorangAController extends Controller
 
         } else {
             // All data user
-            $syarikats = User::find(Auth::user()->id)->Syarikat::all();
-            $agens = User::find(Auth::user()->id)->Agen::all();
-            $produks = User::find(Auth::user()->id)->Produk::all();
-            $perawiss = User::find(Auth::user()->id)->Perawis::all();
-            $pengilangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
-            $pengilang_pembekals = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
-            $gudangs = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
-            $penginvoisans = User::find(Auth::user()->id)->PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
+            $syarikats = User::find(Auth::user()->id)->syarikats;
+            $agens = User::find(Auth::user()->id)->agens;
+            $produks = User::find(Auth::user()->id)->produks;
+            $perawiss = User::find(Auth::user()->id)->perawiss;
+            $pengilangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilang_pembekals = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $gudangs = User::find(Auth::user()->id)->gudangs;
+            $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
         }
 
         // Data borangA

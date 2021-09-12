@@ -19,7 +19,7 @@ class Gudang extends Model
 
     public function borangAs()
     {
-        return $this->belongsToMany(BorangA::class, 'borang_gudangs');
+        return $this->belongsToMany(BorangA::class, BorangGudang::class);
     }
 
     protected $fillable = [

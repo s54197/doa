@@ -17,6 +17,11 @@ class Agen extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Agen relationship
+    public function borangAs(){
+        return $this->hasMany(Agen::class);
+    }
+
     protected $fillable = [
         'agen_nama',
         'agen_ic',

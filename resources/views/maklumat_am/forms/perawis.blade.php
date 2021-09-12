@@ -86,7 +86,12 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_piawaian"><span class="text-danger">*</span>Piawaian Analisis:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_piawaian" name="perawis_piawaian" class="form-control" placeholder="Piawaian Analisis" value="{{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="perawis_piawaian" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Piawaian Analisis...</option>
+                                            <option value='Ya' {{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) == 'Ya' ? 'selected' : '' }}>Ya</option>
+                                            <option value='Tidak' {{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) == 'Tidak' ? 'selected' : '' }}>Tidak</option>
+                                        </select>
+                                        <!-- <input type="text" id="perawis_piawaian" name="perawis_piawaian" class="form-control" placeholder="Piawaian Analisis" value="{{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}> -->
                                         @error('perawis_piawaian') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -95,7 +100,12 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_sampel"><span class="text-danger">*</span>Sampel Analisis:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_sampel" name="perawis_sampel" class="form-control" placeholder="Sampel Analisis" value="{{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="perawis_sampel" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Sampel Analisis...</option>
+                                            <option value='Ya' {{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) == 'Ya' ? 'selected' : '' }}>Ya</option>
+                                            <option value='Tidak' {{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) == 'Tidak' ? 'selected' : '' }}>Tidak</option>
+                                        </select>
+                                        <!-- <input type="text" id="perawis_sampel" name="perawis_sampel" class="form-control" placeholder="Sampel Analisis" value="{{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}> -->
                                         @error('perawis_sampel') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -104,7 +114,12 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_pihak_ketiga"><span class="text-danger">*</span>Laporan Analisis Makmal Pihak Ketiga:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" class="form-control" placeholder="Laporan Analisis Makmal Pihak Ketiga" value="{{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="perawis_pihak_ketiga" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Laporan Analisis Makmal Pihak Ketiga...</option>
+                                            <option value='Ya' {{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) == 'Ya' ? 'selected' : '' }}>Ya</option>
+                                            <option value='Tidak' {{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) == 'Tidak' ? 'selected' : '' }}>Tidak</option>
+                                        </select>
+                                        <!-- <input type="text" id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" class="form-control" placeholder="Laporan Analisis Makmal Pihak Ketiga" value="{{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}> -->
                                         @error('perawis_pihak_ketiga') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
