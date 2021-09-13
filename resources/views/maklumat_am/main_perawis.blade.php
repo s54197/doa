@@ -151,7 +151,7 @@ $(document).ready(function () {
     var table = $('#datatable').DataTable({
         lengthChange: true,
         responsive: false,
-        scrollX: true,
+        // scrollX: true,
         // dom: 'Bfrtip',
         buttons: [
             'excel',

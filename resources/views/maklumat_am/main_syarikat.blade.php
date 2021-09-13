@@ -147,8 +147,8 @@ Adakah anda bersetuju untuk memadam data?
 $(document).ready(function () {
     var table = $('#datatable').DataTable({
         lengthChange: true,
-        responsive: false,
-        scrollX: true,
+        responsive: true,
+        // scrollX: true,
         // dom: 'Bfrtip',
         buttons: [
             'excel',
