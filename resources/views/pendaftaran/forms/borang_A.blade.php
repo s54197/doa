@@ -56,7 +56,7 @@
                                 <select class="form-control" name="borangA_syarikat" id="borangA_syarikat" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <option value="">Pilih Syarikat...</option>
                                     @foreach($syarikats as $syarikat)
-                                        <option value=" {{ $syarikat->syarikat_nama }}" id="{{ $syarikat->id }}" {{ old('borangA_syarikat' , isset($borangAs->borangA_syarikat)?$borangAs->borangA_syarikat:null ) == $syarikat->syarikat_nama ? 'selected' : '' }} >{{ $syarikat->syarikat_nama }}</option>
+                                        <option value=" {{ $syarikat->id }}" id="{{ $syarikat->id }}" {{ old('borangA_syarikat' , isset($borangAs->borangA_syarikat)?$borangAs->borangA_syarikat:null ) == $syarikat->id ? 'selected' : '' }} >{{ $syarikat->syarikat_nama }}</option>
                                     @endforeach
                                 </select>    
                                 @error('borangA_syarikat') 
@@ -70,7 +70,7 @@
                                 <select class="form-control" name="borangA_agen" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <option value="">Pilih Agen/Wakil...</option>
                                     @foreach($agens as $agen)
-                                        <option value=" {{ $agen->agen_nama }}" {{ old('borangA_agen' , isset($borangAs->borangA_agen)?$borangAs->borangA_agen:null ) == $agen->agen_nama ? 'selected' : '' }} >{{ $agen->agen_nama }}</option>
+                                        <option value=" {{ $agen->id }}" {{ old('borangA_agen' , isset($borangAs->borangA_agen)?$borangAs->borangA_agen:null ) == $agen->agen_nama ? 'selected' : '' }} >{{ $agen->agen_nama }}</option>
                                     @endforeach
                                 </select>    
                                 @error('borangA_agen') 
@@ -132,7 +132,7 @@
                                 <select class="form-control" name="borangA_dagangan" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     <option value="">Pilih Dagangan...</option>
                                     @foreach($produks as $produk)
-                                        <option value=" {{ $produk->produk_nama }}" {{ old('borangA_dagangan' , isset($borangAs->borangA_dagangan)?$borangAs->borangA_dagangan:null ) == $produk->produk_nama ? 'selected' : '' }} >{{ $produk->produk_nama }}</option>
+                                        <option value=" {{ $produk->id }}" {{ old('borangA_dagangan' , isset($borangAs->borangA_dagangan)?$borangAs->borangA_dagangan:null ) == $produk->id ? 'selected' : '' }} >{{ $produk->produk_nama }}</option>
                                     @endforeach
                                     {{-- <option value="Johor" {{ old('borangA_dagangan') == "Johor" ? 'selected' : '' }}>Johor</option> --}}
                                 </select>    
@@ -286,8 +286,8 @@
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang[]" id="borangA_pengilang" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($pengilang_pembekals as $pengilang_pembekal)
                                         @if(isset($borangAs)) 
-                                            @foreach($borangAs->borangA_pengilang_pembekal as $value)
-                                                <option value="{{ $pengilang_pembekal->pihak_ketiga_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang_pembekal->pihak_ketiga_nama ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option>
+                                            @foreach($borangAs->pihakketigas as $value)
+                                                <!-- <option value="{{ $pengilang_pembekal->pihak_ketiga_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang_pembekal->pihak_ketiga_nama ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option> -->
                                             @endforeach
                                         @else
                                             <option value="{{ $pengilang_pembekal->pihak_ketiga_nama }}" {{ old('borangA_pengilang[]' , isset($value)?$value:null ) == $pengilang_pembekal->pihak_ketiga_nama ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option>

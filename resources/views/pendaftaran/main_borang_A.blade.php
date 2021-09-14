@@ -106,11 +106,11 @@
                     <tbody>
                         @foreach($borangAs as $borangA)
                         <tr>
-                            <td>{{$borangA->borangA_syarikat}}</td>
-                            <td>{{$borangA->borangA_agen}}</td>
+                            <td>{{$borangA->syarikat->syarikat_nama}}</td>
+                            <td>{{$borangA->agen->agen_nama}}</td>
                             <td>{{$borangA->borangA_tarikh_lulus}}</td>
                             <td>{{$borangA->borangA_tarikh_tamat}}</td>
-                            <td>{{$borangA->borangA_dagangan}}</td>
+                            <td>{{$borangA->produk->produk_nama}}</td>
                             <td>{{$borangA->borangA_no_pendaftaran}}</td>
                             <td>{{$borangA->borangA_status}}</td>
                             <td>
