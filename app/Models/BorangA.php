@@ -71,6 +71,12 @@ class BorangA extends Model
     {
         return $this->belongsToMany(Pengilang::class, 'borang_pengilangs', 'borang_a_s_id', 'pihak_ketiga_id')->as('values');
     }
+
+    public function perawis_pengilangs()
+    {
+        return $this->belongsToMany(Pengilang::class, 'borang_perawis_pengilang', 'borang_a_s_id', 'pihak_ketiga_id')->as('values');
+    }
+    
     
     
     protected $fillable = [

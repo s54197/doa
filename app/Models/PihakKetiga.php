@@ -27,6 +27,11 @@ class PihakKetiga extends Model
         return $this->belongsToMany(BorangA::class, 'borang_pengilangs','pihak_ketiga_id','borang_a_s_id');
     }
 
+    public function borangAs_perawis_pengilang()
+    {
+        return $this->belongsToMany(BorangA::class, 'borang_perawis_pengilang','pihak_ketiga_id','borang_a_s_id');
+    }
+
     protected $fillable = [
         'pihak_ketiga_nama',
         'pihak_ketiga_no_roc',

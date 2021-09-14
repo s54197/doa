@@ -236,7 +236,6 @@ class BorangAController extends Controller
 
     // Store data
     public function store(Request $request){
-        dd($request);
         $request->validate([
             'borangA_syarikat' => 'required',
             'borangA_agen' => 'required',
@@ -274,23 +273,22 @@ class BorangAController extends Controller
         $request->borangA_mengilang_mempek = $request->has('borangA_mengilang_mempek') ? true : false;
         $request->borangA_mengilang_membuat = $request->has('borangA_mengilang_membuat') ? true : false;
        
+        $pengilangPembekalIds = $request->borangA_pengilang;
+        $pengilangkontrakIds = $request->borangA_pengilang_kontrak;
+        $penginvoisanIds = $request->borangA_penginvoisan;
+        $gudangIds = $request->borangA_gudang;
+        $perawisIds = $request->borangA_perawis_aktif;
+        $perawispengilangIds = $request->borangA_perawis_pengilang;
+        
         try {
             $user = User::find(Auth::user()->id);
-
-            // borangA_pengilang
-            // borangA_pengilang_kontrak
-            // borangA_penginvoisan
-            // borangA_gudang
-            // borangA_perawis_pengilang
-            $pengilangPembekalIds = [1];
-            $pengilangIds = [1];
-            $penginvoisanIds = [1];
-            $gudangIds = [1];
-            $perawisIds = [1];
-
-            $user->roles()->attach($roleIds);
-
-
+            
+            $user->borangAs()->pihakketigas()->attach($pengilangPembekalIds);
+            $user->borangAs()->penginvoisans()->attach($penginvoisanIds);
+            $user->borangAs()->gudangs()->attach($gudangIds);
+            $user->borangAs()->perawiss()->attach($perawisIds);
+            $user->borangAs()->pengilangs()->attach($pengilangkontrakIds);
+            $user->borangAs()->perawis_pengilangs()->attach($perawispengilangIds);
 
             $user->borangAs()->create([
                 'syarikat_id' => $request->borangA_syarikat,
