@@ -69,6 +69,7 @@ class AgenController extends Controller
         // Data agen
         $agen = Agen::find($id);
         $data = array(
+            'list_negara' => $this->list_negara,
             'agens' => $agen,
             'jenis' => 'papar',
             'tajuk' => 'Paparan'

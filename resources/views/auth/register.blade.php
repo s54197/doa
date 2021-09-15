@@ -33,7 +33,7 @@
     
                         <div class="account-box">
     
-                            <div class="card-box shadow-none p-4 mt-2">
+                            <div class="card-box shadow-none p-4 mt-1">
                                 {{-- <h2 class="text-uppercase text-center pb-3">
                                     <a href="index.html" class="text-primary">
                                         <span><img src="assets/images/logo-dark.png" alt="" height="26"></span>
@@ -41,7 +41,7 @@
                                 </h2> --}}
                                 {{-- <div class="text-center mb-2 mt-4"> --}}
                                 <div class="text-center mb-0">
-                                    <img src="assets/images/logo-white v1.jpg" alt="logo_jabatan_pertanian" height="200">
+                                    <img src="assets/images/logo-white v2.jpg" alt="logo_jabatan_pertanian" height="250">
                                 </div>
 
                                 <h3 class="text-center mt-0 mb-4">Sistem Rekod Maklumat Pendaftaran</h3>

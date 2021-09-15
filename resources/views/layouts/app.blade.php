@@ -72,7 +72,7 @@
 
                     <!-- User box -->
                     <div class="user-box">
-                        <img src="/assets/images/logo-dark v1.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="77">
+                        <img src="/assets/images/logo-dark v2.png" alt="logo-jabatan-dark" title="Logo Jabatan" class="" height="85">
                         {{-- <h5 class="text-light">
                             Sistem Maklumat Rekod Pendaftaran
                         </h5> --}}

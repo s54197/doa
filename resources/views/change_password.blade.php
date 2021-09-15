@@ -80,7 +80,7 @@
                                 Tukar
                             </button>
                             <button type="reset" name="change_password_cancel" id="change_password_cancel" class="btn btn-light waves-effect">
-                                Batal
+                                Kosongkan
                             </button>
                         </div>
                     </div>
