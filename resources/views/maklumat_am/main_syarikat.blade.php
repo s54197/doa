@@ -68,8 +68,10 @@
                         <h4 class="header-title">Senarai Syarikat</div></h4>
                     <div class="col-12 col-md-2">
                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah Syarikat</button> --}}
-                        <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
+                        <button type="button" class="btn waves-effect waves-light btn-primary float-md-right ml-1"
                         onclick="window.location='{{ route("baru.syarikat") }}'">Daftar Baru</button>
+                        <button type="button" class="btn waves-effect waves-light btn-primary float-md-right btn-excel"
+                        >Excel</button>
                     </div>
                 </div>
 
@@ -124,6 +126,7 @@
                         @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div><!-- end col -->
     </div>
@@ -142,17 +145,27 @@ Adakah anda bersetuju untuk memadam data?
 @section('local_js')
 <script>
 $(document).ready(function () {
-    $('#datatable').DataTable({
-        "responsive": false,
-        "language": {
-            "paginate": {
-                "previous": "<i class='mdi mdi-chevron-left'>",
-                "next": "<i class='mdi mdi-chevron-right'>"
-            }
-        },
+    var table = $('#datatable').DataTable({
+        lengthChange: true,
+        responsive: false,
+        // scrollX: true,
+        // dom: 'Bfrtip',
+        buttons: [
+            'excel',
+        ]
+        // language: {
+        //     "paginate": {
+        //         "previous": "<i class='mdi mdi-chevron-left'>",
+        //         "next": "<i class='mdi mdi-chevron-right'>"
+        //     }
+        // },
         // "drawCallback": function () {
         //     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
         // }
+    });
+
+    $(".btn-excel").on("click", function() {
+        table.button( '.buttons-excel' ).trigger();
     });
 
     // To get syarikat id

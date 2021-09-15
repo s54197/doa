@@ -70,6 +70,8 @@
                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah penginvoisan</button> --}}
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
                         onclick="window.location='{{ route("baru.penginvoisan") }}'">Daftar Baru</button>
+                        <button type="button" class="btn waves-effect waves-light btn-primary float-md-right btn-excel mr-1"
+                        >Excel</button>
                     </div>
                 </div>
 
@@ -105,11 +107,11 @@
                     <tbody>
                         @foreach($penginvoisans as $penginvoisan)
                         <tr>
-                            <td>{{$penginvoisan->pihak_ketiga_nama}}</td>
-                            <td>{{$penginvoisan->pihak_ketiga_no_roc}}</td>
-                            <td>{{$penginvoisan->pihak_ketiga_no_tel}}</td>
-                            <td>{{$penginvoisan->pihak_ketiga_negeri}}</td>
-                            <td>{{$penginvoisan->pihak_ketiga_status}}</td>
+                            <td>{{$penginvoisan->penginvoisan_nama}}</td>
+                            <td>{{$penginvoisan->penginvoisan_no_roc}}</td>
+                            <td>{{$penginvoisan->penginvoisan_no_tel}}</td>
+                            <td>{{$penginvoisan->penginvoisan_negeri}}</td>
+                            <td>{{$penginvoisan->penginvoisan_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
@@ -142,17 +144,27 @@ Adakah anda bersetuju untuk memadam data?
 @section('local_js')
 <script>
 $(document).ready(function () {
-    $('#datatable').DataTable({
-        "responsive": false,
-        "language": {
-            "paginate": {
-                "previous": "<i class='mdi mdi-chevron-left'>",
-                "next": "<i class='mdi mdi-chevron-right'>"
-            }
-        },
+    var table = $('#datatable').DataTable({
+        lengthChange: true,
+        responsive: false,
+        // scrollX: true,
+        // dom: 'Bfrtip',
+        buttons: [
+            'excel',
+        ]
+        // language: {
+        //     "paginate": {
+        //         "previous": "<i class='mdi mdi-chevron-left'>",
+        //         "next": "<i class='mdi mdi-chevron-right'>"
+        //     }
+        // },
         // "drawCallback": function () {
         //     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
         // }
+    });
+
+    $(".btn-excel").on("click", function() {
+        table.button( '.buttons-excel' ).trigger();
     });
 
     // To get penginvoisan id

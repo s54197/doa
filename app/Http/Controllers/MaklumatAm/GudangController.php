@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\ListNegara;
-use App\Models\PihakKetiga;
+use App\Models\Gudang;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -23,17 +23,17 @@ class GudangController extends Controller
 
         if ($role=='admin') {
             // All data gudang
-            $gudangs =  PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
+            $gudangs = Gudang::all();
         } else {
             // All data gudang
-            $gudangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','gudang')->get();
+            $gudangs = User::find(Auth::user()->id)->gudangs;
         }
 
         // Summary
-        $TotalGudang = PihakKetiga::where('pihak_ketiga_jenis','gudang')->count();
-        $TotalGudangAktif = PihakKetiga::where('pihak_ketiga_jenis','gudang')->where('pihak_ketiga_status', '=', 'Aktif')->count();
-        $TotalGudangTidakAktif = PihakKetiga::where('pihak_ketiga_jenis','gudang')->where('pihak_ketiga_status', '=', 'Tidak Aktif')->count();
-        $TotalGudangBulanTerkini = PihakKetiga::where('pihak_ketiga_jenis','gudang')->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
+        $TotalGudang = Gudang::count();
+        $TotalGudangAktif = Gudang::where('gudang_status', '=', 'Aktif')->count();
+        $TotalGudangTidakAktif = Gudang::where('gudang_status', '=', 'Tidak Aktif')->count();
+        $TotalGudangBulanTerkini = Gudang::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
 
         return view('maklumat_am.main_gudang', [
             'gudangs' => $gudangs,
@@ -65,7 +65,7 @@ class GudangController extends Controller
         // Data negara
         $list_negara = ListNegara::all();
         // Data gudang
-        $gudang = PihakKetiga::find($id);
+        $gudang = Gudang::find($id);
         // Data negara
         $list_negara = ListNegara::all();
         
@@ -83,7 +83,7 @@ class GudangController extends Controller
     // Update data based on id
     public function update_view($id) {
         // Data gudang
-        $gudang = PihakKetiga::find($id);
+        $gudang = Gudang::find($id);
         // Data negara
         $list_negara = ListNegara::all();
         
@@ -101,45 +101,44 @@ class GudangController extends Controller
     public function store(Request $request){
         
         $request->validate([
-            'pihak_ketiga_nama' => 'required',
-            'pihak_ketiga_no_roc' => 'required',
-            'pihak_ketiga_bangunan' => 'required',
-            'pihak_ketiga_jalan' => 'required',
-            'pihak_ketiga_poskod' => 'required',
-            // 'pihak_ketiga_bandar' => 'required',
-            // 'pihak_ketiga_negeri' => 'required',
-            // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
-            'pihak_ketiga_negara' => 'required',
-            'pihak_ketiga_no_tel' => 'required',
-            // 'pihak_ketiga_no_faks' => 'required',
-            'pihak_ketiga_emel' => 'required|email',
-            // 'pihak_ketiga_status' => 'required',
+            'gudang_nama' => 'required',
+            'gudang_no_roc' => 'required',
+            'gudang_bangunan' => 'required',
+            'gudang_jalan' => 'required',
+            'gudang_poskod' => 'required',
+            // 'gudang_bandar' => 'required',
+            // 'gudang_negeri' => 'required',
+            // 'gudang_negeri_luar_malaysia' => 'required',
+            'gudang_negara' => 'required',
+            'gudang_no_tel' => 'required',
+            // 'gudang_no_faks' => 'required',
+            'gudang_emel' => 'required|email',
+            // 'gudang_status' => 'required',
         ]);
 
         // dd($request);
 
         try {
             $user = User::find(Auth::user()->id);
-            $user->pihakketigas()->create([
-                'pihak_ketiga_nama' => $request->pihak_ketiga_nama,
-                'pihak_ketiga_no_roc' => $request->pihak_ketiga_no_roc,
-                'pihak_ketiga_bangunan' => $request->pihak_ketiga_bangunan,
-                'pihak_ketiga_jalan' => $request->pihak_ketiga_jalan,
-                'pihak_ketiga_poskod' => $request->pihak_ketiga_poskod,
-                'pihak_ketiga_bandar' => $request->pihak_ketiga_bandar,
-                'pihak_ketiga_negeri' => $request->pihak_ketiga_negeri,
-                'pihak_ketiga_negeri_luar_malaysia' => $request->pihak_ketiga_negeri_luar_malaysia,
-                'pihak_ketiga_negara' => $request->pihak_ketiga_negara,
-                'pihak_ketiga_no_tel' => $request->pihak_ketiga_no_tel,
-                'pihak_ketiga_no_faks' => $request->pihak_ketiga_no_faks,
-                'pihak_ketiga_emel' => $request->pihak_ketiga_emel,
-                'pihak_ketiga_status' => 'Aktif',
-                'pihak_ketiga_jenis' => 'gudang',
+            $user->gudangs()->create([
+                'gudang_nama' => $request->gudang_nama,
+                'gudang_no_roc' => $request->gudang_no_roc,
+                'gudang_bangunan' => $request->gudang_bangunan,
+                'gudang_jalan' => $request->gudang_jalan,
+                'gudang_poskod' => $request->gudang_poskod,
+                'gudang_bandar' => $request->gudang_bandar,
+                'gudang_negeri' => $request->gudang_negeri,
+                'gudang_negeri_luar_malaysia' => $request->gudang_negeri_luar_malaysia,
+                'gudang_negara' => $request->gudang_negara,
+                'gudang_no_tel' => $request->gudang_no_tel,
+                'gudang_no_faks' => $request->gudang_no_faks,
+                'gudang_emel' => $request->gudang_emel,
+                'gudang_status' => 'Aktif',
                 'user_id' => $user->id,
             ]);
-            return redirect('/gudang')->withSuccess('Gudang '.$request->pihak_ketiga_nama.' telah berjaya didaftarkan!');
+            return redirect('/gudang')->withSuccess('Gudang '.$request->gudang_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/gudang')->withWarning('Gudang '.$request->pihak_ketiga_nama.' tidak berjaya didaftarkan!');
+            return redirect('/gudang')->withWarning('Gudang '.$request->gudang_nama.' tidak berjaya didaftarkan!');
         }
         
     }
@@ -147,55 +146,54 @@ class GudangController extends Controller
     // Update gudang based on id
     public function update(Request $request, $id){
         $request->validate([
-            'pihak_ketiga_nama' => 'required',
-            'pihak_ketiga_no_roc' => 'required',
-            'pihak_ketiga_bangunan' => 'required',
-            'pihak_ketiga_jalan' => 'required',
-            'pihak_ketiga_poskod' => 'required',
-            // 'pihak_ketiga_bandar' => 'required',
-            // 'pihak_ketiga_negeri' => 'required',
-            // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
-            'pihak_ketiga_negara' => 'required',
-            'pihak_ketiga_no_tel' => 'required',
-            // 'pihak_ketiga_no_faks' => 'required',
-            'pihak_ketiga_emel' => 'required|email',
-            // 'pihak_ketiga_status' => 'required',
+            'gudang_nama' => 'required',
+            'gudang_no_roc' => 'required',
+            'gudang_bangunan' => 'required',
+            'gudang_jalan' => 'required',
+            'gudang_poskod' => 'required',
+            // 'gudang_bandar' => 'required',
+            // 'gudang_negeri' => 'required',
+            // 'gudang_negeri_luar_malaysia' => 'required',
+            'gudang_negara' => 'required',
+            'gudang_no_tel' => 'required',
+            // 'gudang_no_faks' => 'required',
+            'gudang_emel' => 'required|email',
+            // 'gudang_status' => 'required',
         ]);
 
         try {
-            $gudang = PihakKetiga::find($id);
+            $gudang = Gudang::find($id);
             $gudang->update([
-                'pihak_ketiga_nama' => $request->pihak_ketiga_nama,
-                'pihak_ketiga_no_roc' => $request->pihak_ketiga_no_roc,
-                'pihak_ketiga_bangunan' => $request->pihak_ketiga_bangunan,
-                'pihak_ketiga_jalan' => $request->pihak_ketiga_jalan,
-                'pihak_ketiga_poskod' => $request->pihak_ketiga_poskod,
-                'pihak_ketiga_bandar' => $request->pihak_ketiga_bandar,
-                'pihak_ketiga_negeri' => $request->pihak_ketiga_negeri,
-                'pihak_ketiga_negeri_luar_malaysia' => $request->pihak_ketiga_negeri_luar_malaysia,
-                'pihak_ketiga_negara' => $request->pihak_ketiga_negara,
-                'pihak_ketiga_no_tel' => $request->pihak_ketiga_no_tel,
-                'pihak_ketiga_no_faks' => $request->pihak_ketiga_no_faks,
-                'pihak_ketiga_emel' => $request->pihak_ketiga_emel,
-                'pihak_ketiga_status' => 'Aktif',
-                'pihak_ketiga_jenis' => 'gudang',
+                'gudang_nama' => $request->gudang_nama,
+                'gudang_no_roc' => $request->gudang_no_roc,
+                'gudang_bangunan' => $request->gudang_bangunan,
+                'gudang_jalan' => $request->gudang_jalan,
+                'gudang_poskod' => $request->gudang_poskod,
+                'gudang_bandar' => $request->gudang_bandar,
+                'gudang_negeri' => $request->gudang_negeri,
+                'gudang_negeri_luar_malaysia' => $request->gudang_negeri_luar_malaysia,
+                'gudang_negara' => $request->gudang_negara,
+                'gudang_no_tel' => $request->gudang_no_tel,
+                'gudang_no_faks' => $request->gudang_no_faks,
+                'gudang_emel' => $request->gudang_emel,
+                'gudang_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/gudang')->withSuccess('Gudang '.$gudang->pihak_ketiga_nama.' telah berjaya dikemaskinikan!');
+            return redirect('/gudang')->withSuccess('Gudang '.$gudang->gudang_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/gudang')->withWarning('Gudang '.$gudang->pihak_ketiga_nama.' tidak berjaya dikemaskinikan!');
+            return redirect('/gudang')->withWarning('Gudang '.$gudang->gudang_nama.' tidak berjaya dikemaskinikan!');
         }
     }
 
     // Delete gudang based on id
     public function delete($id){
         try{
-            $gudang = PihakKetiga::find($id);
+            $gudang = Gudang::find($id);
             $gudang->delete();
-            return redirect('/gudang')->withSuccess('Gudang '.$gudang->pihak_ketiga_nama.' telah berjaya dipadamkan!');
+            return redirect('/gudang')->withSuccess('Gudang '.$gudang->gudang_nama.' telah berjaya dipadamkan!');
         }
         catch (\Illuminate\Database\QueryException $error){
-            return redirect('/gudang')->withWarning('Gudang '.$gudang->pihak_ketiga_nama.' tidak berjaya dipadamkan!');
+            return redirect('/gudang')->withWarning('Gudang '.$gudang->gudang_nama.' tidak berjaya dipadamkan!');
         }
     }
 }
