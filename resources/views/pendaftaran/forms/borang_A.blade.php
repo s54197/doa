@@ -275,7 +275,7 @@
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang[]" id="borangA_pengilang" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($pengilang_pembekals as $pengilang_pembekal)
-                                        @if(isset($borangAs)) 
+                                        @if(isset($borangAs))
                                             @foreach($borangIds->pihakketigas as $value)
                                                 <option value="{{ $pengilang_pembekal->pihak_ketiga_nama }}" {{ old('borangA_pengilang[]' , isset($value->pihak_ketiga_nama)?$value->pihak_ketiga_nama:null ) == $pengilang_pembekal->pihak_ketiga_nama ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option>
                                             @endforeach
@@ -678,7 +678,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-9 offset-md-3">
-                                <input type="text" id="borangA_perawis_perumusan_lain" name="borangA_perawis_perumusan_lain" class="form-control custom_border" placeholder="Lain-lain Perumusan" value="{{ old('borangA_perawis_perumusan_lain',isset($borangAs->borangA_perawis_perumusan_lain)?$$borangAs->borangA_perawis_perumusan_lain:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                <input type="text" id="borangA_perawis_perumusan_lain" name="borangA_perawis_perumusan_lain" class="form-control custom_border" placeholder="Lain-lain Perumusan" value="{{ old('borangA_perawis_perumusan_lain',isset($borangAs->borangA_perawis_perumusan_lain)?$borangAs->borangA_perawis_perumusan_lain:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_perawis_perumusan_lain') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror

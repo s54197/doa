@@ -19,7 +19,7 @@ class PihakKetiga extends Model
 
     public function borangAs()
     {
-        return $this->belongsToMany(BorangA::class, 'borang_pihak_ketigas','pihak_ketiga_id','borang_a_s_id');
+        return $this->belongsToMany(BorangA::class, 'borang_pihak_ketigas','pihak_ketiga_id','borang_a_s_id')->withPivot('pihak_ketiga_id', 'borang_a_s_id');;
     }
 
     public function borangAs_pengilang()

@@ -49,7 +49,7 @@ class BorangA extends Model
 
     public function pihakketigas()
     {
-        return $this->belongsToMany(PihakKetiga::class, 'borang_pihak_ketigas', 'borang_a_s_id', 'pihak_ketiga_id')->as('values');
+        return $this->belongsToMany(PihakKetiga::class, 'borang_pihak_ketigas', 'borang_a_s_id', 'pihak_ketiga_id')->withPivot('borang_a_s_id', 'pihak_ketiga_id');
     }
 
     public function penginvoisans()

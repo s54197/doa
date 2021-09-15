@@ -124,8 +124,8 @@ class BorangAController extends Controller
             $produks = Produk::all('id', 'produk_nama');
             $pengilangs = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
             $pengilang_pembekals = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
-            $gudangs = PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
-            $penginvoisans = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
+            $gudangs = Gudang::all('id','gudang_nama');
+            $penginvoisans = Penginvoisan::all('id','penginvoisan_nama');
 
         } else {
             // All data user
@@ -134,7 +134,7 @@ class BorangAController extends Controller
             $produks = User::find(Auth::user()->id)->produks;
             $perawiss = User::find(Auth::user()->id)->perawiss;
             $pengilangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->get();
-            $pengilang_pembekals = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $pengilang_pembekals = User::find(Auth::user()->id)->pihakketigas()->get();
             $gudangs = User::find(Auth::user()->id)->gudangs;
             $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
         }
@@ -142,6 +142,9 @@ class BorangAController extends Controller
         // Data borangA
         $borangA = BorangA::find($id)->with('syarikat','agen','produk')->get();
         $borangId = BorangA::find($id);
+        
+        // dd($pengilang_pembekals);
+        
         // foreach($borangId->pihakketigas as $borangId){
         //     dd($borangId->pihak_ketiga_nama);
         // }
@@ -418,9 +421,9 @@ class BorangAController extends Controller
                 'borangA_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/pendaftaran')->withSuccess('borangA '.$borangA->borangA_nama.' telah berjaya dikemaskinikan!');
+            return redirect('/pendaftaran')->withSuccess('BorangA '.$borangA->borangA_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/pendaftaran')->withWarning('borangA '.$borangA->borangA_nama.' tidak berjaya dikemaskinikan!'.$e);
+            return redirect('/pendaftaran')->withWarning('BorangA '.$borangA->borangA_nama.' tidak berjaya dikemaskinikan!'.$e);
         }
     }
 
@@ -429,10 +432,10 @@ class BorangAController extends Controller
         try{
             $borangA = borangA::find($id);
             $borangA->delete();
-            return redirect('/borangA')->withSuccess('borangA '.$borangA->borangA_nama.' telah berjaya dipadamkan!');
+            return redirect('/pendaftaran')->withSuccess('BorangA '.$borangA->borangA_nama.' telah berjaya dipadamkan!');
         }
         catch (\Illuminate\Database\QueryException $error){
-            return redirect('/borangA')->withWarning('borangA '.$borangA->borangA_nama.' tidak berjaya dipadamkan!');
+            return redirect('/pendaftaran')->withWarning('BorangA '.$borangA->borangA_nama.' tidak berjaya dipadamkan!');
         }
     }
 
