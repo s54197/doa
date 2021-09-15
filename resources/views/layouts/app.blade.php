@@ -14,12 +14,11 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="/assets/images/logo-tab v1.ico">
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
         <!-- third party css -->
         <link href="/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/libs/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
         <link href="/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/libs/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
        
         <link href="/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
@@ -353,9 +352,6 @@
         <script src="/assets/js/pages/borang_A.js"></script>
 
         <!-- third party js -->
-        <script src="/assets/libs/datatables/jquery.dataTables.min.js"></script>
-        <script src="/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
-        <script src="/assets/libs/datatables/dataTables.responsive.min.js"></script>
         <script src="/assets/libs/switchery/switchery.min.js"></script>
         <script src="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
         <script src="/assets/libs/select2/select2.min.js"></script>
@@ -365,6 +361,24 @@
         <script src="/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
         <script src="/assets/libs/bootstrap-filestyle2/bootstrap-filestyle.min.js"></script>
         <!-- <script src="/assets/js/pages/form-advanced.init.js"></script> -->
+
+        <!-- Required datatable js -->
+        <script src="/assets/libs/datatables/jquery.dataTables.min.js"></script>
+        <script src="/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="/assets/libs/datatables/dataTables.buttons.min.js"></script>
+        <script src="/assets/libs/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="/assets/libs/datatables/dataTables.keyTable.min.js"></script>
+        <script src="/assets/libs/datatables/dataTables.select.min.js"></script>
+        <script src="/assets/libs/jszip/jszip.min.js"></script>
+        <script src="/assets/libs/pdfmake/pdfmake.min.js"></script>
+        <script src="/assets/libs/pdfmake/vfs_fonts.js"></script>
+        <script src="/assets/libs/datatables/buttons.html5.min.js"></script>
+        <script src="/assets/libs/datatables/buttons.print.min.js"></script>
+
+        <!-- Responsive examples -->
+        <script src="/assets/libs/datatables/dataTables.responsive.min.js"></script>
+        <script src="/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
 
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>

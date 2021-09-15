@@ -67,7 +67,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mt-0 mt-sm-2 mb-0 mb-sm-2">
-                                    <label class="col-md-3 col-form-label" for="syarikat_alamat_tambahan"></label>
+                                    <label class="col-md-3 col-form-label" for="syarikat_alamat_tambahan">
+                                        {{-- <i id="loading_alamat_icon" class="ml-1 mdi mdi-spin mdi-loading text-primary float-right" style="display: none"></i> --}}
+                                    </label>
                                     <div class="col-md-2 mb-2 mb-sm-0">
                                         <input type="number" id="syarikat_poskod" name="syarikat_poskod" class="form-control" placeholder="Poskod" value="{{ old('syarikat_poskod',isset($syarikats->syarikat_poskod)?$syarikats->syarikat_poskod:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('syarikat_poskod') 
@@ -167,7 +169,7 @@
                                             <option value="">Pilih Negeri...</option>
                                             <option value="Johor" {{ old('syarikat_surat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Johor" ? 'selected' : '' }}>Johor</option>
                                             <option value="Melaka" {{ old('syarikat_surat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Melaka" ? 'selected' : '' }}>Melaka</option>
-                                            <option value="Negeri Sembilan" {{ old('syarikat_surat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
+                                            <option value="Negeri Sembilan" {{ old('syarikat_surat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Negeri Sembilan" ? 'selected' : '' }}>Negeri Sembilan</option>
                                             <option value="Selangor" {{ old('syarikat_surat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Selangor" ? 'selected' : '' }}>Selangor</option>
                                             <option value="Wilayah Persekutuan Putrajaya, Selangor" {{ old('syarikat_surat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Wilayah Persekutuan Putrajaya, Selangor" ? 'selected' : '' }}>Wilayah Persekutuan Putrajaya, Selangor</option>
                                             <option value="Wilayah Persekutuan Kuala Lumpur" {{ old('syarikat_surat_negeri',isset($syarikats->syarikat_surat_negeri)?$syarikats->syarikat_surat_negeri:null) == "Wilayah Persekutuan Kuala Lumpur" ? 'selected' : '' }}>Wilayah Persekutuan Kuala Lumpur</option>
@@ -344,10 +346,10 @@ $("input[name='syarikat_poskod']").on('blur', function(){
             data: {'poskod': $(this).val()},
             datatype: 'json',
             // beforeSend: function() {
-            //     $('#spinner_confirm_delete').show();
+            //     $('#loading_alamat_icon').show();
             // },
             success : function(data) {
-                // $('#spinner_confirm_delete').hide();
+                // $('#loading_alamat_icon').hide();
                 console.log(data);
                 if (data.length>0){
                     $("input[name='syarikat_bandar']").val(data[0].bandar);

@@ -70,6 +70,8 @@
                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah Pengilang</button> --}}
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
                         onclick="window.location='{{ route("baru.pengilang") }}'">Daftar Baru</button>
+                        <button type="button" class="btn waves-effect waves-light btn-primary float-md-right btn-excel mr-1"
+                        >Excel</button>
                     </div>
                 </div>
 
@@ -142,17 +144,27 @@ Adakah anda bersetuju untuk memadam data?
 @section('local_js')
 <script>
 $(document).ready(function () {
-    $('#datatable').DataTable({
-        "responsive": false,
-        "language": {
-            "paginate": {
-                "previous": "<i class='mdi mdi-chevron-left'>",
-                "next": "<i class='mdi mdi-chevron-right'>"
-            }
-        },
+    var table = $('#datatable').DataTable({
+        lengthChange: true,
+        responsive: false,
+        // scrollX: true,
+        // dom: 'Bfrtip',
+        buttons: [
+            'excel',
+        ]
+        // language: {
+        //     "paginate": {
+        //         "previous": "<i class='mdi mdi-chevron-left'>",
+        //         "next": "<i class='mdi mdi-chevron-right'>"
+        //     }
+        // },
         // "drawCallback": function () {
         //     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
         // }
+    });
+
+    $(".btn-excel").on("click", function() {
+        table.button( '.buttons-excel' ).trigger();
     });
 
     // To get pengilang id
