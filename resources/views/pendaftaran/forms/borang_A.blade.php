@@ -277,10 +277,10 @@
                                     @foreach($pengilang_pembekals as $pengilang_pembekal)
                                         @if(isset($borangAs))
                                             @foreach($borangIds->pihakketigas as $value)
-                                                <option value="{{ $pengilang_pembekal->pihak_ketiga_nama }}" {{ old('borangA_pengilang[]' , isset($value->pihak_ketiga_nama)?$value->pihak_ketiga_nama:null ) == $pengilang_pembekal->pihak_ketiga_nama ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option>
+                                                <option value="{{ $pengilang_pembekal->id }}" {{ old('borangA_pengilang[]' , isset($value->id)?$value->id:null ) == $pengilang_pembekal->id ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option>
                                             @endforeach
                                         @else
-                                            <option value="{{ $pengilang_pembekal->id }}" {{ old('borangA_pengilang[]' , isset($value->pihakketigas)?$value->pihakketigas:null ) == $pengilang_pembekal->id ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option>
+                                            <option value="{{ $pengilang_pembekal->id }}" {{ old('borangA_pengilang[]' , isset($value->id)?$value->id:null ) == $pengilang_pembekal->id ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option>
                                         @endif
                                     @endforeach
                                 </select>  
@@ -296,10 +296,10 @@
                                     @foreach($pengilangs as $pengilang)
                                         @if(isset($borangAs)) 
                                             @foreach($borangIds->pengilangs as $value)
-                                                <option value="{{ $pengilang->id }}" {{ old('borangA_pengilang_kontrak[]' , isset($value->pengilang_nama)?$value->pengilang_nama:null ) == $pengilang->pengilang_nama ? 'selected' : '' }} >{{ $pengilang->pihak_ketiga_nama }}</option>
+                                                <option value="{{ $pengilang->id }}" {{ old('borangA_pengilang_kontrak[]' , isset($value->id)?$value->id:null ) == $pengilang->id ? 'selected' : '' }} >{{ $pengilang->pihak_ketiga_nama }}</option>
                                             @endforeach
                                         @else
-                                            <option value="{{ $pengilang->id }}" {{ old('borangA_pengilang_kontrak[]' , isset($value)?$value:null ) == $pengilang->id ? 'selected' : '' }}>{{ $pengilang->pihak_ketiga_nama }} </option>
+                                            <option value="{{ $pengilang->id }}" {{ old('borangA_pengilang_kontrak[]' , isset($value->id)?$value->id:null ) == $pengilang->id ? 'selected' : '' }}>{{ $pengilang->pihak_ketiga_nama }} </option>
                                         @endif
                                     @endforeach
                                 </select>  
@@ -315,10 +315,10 @@
                                     @foreach($penginvoisans as $penginvoisan)
                                         @if(isset($borangAs))
                                             @foreach($borangIds->penginvoisans as $value)
-                                                <option value="{{ $penginvoisan->id }}" {{ old('borangA_penginvoisan[]' , isset($value->penginvoisan_nama)?$value->penginvoisan_nama:null ) == $penginvoisan->penginvoisan_nama ? 'selected' : '' }} >{{ $penginvoisan->penginvoisan_nama }}</option>                                       
+                                                <option value="{{ $penginvoisan->id }}" {{ old('borangA_penginvoisan[]' , isset($value->id)?$value->id:null ) == $penginvoisan->id ? 'selected' : '' }} >{{ $penginvoisan->penginvoisan_nama }}</option>                                       
                                             @endforeach
                                         @else
-                                            <option value="{{ $penginvoisan->id }}" {{ old('borangA_penginvoisan[]' , isset($value)?$value:null ) == $penginvoisan->id ? 'selected' : '' }}>{{ $penginvoisan->penginvoisan_nama }} </option>
+                                            <option value="{{ $penginvoisan->id }}" {{ old('borangA_penginvoisan[]' , isset($value->id)?$value->id:null ) == $penginvoisan->id ? 'selected' : '' }}>{{ $penginvoisan->penginvoisan_nama }} </option>
                                         @endif     
                                     @endforeach
                                 </select>  
@@ -334,10 +334,10 @@
                                     @foreach($gudangs as $gudang)
                                         @if(isset($borangAs))
                                             @foreach($borangIds->gudangs as $value)
-                                                <option value="{{ $gudang->id }}" {{ old('borangA_gudang[]' , isset($value->gudang_nama)?$value->gudang_nama:null ) == $gudang->gudang_nama ? 'selected' : '' }}>{{ $gudang->gudang_nama }}</option>
+                                                <option value="{{ $gudang->id }}" {{ old('borangA_gudang[]' , isset($value->id)?$value->id:null ) == $gudang->id ? 'selected' : '' }}>{{ $gudang->gudang_nama }}</option>
                                             @endforeach
                                         @else
-                                            <option value="{{ $gudang->id }}" {{ old('borangA_gudang[]' , isset($value)?$value:null ) == $gudang->id ? 'selected' : '' }}>{{ $gudang->gudang_nama }} </option>
+                                            <option value="{{ $gudang->id }}" {{ old('borangA_gudang[]' , isset($value->id)?$value->id:null ) == $gudang->id ? 'selected' : '' }}>{{ $gudang->gudang_nama }} </option>
                                         @endif
                                     @endforeach
                                 </select>  
@@ -367,10 +367,10 @@
                                     @foreach($perawiss as $perawis)
                                         @if(isset($borangAs))
                                             @foreach($borangIds->perawiss as $value)
-                                                <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif[]' , isset($value->perawis_nama)?$value->perawis_nama:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
+                                                <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif[]' , isset($value->id)?$value->id:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
                                             @endforeach
                                         @else
-                                            <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif[]' , isset($value)?$value:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
+                                            <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif[]' , isset($value->id)?$value->id:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
                                         @endif
                                     @endforeach
                                 </select>  
@@ -691,10 +691,10 @@
                                     @foreach($pengilangs as $pengilang)
                                         @if(isset($borangAs))
                                             @foreach($borangIds->perawis_pengilangs as $value)
-                                                <option value="{{ $pengilang->id }}" {{ old('borangA_perawis_pengilang[]' , isset($value->pihakketiga_nama)?$value->pihakketiga_nama:null ) == $pengilang->pihakketiga_nama ? 'selected' : '' }}>{{ $pengilang->pihak_ketiga_nama }}</option>
+                                                <option value="{{ $pengilang->id }}" {{ old('borangA_perawis_pengilang[]' , isset($value->id)?$value->id:null ) == $pengilang->id ? 'selected' : '' }}>{{ $pengilang->pihak_ketiga_nama }}</option>
                                             @endforeach
                                         @else
-                                            <option value="{{ $pengilang->id }}" {{ old('borangA_perawis_pengilang[]' , isset($value)?$value:null ) == $pengilang->id ? 'selected' : '' }}>{{ $pengilang->pihak_ketiga_nama }} </option>
+                                            <option value="{{ $pengilang->id }}" {{ old('borangA_perawis_pengilang[]' , isset($value->id)?$value->id:null ) == $pengilang->id ? 'selected' : '' }}>{{ $pengilang->pihak_ketiga_nama }} </option>
                                         @endif
                                     @endforeach
                                 </select>  

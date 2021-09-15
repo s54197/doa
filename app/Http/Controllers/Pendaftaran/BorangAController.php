@@ -114,7 +114,6 @@ class BorangAController extends Controller
 
         // Check user role
         $role = Auth::user()->role;
-        // dd($id);
 
         if ($role=='admin') {
             // All data
@@ -142,16 +141,6 @@ class BorangAController extends Controller
         // Data borangA
         $borangA = BorangA::find($id)->with('syarikat','agen','produk')->get();
         $borangId = BorangA::find($id);
-        
-        // dd($pengilang_pembekals);
-        
-        // foreach($borangId->pihakketigas as $borangId){
-        //     dd($borangId->pihak_ketiga_nama);
-        // }
-        // $penginvoisans = BorangA::find($id)->penginvoisans;
-        // $pihakketigas = BorangA::find($id)->pihakketigas;
-
-        // dd($gudangs);
     
         // Reformat date
         foreach($borangA as $borangA) {
@@ -185,7 +174,6 @@ class BorangAController extends Controller
 
         // Check user role
         $role = Auth::user()->role;
-        // dd($id);
 
         if ($role=='admin') {
             // All data
@@ -195,8 +183,8 @@ class BorangAController extends Controller
             $produks = Produk::all('id', 'produk_nama');
             $pengilangs = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
             $pengilang_pembekals = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
-            $gudangs = PihakKetiga::where('pihak_ketiga_jenis','gudang')->get();
-            $penginvoisans = PihakKetiga::where('pihak_ketiga_jenis','penginvoisan')->get();
+            $gudangs = Gudang::all('id','gudang_nama');
+            $penginvoisans = Penginvoisan::all('id','penginvoisan_nama');
 
         } else {
             // All data user
@@ -205,37 +193,33 @@ class BorangAController extends Controller
             $produks = User::find(Auth::user()->id)->produks;
             $perawiss = User::find(Auth::user()->id)->perawiss;
             $pengilangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->get();
-            $pengilang_pembekals = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
+            $pengilang_pembekals = User::find(Auth::user()->id)->pihakketigas()->get();
             $gudangs = User::find(Auth::user()->id)->gudangs;
             $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
         }
 
         // Data borangA
-        $borangA = BorangA::find($id);
-
+        $borangA = BorangA::find($id)->with('syarikat','agen','produk')->get();
+        $borangId = BorangA::find($id);
+    
         // Reformat date
-        $borangA->borangA_tarikh_terima_kaunter = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_terima_kaunter)->format('d-m-Y');
-        $borangA->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_lulus)->format('d-m-Y');
-        $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
-
-        // Reformat string to array
-        $borangA->borangA_pengilang_pembekal = explode(',', $borangA->borangA_pengilang_pembekal);
-        $borangA->borangA_pengilang_kontrak = explode(',', $borangA->borangA_pengilang_kontrak);
-        $borangA->borangA_penginvoisan = explode(',', $borangA->borangA_penginvoisan);
-        $borangA->borangA_gudang = explode(',', $borangA->borangA_gudang);
-        $borangA->borangA_perawis_aktif = explode(',', $borangA->borangA_perawis_aktif);
-        $borangA->borangA_perawis_pengilang = explode(',', $borangA->borangA_perawis_pengilang);
+        foreach($borangA as $borangA) {
+            $borangA->borangA_tarikh_terima_kaunter = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_terima_kaunter)->format('d-m-Y');
+            $borangA->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_lulus)->format('d-m-Y');
+            $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
+        }
 
         $data = array(
             'syarikats' => $syarikats,
             'agens' => $agens,
             'produks' => $produks,
             'pengilangs' => $pengilangs,
-            'pembekals' => $pengilang_pembekals,
+            'pengilang_pembekals' => $pengilang_pembekals,
             'penginvoisans' => $penginvoisans,
             'perawiss' => $perawiss,
             'gudangs' => $gudangs,
             'borangAs' => $borangA,
+            'borangIds' => $borangId,
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
         );
@@ -290,6 +274,7 @@ class BorangAController extends Controller
         $perawispengilangIds = $request->borangA_perawis_pengilang;
         
         try {
+
             $user = User::find(Auth::user()->id);
 
             $borangCreate = $user->borangAs()->create([
@@ -331,11 +316,11 @@ class BorangAController extends Controller
 
             $new_borang = BorangA::find($borangCreate->id);	
             $new_borang->pihakketigas()->sync($pengilangPembekalIds);
-            $new_borang->penginvoisans()->attach($penginvoisanIds);
-            $new_borang->gudangs()->attach($gudangIds);
-            $new_borang->perawiss()->attach($perawisIds);
-            $new_borang->pengilangs()->attach($pengilangkontrakIds);
-            $new_borang->perawis_pengilangs()->attach($perawispengilangIds);
+            $new_borang->penginvoisans()->sync($penginvoisanIds);
+            $new_borang->gudangs()->sync($gudangIds);
+            $new_borang->perawiss()->sync($perawisIds);
+            $new_borang->pengilangs()->sync($pengilangkontrakIds);
+            $new_borang->perawis_pengilangs()->sync($perawispengilangIds);
 
             return redirect('/pendaftaran')->withSuccess('Pendaftaran '.$request->borangA_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
@@ -382,19 +367,27 @@ class BorangAController extends Controller
         $request->borangA_mengilang_melabel = $request->has('borangA_mengilang_melabel') ? true : false;
         $request->borangA_mengilang_mempek = $request->has('borangA_mengilang_mempek') ? true : false;
         $request->borangA_mengilang_membuat = $request->has('borangA_mengilang_membuat') ? true : false;
-
+       
+        $pengilangPembekalIds = $request->borangA_pengilang;
+        $pengilangkontrakIds = $request->borangA_pengilang_kontrak;
+        $penginvoisanIds = $request->borangA_penginvoisan;
+        $gudangIds = $request->borangA_gudang;
+        $perawisIds = $request->borangA_perawis_aktif;
+        $perawispengilangIds = $request->borangA_perawis_pengilang;
+        
         try {
+
             $borangA = borangA::find($id);
-            $borangA->update([
-                'borangA_syarikat' => $request->borangA_syarikat,
-                'borangA_agen' => $request->borangA_agen,
+            $borangUpdate = $borangA->update([
+                'syarikat_id' => $request->borangA_syarikat,
+                'agen_id' => $request->borangA_agen,
                 'borangA_tarikh_terima_kaunter' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_terima_kaunter)->format('Y-m-d'),
                 'borangA_tarikh_lulus' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_lulus)->format('Y-m-d'),
                 'borangA_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_tamat)->format('Y-m-d'),
                 'borangA_wakil_syarikat' => $request->borangA_wakil_syarikat,
                 'borangA_sijil_no_siri' => $request->borangA_sijil_no_siri,
                 'borangA_jenis_pendaftaran' => $request->borangA_jenis_pendaftaran,
-                'borangA_dagangan' => $request->borangA_dagangan,
+                'produk_id' => $request->borangA_dagangan,
                 'borangA_no_pendaftaran' => $request->borangA_no_pendaftaran,
                 'borangA_perniagaan_mengimport' => $request->borangA_perniagaan_mengimport,
                 'borangA_perniagaan_mengilang' => $request->borangA_perniagaan_mengilang,
@@ -409,21 +402,29 @@ class BorangAController extends Controller
                 'borangA_mengilang_membuat' => $request->borangA_mengilang_membuat,
                 'borangA_mengilang_lain' => $request->borangA_mengilang_lain,
                 'borangA_mengilang_lain_maklumat' =>  $request->borangA_mengilang_lain_maklumat,
-                'borangA_pengilang_pembekal' => implode(',', $request->borangA_pengilang),
-                'borangA_pengilang_kontrak' => implode(',', $request->borangA_pengilang_kontrak),
-                'borangA_penginvoisan' => implode(',', $request->borangA_penginvoisan),
-                'borangA_gudang' => implode(',', $request->borangA_gudang),
-                'borangA_perawis_aktif' => implode(',', $request->borangA_perawis_aktif),
+                // 'borangA_pengilang_pembekal' => implode(',', $request->borangA_pengilang),
+                // 'borangA_pengilang_kontrak' => implode(',', $request->borangA_pengilang_kontrak),
+                // 'borangA_penginvoisan' => implode(',', $request->borangA_penginvoisan),
+                // 'borangA_gudang' => implode(',', $request->borangA_gudang),
+                // 'borangA_perawis_aktif' => implode(',', $request->borangA_perawis_aktif),
                 'borangA_perawis_kod' => $request->borangA_perawis_kod,
                 'borangA_perawis_perumusan' => $request->borangA_perawis_perumusan,
                 'borangA_perawis_perumusan_lain' => $request->borangA_perawis_perumusan_lain,
-                'borangA_perawis_pengilang' => implode(',', $request->borangA_perawis_pengilang),
+                // 'borangA_perawis_pengilang' => implode(',', $request->borangA_perawis_pengilang),
                 'borangA_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);
-            return redirect('/pendaftaran')->withSuccess('BorangA '.$borangA->borangA_nama.' telah berjaya dikemaskinikan!');
+
+            $borangA->pihakketigas()->sync($pengilangPembekalIds);
+            $borangA->penginvoisans()->sync($penginvoisanIds);
+            $borangA->gudangs()->sync($gudangIds);
+            $borangA->perawiss()->sync($perawisIds);
+            $borangA->pengilangs()->sync($pengilangkontrakIds);
+            $borangA->perawis_pengilangs()->sync($perawispengilangIds);
+
+            return redirect('/pendaftaran')->withSuccess('Pendaftaran '.$request->borangA_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/pendaftaran')->withWarning('BorangA '.$borangA->borangA_nama.' tidak berjaya dikemaskinikan!'.$e);
+            return redirect('/pendaftaran')->withWarning('Pendaftaran '.$request->borangA_nama.' tidak berjaya didaftarkan!'. $e);
         }
     }
 
