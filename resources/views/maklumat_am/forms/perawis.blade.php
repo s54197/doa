@@ -87,7 +87,7 @@
                                     <label class="col-md-3 col-form-label" for="perawis_piawaian"><span class="text-danger">*</span>Piawaian Analisis:</label>
                                     <div class="col-md-8">
                                         <div class="checkbox checkbox-primary">
-                                            <input id="perawis_piawaian" name="perawis_piawaian" type="checkbox" value="1" {{ old('perawis_piawaian',isset($borangAs->perawis_piawaian)?$borangAs->perawis_piawaian:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <input id="perawis_piawaian" name="perawis_piawaian" type="checkbox" value="1" {{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label for="perawis_piawaian">
                                                 
                                             </label>
@@ -102,7 +102,7 @@
                                     <label class="col-md-3 col-form-label" for="perawis_sampel"><span class="text-danger">*</span>Sampel Analisis:</label>
                                     <div class="col-md-8">
                                         <div class="checkbox checkbox-primary">
-                                            <input id="perawis_sampel" name="perawis_sampel" type="checkbox" value="1" {{ old('perawis_sampel',isset($borangAs->perawis_sampel)?$borangAs->perawis_sampel:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <input id="perawis_sampel" name="perawis_sampel" type="checkbox" value="1" {{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label for="perawis_sampel">
                                                 
                                             </label>
@@ -117,7 +117,7 @@
                                     <label class="col-md-3 col-form-label" for="perawis_pihak_ketiga"><span class="text-danger">*</span>Laporan Analisis Makmal Pihak Ketiga:</label>
                                     <div class="col-md-8">
                                         <div class="checkbox checkbox-primary">
-                                            <input id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" type="checkbox" value="1" {{ old('perawis_pihak_ketiga',isset($borangAs->perawis_pihak_ketiga)?$borangAs->perawis_pihak_ketiga:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <input id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" type="checkbox" value="1" {{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <label for="perawis_pihak_ketiga">
                                                 
                                             </label>

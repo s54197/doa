@@ -66,6 +66,8 @@ class PerawisController extends Controller
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );
+
+        // dd($perawis->perawis_piawaian);
         
         return view('maklumat_am.forms.perawis')->with($data);
     }
