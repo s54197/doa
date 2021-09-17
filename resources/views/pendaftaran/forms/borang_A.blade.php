@@ -10,6 +10,11 @@
     .wizard > .content > .body input:active {
         border: 1px solid #e3eaef;
     }
+    .input-group-btn label {
+        margin-top: 0px !important
+    }
+
+    }
 </style>
 @endsection
 
@@ -110,15 +115,6 @@
                             <div class="col-md-9">
                                 <input type="text" id="borangA_wakil_syarikat" name="borangA_wakil_syarikat" class="form-control custom_border" placeholder="Nama wakil" value="{{ old('borangA_wakil_syarikat',isset($borangAs->borangA_wakil_syarikat)?$borangAs->borangA_wakil_syarikat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_wakil_syarikat') 
-                                <small class='text-danger'>{{ $message }}</small> 
-                                @enderror                                
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_sijil_no_siri">Sijil Nombor Siri:</label>
-                            <div class="col-md-9">
-                                <input type="text" id="borangA_sijil_no_siri" name="borangA_sijil_no_siri" class="form-control custom_border" placeholder="Sijil Nombor Siri" value="{{ old('borangA_sijil_no_siri',isset($borangAs->borangA_sijil_no_siri)?$borangAs->borangA_sijil_no_siri:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
-                                @error('borangA_sijil_no_siri') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror                                
                             </div>
@@ -705,6 +701,82 @@
                         </div>
                         <input id="borang_A" type="hidden" value="{{ $jenis }}"/>
                     </section>
+                    <h3>Butiran Surat & Sijil</h3>
+                    <section>
+                        <h5>Maklumat Surat</h5>
+                        <hr>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_no_rujukan_1">Nombor Rujukan:</label>
+                            <div class="col-md-4">
+                                <input type="text" id="borangA_surat_no_rujukan_1" name="borangA_surat_no_rujukan_1" class="form-control custom_border" placeholder="Nombor Rujukan 1" value="{{ old('borangA_surat_no_rujukan_1',isset($borangAs->borangA_surat_no_rujukan_1)?$borangAs->borangA_surat_no_rujukan_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_surat_no_rujukan_1') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" id="borangA_surat_no_rujukan_2" name="borangA_surat_no_rujukan_2" class="form-control custom_border" placeholder="Nombor Rujukan 2" value="{{ old('borangA_surat_no_rujukan_2',isset($borangAs->borangA_surat_no_rujukan_2)?$borangAs->borangA_surat_no_rujukan_2:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_surat_no_rujukan_2') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_tarikh">Tarikh Surat:</label>
+                            <div class="col-md-9">
+                                <input class="form-control custom_border" id="borangA_surat_tarikh" type="text" name="borangA_surat_tarikh" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_surat_tarikh',isset($borangAs->borangA_surat_tarikh)?$borangAs->borangA_surat_tarikh:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_surat_tarikh') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_resit_bayaran">Nombor Resit Bayaran:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_surat_resit_bayaran" name="borangA_surat_resit_bayaran" class="form-control custom_border" placeholder="Nombor Resit Bayaran" value="{{ old('borangA_surat_resit_bayaran',isset($borangAs->borangA_surat_resit_bayaran)?$borangAs->borangA_surat_resit_bayaran:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_surat_resit_bayaran') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_fail">Muat Naik Surat yang Sah:</label>
+                            <div class="col-md-9">
+                                <input type="file" class="filestyle" data-btnClass="btn-outline-primary" id="borangA_surat_fail" name="borangA_surat_fail">
+                                @error('borangA_surat_fail') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
+                            </div>
+                        </div>
+                        <h5 class="mt-md-4">Maklumat Sijil</h5>
+                        <hr>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_sijil_no_siri">Nombor Siri:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_sijil_no_siri" name="borangA_sijil_no_siri" class="form-control custom_border" placeholder="Nombor Siri" value="{{ old('borangA_sijil_no_siri',isset($borangAs->borangA_sijil_no_siri)?$borangAs->borangA_sijil_no_siri:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_sijil_no_siri') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_sijil_tarikh">Tarikh Sijil:</label>
+                            <div class="col-md-9">
+                                <input class="form-control custom_border" id="borangA_sijil_tarikh" type="text" name="borangA_sijil_tarikh" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_sijil_tarikh',isset($borangAs->borangA_sijil_tarikh)?$borangAs->borangA_sijil_tarikh:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_sijil_tarikh') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_sijil_fail">Muat Naik Sijil yang Sah:</label>
+                            <div class="col-md-9">
+                                <input type="file" class="filestyle" data-btnClass="btn-outline-primary" id="borangA_sijil_fail" name="borangA_sijil_fail">
+                                @error('borangA_sijil_fail') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror
+                            </div>
+                        </div>
+                    </section>
                 </form>
                 <!-- End #wizard-vertical -->
             </div>
@@ -726,6 +798,10 @@ $(document).ready(function(){
     $('input[name="borangA_tarikh_lulus"]').attr("placeholder","Tarikh Lulus - Pilih dari kalendar");
     $('input[name="borangA_tarikh_tamat"]').datepicker();
     $('input[name="borangA_tarikh_tamat"]').attr("placeholder","Tarikh Tamat - Pilih dari kalendar");
+    $('input[name="borangA_sijil_tarikh"]').datepicker();
+    $('input[name="borangA_sijil_tarikh"]').attr("placeholder","Tarikh Sijil - Pilih dari kalendar");
+    $('input[name="borangA_surat_tarikh"]').datepicker();
+    $('input[name="borangA_surat_tarikh"]').attr("placeholder","Tarikh Surat - Pilih dari kalendar");
 
     //  intialize multiselect option using select2 plugin
     $('.select2').select2({
