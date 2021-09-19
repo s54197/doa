@@ -191,8 +191,8 @@ Route::middleware('auth')->group(function() {
     /***********************************
                    pdf
     ***********************************/
-    Route::get('/create_cert', [App\Http\Controllers\PDFController::class, 'certificate'])->name('create.cert');
-    Route::get('/create_letter', [App\Http\Controllers\PDFController::class, 'letter'])->name('create.letter');
+    Route::get('/create_cert/{id}', [App\Http\Controllers\PDFController::class, 'certificate'])->name('create.cert');
+    Route::get('/create_letter/{id}', [App\Http\Controllers\PDFController::class, 'letter'])->name('create.letter');
 
 });
 

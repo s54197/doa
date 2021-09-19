@@ -115,7 +115,11 @@ class BorangA extends Model
         'borangA_perawis_perumusan',
         'borangA_perawis_perumusan_lain',
         // 'borangA_perawis_pengilang',
-        'borangA_status'
+        'borangA_status',
+        'borangA_nama_surat',
+        'borangA_directory_surat',
+        'borangA_nama_sijil',
+        'borangA_directory_sijil'
     ];
 
 }

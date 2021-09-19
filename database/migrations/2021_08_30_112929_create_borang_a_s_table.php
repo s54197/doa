@@ -46,6 +46,10 @@ class CreateBorangASTable extends Migration
             $table->string('borangA_perawis_kod');
             $table->string('borangA_perawis_perumusan');
             $table->string('borangA_perawis_perumusan_lain')->nullable();
+            $table->string('borangA_nama_surat')->nullable();
+            $table->string('borangA_directory_surat')->nullable();
+            $table->string('borangA_nama_sijil')->nullable();
+            $table->string('borangA_directory_sijil')->nullable();
             // $table->string('borangA_perawis_pengilang');
 
             $table->string('borangA_status');
