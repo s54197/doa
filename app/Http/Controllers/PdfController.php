@@ -15,12 +15,18 @@ class PdfController extends Controller
 
         dd($data_borangA->perawiss->toArray()->perawis_nama);
 
+        $perawis_nama_array = [];
+        foreach($data_borangA->perawiss as $perawis) {
+            array_push($perawis_nama_list,$perawis->perawis_nama);
+        }
+        $perawis_nama_list = implode(' ', $perawis_nama_array);
+
         $data = [
             'no_siri' => $data_borangA->borangA_sijil_no_siri,
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,//'LRMP.R2/8495',
             'pendaftar' => $data_borangA->syarikat->syarikat_nama,//'THOR SPECIALITIES SDN. BHD.',
             'nama_dagangan' => $data_borangA->produk->produk_nama,//'ACTICIDE LA 5008',
-            'perawis_aktif' => $data_borangA->perawiss,//'5-CHLORO-2-METHYL-4-ISOTHIAZOLIN-3-ONE',
+            'perawis_aktif' => $perawis_nama_list,//'5-CHLORO-2-METHYL-4-ISOTHIAZOLIN-3-ONE',
             'kepekatan' => $data_borangA->perawis_peratusan,// + perawis_unit/perawis_unit_lain,//'3.8 %W/W',
             'perumusan' => $data_borangA->borangA_perawis_perumusan,//'CECAIR (AL)',
             'kelas' => $data_borangA->produk->produk_kelas_racun,//'Kelas II',
