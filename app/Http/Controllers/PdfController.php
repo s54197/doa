@@ -11,16 +11,16 @@ class PdfController extends Controller
 {
     public function certificate($id){
 
-        $data_borangA = BorangA::find($id)->with('syarikat','agen','produk','perawiss')->get()->first();
+        $data_borangA = BorangA::find($id)->with('syarikat','agen','produk','perawiss');
 
-        dd($data_borangA->perawiss->toArray()->perawis_nama);
+        dd($data_borangA);
 
-        $perawis_nama_array = [];
-        foreach($data_borangA->perawiss as $perawis) {
-            array_push($perawis_nama_list,$perawis->perawis_nama);
+        foreach($data_borangA->perawiss as $data_perawis){
+            $perawis_nama = $data_perawis->perawis_nama;
         }
-        $perawis_nama_list = implode(' ', $perawis_nama_array);
 
+        // dd($perawis_nama);
+        
         $data = [
             'no_siri' => $data_borangA->borangA_sijil_no_siri,
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,//'LRMP.R2/8495',

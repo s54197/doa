@@ -49,32 +49,32 @@ class BorangA extends Model
 
     public function pihakketigas()
     {
-        return $this->belongsToMany(PihakKetiga::class, 'borang_pihak_ketigas', 'borang_a_s_id', 'pihak_ketiga_id')->withPivot('borang_a_s_id', 'pihak_ketiga_id');
+        return $this->belongsToMany(PihakKetiga::class, 'borang_pihak_ketigas');//, 'borang_a_s_id', 'pihak_ketiga_id')->withPivot('borang_a_s_id', 'pihak_ketiga_id');
     }
 
     public function penginvoisans()
     {
-        return $this->belongsToMany(Penginvoisan::class, 'borang_penginvoisans', 'borang_a_s_id', 'penginvoisan_id')->as('values');
+        return $this->belongsToMany(Penginvoisan::class, 'borang_penginvoisans');//, 'borang_a_s_id', 'penginvoisan_id')->as('values');
     }
 
     public function gudangs()
     {
-        return $this->belongsToMany(Gudang::class, 'borang_gudangs', 'borang_a_s_id', 'gudang_id')->as('values');
+        return $this->belongsToMany(Gudang::class, 'borang_gudangs');//, 'borang_a_s_id', 'gudang_id')->as('values');
     }
 
     public function perawiss()
     {
-        return $this->belongsToMany(Perawis::class, 'borang_perawis', 'borang_a_s_id', 'perawis_id')->as('values');
+        return $this->belongsToMany(Perawis::class, 'borang_perawis');//, 'borang_a_s_id', 'perawis_id')->as('values');
     }
 
     public function pengilangs()
     {
-        return $this->belongsToMany(PihakKetiga::class, 'borang_pengilangs', 'borang_a_s_id', 'pihak_ketiga_id')->as('values');
+        return $this->belongsToMany(PihakKetiga::class, 'borang_pengilangs');//, 'borang_a_s_id', 'pihak_ketiga_id')->as('values');
     }
 
     public function perawis_pengilangs()
     {
-        return $this->belongsToMany(PihakKetiga::class, 'borang_pengilang_perawis', 'borang_a_s_id', 'pihak_ketiga_id')->as('values');
+        return $this->belongsToMany(PihakKetiga::class, 'borang_pengilang_perawis');//, 'borang_a_s_id', 'pihak_ketiga_id')->as('values');
     }
     
     

@@ -19,7 +19,7 @@ class Perawis extends Model
 
     public function borangAs()
     {
-        return $this->belongsToMany(BorangA::class, 'borang_perawiss','perawis_id','borang_a_s_id');
+        return $this->belongsToMany(BorangA::class, 'borang_perawiss');//,'perawis_id','borang_a_s_id');
     }
 
     

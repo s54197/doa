@@ -15,9 +15,9 @@ class CreateBorangPenginvoisansTable extends Migration
     {
         Schema::create('borang_penginvoisans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('borang_a_s_id');
+            $table->unsignedBigInteger('borang_a_id');
             $table->unsignedBigInteger('penginvoisan_id');
-            $table->foreign('borang_a_s_id')->references('id')->on('borang_a_s')->onDelete('cascade');
+            $table->foreign('borang_a_id')->references('id')->on('borang_a_s')->onDelete('cascade');
             $table->foreign('penginvoisan_id')->references('id')->on('penginvoisans')->onDelete('cascade');
             $table->softDeletes();   
             $table->timestamps();

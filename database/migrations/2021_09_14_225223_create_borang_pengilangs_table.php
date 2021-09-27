@@ -15,9 +15,9 @@ class CreateBorangPengilangsTable extends Migration
     {
         Schema::create('borang_pengilangs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('borang_a_s_id');
+            $table->unsignedBigInteger('borang_a_id');
             $table->unsignedBigInteger('pihak_ketiga_id');
-            $table->foreign('borang_a_s_id')->references('id')->on('borang_a_s')->onDelete('cascade');
+            $table->foreign('borang_a_id')->references('id')->on('borang_a_s')->onDelete('cascade');
             $table->foreign('pihak_ketiga_id')->references('id')->on('pihak_ketigas')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
