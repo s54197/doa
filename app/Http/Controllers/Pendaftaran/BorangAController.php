@@ -18,6 +18,7 @@ use App\Models\Agen;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class BorangAController extends Controller
 {
@@ -201,7 +202,8 @@ class BorangAController extends Controller
         // Data borangA
         $borangA = BorangA::find($id)->with('syarikat','agen','produk')->get();
         $borangId = BorangA::find($id);
-    
+        // dd($borangId->id);
+
         // Reformat date
         foreach($borangA as $borangA) {
             $borangA->borangA_tarikh_terima_kaunter = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_terima_kaunter)->format('d-m-Y');
@@ -248,7 +250,7 @@ class BorangAController extends Controller
             'borangA_penginvoisan' => 'required',
             'borangA_gudang' => 'required',
             'borangA_perawis_aktif' => 'required',
-            'borangA_perawis_kod' => 'required',
+            // 'borangA_perawis_kod' => 'required',
             'borangA_perawis_perumusan' => 'required',
             'borangA_perawis_perumusan_lain' => 'required_if:borangA_perawis_perumusan,Lain-lain (nyatakan)',
             'borangA_perawis_pengilang' => 'required',
@@ -273,6 +275,31 @@ class BorangAController extends Controller
         $perawisIds = $request->borangA_perawis_aktif;
         $perawispengilangIds = $request->borangA_perawis_pengilang;
         
+        $borangA_surat_fail_nama = '';
+        $borangA_surat_fail_src = '';
+        $borangA_sijil_fail_nama = '';
+        $borangA_sijil_fail_src = '';
+
+        
+
+        if($request->borangA_surat_fail != null ) {
+
+            $fileName = time().'_'.$request->borangA_surat_fail->getClientOriginalName();
+            $filePath = $request->borangA_surat_fail->storeAs('uploads', $fileName, 'public');
+            $borangA_surat_fail_nama = time().'_'.$request->borangA_surat_fail->getClientOriginalName();
+            $borangA_surat_fail_src = $filePath;
+            
+        }
+        // dd($borangA_surat_fail_nama);
+
+        if($request->borangA_sijil_fail != null ) {
+            $fileName = time().'_'.$request->borangA_sijil_fail->getClientOriginalName();
+            $filePath = $request->borangA_sijil_fail->storeAs('uploads', $fileName, 'public');
+            $borangA_sijil_fail_nama = time().'_'.$request->borangA_sijil_fail->getClientOriginalName();
+            $borangA_sijil_fail_src = $filePath;
+        }
+
+
         try {
 
             $user = User::find(Auth::user()->id);
@@ -284,7 +311,6 @@ class BorangAController extends Controller
                 'borangA_tarikh_lulus' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_lulus)->format('Y-m-d'),
                 'borangA_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_tamat)->format('Y-m-d'),
                 'borangA_wakil_syarikat' => $request->borangA_wakil_syarikat,
-                'borangA_sijil_no_siri' => $request->borangA_sijil_no_siri,
                 'borangA_jenis_pendaftaran' => $request->borangA_jenis_pendaftaran,
                 'produk_id' => $request->borangA_dagangan,
                 'borangA_no_pendaftaran' => $request->borangA_no_pendaftaran,
@@ -306,9 +332,21 @@ class BorangAController extends Controller
                 // 'borangA_penginvoisan' => implode(',', $request->borangA_penginvoisan),
                 // 'borangA_gudang' => implode(',', $request->borangA_gudang),
                 // 'borangA_perawis_aktif' => implode(',', $request->borangA_perawis_aktif),
-                'borangA_perawis_kod' => $request->borangA_perawis_kod,
+                // 'borangA_perawis_kod' => $request->borangA_perawis_kod,
                 'borangA_perawis_perumusan' => $request->borangA_perawis_perumusan,
                 'borangA_perawis_perumusan_lain' => $request->borangA_perawis_perumusan_lain,
+
+                'borangA_sijil_no_siri' => $request->borangA_sijil_no_siri,
+                'borangA_sijil_tarikh' => $request->borangA_sijil_tarikh,
+                'borangA_sijil_fail_nama' => $borangA_sijil_fail_nama,
+                'borangA_sijil_fail_src' => $borangA_sijil_fail_src,
+                'borangA_surat_no_rujukan_1' => $request->borangA_surat_no_rujukan_1,
+                'borangA_surat_no_rujukan_2' => $request->borangA_surat_no_rujukan_2,
+                'borangA_surat_tarikh' => $request->borangA_surat_tarikh,
+                'borangA_surat_resit_bayaran' => $request->borangA_surat_resit_bayaran,
+                'borangA_surat_fail_nama' => $borangA_surat_fail_nama,
+                'borangA_surat_fail_src' => $borangA_surat_fail_src,
+
                 // 'borangA_perawis_pengilang' => implode(',', $request->borangA_perawis_pengilang),
                 'borangA_status' => 'Aktif',
                 'user_id' => $user->id,
@@ -331,6 +369,7 @@ class BorangAController extends Controller
     
     // Update borangA based on id
     public function update(Request $request, $id){
+
         $request->validate([
             'borangA_syarikat' => 'required',
             'borangA_agen' => 'required',
@@ -350,7 +389,7 @@ class BorangAController extends Controller
             'borangA_penginvoisan' => 'required',
             'borangA_gudang' => 'required',
             'borangA_perawis_aktif' => 'required',
-            'borangA_perawis_kod' => 'required',
+            // 'borangA_perawis_kod' => 'required',
             'borangA_perawis_perumusan' => 'required',
             'borangA_perawis_perumusan_lain' => 'required_if:borangA_perawis_perumusan,Lain-lain (nyatakan)',
             'borangA_perawis_pengilang' => 'required',
@@ -374,7 +413,34 @@ class BorangAController extends Controller
         $gudangIds = $request->borangA_gudang;
         $perawisIds = $request->borangA_perawis_aktif;
         $perawispengilangIds = $request->borangA_perawis_pengilang;
+
+        $borangA_surat_fail_nama = '';
+        $borangA_surat_fail_src = '';
+        $borangA_sijil_fail_nama = '';
+        $borangA_sijil_fail_src = '';
+
         
+
+        if($request->borangA_surat_fail != null ) {
+
+            $fileName = time().'_'.$request->borangA_surat_fail->getClientOriginalName();
+            $filePath = $request->borangA_surat_fail->storeAs('uploads', $fileName, 'public');
+            $borangA_surat_fail_nama = time().'_'.$request->borangA_surat_fail->getClientOriginalName();
+            $borangA_surat_fail_src = $filePath;
+            
+        }
+        // dd($borangA_surat_fail_nama);
+
+        if($request->borangA_sijil_fail != null ) {
+            $fileName = time().'_'.$request->borangA_sijil_fail->getClientOriginalName();
+            $filePath = $request->borangA_sijil_fail->storeAs('uploads', $fileName, 'public');
+            $borangA_sijil_fail_nama = time().'_'.$request->borangA_sijil_fail->getClientOriginalName();
+            $borangA_sijil_fail_src = $filePath;
+        }
+
+        // dd($request->borangA_sijil_fail);
+        // dd($id);
+
         try {
 
             $borangA = borangA::find($id);
@@ -407,10 +473,14 @@ class BorangAController extends Controller
                 // 'borangA_penginvoisan' => implode(',', $request->borangA_penginvoisan),
                 // 'borangA_gudang' => implode(',', $request->borangA_gudang),
                 // 'borangA_perawis_aktif' => implode(',', $request->borangA_perawis_aktif),
-                'borangA_perawis_kod' => $request->borangA_perawis_kod,
+                // 'borangA_perawis_kod' => $request->borangA_perawis_kod,
                 'borangA_perawis_perumusan' => $request->borangA_perawis_perumusan,
                 'borangA_perawis_perumusan_lain' => $request->borangA_perawis_perumusan_lain,
                 // 'borangA_perawis_pengilang' => implode(',', $request->borangA_perawis_pengilang),
+                'borangA_surat_fail_nama' => $borangA_surat_fail_nama,
+                'borangA_surat_fail_src' => $borangA_surat_fail_src,
+                'borangA_sijil_fail_nama' => $borangA_sijil_fail_nama,
+                'borangA_sijil_fail_src' => $borangA_sijil_fail_src,
                 'borangA_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
             ]);

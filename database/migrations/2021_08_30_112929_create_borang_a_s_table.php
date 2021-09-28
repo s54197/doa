@@ -20,7 +20,6 @@ class CreateBorangASTable extends Migration
             $table->date('borangA_tarikh_lulus');
             $table->date('borangA_tarikh_tamat');
             $table->string('borangA_wakil_syarikat');
-            $table->string('borangA_sijil_no_siri')->nullable();
             $table->string('borangA_jenis_pendaftaran');
             
             $table->string('borangA_no_pendaftaran');
