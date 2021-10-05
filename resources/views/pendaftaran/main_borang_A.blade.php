@@ -155,7 +155,7 @@ Adakah anda bersetuju untuk memadam data?
 $(document).ready(function () {
     var table = $('#datatable').DataTable({
         lengthChange: true,
-        responsive: true,
+        responsive: false,
         // scrollX: true,
         // dom: 'Bfrtip',
         buttons: [
