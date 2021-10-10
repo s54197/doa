@@ -161,7 +161,7 @@ class AgenController extends Controller
             // 'agen_status' => 'required',
         ]);
 
-        dd($request);
+        // dd($request);
 
         try {
             $agen = Agen::find($id);
