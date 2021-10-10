@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_piawaian"><span class="text-danger">*</span>Piawaian Analisis:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_piawaian">Piawaian Analisis:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="perawis_piawaian" name="perawis_piawaian" class="form-control" placeholder="Piawaian Analisis" value="{{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_piawaian') 
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_sampel"><span class="text-danger">*</span>Sampel Analisis:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_sampel">Sampel Analisis:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="perawis_sampel" name="perawis_sampel" class="form-control" placeholder="Sampel Analisis" value="{{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_sampel') 
@@ -102,7 +102,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_pihak_ketiga"><span class="text-danger">*</span>Laporan Analisis Makmal Pihak Ketiga:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_pihak_ketiga">Laporan Analisis Makmal Pihak Ketiga:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" class="form-control" placeholder="Laporan Analisis Makmal Pihak Ketiga" value="{{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_pihak_ketiga') 

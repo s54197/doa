@@ -108,7 +108,7 @@
                         @foreach($produks as $produk)
                         <tr>
                             <td>{{$produk->produk_nama}}</td>
-                            <td>{{$produk->produk_lrmp_r}}</td>
+                            <td>{{$produk->produk_lrmp_r."/".$produk->produk_lrmp_no}}</td>
                             <td>{{$produk->produk_no_fail}}</td>
                             <td>{{$produk->produk_tarikh_gazet}}</td>
                             <td>{{$produk->produk_tarikh_tamat}}</td>
