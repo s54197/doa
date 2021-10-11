@@ -102,7 +102,7 @@
         </tr>
         <tr>
             <td style="width: 300px;padding-bottom: 30px">
-                Thor Specialities Sdn. Bhd.<br>
+                {{ $syarikat_nama }}<br>
                 Lot 14, Jalan Bursa 23/4 <br>
                 40300 Shah Alam, <br>
                 Selangor. <br>

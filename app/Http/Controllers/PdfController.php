@@ -14,8 +14,7 @@ class PdfController extends Controller
 {
     public function certificate($id){
 
-        $data_borangA = BorangA::find($id)->with('syarikat','agen','produk','perawiss')->get()->first();
-        // dd(BorangA::find($id)->borangA_sijil_no_siri);
+        $data_borangA = BorangA::find($id);
         
         if(BorangA::find($id)->borangA_sijil_no_siri == null){
             return redirect('/pendaftaran')->withWarning('No siri tiada. Mohon untuk kemaskini borang.');
@@ -39,19 +38,24 @@ class PdfController extends Controller
             array_push($penginvoisannama,$penginvoisan_list->penginvoisan_nama);
         }
         
+        $pihakketiganama_penginvoisannama = [];
+        array_push($pihakketiganama_penginvoisannama, $pihakketiganama);
+        array_push($pihakketiganama_penginvoisannama, $penginvoisannama);
+
         $data = [
             'no_siri' => $data_borangA->borangA_sijil_no_siri,
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,
             'pendaftar' => $data_borangA->syarikat->syarikat_nama,
             'nama_dagangan' => $data_borangA->produk->produk_nama,
-            'perawis_aktif' => implode(" ",$perawisnama),
-            'kepekatan' => implode(" ",$perawis_peratus_unit),
+            'perawis_aktif' => implode(", ",$perawisnama),
+            'kepekatan' => implode(", ",$perawis_peratus_unit),
             'perumusan' => $data_borangA->borangA_perawis_perumusan,
             'kelas' => $data_borangA->produk->produk_kelas_racun,
             'penggunaan' => $data_borangA->produk->produk_kegunaan,
             'tempoh_sah' => Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_lulus)->format('d-m-Y').' - '.Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_tamat)->format('d-m-Y'),
             'tarikh_sign' => $data_borangA->borangA_sijil_tarikh,
-            'pembekal' => implode(" ",$pihakketiganama).' '.implode(" ",$penginvoisannama),
+            'pembekal' => implode(", ",$pihakketiganama).', '.implode(", ",$penginvoisannama),
+            // 'pembekal' => $pihakketiganama_penginvoisannama,
         ];
 
         // dd($data);
@@ -64,7 +68,8 @@ class PdfController extends Controller
 
     public function letter($id){
 
-        $data_borangA = BorangA::find($id)->with('syarikat','agen','produk','perawiss')->get()->first();
+        // $data_borangA = BorangA::find($id)->with('syarikat','agen','produk','perawiss')->get()->first();
+        $data_borangA = BorangA::find($id);
 
         $data = [
             'rujukan_1' => $data_borangA->borangA_surat_no_rujukan_1,
@@ -72,7 +77,8 @@ class PdfController extends Controller
             'surat_tarikh' => $data_borangA->borangA_surat_tarikh,
             'nama_dagangan' => $data_borangA->produk->produk_nama,
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,
-            'resit_bayaran' => $data_borangA->borangA_surat_resit_bayaran,    
+            'resit_bayaran' => $data_borangA->borangA_surat_resit_bayaran,
+            'syarikat_nama' => $data_borangA->syarikat->syarikat_nama,
         ];
 
         $pdf = PDF::loadView('pdf.letter', $data);
