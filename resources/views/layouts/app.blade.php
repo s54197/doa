@@ -37,6 +37,9 @@
         .logo-box h5{
             line-height: 1.3rem
         }
+        .content-page {
+            min-height: 93vh
+        }
     </style>
 
     @yield('local_css')
