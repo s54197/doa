@@ -37,10 +37,6 @@ class PdfController extends Controller
         foreach(BorangA::find($id)->penginvoisans as $penginvoisan_list) {
             array_push($penginvoisannama,$penginvoisan_list->penginvoisan_nama);
         }
-        
-        $pihakketiganama_penginvoisannama = [];
-        array_push($pihakketiganama_penginvoisannama, $pihakketiganama);
-        array_push($pihakketiganama_penginvoisannama, $penginvoisannama);
 
         $data = [
             'no_siri' => $data_borangA->borangA_sijil_no_siri,
