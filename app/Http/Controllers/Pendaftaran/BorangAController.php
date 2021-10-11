@@ -110,6 +110,15 @@ class BorangAController extends Controller
         );
     }
 
+    // Get no_pendaftaran based on id 
+    public function get_no_pendaftaran($id) {
+        $nopendaftaran  = Produk::where('id', $id)->get();
+        return array(
+            'status' => 'success',
+            'data' => $nopendaftaran,
+        );
+    }
+
     // Show data based on id
     public function view($id) {
 
@@ -142,6 +151,8 @@ class BorangAController extends Controller
         // Data borangA
         $borangA = BorangA::find($id)->with('syarikat','agen','produk')->get();
         $borangId = BorangA::find($id);
+
+        // dd($borangId->syarikat);
     
         // Reformat date
         foreach($borangA as $borangA) {
