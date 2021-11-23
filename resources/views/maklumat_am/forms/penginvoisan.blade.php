@@ -214,6 +214,10 @@ $(document).ready(function(){
             }  
         });
     });
+    
+    $("#penginvoisan_no_tel, #penginvoisan_no_faks").keyup(function(){
+        $(this).val($(this).val().replace('-','').replace(' ',''));
+    })
 });
 </script>  
 @endsection
