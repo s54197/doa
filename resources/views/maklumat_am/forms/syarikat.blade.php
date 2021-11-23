@@ -392,6 +392,10 @@ $("input[name='syarikat_surat_poskod']").on('blur', function(){
         });
 });
 
+$("#syarikat_no_tel, #syarikat_no_faks").keyup(function(){
+    $(this).val($(this).val().replace('-','').replace(' ',''));
+})
+
 });
 
 function changeInputReadonly(){
