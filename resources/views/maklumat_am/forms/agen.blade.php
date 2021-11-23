@@ -41,7 +41,8 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="agen_ic"><span class="text-danger">*</span>No kad pengenalan agen:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="agen_ic" name="agen_ic" class="form-control" placeholder="No kad pengenalan agen" value="{{ old('agen_ic',isset($agens->agen_ic)?$agens->agen_ic:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="text" id="agen_ic" name="agen_ic" class="form-control" placeholder="XXXXXX-XX-XXXX" value="{{ old('agen_ic',isset($agens->agen_ic)?$agens->agen_ic:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}
+                                        data-toggle="input-mask" data-mask-format="000000-00-0000">
                                         @error('agen_ic') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -271,6 +272,10 @@ $("input[name='agen_poskod']").on('blur', function(){
             }  
         });
 });
+
+$("#agen_no_tel, #agen_no_faks").keyup(function(){
+    $(this).val($(this).val().replace('-','').replace(' ',''));
+})
 
 });
 
