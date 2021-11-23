@@ -43,6 +43,7 @@
                                     <div class="col-md-3">
                                         <select class="form-control" name="produk_lrmp_r" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Nilai R...</option>
+                                            <option value='R' {{ old('produk_lrmp_r',isset($produks->produk_lrmp_r)?$produks->produk_lrmp_r:null) == 'R' ? 'selected' : '' }}>R</option>
                                             <option value='R1' {{ old('produk_lrmp_r',isset($produks->produk_lrmp_r)?$produks->produk_lrmp_r:null) == 'R1' ? 'selected' : '' }}>R1</option>
                                             <option value='R2' {{ old('produk_lrmp_r',isset($produks->produk_lrmp_r)?$produks->produk_lrmp_r:null) == 'R2' ? 'selected' : '' }}>R2</option>
                                             <option value='R3' {{ old('produk_lrmp_r',isset($produks->produk_lrmp_r)?$produks->produk_lrmp_r:null) == 'R3' ? 'selected' : '' }}>R3</option>
@@ -116,8 +117,8 @@
                                     <div class="col-md-8">
                                         <select class="form-control" name="produk_kelas_racun" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Kelas Racun...</option>
-                                            <option value='1a' {{ old('produk_kelas_racun',isset($produks->produk_kelas_racun)?$produks->produk_kelas_racun:null) == '1a' ? 'selected' : '' }}>1a</option>
-                                            <option value='1b' {{ old('produk_kelas_racun',isset($produks->produk_kelas_racun)?$produks->produk_kelas_racun:null) == '1b' ? 'selected' : '' }}>1b</option>
+                                            <option value='Ia' {{ old('produk_kelas_racun',isset($produks->produk_kelas_racun)?$produks->produk_kelas_racun:null) == 'Ia' ? 'selected' : '' }}>Ia</option>
+                                            <option value='Ib' {{ old('produk_kelas_racun',isset($produks->produk_kelas_racun)?$produks->produk_kelas_racun:null) == 'Ib' ? 'selected' : '' }}>Ib</option>
                                             <option value='II' {{ old('produk_kelas_racun',isset($produks->produk_kelas_racun)?$produks->produk_kelas_racun:null) == 'II' ? 'selected' : '' }}>II</option>
                                             <option value='III' {{ old('produk_kelas_racun',isset($produks->produk_kelas_racun)?$produks->produk_kelas_racun:null) == 'III' ? 'selected' : '' }}>III</option>
                                             <option value='IV' {{ old('produk_kelas_racun',isset($produks->produk_kelas_racun)?$produks->produk_kelas_racun:null) == 'IV' ? 'selected' : '' }}>IV</option>
