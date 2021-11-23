@@ -215,6 +215,10 @@ $(document).ready(function(){
             }  
         });
     });
+    
+    $("#gudang_no_tel, #gudang_no_faks").keyup(function(){
+        $(this).val($(this).val().replace('-','').replace(' ',''));
+    })
 
 });
 </script>  
