@@ -382,6 +382,11 @@
         <!-- Responsive examples -->
         <script src="/assets/libs/datatables/dataTables.responsive.min.js"></script>
         <script src="/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+        
+        {{-- Form Mask --}}
+        <script src="/assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
+        <script src="/assets/libs/autonumeric/autoNumeric-min.js"></script>
+        <script src="/assets/js/pages/form-masks.init.js"></script>
 
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
