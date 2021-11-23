@@ -214,6 +214,10 @@ $(document).ready(function(){
             }  
         });
     });
+    
+    $("#pihak_ketiga_no_tel, #pihak_ketiga_no_faks").keyup(function(){
+        $(this).val($(this).val().replace('-','').replace(' ',''));
+    })
 });
 </script>  
 @endsection
