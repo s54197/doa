@@ -101,7 +101,7 @@ class PembekalController extends Controller
         
         $request->validate([
             'pihak_ketiga_nama' => 'required',
-            'pihak_ketiga_no_roc' => 'required',
+            // 'pihak_ketiga_no_roc' => 'required',
             'pihak_ketiga_bangunan' => 'required',
             'pihak_ketiga_jalan' => 'required',
             'pihak_ketiga_poskod' => 'required',
@@ -142,7 +142,7 @@ class PembekalController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'pihak_ketiga_nama' => 'required',
-            'pihak_ketiga_no_roc' => 'required',
+            // 'pihak_ketiga_no_roc' => 'required',
             'pihak_ketiga_bangunan' => 'required',
             'pihak_ketiga_jalan' => 'required',
             'pihak_ketiga_poskod' => 'required',
