@@ -37,8 +37,8 @@
         .logo-box h5{
             line-height: 1.3rem
         }
-        .content-page{
-            min-height: 93vh
+        .content-page {
+            min-height: 100vh
         }
     </style>
 
@@ -103,7 +103,7 @@
                                     <li><a href="{{ route('main.agen') }}">Agen {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.produk') }}">Produk {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.perawis') }}">Perawis Aktif {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
-                                    <li><a href="{{ route('main.pembekal') }}">Pembekal {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                    <li><a href="{{ route('main.pembekal') }}">Sumber {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.pengilang') }}">Pengilang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.gudang') }}">Gudang {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
                                     <li><a href="{{ route('main.penginvoisan') }}">Invoicing {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
@@ -382,7 +382,7 @@
         <!-- Responsive examples -->
         <script src="/assets/libs/datatables/dataTables.responsive.min.js"></script>
         <script src="/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
-        
+
         {{-- Form Mask --}}
         <script src="/assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
         <script src="/assets/libs/autonumeric/autoNumeric-min.js"></script>
