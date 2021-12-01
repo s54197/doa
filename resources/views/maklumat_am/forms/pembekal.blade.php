@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_no_roc"><span class="text-danger">*</span>Nombor pendaftaran (ROC):</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_no_roc">{{-- <span class="text-danger">*</span> --}}Nombor pendaftaran (ROC):</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_no_roc" name="pihak_ketiga_no_roc" class="form-control" placeholder="Nombor Pendaftaran (ROC)" value="{{ old('pihak_ketiga_no_roc',isset($pembekals->pihak_ketiga_no_roc)?$pembekals->pihak_ketiga_no_roc:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_no_roc') 
