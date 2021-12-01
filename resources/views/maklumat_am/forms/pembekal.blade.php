@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Pembekal')
+@section('title', 'Sumber')
 
 @section('breadcrumbs')
 <li>
-    <h4 class="page-title-main">Pembekal</h4>
+    <h4 class="page-title-main">Sumber</h4>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">DOA</a></li>
         <li class="breadcrumb-item"><a href="#">Rekod Maklumat Am</a></li>
-        <li class="breadcrumb-item active">Pembekal</li>
+        <li class="breadcrumb-item active">Sumber</li>
     </ol>
 </li>
 @endsection
@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card-box px-4">
-                <h4 class="header-title">{{$tajuk}} Pembekal</h4>
+                <h4 class="header-title">{{$tajuk}} Sumber</h4>
                 <hr class="mb-3">
                 {{-- <p class="sub-header">
                     Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>, <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.
@@ -30,9 +30,9 @@
                             <form method="POST" class="form-horizontal" role="form" action="{{ $jenis == 'new' ? route('pembekal.create') : route('pembekal.update',$pembekals->id) }}">
                                 @csrf
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_nama"><span class="text-danger">*</span>Nama pembekal:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_nama"><span class="text-danger">*</span>Nama Sumber:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="pihak_ketiga_nama" name="pihak_ketiga_nama" class="form-control" placeholder="Nama pembekal" value="{{ old('pihak_ketiga_nama',isset($pembekals->pihak_ketiga_nama)?$pembekals->pihak_ketiga_nama:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="text" id="pihak_ketiga_nama" name="pihak_ketiga_nama" class="form-control" placeholder="Nama Sumber" value="{{ old('pihak_ketiga_nama',isset($pembekals->pihak_ketiga_nama)?$pembekals->pihak_ketiga_nama:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_nama') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 mb-sm-2">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_alamat"><span class="text-danger">*</span>Alamat pembekal:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_alamat"><span class="text-danger">*</span>Alamat Sumber:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_bangunan" name="pihak_ketiga_bangunan" class="form-control" placeholder="Bangunan" value="{{ old('pihak_ketiga_bangunan',isset($pembekals->pihak_ketiga_bangunan)?$pembekals->pihak_ketiga_bangunan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         <input type="text" id="pihak_ketiga_jalan" name="pihak_ketiga_jalan" class="form-control mt-2" placeholder="Jalan" value="{{ old('pihak_ketiga_jalan',isset($pembekals->pihak_ketiga_jalan)?$pembekals->pihak_ketiga_jalan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_negeri_luar_malaysia">Negeri (luar malaysia) pembekal:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_negeri_luar_malaysia">Negeri (luar malaysia) Sumber:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_negeri_luar_malaysia" name="pihak_ketiga_negeri_luar_malaysia" class="form-control" placeholder="Negeri (luar malaysia) pembekal" value="{{ old('pihak_ketiga_negeri_luar_malaysia',isset($pembekals->pihak_ketiga_negeri_luar_malaysia)?$pembekals->pihak_ketiga_negeri_luar_malaysia:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_negeri_luar_malaysia') 
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_negara"><span class="text-danger">*</span>Negara pembekal:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_negara"><span class="text-danger">*</span>Negara Sumber:</label>
                                     <div class="col-md-8">
                                         <select class="form-control" name="pihak_ketiga_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
@@ -215,8 +215,6 @@ $("input[name='pihak_ketiga_poskod']").on('blur', function(){
             }  
         });
     });
-    
-    
 
     $("#pihak_ketiga_no_tel, #pihak_ketiga_no_faks").keyup(function(){
         $(this).val($(this).val().replace('-','').replace(' ',''));
