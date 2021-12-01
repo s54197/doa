@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_tarikh_penwartaan"><span class="text-danger">*</span>Tarikh Penwartaan:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_tarikh_penwartaan"><span class="text-danger">*</span>Tarikh Pewartaan:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" id="produk_tarikh_penwartaan" autocomplete="off" type="text" name="produk_tarikh_penwartaan" data-date-orientation="bottom" autocomplete="off" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_penwartaan',isset($produks->produk_tarikh_penwartaan)?$produks->produk_tarikh_penwartaan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_tarikh_penwartaan') 
@@ -288,9 +288,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_saiz"><span class="text-danger">*</span>Saiz Bungkusan 1:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_saiz"><span class="text-danger">*</span>Saiz bungkusan (pack size) 1:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="produk_saiz_isian_1" name="produk_saiz_isian_1" class="form-control" placeholder="Saiz Bungkusan 1" value="{{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="number" id="produk_saiz_isian_1" name="produk_saiz_isian_1" class="form-control" placeholder="Saiz bungkusan (pack size) 1" value="{{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_saiz_isian_1') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -330,9 +330,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz Bungkusan 2:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz bungkusan (pack size) 2:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="produk_saiz_isian_2" name="produk_saiz_isian_2" class="form-control" placeholder="Saiz Bungkusan 2" value="{{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="number" id="produk_saiz_isian_2" name="produk_saiz_isian_2" class="form-control" placeholder="Saiz bungkusan (pack size) 2" value="{{ old('produk_saiz_isian_2',isset($produks->produk_saiz_isian_2)?$produks->produk_saiz_isian_2:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_saiz_isian_2') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -372,9 +372,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz Bungkusan 3:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz bungkusan (pack size) 3:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="produk_saiz_isian_3" name="produk_saiz_isian_3" class="form-control" placeholder="Saiz Bungkusan 3" value="{{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="number" id="produk_saiz_isian_3" name="produk_saiz_isian_3" class="form-control" placeholder="Saiz bungkusan (pack size) 3" value="{{ old('produk_saiz_isian_3',isset($produks->produk_saiz_isian_3)?$produks->produk_saiz_isian_3:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_saiz_isian_3') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -414,9 +414,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz Bungkusan 4:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz bungkusan (pack size) 4:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="produk_saiz_isian_4" name="produk_saiz_isian_4" class="form-control" placeholder="Saiz Bungkusan 4" value="{{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="number" id="produk_saiz_isian_4" name="produk_saiz_isian_4" class="form-control" placeholder="Saiz bungkusan (pack size) 4" value="{{ old('produk_saiz_isian_4',isset($produks->produk_saiz_isian_4)?$produks->produk_saiz_isian_4:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_saiz_isian_4') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -456,9 +456,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz Bungkusan 5:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz bungkusan (pack size) 5:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="produk_saiz_isian_5" name="produk_saiz_isian_5" class="form-control" placeholder="Saiz Bungkusan 5" value="{{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="number" id="produk_saiz_isian_5" name="produk_saiz_isian_5" class="form-control" placeholder="Saiz bungkusan (pack size) 5" value="{{ old('produk_saiz_isian_5',isset($produks->produk_saiz_isian_5)?$produks->produk_saiz_isian_5:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_saiz_isian_5') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -498,9 +498,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz Bungkusan 6:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_saiz">Saiz bungkusan (pack size) 6:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="produk_saiz_isian_6" name="produk_saiz_isian_6" class="form-control" placeholder="Saiz Bungkusan 6" value="{{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="number" id="produk_saiz_isian_6" name="produk_saiz_isian_6" class="form-control" placeholder="Saiz bungkusan (pack size) 6" value="{{ old('produk_saiz_isian_6',isset($produks->produk_saiz_isian_6)?$produks->produk_saiz_isian_6:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_saiz_isian_6') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
