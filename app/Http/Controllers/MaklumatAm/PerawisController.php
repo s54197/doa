@@ -66,6 +66,8 @@ class PerawisController extends Controller
             'jenis' => 'papar',
             'tajuk' => 'Paparan'
         );
+
+        // dd($perawis->perawis_piawaian);
         
         return view('maklumat_am.forms.perawis')->with($data);
     }
@@ -94,13 +96,13 @@ class PerawisController extends Controller
         $request->validate([
             'perawis_nama' => 'required',
             'perawis_nama_kimia' => 'required',
-            'perawis_sinonim' => 'required',
+            // 'perawis_sinonim' => 'required',
             'perawis_cas' => 'required',
             'perawis_hscode' => 'required',
             'perawis_ahtncode' => 'required',
-            'perawis_piawaian' => 'required',
-            'perawis_sampel' => 'required',
-            'perawis_pihak_ketiga' => 'required',
+            // 'perawis_piawaian' => 'required',
+            // 'perawis_sampel' => 'required',
+            // 'perawis_pihak_ketiga' => 'required',
             'perawis_kumpulan_kimia' => 'required',
             'perawis_kaedah' => 'required',
             'perawis_tarikh_lulus' => 'required',
@@ -109,6 +111,10 @@ class PerawisController extends Controller
             'perawis_unit' => 'required',
             'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
         ]);
+
+        $request->perawis_piawaian = $request->has('perawis_piawaian') ? true : false;
+        $request->perawis_sampel = $request->has('perawis_sampel') ? true : false;
+        $request->perawis_pihak_ketiga = $request->has('perawis_pihak_ketiga') ? true : false;
 
         try {
             $user = User::find(Auth::user()->id);
@@ -144,13 +150,13 @@ class PerawisController extends Controller
         $request->validate([
             'perawis_nama' => 'required',
             'perawis_nama_kimia' => 'required',
-            'perawis_sinonim' => 'required',
+            // 'perawis_sinonim' => 'required',
             'perawis_cas' => 'required',
             'perawis_hscode' => 'required',
             'perawis_ahtncode' => 'required',
-            'perawis_piawaian' => 'required',
-            'perawis_sampel' => 'required',
-            'perawis_pihak_ketiga' => 'required',
+            // 'perawis_piawaian' => 'required',
+            // 'perawis_sampel' => 'required',
+            // 'perawis_pihak_ketiga' => 'required',
             'perawis_kumpulan_kimia' => 'required',
             'perawis_kaedah' => 'required',
             'perawis_tarikh_lulus' => 'required',
@@ -159,6 +165,10 @@ class PerawisController extends Controller
             'perawis_unit' => 'required',
             'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
         ]);
+
+        $request->perawis_piawaian = $request->has('perawis_piawaian') ? true : false;
+        $request->perawis_sampel = $request->has('perawis_sampel') ? true : false;
+        $request->perawis_pihak_ketiga = $request->has('perawis_pihak_ketiga') ? true : false;
 
         try {
             $perawis = Perawis::find($id);
