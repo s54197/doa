@@ -66,45 +66,63 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_hscode"><span class="text-danger">*</span>HSCODE:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_hscode"><span class="text-danger">*</span>MalaysianHSCodes:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_hscode" name="perawis_hscode" class="form-control" placeholder="HSCODE" value="{{ old('perawis_hscode',isset($perawiss->perawis_hscode)?$perawiss->perawis_hscode:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="text" id="perawis_hscode" name="perawis_hscode" class="form-control" placeholder="XXXX.XX XXX" value="{{ old('perawis_hscode',isset($perawiss->perawis_hscode)?$perawiss->perawis_hscode:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} data-toggle="input-mask" data-mask-format="0000.00 000">
                                         @error('perawis_hscode') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_ahtncode"><span class="text-danger">*</span>AHTNCODE:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_ahtncode"><span class="text-danger">*</span>AHTNCodes:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_ahtncode" name="perawis_ahtncode" class="form-control" placeholder="AHTNCODE" value="{{ old('perawis_ahtncode',isset($perawiss->perawis_ahtncode)?$perawiss->perawis_ahtncode:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="text" id="perawis_ahtncode" name="perawis_ahtncode" class="form-control" placeholder="XXXX.XX.XX XX" value="{{ old('perawis_ahtncode',isset($perawiss->perawis_ahtncode)?$perawiss->perawis_ahtncode:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} data-toggle="input-mask" data-mask-format="0000.00.00 00">
                                         @error('perawis_ahtncode') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_piawaian">Piawaian Analisis:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_piawaian"><span class="text-danger">*</span>Piawaian Analisis:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_piawaian" name="perawis_piawaian" class="form-control" placeholder="Piawaian Analisis" value="{{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <div class="checkbox checkbox-primary">
+                                            <input id="perawis_piawaian" name="perawis_piawaian" type="checkbox" value="1" {{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <label for="perawis_piawaian">
+                                                
+                                            </label>
+                                        </div>
+                                        <!-- <input type="text" id="perawis_piawaian" name="perawis_piawaian" class="form-control" placeholder="Piawaian Analisis" value="{{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}> -->
                                         @error('perawis_piawaian') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_sampel">Sampel Analisis:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_sampel"><span class="text-danger">*</span>Sampel Analisis:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_sampel" name="perawis_sampel" class="form-control" placeholder="Sampel Analisis" value="{{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <div class="checkbox checkbox-primary">
+                                            <input id="perawis_sampel" name="perawis_sampel" type="checkbox" value="1" {{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <label for="perawis_sampel">
+                                                
+                                            </label>
+                                        </div>
+                                        <!-- <input type="text" id="perawis_sampel" name="perawis_sampel" class="form-control" placeholder="Sampel Analisis" value="{{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}> -->
                                         @error('perawis_sampel') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_pihak_ketiga">Laporan Analisis Makmal Pihak Ketiga:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_pihak_ketiga"><span class="text-danger">*</span>Laporan Analisis Makmal Pihak Ketiga:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" class="form-control" placeholder="Laporan Analisis Makmal Pihak Ketiga" value="{{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <div class="checkbox checkbox-primary">
+                                            <input id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" type="checkbox" value="1" {{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <label for="perawis_pihak_ketiga">
+                                                
+                                            </label>
+                                        </div>
+                                        <!-- <input type="text" id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" class="form-control" placeholder="Laporan Analisis Makmal Pihak Ketiga" value="{{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}> -->
                                         @error('perawis_pihak_ketiga') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -122,7 +140,21 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_kaedah"><span class="text-danger">*</span>Kaedah:</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_kaedah" name="perawis_kaedah" class="form-control" placeholder="Kaedah" value="{{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        {{-- <input type="text" id="perawis_kaedah" name="perawis_kaedah" class="form-control" placeholder="Kaedah" value="{{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}> --}}
+
+                                        <select class="form-control" name="perawis_kaedah" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Kaedah...</option>
+                                            <option value="HPLC" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "HPLC" ? 'selected' : '' }}>HPLC</option>
+                                            <option value="GC-FID" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "GC-FID" ? 'selected' : '' }}>GC-FID</option>
+                                            <option value="GC" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "GC" ? 'selected' : '' }}>GC</option>
+                                            <option value="Microscopic method" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "Microscopic method" ? 'selected' : '' }}>Microscopic method</option>
+                                            <option value="Reversed Liquid Chromatography" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "Reversed Liquid Chromatography" ? 'selected' : '' }}>Reversed Liquid Chromatography</option>
+                                            <option value="Reversed-Phase Liquid Chromatography" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "Reversed-Phase Liquid Chromatography" ? 'selected' : '' }}>Reversed-Phase Liquid Chromatography</option>
+                                            <option value="Synthesizing" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "Synthesizing" ? 'selected' : '' }}>Synthesizing</option>
+                                            <option value="Titration" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "Titration" ? 'selected' : '' }}>Titration</option>
+                                            <option value="This is one of Btk strain from US" {{ old('perawis_kaedah',isset($perawiss->perawis_kaedah)?$perawiss->perawis_kaedah:null) == "This is one of Btk strain from US" ? 'selected' : '' }}>This is one of Btk strain from US</option>
+                                        </select>
+
                                         @error('perawis_kaedah') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
@@ -150,7 +182,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_peratusan"><span class="text-danger">*</span>Peratusan:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="perawis_peratusan" name="perawis_peratusan" class="form-control" placeholder="Peratusan" value="{{ old('perawis_peratusan',isset($perawiss->perawis_peratusan)?$perawiss->perawis_peratusan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="number" id="perawis_peratusan" name="perawis_peratusan" class="form-control" placeholder="Peratusan" value="{{ old('perawis_peratusan',isset($perawiss->perawis_peratusan)?$perawiss->perawis_peratusan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
                                         @error('perawis_peratusan') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
