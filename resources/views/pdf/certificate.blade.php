@@ -6,7 +6,8 @@
 
         <style>
             .cert{
-                font-family: 'Times New Roman', Times, serif;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px
             }
             .no_siri{
                 float: right;
@@ -164,8 +165,9 @@
                         <li>Racun Makhluk Perosak ini mestilah menggunakan label terkini yang diluluskan oleh Lembaga Racun Makhluk Perosak.</li>
                         <li>Racun Makhluk Perosak ini mestilah dibekalkan oleh pembekal-pembekal berikut:
                             <ol type="a" class="pembekal">
-                                <li>THOR GmbH, GERMANY</li>
-                                <li>THOR SPECIALTIES SDN. BHD.</li>
+                                @foreach(explode(',',$pembekal) as $data_pembekal)
+                                    <li>{{ $data_pembekal }}</li>
+                                @endforeach
                             </ol>
                         </li>
                     </ol>
