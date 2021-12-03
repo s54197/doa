@@ -846,7 +846,7 @@ $(document).ready(function(){
             datatype: 'json',
             success : function(data) {
                 $.each(data.data, function(key, resp) {
-					if(resp.produk_lrmp_r=='R1') {
+					if(resp.produk_lrmp_r=='R') {
                         $('#borangA_jenis_pendaftaran').val('baru');
                         $('#borangA_jenis_pendaftaran_1').val('baru');
                     } else {
