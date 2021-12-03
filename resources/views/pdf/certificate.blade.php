@@ -6,7 +6,8 @@
 
         <style>
             .cert{
-                font-family: 'Times New Roman', Times, serif;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px
             }
             .no_siri{
                 float: right;
