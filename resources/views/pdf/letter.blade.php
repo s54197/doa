@@ -8,10 +8,10 @@
 
     <style>
         .letter{
-            font-family: 'Times New Roman', Times, serif;
+            font-family: Arial, Helvetica, sans-serif;
             margin-left: 30px;
             margin-right: 30px;
-            font-size: 15px
+            font-size: 12px
         }
         table td.font-bold, table td span.font-bold {
             font-weight: bold;
@@ -94,15 +94,15 @@
             <td style="width: 300px; vertical-align: top">
             </td>
             <td></td>
-            <td>Ruj: Kami: JP/KRP.207/12/171/<br>
-            <span style="font-style:italic">(Our Ref.)</span> 11219 <span style="margin-right: 50px">(</span>)<br><br>
-            Tarikh:<br>
+            <td>Ruj: Kami: JP/KRP.207/12/171/{{ $rujukan_1 }}<br>
+            <span style="font-style:italic">(Our Ref.)</span> 11219 <span style="margin-right: 50px">( {{ $rujukan_2 }} )<br><br>
+            Tarikh: {{ $surat_tarikh }}<br>
             <span style="font-style:italic">(Date)</span>
         </td>
         </tr>
         <tr>
             <td style="width: 300px;padding-bottom: 30px">
-                Thor Specialities Sdn. Bhd.<br>
+                {{ $syarikat_nama }}<br>
                 Lot 14, Jalan Bursa 23/4 <br>
                 40300 Shah Alam, <br>
                 Selangor. <br>
@@ -126,15 +126,15 @@
     <table class="letter">
         <tr>
             <td style="width: 150px" class="seven_pixel left alignLabel"><span>Nama Dagangan</span></td>
-            <td class="font-bold seven_pixel" style="padding-left: 25px">ACTICIDE LA 5008</td>
+            <td class="font-bold seven_pixel" style="padding-left: 25px">{{ $nama_dagangan }}</td>
         </tr>
         <tr>
             <td style="width: 150px" class="seven_pixel left alignLabel"><span>No. Pendaftaran</span> </td>
-            <td class="font-bold seven_pixel" style="padding-left: 25px">LRMP.R2/8495 </td>
+            <td class="font-bold seven_pixel" style="padding-left: 25px">{{ $no_pendaftaran }} </td>
         </tr>
         <tr>
             <td style="width: 150px" class="seven_pixel left alignLabel"><span>No. Resit Bayaran</span></td>
-            <td class="font-bold seven_pixel" style="padding-left: 25px">1251</td>
+            <td class="font-bold seven_pixel" style="padding-left: 25px">{{ $resit_bayaran }}</td>
         </tr>
         <tr>
             <td style="padding-top: 7px; padding-bottom: 30px" colspan="2">Sekian, terima kasih.</td>
