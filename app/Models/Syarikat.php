@@ -17,6 +17,11 @@ class Syarikat extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Syarikat relationship
+    public function borangAs(){
+        return $this->hasMany(BorangA::class);
+    }
+
     protected $fillable = [
         'syarikat_nama',
         'syarikat_no_roc',

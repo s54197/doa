@@ -21,9 +21,9 @@ class CreatePerawisTable extends Migration
             $table->string('perawis_cas');
             $table->string('perawis_hscode');
             $table->string('perawis_ahtncode');
-            $table->string('perawis_piawaian');
-            $table->string('perawis_sampel');
-            $table->string('perawis_pihak_ketiga');
+            $table->boolean('perawis_piawaian');
+            $table->boolean('perawis_sampel');
+            $table->boolean('perawis_pihak_ketiga');
             $table->string('perawis_kumpulan_kimia');
             $table->string('perawis_kaedah');
             $table->date('perawis_tarikh_lulus');

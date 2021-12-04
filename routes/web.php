@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -178,9 +177,10 @@ Route::middleware('auth')->group(function() {
     Route::post('form/pendaftaran/create', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'store'])->name('pendaftaran.create');
     // update pendaftaran
     Route::post('form/pendaftaran/kemaskini/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'update'])->name('pendaftaran.update');
-    // uget wakil
+    // get wakil
     Route::get('form/pendaftaran/getWakil/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'get_wakil'])->name('pendaftaran.wakil');
-
+    // get no pendaftaran
+    Route::get('form/pendaftaran/getNoPendaftaran/{id}', [App\Http\Controllers\Pendaftaran\BorangAController::class, 'get_no_pendaftaran'])->name('pendaftaran.no_pendaftaran');
 
     /***********************************
         change password function
@@ -191,8 +191,11 @@ Route::middleware('auth')->group(function() {
     /***********************************
                    pdf
     ***********************************/
-    Route::get('/create_cert', [App\Http\Controllers\PDFController::class, 'certificate'])->name('create.cert');
-    Route::get('/create_letter', [App\Http\Controllers\PDFController::class, 'letter'])->name('create.letter');
+    Route::get('/create_cert/{id}', [App\Http\Controllers\PdfController::class, 'certificate'])->name('create.cert');
+    Route::get('/create_letter/{id}', [App\Http\Controllers\PdfController::class, 'letter'])->name('create.letter');
+
+    Route::get('/download_cert/{id}', [App\Http\Controllers\PdfController::class, 'download_certificate'])->name('download.cert');
+    Route::get('/download_letter/{id}', [App\Http\Controllers\PdfController::class, 'download_letter'])->name('download.letter');
 
 });
 
