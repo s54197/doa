@@ -118,6 +118,9 @@ class BorangA extends Model
         'borangA_sijil_fail_nama',
         'borangA_sijil_fail_src',
         'borangA_status',
+        'borangA_surat_penama',
+        'borangA_sijil_pengerusi',
+        'borangA_sijil_setiausaha',
     ];
 
 }

@@ -19,9 +19,9 @@ class CreateProduksTable extends Migration
             $table->string('produk_lrmp_r');
             $table->string('produk_lrmp_no');
             $table->string('produk_no_fail');
-            $table->date('produk_tarikh_gazet');
-            $table->date('produk_tarikh_tamat');
-            $table->date('produk_tarikh_penwartaan');
+            $table->date('produk_tarikh_gazet')->nullable();
+            $table->date('produk_tarikh_tamat')->nullable();
+            $table->date('produk_tarikh_penwartaan')->nullable();
             $table->string('produk_kelas_racun');
             $table->string('produk_categori');
             $table->string('produk_categori_lain')->nullable();

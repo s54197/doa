@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_tarikh_gazet"><span class="text-danger">*</span>Tarikh Gazet:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_tarikh_gazet">Tarikh Gazet:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" id="produk_tarikh_gazet" autocomplete="off" type="text" name="produk_tarikh_gazet" data-date-orientation="bottom" autocomplete="off" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_gazet',isset($produks->produk_tarikh_gazet)?$produks->produk_tarikh_gazet:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_tarikh_gazet') 
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_tarikh_tamat"><span class="text-danger">*</span>Tarikh Tamat:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_tarikh_tamat">Tarikh Tamat:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" id="produk_tarikh_tamat" autocomplete="off" type="text" name="produk_tarikh_tamat" data-date-orientation="bottom" autocomplete="off" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_tamat',isset($produks->produk_tarikh_tamat)?$produks->produk_tarikh_tamat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_tarikh_tamat') 
@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="produk_tarikh_penwartaan"><span class="text-danger">*</span>Tarikh Pewartaan:</label>
+                                    <label class="col-md-3 col-form-label" for="produk_tarikh_penwartaan">Tarikh Pewartaan:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" id="produk_tarikh_penwartaan" autocomplete="off" type="text" name="produk_tarikh_penwartaan" data-date-orientation="bottom" autocomplete="off" data-date-format="dd-mm-yyyy" value="{{ old('produk_tarikh_penwartaan',isset($produks->produk_tarikh_penwartaan)?$produks->produk_tarikh_penwartaan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('produk_tarikh_penwartaan') 

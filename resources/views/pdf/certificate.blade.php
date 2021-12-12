@@ -74,7 +74,7 @@
 
         <table class="cert">
             <tr>
-                <td class="right font-bold" colspan="3">NO SIRI: C <span style="font-family: font-family: 'Courier New', Courier, monospace">{{ $no_siri }}</span> </th>
+                <td class="right font-bold" colspan="3">NO SIRI: <span style="font-family: font-family: 'Courier New', Courier, monospace">{{ $no_siri }}</span> </th>
             </tr>
             <tr>
                 <td class="center" colspan="3"><img src="{{ public_path('assets/images/logo kerajaan malaysia.jpg') }}" height="100px"></td>
@@ -89,13 +89,13 @@
                 <td class="center font-bold five_pixel" colspan="3">KAEDAH-KEADAH RACUN MAKHLUK PEROSAK (PENDAFTARAN) 2005</td>
             </tr>
             <tr>
-                <td class="center font-bold five_pixel" colspan="3">Borang C</td>
+                <td class="center font-bold five_pixel" colspan="3">Borang {{ $jenis_borang }}</td>
             </tr>
             <tr>
                 <td class="center font-bold five_pixel" style="font-style:italic" colspan="3">(Kaedah 5)</td>
             </tr>
             <tr>
-                <td class="center font-bold five_pixel" style="padding-bottom: 20px" colspan="3">PERAKUAN PENDAFTARAN SEMULA RACUN MAKHLUK PEROSAK</td>
+                <td class="center font-bold five_pixel" style="padding-bottom: 20px" colspan="3">PERAKUAN PENDAFTARAN {{ $jenis_pendaftaran }} RACUN MAKHLUK PEROSAK</td>
             </tr>
             <tr>
                 <td class="center five_pixel" style="font-size:12px; padding-bottom: 3px" colspan="3">Adalah dengan ini diperakui bahawa racun makhluk perosak yang butir-butirnya dinyatakan di bawah ini telah didaftarkan <br> di bawah subseksyen 9(1) Akta Racun Makhluk Perosak 1974 [<span style="font-style: italic">Akta 149</span>] oleh Lembaga Racun Makhluk Perosak <br> selama tempoh lima tahun, tertakluk kepada syarat-syarat yang dinyatakan di bawah ini, dan telah diberikan</td>
@@ -143,8 +143,8 @@
         <table class="cert" style="margin-top: 80px">
             <tr>
                 <td style="width: 190px; padding-top: 10px"><img src="{{ public_path('assets/images/cop_cert.jpg') }}" height="180px"></td>
-                <td style="vertical-align: top"><span style="font-weight: bold">DATUK MOHD NASIR BIN WARRIS</span><br><br>Pengerusi<br>Lembaga Racun Makhluk Perosak<br><br> Tarikh: {{ $tarikh_sign }}</td>
-                <td style="vertical-align: top"><span style="font-weight: bold">MOHAMMAD NAZRUL FAHMI BIN ABDUL RAHIM</span><br><br>Setiausaha<br>Lembaga Racun Makhluk Perosak</td>
+                <td style="vertical-align: top"><span style="font-weight: bold">{{ $pengerusi }}</span><br><br>Pengerusi<br>Lembaga Racun Makhluk Perosak<br><br> Tarikh: {{ $tarikh_sign }}</td>
+                <td style="vertical-align: top"><span style="font-weight: bold">{{ $setiausaha }}</span><br><br>Setiausaha<br>Lembaga Racun Makhluk Perosak</td>
             </tr>
             <tr><td class="right" style="font-size:12px; font-style: italic" colspan="3">*Sila rujuk syarat-syarat pendaftaran di sebelah</td></tr>
         </table>

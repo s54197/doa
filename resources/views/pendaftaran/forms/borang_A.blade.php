@@ -135,8 +135,8 @@
                                 @enderror
                             </div>
                         </div>
-                        @if($tajuk != 'BorangA')
-                        <div class="form-group row">
+                        
+                        <div class="form-group row {{ $tajuk == "BorangA" ? 'd-none' : '' }}">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_jenis_pendaftaran"><span class="text-danger">*</span>Jenis Pendaftaran:</label>
                             <div class="col-md-9">
                                 <input type="text" id="borangA_jenis_pendaftaran_1" name="borangA_jenis_pendaftaran" class="form-control custom_border" placeholder="Jenis Pendaftaran " value="{{ old('borangA_jenis_pendaftaran',isset($borangIds->borangA_jenis_pendaftaran)?$borangIds->borangA_jenis_pendaftaran:null) }}" disabled >
@@ -147,7 +147,7 @@
                                 @enderror
                             </div>
                         </div>
-                        @endif
+                        
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_no_pendaftaran"><span class="text-danger">*</span>Nombor Pendaftaran:</label>
                             <div class="col-md-9">
@@ -742,6 +742,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_penama">Penama:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_surat_penama" name="borangA_surat_penama" class="form-control custom_border" placeholder="Penama" value="{{ old('borangA_surat_penama',isset($borangIds->borangA_surat_penama)?$borangIds->borangA_surat_penama:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_surat_penama') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_fail">Muat Naik Surat yang Sah:</label>
                             <div class="col-md-9">
                                 <input type="file" class="filestyle" data-btnClass="btn-outline-primary" id="borangA_surat_fail" name="borangA_surat_fail">
@@ -768,6 +777,24 @@
                                 @error('borangA_sijil_tarikh') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_sijil_pengerusi">Pengerusi:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_sijil_pengerusi" name="borangA_sijil_pengerusi" class="form-control custom_border" placeholder="Pengerusi" value="{{ old('borangA_sijil_pengerusi',isset($borangIds->borangA_sijil_pengerusi)?$borangIds->borangA_sijil_pengerusi:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_sijil_pengerusi') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_setiausaha">Setiausaha:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_surat_setiausaha" name="borangA_surat_setiausaha" class="form-control custom_border" placeholder="Setiausaha" value="{{ old('borangA_surat_setiausaha',isset($borangIds->borangA_surat_setiausaha)?$borangIds->borangA_surat_setiausaha:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_surat_setiausaha') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
                             </div>
                         </div>
                         <div class="form-group row">
@@ -851,9 +878,11 @@ $(document).ready(function(){
 					if(resp.produk_lrmp_r=='R') {
                         $('#borangA_jenis_pendaftaran').val('baru');
                         $('#borangA_jenis_pendaftaran_1').val('baru');
+                        $('#borangA_sijil_no_siri').val('B');
                     } else {
                         $('#borangA_jenis_pendaftaran').val('semula');
                         $('#borangA_jenis_pendaftaran_1').val('semula');
+                        $('#borangA_sijil_no_siri').val('C');
                     }
                     //$('#borangA_jenis_pendaftaran').val(resp.produk_lrmp_r); 
                     //$('#borangA_jenis_pendaftaran_1').val(resp.produk_lrmp_r);

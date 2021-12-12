@@ -38,9 +38,16 @@ class PdfController extends Controller
             array_push($penginvoisannama,$penginvoisan_list->penginvoisan_nama);
         }
 
+        $jenis_pendaftaran = 'BARU';
+        if ($data_borangA->borangA_no_pendaftaran == 'semula') {
+            $jenis_pendaftaran = 'SEMULA';
+        }
+
         $data = [
             'no_siri' => $data_borangA->borangA_sijil_no_siri,
+            'jenis_borang' => strtoupper(substr($data_borangA->borangA_sijil_no_siri,0,1)),
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,
+            'jenis_pendaftaran' => $jenis_pendaftaran,
             'pendaftar' => $data_borangA->syarikat->syarikat_nama,
             'nama_dagangan' => $data_borangA->produk->produk_nama,
             'perawis_aktif' => implode(", ",$perawisnama),
@@ -51,6 +58,8 @@ class PdfController extends Controller
             'tempoh_sah' => Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_lulus)->format('d-m-Y').' - '.Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_tamat)->format('d-m-Y'),
             'tarikh_sign' => $data_borangA->borangA_sijil_tarikh,
             'pembekal' => implode(", ",$pihakketiganama).', '.implode(", ",$penginvoisannama),
+            'pengerusi' => $data_borangA->borangA_nama_pengerusi,
+            'setiausaha' => $data_borangA->borangA_nama_setiausaha,
             // 'pembekal' => $pihakketiganama_penginvoisannama,
         ];
 
@@ -75,6 +84,9 @@ class PdfController extends Controller
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,
             'resit_bayaran' => $data_borangA->borangA_surat_resit_bayaran,
             'syarikat_nama' => $data_borangA->syarikat->syarikat_nama,
+            'slogan_1' => $data_borangA->borangA_slogan_1,
+            'slogan_2' => $data_borangA->borangA_slogan_2,
+            'penama' => $data_borangA->borangA_penama,
         ];
 
         $pdf = PDF::loadView('pdf.letter', $data);

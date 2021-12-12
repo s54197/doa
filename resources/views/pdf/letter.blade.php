@@ -95,7 +95,7 @@
             </td>
             <td></td>
             <td>Ruj: Kami: JP/KRP.207/12/171/{{ $rujukan_1 }}<br>
-            <span style="font-style:italic">(Our Ref.)</span> 11219 <span style="margin-right: 50px">( {{ $rujukan_2 }} )<br><br>
+            <span style="font-style:italic">(Our Ref.) {{ $rujukan_2 }} <br><br>
             Tarikh: {{ $surat_tarikh }}<br>
             <span style="font-style:italic">(Date)</span>
         </td>
@@ -140,10 +140,10 @@
             <td style="padding-top: 7px; padding-bottom: 30px" colspan="2">Sekian, terima kasih.</td>
         </tr>
         <tr>
-            <td style="padding-bottom: 20px" class="font-bold" colspan="2">'PERIHATIN RAKYAT : DARURAT MEMERANGI COVID-19'</td>
+            <td style="padding-bottom: 20px" class="font-bold" colspan="2">{{ $slogan_1 }}</td>
         </tr>
         <tr>
-            <td class="font-bold seven_pixel" colspan="2">'BERKHIDMAT UNTUK NEGARA'</td>
+            <td class="font-bold seven_pixel" colspan="2">{{ $slogan_2 }}</td>
         </tr>
         <tr>
             <td class="seven_pixel" style="padding-bottom: 50px" colspan="2">Saya yang menjalankan amanah,</td>
