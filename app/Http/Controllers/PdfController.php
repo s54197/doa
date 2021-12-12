@@ -58,8 +58,8 @@ class PdfController extends Controller
             'tempoh_sah' => Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_lulus)->format('d-m-Y').' - '.Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_tamat)->format('d-m-Y'),
             'tarikh_sign' => $data_borangA->borangA_sijil_tarikh,
             'pembekal' => implode(", ",$pihakketiganama).', '.implode(", ",$penginvoisannama),
-            'pengerusi' => $data_borangA->borangA_nama_pengerusi,
-            'setiausaha' => $data_borangA->borangA_nama_setiausaha,
+            'pengerusi' => $data_borangA->borangA_sijil_pengerusi,
+            'setiausaha' => $data_borangA->borangA_sijil_setiausaha,
             // 'pembekal' => $pihakketiganama_penginvoisannama,
         ];
 
@@ -84,9 +84,9 @@ class PdfController extends Controller
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,
             'resit_bayaran' => $data_borangA->borangA_surat_resit_bayaran,
             'syarikat_nama' => $data_borangA->syarikat->syarikat_nama,
-            'slogan_1' => $data_borangA->borangA_slogan_1,
-            'slogan_2' => $data_borangA->borangA_slogan_2,
-            'penama' => $data_borangA->borangA_penama,
+            'slogan_1' => $data_borangA->borangA_surat_slogan_1,
+            'slogan_2' => $data_borangA->borangA_surat_slogan_2,
+            'penama' => $data_borangA->borangA_surat_penama,
         ];
 
         $pdf = PDF::loadView('pdf.letter', $data);

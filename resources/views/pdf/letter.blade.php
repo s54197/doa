@@ -149,7 +149,7 @@
             <td class="seven_pixel" style="padding-bottom: 50px" colspan="2">Saya yang menjalankan amanah,</td>
         </tr>
         <tr>
-            <td class="font-bold" colspan="2">(ROHAYA BINTI MAT NOR)</td>
+            <td class="font-bold" colspan="2">{{ $penama }}</td>
         </tr>
         <tr>
             <td style="padding-bottom: 30px" colspan="2">

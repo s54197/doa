@@ -53,6 +53,8 @@ class CreateBorangASTable extends Migration
             $table->string('borangA_surat_fail_src')->nullable();
 
             $table->string('borangA_surat_penama');
+            $table->string('borangA_surat_slogan_1');
+            $table->string('borangA_surat_slogan_2');
             $table->string('borangA_sijil_pengerusi');
             $table->string('borangA_sijil_setiausaha');
             

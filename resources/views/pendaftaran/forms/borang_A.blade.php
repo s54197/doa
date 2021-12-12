@@ -751,6 +751,24 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_slogan_1">Penama:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_surat_slogan_1" name="borangA_surat_slogan_1" class="form-control custom_border" placeholder="Slogan 1" value="{{ old('borangA_surat_slogan_1',isset($borangIds->borangA_surat_slogan_1)?$borangIds->borangA_surat_slogan_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_surat_slogan_1') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_slogan_2">Penama:</label>
+                            <div class="col-md-9">
+                                <input type="text" id="borangA_surat_slogan_2" name="borangA_surat_slogan_2" class="form-control custom_border" placeholder="Slogan 2" value="{{ old('borangA_surat_slogan_2',isset($borangIds->borangA_surat_slogan_2)?$borangIds->borangA_surat_slogan_2:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_surat_slogan_2') 
+                                <small class='text-danger'>{{ $message }}</small> 
+                                @enderror                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_fail">Muat Naik Surat yang Sah:</label>
                             <div class="col-md-9">
                                 <input type="file" class="filestyle" data-btnClass="btn-outline-primary" id="borangA_surat_fail" name="borangA_surat_fail">
@@ -789,10 +807,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_surat_setiausaha">Setiausaha:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_sijil_setiausaha">Setiausaha:</label>
                             <div class="col-md-9">
-                                <input type="text" id="borangA_surat_setiausaha" name="borangA_surat_setiausaha" class="form-control custom_border" placeholder="Setiausaha" value="{{ old('borangA_surat_setiausaha',isset($borangIds->borangA_surat_setiausaha)?$borangIds->borangA_surat_setiausaha:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
-                                @error('borangA_surat_setiausaha') 
+                                <input type="text" id="borangA_sijil_setiausaha" name="borangA_sijil_setiausaha" class="form-control custom_border" placeholder="Setiausaha" value="{{ old('borangA_sijil_setiausaha',isset($borangIds->borangA_sijil_setiausaha)?$borangIds->borangA_sijil_setiausaha:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                @error('borangA_sijil_setiausaha') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror                                
                             </div>
