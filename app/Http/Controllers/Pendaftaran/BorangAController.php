@@ -265,6 +265,11 @@ class BorangAController extends Controller
             'borangA_perawis_perumusan' => 'required',
             'borangA_perawis_perumusan_lain' => 'required_if:borangA_perawis_perumusan,Lain-lain (nyatakan)',
             'borangA_perawis_pengilang' => 'required',
+            'borangA_surat_penama' => 'required',
+            'borangA_surat_slogan_1' => 'required',
+            'borangA_surat_slogan_2' => 'required',
+            'borangA_sijil_pengerusi' => 'required',
+            'borangA_sijil_setiausaha' => 'required',
         ]);
 
         $request->borangA_perniagaan_mengimport = $request->has('borangA_perniagaan_mengimport') ? true : false;
@@ -357,6 +362,12 @@ class BorangAController extends Controller
                 'borangA_surat_resit_bayaran' => $request->borangA_surat_resit_bayaran,
                 'borangA_surat_fail_nama' => $borangA_surat_fail_nama,
                 'borangA_surat_fail_src' => $borangA_surat_fail_src,
+
+                'borangA_surat_penama' => $request->borangA_surat_penama,
+                'borangA_surat_slogan_1' => $request->borangA_surat_slogan_1,
+                'borangA_surat_slogan_2' => $request->borangA_surat_slogan_2,
+                'borangA_sijil_pengerusi' => $request->borangA_sijil_pengerusi,
+                'borangA_sijil_setiausaha' => $request->borangA_sijil_setiausaha,
 
                 // 'borangA_perawis_pengilang' => implode(',', $request->borangA_perawis_pengilang),
                 'borangA_status' => 'Aktif',
@@ -494,6 +505,12 @@ class BorangAController extends Controller
                 'borangA_sijil_fail_src' => $borangA_sijil_fail_src,
                 'borangA_status' => 'Aktif',
                 'user_id' => Auth::user()->id,
+
+                'borangA_surat_penama' => $request->borangA_surat_penama,
+                'borangA_surat_slogan_1' => $request->borangA_surat_slogan_1,
+                'borangA_surat_slogan_2' => $request->borangA_surat_slogan_2,
+                'borangA_sijil_pengerusi' => $request->borangA_sijil_pengerusi,
+                'borangA_sijil_setiausaha' => $request->borangA_sijil_setiausaha,
             ]);
 
             $borangA->pihakketigas()->sync($pengilangPembekalIds);

@@ -133,7 +133,7 @@ class PembekalController extends Controller
             ]);
             return redirect('/pembekal')->withSuccess('Pembekal '.$request->pihak_ketiga_nama.' telah berjaya didaftarkan!');
         } catch(Exception $e) {
-            return redirect('/pembekal')->withWarning('Pembekal '.$request->pihak_ketiga_nama.' tidak berjaya didaftarkan!');
+            return redirect('/pembekal')->withWarning('Pembekal '.$request->pihak_ketiga_nama.' tidak berjaya didaftarkan!'.$e);
         }
         
     }

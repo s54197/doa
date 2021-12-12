@@ -17,9 +17,9 @@ class CreatePihakKetigasTable extends Migration
             $table->id();
             $table->string('pihak_ketiga_nama');
             $table->string('pihak_ketiga_no_roc');
-            $table->string('pihak_ketiga_bangunan');
-            $table->string('pihak_ketiga_jalan');
-            $table->string('pihak_ketiga_poskod');
+            $table->string('pihak_ketiga_bangunan')->nullable();
+            $table->string('pihak_ketiga_jalan')->nullable();
+            $table->string('pihak_ketiga_poskod')->nullable();
             $table->string('pihak_ketiga_bandar')->nullable();
             $table->string('pihak_ketiga_negeri')->nullable();
             $table->string('pihak_ketiga_negeri_luar_malaysia')->nullable();
