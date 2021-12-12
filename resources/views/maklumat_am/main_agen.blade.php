@@ -99,6 +99,7 @@
                             <th>ROC</th>
                             <th>Telefon</th>
                             <th>Negeri</th>
+                            <th>Negara</th>
                             <th>Status</th>
                             <th class="hidden-sm">Tetapan</th>
                         </tr>
@@ -111,6 +112,7 @@
                             <td>{{$agen->agen_roc}}</td>
                             <td>{{$agen->agen_no_tel}}</td>
                             <td>{{$agen->agen_negeri}}</td>
+                            <td>{{$agen->agen_negara}}</td>
                             <td>{{$agen->agen_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">

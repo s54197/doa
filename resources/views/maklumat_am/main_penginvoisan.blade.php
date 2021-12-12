@@ -99,6 +99,7 @@
                             <th>ROC</th>
                             <th>Telefon</th>
                             <th>Negeri</th>
+                            <th>Negara</th>
                             <th>Status</th>
                             <th class="hidden-sm">Tetapan</th>
                         </tr>
@@ -111,6 +112,7 @@
                             <td>{{$penginvoisan->penginvoisan_no_roc}}</td>
                             <td>{{$penginvoisan->penginvoisan_no_tel}}</td>
                             <td>{{$penginvoisan->penginvoisan_negeri}}</td>
+                            <td>{{$penginvoisan->penginvoisan_negara}}</td>
                             <td>{{$penginvoisan->penginvoisan_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">

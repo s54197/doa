@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_terima_kaunter"><span class="text-danger">*</span>Tarikh Terima Kaunter:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_terima_kaunter">{{--<span class="text-danger">*</span>--}}Tarikh Terima Kaunter:</label>
                             <div class="col-md-9">
                                 <input class="form-control custom_border" id="borangA_tarikh_terima_kaunter" type="text" name="borangA_tarikh_terima_kaunter" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_terima_kaunter',isset($borangIds->borangA_tarikh_terima_kaunter)?$borangIds->borangA_tarikh_terima_kaunter:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_tarikh_terima_kaunter') 
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_lulus"><span class="text-danger">*</span>Tarikh Lulus:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_lulus">{{--<span class="text-danger">*</span>--}}Tarikh Lulus:</label>
                             <div class="col-md-9">
                                 <input class="form-control custom_border" id="borangA_tarikh_lulus" type="text" name="borangA_tarikh_lulus" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_lulus',isset($borangIds->borangA_tarikh_lulus)?$borangIds->borangA_tarikh_lulus:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_tarikh_lulus') 
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_tamat"><span class="text-danger">*</span>Tarikh Tamat:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_tarikh_tamat">{{--<span class="text-danger">*</span>--}}Tarikh Tamat:</label>
                             <div class="col-md-9">
                                 <input class="form-control custom_border" id="borangA_tarikh_tamat" type="text" name="borangA_tarikh_tamat" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('borangA_tarikh_tamat',isset($borangIds->borangA_tarikh_tamat)?$borangIds->borangA_tarikh_tamat:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                 @error('borangA_tarikh_tamat') 

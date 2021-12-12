@@ -99,6 +99,7 @@
                             <th>ROC</th>
                             <th>Telefon</th>
                             <th>Negeri</th>
+                            <th>Negara</th>
                             <th>Status</th>
                             <th class="hidden-sm">Tetapan</th>
                         </tr>
@@ -111,6 +112,7 @@
                             <td>{{$gudang->gudang_no_roc}}</td>
                             <td>{{$gudang->gudang_no_tel}}</td>
                             <td>{{$gudang->gudang_negeri}}</td>
+                            <td>{{$gudang->gudang_negara}}</td>
                             <td>{{$gudang->gudang_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">

@@ -99,6 +99,7 @@
                             <th>ROC</th>
                             <th>Telefon</th>
                             <th>Negeri</th>
+                            <th>Negara</th>
                             <th>Status</th>
                             <th class="hidden-sm">Tetapan</th>
                         </tr>
@@ -111,6 +112,7 @@
                             <td>{{$pembekal->pihak_ketiga_no_roc}}</td>
                             <td>{{$pembekal->pihak_ketiga_no_tel}}</td>
                             <td>{{$pembekal->pihak_ketiga_negeri}}</td>
+                            <td>{{$pembekal->pihak_ketiga_negara}}</td>
                             <td>{{$pembekal->pihak_ketiga_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">

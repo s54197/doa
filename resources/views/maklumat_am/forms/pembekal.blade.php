@@ -48,11 +48,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 mb-sm-2">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_alamat"><span class="text-danger">*</span>Alamat Sumber:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_alamat">{{--<span class="text-danger">*</span>--}}Alamat Sumber:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_bangunan" name="pihak_ketiga_bangunan" class="form-control" placeholder="Bangunan" value="{{ old('pihak_ketiga_bangunan',isset($pembekals->pihak_ketiga_bangunan)?$pembekals->pihak_ketiga_bangunan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
-                                        <input type="text" id="pihak_ketiga_jalan" name="pihak_ketiga_jalan" class="form-control mt-2" placeholder="Jalan" value="{{ old('pihak_ketiga_jalan',isset($pembekals->pihak_ketiga_jalan)?$pembekals->pihak_ketiga_jalan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_bangunan') 
+                                        <small class='text-danger'>{{ $message }}</small> 
+                                        @enderror
+                                        <input type="text" id="pihak_ketiga_jalan" name="pihak_ketiga_jalan" class="form-control mt-2" placeholder="Jalan" value="{{ old('pihak_ketiga_jalan',isset($pembekals->pihak_ketiga_jalan)?$pembekals->pihak_ketiga_jalan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        @error('pihak_ketiga_jalan') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
                                     </div>
@@ -120,7 +123,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_no_tel"><span class="text-danger">*</span>Nombor telefon:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_no_tel">{{--<span class="text-danger">*</span>--}}Nombor telefon:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_no_tel" name="pihak_ketiga_no_tel" class="form-control" placeholder="Nama telefon" value="{{ old('pihak_ketiga_no_tel',isset($pembekals->pihak_ketiga_no_tel)?$pembekals->pihak_ketiga_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_no_tel') 
@@ -138,7 +141,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_emel"><span class="text-danger">*</span>Emel:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_emel">{{--<span class="text-danger">*</span>--}}Emel:</label>
                                     <div class="col-md-8">
                                         <input type="email" id="pihak_ketiga_emel" name="pihak_ketiga_emel" class="form-control" placeholder="Emel" value="{{ old('pihak_ketiga_emel',isset($pembekals->pihak_ketiga_emel)?$pembekals->pihak_ketiga_emel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_emel') 

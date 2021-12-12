@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_nama_kimia"><span class="text-danger">*</span>Nama Kimia:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_nama_kimia">Nama Kimia:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="perawis_nama_kimia" name="perawis_nama_kimia" class="form-control" placeholder="Nama Kimia" value="{{ old('perawis_nama_kimia',isset($perawiss->perawis_nama_kimia)?$perawiss->perawis_nama_kimia:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_nama_kimia') 
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_sinonim"><span class="text-danger">*</span>Sinonim:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_sinonim">Sinonim:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="perawis_sinonim" name="perawis_sinonim" class="form-control" placeholder="Sinonim" value="{{ old('perawis_sinonim',isset($perawiss->perawis_sinonim)?$perawiss->perawis_sinonim:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_sinonim') 
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_piawaian"><span class="text-danger">*</span>Piawaian Analisis:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_piawaian">Piawaian Analisis:</label>
                                     <div class="col-md-8">
                                         <div class="checkbox checkbox-primary">
                                             <input id="perawis_piawaian" name="perawis_piawaian" type="checkbox" value="1" {{ old('perawis_piawaian',isset($perawiss->perawis_piawaian)?$perawiss->perawis_piawaian:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_sampel"><span class="text-danger">*</span>Sampel Analisis:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_sampel">Sampel Analisis:</label>
                                     <div class="col-md-8">
                                         <div class="checkbox checkbox-primary">
                                             <input id="perawis_sampel" name="perawis_sampel" type="checkbox" value="1" {{ old('perawis_sampel',isset($perawiss->perawis_sampel)?$perawiss->perawis_sampel:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_pihak_ketiga"><span class="text-danger">*</span>Laporan Analisis Makmal Pihak Ketiga:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_pihak_ketiga">Laporan Analisis Makmal Pihak Ketiga:</label>
                                     <div class="col-md-8">
                                         <div class="checkbox checkbox-primary">
                                             <input id="perawis_pihak_ketiga" name="perawis_pihak_ketiga" type="checkbox" value="1" {{ old('perawis_pihak_ketiga',isset($perawiss->perawis_pihak_ketiga)?$perawiss->perawis_pihak_ketiga:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_tarikh_lulus"><span class="text-danger">*</span>Tarikh kali pertama AI didaftarkan:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_tarikh_lulus">Tarikh kali pertama AI didaftarkan:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" id="perawis_tarikh_lulus" type="text" autocomplete="off" name="perawis_tarikh_lulus" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('perawis_tarikh_lulus',isset($perawiss->perawis_tarikh_lulus)?$perawiss->perawis_tarikh_lulus:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_tarikh_lulus') 

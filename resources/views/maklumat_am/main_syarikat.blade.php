@@ -99,6 +99,7 @@
                             <th>ROC</th>
                             <th>Telefon</th>
                             <th>Negeri</th>
+                            <th>Negara</th>
                             <th>Status</th>
                             <th class="hidden-sm">Tetapan</th>
                         </tr>
@@ -111,6 +112,7 @@
                             <td>{{$syarikat->syarikat_no_roc}}</td>
                             <td>{{$syarikat->syarikat_no_tel}}</td>
                             <td>{{$syarikat->syarikat_negeri}}</td>
+                            <td>{{$syarikat->syarikat_negara}}</td>
                             <td>{{$syarikat->syarikat_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">
