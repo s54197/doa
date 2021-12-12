@@ -80,7 +80,8 @@ class PerawisController extends Controller
         // Reformat date 
         $perawis->perawis_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $perawis->perawis_tarikh_lulus)->format('d-m-Y');
         $perawis->perawis_tarikh_terhad = Carbon::createFromFormat('Y-m-d', $perawis->perawis_tarikh_terhad)->format('d-m-Y');
-        
+        $perawis->perawis_tarikh_haram = Carbon::createFromFormat('Y-m-d', $perawis->perawis_tarikh_haram)->format('d-m-Y');
+
         $data = array(
             'perawiss' => $perawis,
             'jenis' => 'kemaskini',
@@ -95,17 +96,17 @@ class PerawisController extends Controller
         
         $request->validate([
             'perawis_nama' => 'required',
-            'perawis_nama_kimia' => 'required',
+            //'perawis_nama_kimia' => 'required',
             // 'perawis_sinonim' => 'required',
             'perawis_cas' => 'required',
             'perawis_hscode' => 'required',
             'perawis_ahtncode' => 'required',
-            'perawis_piawaian' => 'required_if:perawis_sampel,1',
-            'perawis_sampel' => 'required_if:perawis_piawaian,1',
-            'perawis_pihak_ketiga' => 'required_unless:perawis_piawaian,1',
+            //'perawis_piawaian' => 'required_if:perawis_sampel,1',
+            //'perawis_sampel' => 'required_if:perawis_piawaian,1',
+            //'perawis_pihak_ketiga' => 'required_unless:perawis_piawaian,1',
             'perawis_kumpulan_kimia' => 'required',
             'perawis_kaedah' => 'required',
-            'perawis_tarikh_lulus' => 'required',
+            //'perawis_tarikh_lulus' => 'required',
             'perawis_tarikh_terhad' => 'required',
             'perawis_peratusan' => 'required',
             'perawis_unit' => 'required',
@@ -132,6 +133,7 @@ class PerawisController extends Controller
                 'perawis_kaedah' => $request->perawis_kaedah,
                 'perawis_tarikh_lulus' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_lulus)->format('Y-m-d'),
                 'perawis_tarikh_terhad' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_terhad)->format('Y-m-d'),
+                'perawis_tarikh_haram' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_haram)->format('Y-m-d'),
                 'perawis_peratusan' => $request->perawis_peratusan,
                 'perawis_unit' => $request->perawis_unit,
                 'perawis_unit_lain' => $request->perawis_unit_lain,
@@ -149,7 +151,7 @@ class PerawisController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'perawis_nama' => 'required',
-            'perawis_nama_kimia' => 'required',
+            //'perawis_nama_kimia' => 'required',
             // 'perawis_sinonim' => 'required',
             'perawis_cas' => 'required',
             'perawis_hscode' => 'required',
@@ -159,7 +161,7 @@ class PerawisController extends Controller
             // 'perawis_pihak_ketiga' => 'required',
             'perawis_kumpulan_kimia' => 'required',
             'perawis_kaedah' => 'required',
-            'perawis_tarikh_lulus' => 'required',
+            //'perawis_tarikh_lulus' => 'required',
             'perawis_tarikh_terhad' => 'required',
             'perawis_peratusan' => 'required',
             'perawis_unit' => 'required',
@@ -186,6 +188,7 @@ class PerawisController extends Controller
                 'perawis_kaedah' => $request->perawis_kaedah,
                 'perawis_tarikh_lulus' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_lulus)->format('Y-m-d'),
                 'perawis_tarikh_terhad' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_terhad)->format('Y-m-d'),
+                'perawis_tarikh_haram' => Carbon::createFromFormat('d-m-Y', $request->perawis_tarikh_haram)->format('Y-m-d'),
                 'perawis_peratusan' => $request->perawis_peratusan,
                 'perawis_unit' => $request->perawis_unit,
                 'perawis_unit_lain' => $request->perawis_unit_lain,

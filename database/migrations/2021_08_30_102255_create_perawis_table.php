@@ -16,8 +16,8 @@ class CreatePerawisTable extends Migration
         Schema::create('perawis', function (Blueprint $table) {
             $table->id();
             $table->string('perawis_nama');
-            $table->string('perawis_nama_kimia');
-            $table->string('perawis_sinonim');
+            $table->string('perawis_nama_kimia')->nullable();
+            $table->string('perawis_sinonim')->nullable();
             $table->string('perawis_cas');
             $table->string('perawis_hscode');
             $table->string('perawis_ahtncode');
@@ -28,6 +28,7 @@ class CreatePerawisTable extends Migration
             $table->string('perawis_kaedah');
             $table->date('perawis_tarikh_lulus');
             $table->date('perawis_tarikh_terhad');
+            $table->date('perawis_tarikh_haram');
             $table->string('perawis_peratusan');
             $table->string('perawis_unit');
             $table->string('perawis_unit_lain')->nullable();

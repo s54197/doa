@@ -113,6 +113,7 @@
                             <td>{{$perawis->perawis_cas}}</td>
                             <td>{{$perawis->perawis_tarikh_lulus}}</td>
                             <td>{{$perawis->perawis_tarikh_terhad}}</td>
+                            <td>{{$perawis->perawis_tarikh_haram}}</td>
                             <td>{{$perawis->perawis_peratusan}}</td>
                             <td>{{$perawis->perawis_status}}</td>
                             <td>

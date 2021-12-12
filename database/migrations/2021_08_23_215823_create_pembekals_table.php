@@ -16,17 +16,17 @@ class CreatePembekalsTable extends Migration
         Schema::create('pembekals', function (Blueprint $table) {
             $table->id();
             $table->string('pembekal_nama');
-            $table->string('pembekal_no_roc');
-            $table->string('pembekal_bangunan');
-            $table->string('pembekal_jalan');
-            $table->string('pembekal_poskod');
+            $table->string('pembekal_no_roc')->nullable();
+            $table->string('pembekal_bangunan')->nullable();
+            $table->string('pembekal_jalan')->nullable();
+            $table->string('pembekal_poskod')->nullable();
             $table->string('pembekal_bandar')->nullable();
             $table->string('pembekal_negeri')->nullable();
             $table->string('pembekal_negeri_luar_malaysia')->nullable();
             $table->string('pembekal_negara');
-            $table->string('pembekal_no_tel');
+            $table->string('pembekal_no_tel')->nullable();
             $table->string('pembekal_no_faks')->nullable();
-            $table->string('pembekal_emel');
+            $table->string('pembekal_emel')->nullable();
             $table->string('pembekal_status');
             
             // one to many relation for user

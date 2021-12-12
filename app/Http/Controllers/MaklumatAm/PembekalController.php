@@ -102,12 +102,12 @@ class PembekalController extends Controller
         $request->validate([
             'pihak_ketiga_nama' => 'required',
             // 'pihak_ketiga_no_roc' => 'required',
-            'pihak_ketiga_bangunan' => 'required',
-            'pihak_ketiga_jalan' => 'required',
-            'pihak_ketiga_poskod' => 'required',
-            'pihak_ketiga_negara' => 'required',
-            'pihak_ketiga_no_tel' => 'required',
-            'pihak_ketiga_emel' => 'required|email',
+            //'pihak_ketiga_bangunan' => 'required',
+            //'pihak_ketiga_jalan' => 'required',
+            //'pihak_ketiga_poskod' => 'required',
+            //'pihak_ketiga_negara' => 'required',
+            //'pihak_ketiga_no_tel' => 'required',
+            //'pihak_ketiga_emel' => 'required|email',
         ]);
 
         // dd($request);
@@ -143,12 +143,12 @@ class PembekalController extends Controller
         $request->validate([
             'pihak_ketiga_nama' => 'required',
             // 'pihak_ketiga_no_roc' => 'required',
-            'pihak_ketiga_bangunan' => 'required',
-            'pihak_ketiga_jalan' => 'required',
-            'pihak_ketiga_poskod' => 'required',
-            'pihak_ketiga_negara' => 'required',
-            'pihak_ketiga_no_tel' => 'required',
-            'pihak_ketiga_emel' => 'required|email',
+            //'pihak_ketiga_bangunan' => 'required',
+            //'pihak_ketiga_jalan' => 'required',
+            //'pihak_ketiga_poskod' => 'required',
+            //'pihak_ketiga_negara' => 'required',
+            //'pihak_ketiga_no_tel' => 'required',
+            //'pihak_ketiga_emel' => 'required|email',
         ]);
 
         try {

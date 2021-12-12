@@ -135,6 +135,7 @@
                                 @enderror
                             </div>
                         </div>
+                        @if($tajuk != 'BorangA')
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_jenis_pendaftaran"><span class="text-danger">*</span>Jenis Pendaftaran:</label>
                             <div class="col-md-9">
@@ -146,6 +147,7 @@
                                 @enderror
                             </div>
                         </div>
+                        @endif
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_no_pendaftaran"><span class="text-danger">*</span>Nombor Pendaftaran:</label>
                             <div class="col-md-9">
@@ -199,7 +201,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_mengilang"><span class="text-danger">*</span>Jika aktiviti adalah mengilang, nyatakan aktiviti yang ingin dijalankan:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_mengilang">Jika aktiviti adalah mengilang, nyatakan aktiviti yang ingin dijalankan:</label>
                             <div class="col-md-5">
                                 <div class="checkbox checkbox-primary">
                                     <input id="borangA_mengilang_menyedia" name="borangA_mengilang_menyedia" type="checkbox" value="1" {{ old('borangA_mengilang_menyedia',isset($borangIds->borangA_mengilang_menyedia)?$borangIds->borangA_mengilang_menyedia:null) == "1" ? 'checked' : '' }} {{ $tajuk == "Paparan" ? 'disabled' : '' }}>

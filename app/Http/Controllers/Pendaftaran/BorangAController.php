@@ -254,7 +254,7 @@ class BorangAController extends Controller
             'borangA_no_pendaftaran' => 'required',
             'borangA_perniagaan_lain' => 'required_without_all:borangA_perniagaan_mengimport,borangA_perniagaan_mengilang',
             'borangA_perniagaan_lain_maklumat' => 'required_if:borangA_perniagaan_lain,Lain-lain (nyatakan)',
-            'borangA_mengilang_lain' => 'required_without_all:borangA_mengilang_merumus,borangA_mengilang_menyedia,borangA_mengilang_mensebati,borangA_mengilang_mencampur,borangA_mengilang_melabel,borangA_mengilang_mempek,borangA_mengilang_membuat',
+            //'borangA_mengilang_lain' => 'required_without_all:borangA_mengilang_merumus,borangA_mengilang_menyedia,borangA_mengilang_mensebati,borangA_mengilang_mencampur,borangA_mengilang_melabel,borangA_mengilang_mempek,borangA_mengilang_membuat',
             'borangA_mengilang_lain_maklumat' => 'required_if:borangA_mengilang_lain,Lain-lain (nyatakan)',
             'borangA_pengilang' => 'required',
             'borangA_pengilang_kontrak' => 'required',

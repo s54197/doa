@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_kumpulan_kimia"><span class="text-danger">*</span>Kumpulan Kimia:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_kumpulan_kimia"><span class="text-danger">*</span>Kategori (P/K):</label>
                                     <div class="col-md-8">
                                         <input type="text" id="perawis_kumpulan_kimia" name="perawis_kumpulan_kimia" class="form-control" placeholder="Kumpulan Kimia" value="{{ old('perawis_kumpulan_kimia',isset($perawiss->perawis_kumpulan_kimia)?$perawiss->perawis_kumpulan_kimia:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_kumpulan_kimia') 
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="perawis_tarikh_lulus"><span class="text-danger">*</span>Tarikh Lulus:</label>
+                                    <label class="col-md-3 col-form-label" for="perawis_tarikh_lulus"><span class="text-danger">*</span>Tarikh kali pertama AI didaftarkan:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" id="perawis_tarikh_lulus" type="text" autocomplete="off" name="perawis_tarikh_lulus" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('perawis_tarikh_lulus',isset($perawiss->perawis_tarikh_lulus)?$perawiss->perawis_tarikh_lulus:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_tarikh_lulus') 
@@ -174,6 +174,16 @@
                                     <div class="col-md-8">
                                         <input class="form-control" id="perawis_tarikh_terhad" type="text" autocomplete="off" name="perawis_tarikh_terhad" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('perawis_tarikh_terhad',isset($perawiss->perawis_tarikh_terhad)?$perawiss->perawis_tarikh_terhad:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('perawis_tarikh_terhad') 
+                                        <small class='text-danger'>{{ $message }}</small> 
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="perawis_tarikh_haram"><span class="text-danger">*</span>Tarikh Haram:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="perawis_tarikh_haram" type="text" autocomplete="off" name="perawis_tarikh_haram" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="{{ old('perawis_tarikh_haram',isset($perawiss->perawis_tarikh_haram)?$perawiss->perawis_tarikh_haram:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        @error('perawis_tarikh_haram') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
                                     </div>

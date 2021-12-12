@@ -16,9 +16,9 @@ class CreateBorangASTable extends Migration
         Schema::create('borang_a_s', function (Blueprint $table) {
             $table->id();
             
-            $table->date('borangA_tarikh_terima_kaunter');
-            $table->date('borangA_tarikh_lulus');
-            $table->date('borangA_tarikh_tamat');
+            $table->date('borangA_tarikh_terima_kaunter')->nullable();
+            $table->date('borangA_tarikh_lulus')->nullable();
+            $table->date('borangA_tarikh_tamat')->nullable();
             $table->string('borangA_wakil_syarikat');
             $table->string('borangA_jenis_pendaftaran');
             

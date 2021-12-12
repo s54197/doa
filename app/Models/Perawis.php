@@ -37,6 +37,7 @@ class Perawis extends Model
         'perawis_kaedah',
         'perawis_tarikh_lulus',
         'perawis_tarikh_terhad',
+        'perawis_tarikh_haram',
         'perawis_peratusan',
         'perawis_unit',
         'perawis_unit_lain',
