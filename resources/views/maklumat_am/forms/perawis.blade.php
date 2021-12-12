@@ -255,6 +255,8 @@ $(document).ready(function(){
     $('input[name="perawis_tarikh_lulus"]').attr("placeholder","Tarikh Lulus - Pilih dari kalendar");
     $('input[name="perawis_tarikh_terhad"]').datepicker();
     $('input[name="perawis_tarikh_terhad"]').attr("placeholder","Tarikh Terhad - Pilih dari kalendar");
+    $('input[name="perawis_tarikh_haram"]').datepicker();
+    $('input[name="perawis_tarikh_haram"]').attr("placeholder","Tarikh Haram - Pilih dari kalendar");
 });
 </script>
 @endsection
