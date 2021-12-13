@@ -131,7 +131,11 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_kumpulan_kimia"><span class="text-danger">*</span>Kategori (P/K):</label>
                                     <div class="col-md-8">
-                                        <input type="text" id="perawis_kumpulan_kimia" name="perawis_kumpulan_kimia" class="form-control" placeholder="Kumpulan Kimia" value="{{ old('perawis_kumpulan_kimia',isset($perawiss->perawis_kumpulan_kimia)?$perawiss->perawis_kumpulan_kimia:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <select class="form-control" name="perawis_kumpulan_kimia" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                            <option value="">Pilih Kumpulan Kimia...</option>
+                                            <option value="COMMODITY" {{ old('perawis_kumpulan_kimia',isset($perawiss->perawis_kumpulan_kimia)?$perawiss->perawis_kumpulan_kimia:null) == "COMMODITY" ? 'selected' : '' }}>COMMODITY</option>
+                                            <option value="PROPRIETARY" {{ old('perawis_kumpulan_kimia',isset($perawiss->perawis_kumpulan_kimia)?$perawiss->perawis_kumpulan_kimia:null) == "PROPRIETARY" ? 'selected' : '' }}>PROPRIETARY</option>
+                                        </select>
                                         @error('perawis_kumpulan_kimia') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
