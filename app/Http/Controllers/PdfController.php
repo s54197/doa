@@ -43,9 +43,6 @@ class PdfController extends Controller
             $jenis_pendaftaran = 'SEMULA';
         }
 
-        setlocale(LC_TIME, 'ms_MY');
-        Carbon::setLocale('ms_MY');
-
         $data = [
             'no_siri' => $data_borangA->borangA_sijil_no_siri,
             'jenis_borang' => strtoupper(substr($data_borangA->borangA_sijil_no_siri,0,1)),

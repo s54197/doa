@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
 
 class BorangAController extends Controller
 {
+    
     // All data
     public function index() {
 
@@ -153,12 +154,15 @@ class BorangAController extends Controller
         $borangId = BorangA::find($id);
 
         // dd($borangId->syarikat);
-    
+        setlocale(LC_TIME, 'ms_MY');
+        Carbon::setLocale('ms_MY');
+
         // Reformat date
         foreach($borangA as $borangA) {
             $borangA->borangA_tarikh_terima_kaunter = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_terima_kaunter)->format('d-m-Y');
             $borangA->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_lulus)->format('d-m-Y');
             $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
+            $borangA->borangA_sijil_tarikh = Carbon::createFromFormat('Y-m-d', $borangA->borangA_sijil_tarikh)->format('d-m-Y'); 
         }
      
         $data = array(
@@ -215,13 +219,18 @@ class BorangAController extends Controller
         $borangId = BorangA::find($id);
         // dd($borangId->id);
 
+        setlocale(LC_TIME, 'ms_MY');
+        Carbon::setLocale('ms_MY');
+
+
         // Reformat date
         foreach($borangA as $borangA) {
             $borangA->borangA_tarikh_terima_kaunter = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_terima_kaunter)->format('d-m-Y');
             $borangA->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_lulus)->format('d-m-Y');
             $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
+            $borangA->borangA_sijil_tarikh = Carbon::createFromFormat('Y-m-d', $borangA->borangA_sijil_tarikh)->format('d-m-Y');
         }
-
+        
         $data = array(
             'syarikats' => $syarikats,
             'agens' => $agens,
@@ -242,6 +251,11 @@ class BorangAController extends Controller
 
     // Store data
     public function store(Request $request){
+
+        setlocale(LC_TIME, 'ms_MY');
+        Carbon::setLocale('ms_MY');
+
+
         $request->validate([
             'borangA_syarikat' => 'required',
             'borangA_agen' => 'required',
@@ -353,7 +367,7 @@ class BorangAController extends Controller
                 'borangA_perawis_perumusan_lain' => $request->borangA_perawis_perumusan_lain,
 
                 'borangA_sijil_no_siri' => $request->borangA_sijil_no_siri,
-                'borangA_sijil_tarikh' => $request->borangA_sijil_tarikh,
+                'borangA_sijil_tarikh' => Carbon::createFromFormat('d-m-Y', $request->borangA_sijil_tarikh)->format('Y-m-d'),
                 'borangA_sijil_fail_nama' => $borangA_sijil_fail_nama,
                 'borangA_sijil_fail_src' => $borangA_sijil_fail_src,
                 'borangA_surat_no_rujukan_1' => $request->borangA_surat_no_rujukan_1,
@@ -392,6 +406,10 @@ class BorangAController extends Controller
     // Update borangA based on id
     public function update(Request $request, $id){
 
+        setlocale(LC_TIME, 'ms_MY');
+        Carbon::setLocale('ms_MY');
+
+        
         $request->validate([
             'borangA_syarikat' => 'required',
             'borangA_agen' => 'required',
@@ -474,6 +492,7 @@ class BorangAController extends Controller
                 'borangA_tarikh_tamat' => Carbon::createFromFormat('d-m-Y', $request->borangA_tarikh_tamat)->format('Y-m-d'),
                 'borangA_wakil_syarikat' => $request->borangA_wakil_syarikat,
                 'borangA_sijil_no_siri' => $request->borangA_sijil_no_siri,
+                'borangA_sijil_tarikh' => Carbon::createFromFormat('d-m-Y', $request->borangA_sijil_tarikh)->format('Y-m-d'),
                 'borangA_jenis_pendaftaran' => $request->borangA_jenis_pendaftaran,
                 'produk_id' => $request->borangA_dagangan,
                 'borangA_no_pendaftaran' => $request->borangA_no_pendaftaran,
