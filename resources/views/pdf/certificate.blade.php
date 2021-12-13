@@ -143,8 +143,8 @@
         <table class="cert" style="margin-top: 80px">
             <tr>
                 <td style="width: 190px; padding-top: 10px"><img src="{{ public_path('assets/images/cop_cert.jpg') }}" height="180px"></td>
-                <td style="vertical-align: top"><span style="font-weight: bold">{{ $pengerusi }}</span><br><br>Pengerusi<br>Lembaga Racun Makhluk Perosak<br><br> Tarikh: {{ $tarikh_sign }}</td>
-                <td style="vertical-align: top"><span style="font-weight: bold">{{ $setiausaha }}</span><br><br>Setiausaha<br>Lembaga Racun Makhluk Perosak</td>
+                <td style="vertical-align: top"><span style="font-weight: bold">{{ $pengerusi }}</span><br>Pengerusi<br>Lembaga Racun Makhluk Perosak<br><br> Tarikh: {{ $tarikh_sign }}</td>
+                <td style="vertical-align: top"><span style="font-weight: bold">{{ $setiausaha }}</span><br>Setiausaha<br>Lembaga Racun Makhluk Perosak</td>
             </tr>
             <tr><td class="right" style="font-size:12px; font-style: italic" colspan="3">*Sila rujuk syarat-syarat pendaftaran di sebelah</td></tr>
         </table>
