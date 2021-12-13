@@ -14,7 +14,15 @@ class PdfController extends Controller
 {
     public function certificate($id){
 
+        setlocale(LC_TIME, 'ms_MY');
+        Carbon::setLocale('ms_MY');
+
         $data_borangA = BorangA::find($id);
+        
+        $lrmp_r = explode('/', $data_borangA->borangA_no_pendaftaran);
+
+        if ($lrmp_r[0]=="R") $jenis_pendaftaran = "BARU";
+        else $jenis_pendaftaran = "SEMULA";
         
         if(BorangA::find($id)->borangA_sijil_no_siri == null){
             return redirect('/pendaftaran')->withWarning('No siri tiada. Mohon untuk kemaskini borang.');
@@ -38,11 +46,6 @@ class PdfController extends Controller
             array_push($penginvoisannama,$penginvoisan_list->penginvoisan_nama);
         }
 
-        $jenis_pendaftaran = 'BARU';
-        if ($data_borangA->borangA_no_pendaftaran == 'semula') {
-            $jenis_pendaftaran = 'SEMULA';
-        }
-
         $data = [
             'no_siri' => $data_borangA->borangA_sijil_no_siri,
             'jenis_borang' => strtoupper(substr($data_borangA->borangA_sijil_no_siri,0,1)),
@@ -55,8 +58,8 @@ class PdfController extends Controller
             'perumusan' => $data_borangA->borangA_perawis_perumusan,
             'kelas' => $data_borangA->produk->produk_kelas_racun,
             'penggunaan' => $data_borangA->produk->produk_kegunaan,
-            'tempoh_sah' => Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_lulus)->format('d-m-Y').' - '.Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_tamat)->format('d-m-Y'),
-            'tarikh_sign' => $data_borangA->borangA_sijil_tarikh,
+            'tempoh_sah' => Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_lulus)->translatedFormat('d F Y').' - '.Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_tamat)->translatedFormat('d F Y'),
+            'tarikh_sign' => Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_sijil_tarikh)->translatedFormat('d F Y'),
             'pembekal' => implode(", ",$pihakketiganama).', '.implode(", ",$penginvoisannama),
             'pengerusi' => $data_borangA->borangA_sijil_pengerusi,
             'setiausaha' => $data_borangA->borangA_sijil_setiausaha,
@@ -73,13 +76,16 @@ class PdfController extends Controller
 
     public function letter($id){
 
+        setlocale(LC_TIME, 'ms_MY');
+        Carbon::setLocale('ms_MY');
+        
         // $data_borangA = BorangA::find($id)->with('syarikat','agen','produk','perawiss')->get()->first();
         $data_borangA = BorangA::find($id);
 
         $data = [
             'rujukan_1' => $data_borangA->borangA_surat_no_rujukan_1,
             'rujukan_2' => $data_borangA->borangA_surat_no_rujukan_2,
-            'surat_tarikh' => $data_borangA->borangA_surat_tarikh,
+            'surat_tarikh' => Carbon::createFromFormat('d-m-Y', $data_borangA->borangA_surat_tarikh)->translatedFormat('d F Y'),
             'nama_dagangan' => $data_borangA->produk->produk_nama,
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,
             'resit_bayaran' => $data_borangA->borangA_surat_resit_bayaran,
