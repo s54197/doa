@@ -100,17 +100,17 @@ class PenginvoisanController extends Controller
     public function store(Request $request){
         $request->validate([
             'penginvoisan_nama' => 'required',
-            'penginvoisan_no_roc' => 'required',
-            'penginvoisan_bangunan' => 'required',
-            'penginvoisan_jalan' => 'required',
-            'penginvoisan_poskod' => 'required',
+            // 'penginvoisan_no_roc' => 'required',
+            // 'penginvoisan_bangunan' => 'required',
+            // 'penginvoisan_jalan' => 'required',
+            // 'penginvoisan_poskod' => 'required',
             // 'penginvoisan_bandar' => 'required',
             // 'penginvoisan_negeri' => 'required',
             // 'penginvoisan_negeri_luar_malaysia' => 'required',
-            'penginvoisan_negara' => 'required',
-            'penginvoisan_no_tel' => 'required',
+            // 'penginvoisan_negara' => 'required',
+            // 'penginvoisan_no_tel' => 'required',
             // 'penginvoisan_no_faks' => 'required',
-            'penginvoisan_emel' => 'required|email',
+            // 'penginvoisan_emel' => 'required|email',
             // 'penginvoisan_status' => 'required',
         ]);
         
@@ -143,17 +143,17 @@ class PenginvoisanController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'penginvoisan_nama' => 'required',
-            'penginvoisan_no_roc' => 'required',
-            'penginvoisan_bangunan' => 'required',
-            'penginvoisan_jalan' => 'required',
-            'penginvoisan_poskod' => 'required',
+            // 'penginvoisan_no_roc' => 'required',
+            // 'penginvoisan_bangunan' => 'required',
+            // 'penginvoisan_jalan' => 'required',
+            // 'penginvoisan_poskod' => 'required',
             // 'penginvoisan_bandar' => 'required',
             // 'penginvoisan_negeri' => 'required',
             // 'penginvoisan_negeri_luar_malaysia' => 'required',
-            'penginvoisan_negara' => 'required',
-            'penginvoisan_no_tel' => 'required',
+            // 'penginvoisan_negara' => 'required',
+            // 'penginvoisan_no_tel' => 'required',
             // 'penginvoisan_no_faks' => 'required',
-            'penginvoisan_emel' => 'required|email',
+            // 'penginvoisan_emel' => 'required|email',
             // 'penginvoisan_status' => 'required',
         ]);
 

@@ -95,7 +95,7 @@
             </td>
             <td></td>
             <td>Ruj: Kami: JP/KRP.207/12/171/{{ $rujukan_1 }}<br>
-            <span style="font-style:italic">(Our Ref.) {{ $rujukan_2 }} <br><br>
+            <span style="font-style:italic">(Our Ref.) {{ $rujukan_2 }}</span> <br><br>
             Tarikh: {{ $surat_tarikh }}<br>
             <span style="font-style:italic">(Date)</span>
         </td>

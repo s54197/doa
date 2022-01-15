@@ -102,17 +102,17 @@ class GudangController extends Controller
         
         $request->validate([
             'gudang_nama' => 'required',
-            'gudang_no_roc' => 'required',
-            'gudang_bangunan' => 'required',
-            'gudang_jalan' => 'required',
-            'gudang_poskod' => 'required',
+            // 'gudang_no_roc' => 'required',
+            // 'gudang_bangunan' => 'required',
+            // 'gudang_jalan' => 'required',
+            // 'gudang_poskod' => 'required',
             // 'gudang_bandar' => 'required',
             // 'gudang_negeri' => 'required',
             // 'gudang_negeri_luar_malaysia' => 'required',
-            'gudang_negara' => 'required',
-            'gudang_no_tel' => 'required',
+            // 'gudang_negara' => 'required',
+            // 'gudang_no_tel' => 'required',
             // 'gudang_no_faks' => 'required',
-            'gudang_emel' => 'required|email',
+            // 'gudang_emel' => 'required|email',
             // 'gudang_status' => 'required',
         ]);
 
@@ -147,17 +147,17 @@ class GudangController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'gudang_nama' => 'required',
-            'gudang_no_roc' => 'required',
-            'gudang_bangunan' => 'required',
-            'gudang_jalan' => 'required',
-            'gudang_poskod' => 'required',
+            // 'gudang_no_roc' => 'required',
+            // 'gudang_bangunan' => 'required',
+            // 'gudang_jalan' => 'required',
+            // 'gudang_poskod' => 'required',
             // 'gudang_bandar' => 'required',
             // 'gudang_negeri' => 'required',
             // 'gudang_negeri_luar_malaysia' => 'required',
-            'gudang_negara' => 'required',
-            'gudang_no_tel' => 'required',
+            // 'gudang_negara' => 'required',
+            // 'gudang_no_tel' => 'required',
             // 'gudang_no_faks' => 'required',
-            'gudang_emel' => 'required|email',
+            // 'gudang_emel' => 'required|email',
             // 'gudang_status' => 'required',
         ]);
 

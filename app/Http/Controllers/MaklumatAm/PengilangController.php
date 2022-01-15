@@ -101,17 +101,17 @@ class PengilangController extends Controller
         
         $request->validate([
             'pihak_ketiga_nama' => 'required',
-            'pihak_ketiga_no_roc' => 'required',
-            'pihak_ketiga_bangunan' => 'required',
-            'pihak_ketiga_jalan' => 'required',
-            'pihak_ketiga_poskod' => 'required',
+            // 'pihak_ketiga_no_roc' => 'required',
+            // 'pihak_ketiga_bangunan' => 'required',
+            // 'pihak_ketiga_jalan' => 'required',
+            // 'pihak_ketiga_poskod' => 'required',
             // 'pihak_ketiga_bandar' => 'required',
             // 'pihak_ketiga_negeri' => 'required',
             // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
-            'pihak_ketiga_negara' => 'required',
-            'pihak_ketiga_no_tel' => 'required',
+            // 'pihak_ketiga_negara' => 'required',
+            // 'pihak_ketiga_no_tel' => 'required',
             // 'pihak_ketiga_no_faks' => 'required',
-            'pihak_ketiga_emel' => 'required|email',
+            // 'pihak_ketiga_emel' => 'required|email',
             // 'pihak_ketiga_status' => 'required',
         ]);
 
@@ -147,17 +147,17 @@ class PengilangController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'pihak_ketiga_nama' => 'required',
-            'pihak_ketiga_no_roc' => 'required',
-            'pihak_ketiga_bangunan' => 'required',
-            'pihak_ketiga_jalan' => 'required',
-            'pihak_ketiga_poskod' => 'required',
+            // 'pihak_ketiga_no_roc' => 'required',
+            // 'pihak_ketiga_bangunan' => 'required',
+            // 'pihak_ketiga_jalan' => 'required',
+            // 'pihak_ketiga_poskod' => 'required',
             // 'pihak_ketiga_bandar' => 'required',
             // 'pihak_ketiga_negeri' => 'required',
             // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
-            'pihak_ketiga_negara' => 'required',
-            'pihak_ketiga_no_tel' => 'required',
+            // 'pihak_ketiga_negara' => 'required',
+            // 'pihak_ketiga_no_tel' => 'required',
             // 'pihak_ketiga_no_faks' => 'required',
-            'pihak_ketiga_emel' => 'required|email',
+            // 'pihak_ketiga_emel' => 'required|email',
             // 'pihak_ketiga_status' => 'required',
         ]);
 
