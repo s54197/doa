@@ -106,7 +106,7 @@
                 Lot 14, Jalan Bursa 23/4 <br>
                 40300 Shah Alam, <br>
                 Selangor. <br>
-                (u/p: Miss Tan Ann Nye)
+                (u/p: {{ $syarikat_wakil }})
             </td>
             <td></td>
             <td>
@@ -116,10 +116,10 @@
             <td  class="seven_pixel" colspan="3">Tuan/Puan,</td>
         </tr>
         <tr>
-            <td class="seven_pixel" colspan="3"><span class="font-bold" style="text-decoration: underline">Sijil Pendaftaran Semula Racun Makhluk Perosak</span></td>
+            <td class="seven_pixel" colspan="3"><span class="font-bold" style="text-decoration: underline">Sijil Pendaftaran {{ $jenis_pendaftaran }} Racun Makhluk Perosak</span></td>
         </tr>
         <tr>
-            <td class="seven_pixel" colspan="3">Bersama ini disertakan Sijil Pendaftaran Semula Racun Makhluk Perosak seperti berikut;</td>
+            <td class="seven_pixel" colspan="3">Bersama ini disertakan Sijil Pendaftaran {{ $jenis_pendaftaran }} Racun Makhluk Perosak seperti berikut;</td>
         </tr>
     </table>
 

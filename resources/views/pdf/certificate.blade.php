@@ -136,7 +136,7 @@
             </tr>
             <tr>
                 <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Tempoh Sah</span></td>
-                <td class="font-bold five_pixel" colspan="2">{{ $tempoh_sah }} </td>
+                <td class="font-bold five_pixel" colspan="2">{{ strtoupper($tempoh_sah) }} </td>
             </tr>
         </table>
 
@@ -165,7 +165,7 @@
                         <li>Racun Makhluk Perosak ini mestilah menggunakan label terkini yang diluluskan oleh Lembaga Racun Makhluk Perosak.</li>
                         <li>Racun Makhluk Perosak ini mestilah dibekalkan oleh pembekal-pembekal berikut:
                             <ol type="a" class="pembekal">
-                                @foreach(explode(',',$pembekal) as $data_pembekal)
+                                @foreach(explode(',#',$pembekal) as $data_pembekal)
                                     <li>{{ $data_pembekal }}</li>
                                 @endforeach
                             </ol>

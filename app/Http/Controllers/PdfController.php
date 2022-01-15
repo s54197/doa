@@ -40,7 +40,7 @@ class PdfController extends Controller
         foreach(BorangA::find($id)->pihakketigas as $pihakketiga_list) {
             array_push($pihakketiganama,$pihakketiga_list->pihak_ketiga_nama);
         }
-
+        
         $penginvoisannama = [];
         foreach(BorangA::find($id)->penginvoisans as $penginvoisan_list) {
             array_push($penginvoisannama,$penginvoisan_list->penginvoisan_nama);
@@ -49,24 +49,24 @@ class PdfController extends Controller
         $data = [
             'no_siri' => $data_borangA->borangA_sijil_no_siri,
             'jenis_borang' => strtoupper(substr($data_borangA->borangA_sijil_no_siri,0,1)),
-            'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,
-            'jenis_pendaftaran' => $jenis_pendaftaran,
-            'pendaftar' => $data_borangA->syarikat->syarikat_nama,
-            'nama_dagangan' => $data_borangA->produk->produk_nama,
-            'perawis_aktif' => implode(", ",$perawisnama),
-            'kepekatan' => implode(", ",$perawis_peratus_unit),
-            'perumusan' => $data_borangA->borangA_perawis_perumusan,
-            'kelas' => $data_borangA->produk->produk_kelas_racun,
-            'penggunaan' => $data_borangA->produk->produk_kegunaan,
+            'no_pendaftaran' => strtoupper($data_borangA->borangA_no_pendaftaran),
+            'jenis_pendaftaran' => strtoupper($jenis_pendaftaran),
+            'pendaftar' => strtoupper($data_borangA->syarikat->syarikat_nama),
+            'nama_dagangan' => strtoupper($data_borangA->produk->produk_nama),
+            'perawis_aktif' => implode(",# ",$perawisnama),
+            'kepekatan' => implode(",# ",$perawis_peratus_unit),
+            'perumusan' => strtoupper($data_borangA->borangA_perawis_perumusan),
+            'kelas' => strtoupper($data_borangA->produk->produk_kelas_racun),
+            'penggunaan' => strtoupper($data_borangA->produk->produk_kegunaan),
             'tempoh_sah' => Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_lulus)->translatedFormat('d F Y').' - '.Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_tarikh_tamat)->translatedFormat('d F Y'),
             'tarikh_sign' => Carbon::createFromFormat('Y-m-d', $data_borangA->borangA_sijil_tarikh)->translatedFormat('d F Y'),
-            'pembekal' => implode(", ",$pihakketiganama).', '.implode(", ",$penginvoisannama),
-            'pengerusi' => $data_borangA->borangA_sijil_pengerusi,
-            'setiausaha' => $data_borangA->borangA_sijil_setiausaha,
+            'pembekal' => implode(",# ",$pihakketiganama).',# '.implode(",# ",$penginvoisannama),
+            'pengerusi' => strtoupper($data_borangA->borangA_sijil_pengerusi),
+            'setiausaha' => strtoupper($data_borangA->borangA_sijil_setiausaha),
             // 'pembekal' => $pihakketiganama_penginvoisannama,
         ];
 
-        // dd($data);
+        //dd($data);
 
         $pdf = PDF::loadView('pdf.certificate', $data);
 
@@ -81,6 +81,11 @@ class PdfController extends Controller
         
         // $data_borangA = BorangA::find($id)->with('syarikat','agen','produk','perawiss')->get()->first();
         $data_borangA = BorangA::find($id);
+        
+        $lrmp_r = explode('/', $data_borangA->borangA_no_pendaftaran);
+
+        if ($lrmp_r[0]=="R") $jenis_pendaftaran = "Baru";
+        else $jenis_pendaftaran = "Semula";
 
         $data = [
             'rujukan_1' => $data_borangA->borangA_surat_no_rujukan_1,
@@ -88,8 +93,10 @@ class PdfController extends Controller
             'surat_tarikh' => Carbon::createFromFormat('d-m-Y', $data_borangA->borangA_surat_tarikh)->translatedFormat('d F Y'),
             'nama_dagangan' => $data_borangA->produk->produk_nama,
             'no_pendaftaran' => $data_borangA->borangA_no_pendaftaran,
+            'jenis_pendaftaran' => $jenis_pendaftaran,
             'resit_bayaran' => $data_borangA->borangA_surat_resit_bayaran,
             'syarikat_nama' => $data_borangA->syarikat->syarikat_nama,
+            'syarikat_wakil' => $data_borangA->syarikat->syarikat_wakil,
             'slogan_1' => $data_borangA->borangA_surat_slogan_1,
             'slogan_2' => $data_borangA->borangA_surat_slogan_2,
             'penama' => $data_borangA->borangA_surat_penama,
