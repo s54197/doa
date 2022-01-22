@@ -128,7 +128,7 @@
             </tr>
             <tr>
                 <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Kelas</span></td>
-                <td class="font-bold five_pixel" colspan="2">{{ $kelas }} </td>
+                <td class="font-bold five_pixel" colspan="2">KELAS {{ $kelas }} </td>
             </tr>
             <tr>
                 <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Penggunaan</span></td>

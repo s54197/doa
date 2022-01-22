@@ -95,7 +95,7 @@
             </td>
             <td></td>
             <td>Ruj: Kami: JP/KRP.207/12/171/{{ $rujukan_1 }}<br>
-            <span style="font-style:italic">(Our Ref.) {{ $rujukan_2 }}</span> <br><br>
+            <span style="font-style:italic">(Our Ref.) {{ $rujukan_2 }} </span> <br><br>
             Tarikh: {{ $surat_tarikh }}<br>
             <span style="font-style:italic">(Date)</span>
         </td>
@@ -135,6 +135,9 @@
         <tr>
             <td style="width: 150px" class="seven_pixel left alignLabel"><span>No. Resit Bayaran</span></td>
             <td class="font-bold seven_pixel" style="padding-left: 25px">{{ $resit_bayaran }}</td>
+        </tr>
+        <tr>
+            <td style="seven_pixel" colspan="3"><span class="font-bold">2. Sebagai peringatan, sebelum menerima sijil pendaftaran ini tuan/puan dinasihatkan untuk menyemak terlebih dahulu butiran sijil bagi mengelakkan sebarang kesilapan. Tiada sijil baru yang akan dikeluarkan oleh Lembaga sekiranya terdapat kesilapan yang berlaku setelah syarikat menerima Sijil Pendaftaran Racun Makhluk Perosak ini.</span></td>
         </tr>
         <tr>
             <td style="padding-top: 7px; padding-bottom: 30px" colspan="2">Sekian, terima kasih.</td>
