@@ -290,7 +290,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="produk_saiz"><span class="text-danger">*</span>Saiz bungkusan (pack size) 1:</label>
                                     <div class="col-md-3">
-                                        <input type="number" id="produk_saiz_isian_1" name="produk_saiz_isian_1" class="form-control" placeholder="Saiz bungkusan (pack size) 1" value="{{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                        <input type="number" id="produk_saiz_isian_1" name="produk_saiz_isian_1" class="form-control" placeholder="Saiz bungkusan (pack size) 1" value="{{ old('produk_saiz_isian_1',isset($produks->produk_saiz_isian_1)?$produks->produk_saiz_isian_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
                                         @error('produk_saiz_isian_1') 
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
