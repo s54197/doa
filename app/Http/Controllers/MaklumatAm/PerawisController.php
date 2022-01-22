@@ -108,9 +108,9 @@ class PerawisController extends Controller
             'perawis_kaedah' => 'required',
             //'perawis_tarikh_lulus' => 'required',
             'perawis_tarikh_terhad' => 'required',
-            'perawis_peratusan' => 'required',
-            'perawis_unit' => 'required',
-            'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
+            //'perawis_peratusan' => 'required',
+            //'perawis_unit' => 'required',
+            //'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
         ]);
 
         $request->perawis_piawaian = $request->has('perawis_piawaian') ? true : false;
@@ -163,9 +163,9 @@ class PerawisController extends Controller
             'perawis_kaedah' => 'required',
             //'perawis_tarikh_lulus' => 'required',
             'perawis_tarikh_terhad' => 'required',
-            'perawis_peratusan' => 'required',
-            'perawis_unit' => 'required',
-            'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
+            //'perawis_peratusan' => 'required',
+            //'perawis_unit' => 'required',
+            //'perawis_unit_lain' => 'required_if:perawis_unit,Lain-lain (nyatakan)',
         ]);
 
         $request->perawis_piawaian = $request->has('perawis_piawaian') ? true : false;
