@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_no_roc"><span class="text-danger">*</span>Nombor pendaftaran (ROC):</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_no_roc">Nombor pendaftaran (ROC):</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_no_roc" name="pihak_ketiga_no_roc" class="form-control" placeholder="Nombor Pendaftaran (ROC)" value="{{ old('pihak_ketiga_no_roc',isset($pengilangs->pihak_ketiga_no_roc)?$pengilangs->pihak_ketiga_no_roc:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_no_roc') 
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 mb-sm-2">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_alamat"><span class="text-danger">*</span>Alamat pengilang:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_alamat">Alamat pengilang:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_bangunan" name="pihak_ketiga_bangunan" class="form-control" placeholder="Bangunan" value="{{ old('pihak_ketiga_bangunan',isset($pengilangs->pihak_ketiga_bangunan)?$pengilangs->pihak_ketiga_bangunan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         <input type="text" id="pihak_ketiga_jalan" name="pihak_ketiga_jalan" class="form-control mt-2" placeholder="Jalan" value="{{ old('pihak_ketiga_jalan',isset($pengilangs->pihak_ketiga_jalan)?$pengilangs->pihak_ketiga_jalan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_negara"><span class="text-danger">*</span>Negara pengilang:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_negara">Negara pengilang:</label>
                                     <div class="col-md-8">
                                         <select class="form-control" name="pihak_ketiga_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_no_tel"><span class="text-danger">*</span>Nombor telefon:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_no_tel">Nombor telefon:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_no_tel" name="pihak_ketiga_no_tel" class="form-control" placeholder="Nama telefon" value="{{ old('pihak_ketiga_no_tel',isset($pengilangs->pihak_ketiga_no_tel)?$pengilangs->pihak_ketiga_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_no_tel') 
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_emel"><span class="text-danger">*</span>Emel:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_emel">Emel:</label>
                                     <div class="col-md-8">
                                         <input type="email" id="pihak_ketiga_emel" name="pihak_ketiga_emel" class="form-control" placeholder="Emel" value="{{ old('pihak_ketiga_emel',isset($pengilangs->pihak_ketiga_emel)?$pengilangs->pihak_ketiga_emel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_emel') 

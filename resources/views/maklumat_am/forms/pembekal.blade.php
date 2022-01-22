@@ -30,7 +30,7 @@
                             <form method="POST" class="form-horizontal" role="form" action="{{ $jenis == 'new' ? route('pembekal.create') : route('pembekal.update',$pembekals->id) }}">
                                 @csrf
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_nama"><span class="text-danger">*</span>Nama Sumber:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_nama">{{-- <span class="text-danger">*</span> --}}Nama Sumber:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_nama" name="pihak_ketiga_nama" class="form-control" placeholder="Nama Sumber" value="{{ old('pihak_ketiga_nama',isset($pembekals->pihak_ketiga_nama)?$pembekals->pihak_ketiga_nama:null)}}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_nama') 
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 mb-sm-2">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_alamat">{{--<span class="text-danger">*</span>--}}Alamat Sumber:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_alamat">{{-- <span class="text-danger">*</span> --}}Alamat Sumber:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="pihak_ketiga_bangunan" name="pihak_ketiga_bangunan" class="form-control" placeholder="Bangunan" value="{{ old('pihak_ketiga_bangunan',isset($pembekals->pihak_ketiga_bangunan)?$pembekals->pihak_ketiga_bangunan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('pihak_ketiga_bangunan') 
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_negara"><span class="text-danger">*</span>Negara Sumber:</label>
+                                    <label class="col-md-3 col-form-label" for="pihak_ketiga_negara">{{-- <span class="text-danger">*</span> --}}Negara Sumber:</label>
                                     <div class="col-md-8">
                                         <select class="form-control" name="pihak_ketiga_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>

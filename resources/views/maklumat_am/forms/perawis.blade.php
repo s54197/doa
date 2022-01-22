@@ -193,7 +193,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="form-group row">
+                                {{--<div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="perawis_peratusan"><span class="text-danger">*</span>Peratusan:</label>
                                     <div class="col-md-3">
                                         <input type="number" id="perawis_peratusan" name="perawis_peratusan" class="form-control" placeholder="Peratusan" value="{{ old('perawis_peratusan',isset($perawiss->perawis_peratusan)?$perawiss->perawis_peratusan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
@@ -221,7 +221,7 @@
                                         <small class='text-danger'>{{ $message }}</small> 
                                         @enderror
                                     </div>
-                                </div>
+                                </div>--}}
                                 <div class="form-group row mb-0">
                                     <div class="col-8 offset-3">
                                     @if($jenis=='new' || $jenis=='kemaskini' )

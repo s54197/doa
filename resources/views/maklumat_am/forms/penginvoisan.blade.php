@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="penginvoisan_no_roc">{{--<span class="text-danger">*</span>--}}Nombor pendaftaran (ROC):</label>
+                                    <label class="col-md-3 col-form-label" for="penginvoisan_no_roc">Nombor pendaftaran (ROC):</label>
                                     <div class="col-md-8">
                                         <input type="text" id="penginvoisan_no_roc" name="penginvoisan_no_roc" class="form-control" placeholder="Nombor Pendaftaran (ROC)" value="{{ old('penginvoisan_no_roc',isset($penginvoisans->penginvoisan_no_roc)?$penginvoisans->penginvoisan_no_roc:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('penginvoisan_no_roc') 
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 mb-sm-2">
-                                    <label class="col-md-3 col-form-label" for="penginvoisan_alamat">{{--<span class="text-danger">*</span>--}}Alamat penginvoisan:</label>
+                                    <label class="col-md-3 col-form-label" for="penginvoisan_alamat">Alamat penginvoisan:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="penginvoisan_bangunan" name="penginvoisan_bangunan" class="form-control" placeholder="Bangunan" value="{{ old('penginvoisan_bangunan',isset($penginvoisans->penginvoisan_bangunan)?$penginvoisans->penginvoisan_bangunan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         <input type="text" id="penginvoisan_jalan" name="penginvoisan_jalan" class="form-control mt-2" placeholder="Jalan" value="{{ old('penginvoisan_jalan',isset($penginvoisans->penginvoisan_jalan)?$penginvoisans->penginvoisan_jalan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="penginvoisan_negara">{{--<span class="text-danger">*</span>--}}Negara penginvoisan:</label>
+                                    <label class="col-md-3 col-form-label" for="penginvoisan_negara">Negara penginvoisan:</label>
                                     <div class="col-md-8">
                                         <select class="form-control" name="penginvoisan_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="penginvoisan_no_tel">{{--<span class="text-danger">*</span>--}}Nombor telefon:</label>
+                                    <label class="col-md-3 col-form-label" for="penginvoisan_no_tel">Nombor telefon:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="penginvoisan_no_tel" name="penginvoisan_no_tel" class="form-control" placeholder="Nama telefon" value="{{ old('penginvoisan_no_tel',isset($penginvoisans->penginvoisan_no_tel)?$penginvoisans->penginvoisan_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('penginvoisan_no_tel') 
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="penginvoisan_emel">{{--<span class="text-danger">*</span>--}}Emel:</label>
+                                    <label class="col-md-3 col-form-label" for="penginvoisan_emel">Emel:</label>
                                     <div class="col-md-8">
                                         <input type="email" id="penginvoisan_emel" name="penginvoisan_emel" class="form-control" placeholder="Emel" value="{{ old('penginvoisan_emel',isset($penginvoisans->penginvoisan_emel)?$penginvoisans->penginvoisan_emel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('penginvoisan_emel') 

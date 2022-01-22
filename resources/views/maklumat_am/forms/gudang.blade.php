@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="gudang_no_roc"><span class="text-danger">*</span>Nombor pendaftaran (ROC):</label>
+                                    <label class="col-md-3 col-form-label" for="gudang_no_roc">Nombor pendaftaran (ROC):</label>
                                     <div class="col-md-8">
                                         <input type="text" id="gudang_no_roc" name="gudang_no_roc" class="form-control" placeholder="Nombor Pendaftaran (ROC)" value="{{ old('gudang_no_roc',isset($gudangs->gudang_no_roc)?$gudangs->gudang_no_roc:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('gudang_no_roc') 
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 mb-sm-2">
-                                    <label class="col-md-3 col-form-label" for="gudang_alamat"><span class="text-danger">*</span>Alamat gudang:</label>
+                                    <label class="col-md-3 col-form-label" for="gudang_alamat">Alamat gudang:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="gudang_bangunan" name="gudang_bangunan" class="form-control" placeholder="Bangunan" value="{{ old('gudang_bangunan',isset($gudangs->gudang_bangunan)?$gudangs->gudang_bangunan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         <input type="text" id="gudang_jalan" name="gudang_jalan" class="form-control mt-2" placeholder="Jalan" value="{{ old('gudang_jalan',isset($gudangs->gudang_jalan)?$gudangs->gudang_jalan:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="gudang_negara"><span class="text-danger">*</span>Negara gudang:</label>
+                                    <label class="col-md-3 col-form-label" for="gudang_negara">Negara gudang:</label>
                                     <div class="col-md-8">
                                         <select class="form-control" name="gudang_negara" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                             <option value="">Pilih Negara...</option>
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="gudang_no_tel"><span class="text-danger">*</span>Nombor telefon:</label>
+                                    <label class="col-md-3 col-form-label" for="gudang_no_tel">Nombor telefon:</label>
                                     <div class="col-md-8">
                                         <input type="text" id="gudang_no_tel" name="gudang_no_tel" class="form-control" placeholder="Nama telefon" value="{{ old('gudang_no_tel',isset($gudangs->gudang_no_tel)?$gudangs->gudang_no_tel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('gudang_no_tel') 
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="gudang_emel"><span class="text-danger">*</span>Emel:</label>
+                                    <label class="col-md-3 col-form-label" for="gudang_emel">Emel:</label>
                                     <div class="col-md-8">
                                         <input type="email" id="gudang_emel" name="gudang_emel" class="form-control" placeholder="Emel" value="{{ old('gudang_emel',isset($gudangs->gudang_emel)?$gudangs->gudang_emel:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                         @error('gudang_emel') 
