@@ -105,6 +105,8 @@ class BorangA extends Model
         'borangA_mengilang_membuat',
         'borangA_mengilang_lain',
         'borangA_mengilang_lain_maklumat',
+        'borangA_perawis_peratusan',
+        'borangA_perawis_peratusan_unit',
         'borangA_perawis_perumusan',
         'borangA_perawis_perumusan_lain',
         'borangA_surat_no_rujukan_1',

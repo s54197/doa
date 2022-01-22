@@ -275,6 +275,8 @@ class BorangAController extends Controller
             'borangA_penginvoisan' => 'required',
             'borangA_gudang' => 'required',
             'borangA_perawis_aktif' => 'required',
+            'borangA_perawis_peratusan' => 'required',
+            'borangA_perawis_peratusan_unit' => 'required',
             // 'borangA_perawis_kod' => 'required',
             'borangA_perawis_perumusan' => 'required',
             'borangA_perawis_perumusan_lain' => 'required_if:borangA_perawis_perumusan,Lain-lain (nyatakan)',

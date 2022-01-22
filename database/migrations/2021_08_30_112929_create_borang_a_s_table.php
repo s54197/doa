@@ -37,6 +37,9 @@ class CreateBorangASTable extends Migration
             $table->boolean('borangA_mengilang_membuat')->default(false);
             $table->string('borangA_mengilang_lain')->nullable();
             $table->string('borangA_mengilang_lain_maklumat')->nullable();
+
+            $table->string('borangA_perawis_peratusan');
+            $table->string('borangA_perawis_peratusan_unit');
             
             $table->string('borangA_perawis_perumusan');
             $table->string('borangA_perawis_perumusan_lain')->nullable();
