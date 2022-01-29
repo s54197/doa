@@ -274,9 +274,9 @@ class BorangAController extends Controller
             'borangA_pengilang_kontrak' => 'required',
             'borangA_penginvoisan' => 'required',
             'borangA_gudang' => 'required',
-            'borangA_perawis_aktif' => 'required',
-            'borangA_perawis_peratusan' => 'required',
-            'borangA_perawis_peratusan_unit' => 'required',
+            'borangA_perawis_aktif_1' => 'required',
+            'borangA_perawis_peratusan_1' => 'required',
+            'borangA_perawis_peratusan_unit_1' => 'required',
             // 'borangA_perawis_kod' => 'required',
             'borangA_perawis_perumusan' => 'required',
             'borangA_perawis_perumusan_lain' => 'required_if:borangA_perawis_perumusan,Lain-lain (nyatakan)',
@@ -368,6 +368,16 @@ class BorangAController extends Controller
                 'borangA_perawis_perumusan' => $request->borangA_perawis_perumusan,
                 'borangA_perawis_perumusan_lain' => $request->borangA_perawis_perumusan_lain,
 
+                'borangA_perawis_aktif_1' => $request->borangA_perawis_aktif_1,  
+                'borangA_perawis_peratusan_1' => $request->borangA_perawis_peratusan_1,
+                'borangA_perawis_peratusan_unit_1' => $request->borangA_perawis_peratusan_unit_1,
+                'borangA_perawis_aktif_2' => $request->borangA_perawis_aktif_2,
+                'borangA_perawis_peratusan_2' => $request->borangA_perawis_peratusan_2,
+                'borangA_perawis_peratusan_unit_2' => $request->borangA_perawis_peratusan_unit_2,
+                'borangA_perawis_aktif_3' => $request->borangA_perawis_aktif_3,
+                'borangA_perawis_peratusan_3' => $request->borangA_perawis_peratusan_3,
+                'borangA_perawis_peratusan_unit_3' => $request->borangA_perawis_peratusan_unit_3,
+
                 'borangA_sijil_no_siri' => $request->borangA_sijil_no_siri,
                 'borangA_sijil_tarikh' => Carbon::createFromFormat('d-m-Y', $request->borangA_sijil_tarikh)->format('Y-m-d'),
                 'borangA_sijil_fail_nama' => $borangA_sijil_fail_nama,
@@ -394,7 +404,7 @@ class BorangAController extends Controller
             $new_borang->pihakketigas()->sync($pengilangPembekalIds);
             $new_borang->penginvoisans()->sync($penginvoisanIds);
             $new_borang->gudangs()->sync($gudangIds);
-            $new_borang->perawiss()->sync($perawisIds);
+            // $new_borang->perawiss()->sync($perawisIds);
             $new_borang->pengilangs()->sync($pengilangkontrakIds);
             $new_borang->perawis_pengilangs()->sync($perawispengilangIds);
 
@@ -430,7 +440,9 @@ class BorangAController extends Controller
             'borangA_pengilang_kontrak' => 'required',
             'borangA_penginvoisan' => 'required',
             'borangA_gudang' => 'required',
-            'borangA_perawis_aktif' => 'required',
+            'borangA_perawis_aktif_1' => 'required',
+            'borangA_perawis_peratusan_1' => 'required',
+            'borangA_perawis_peratusan_unit_1' => 'required',
             // 'borangA_perawis_kod' => 'required',
             'borangA_perawis_perumusan' => 'required',
             'borangA_perawis_perumusan_lain' => 'required_if:borangA_perawis_perumusan,Lain-lain (nyatakan)',
@@ -517,6 +529,16 @@ class BorangAController extends Controller
                 // 'borangA_gudang' => implode(',', $request->borangA_gudang),
                 // 'borangA_perawis_aktif' => implode(',', $request->borangA_perawis_aktif),
                 // 'borangA_perawis_kod' => $request->borangA_perawis_kod,
+                'borangA_perawis_aktif_1' => $request->borangA_perawis_aktif_1,  
+                'borangA_perawis_peratusan_1' => $request->borangA_perawis_peratusan_1,
+                'borangA_perawis_peratusan_unit_1' => $request->borangA_perawis_peratusan_unit_1,
+                'borangA_perawis_aktif_2' => $request->borangA_perawis_aktif_2,
+                'borangA_perawis_peratusan_2' => $request->borangA_perawis_peratusan_2,
+                'borangA_perawis_peratusan_unit_2' => $request->borangA_perawis_peratusan_unit_2,
+                'borangA_perawis_aktif_3' => $request->borangA_perawis_aktif_3,
+                'borangA_perawis_peratusan_3' => $request->borangA_perawis_peratusan_3,
+                'borangA_perawis_peratusan_unit_3' => $request->borangA_perawis_peratusan_unit_3,
+
                 'borangA_perawis_perumusan' => $request->borangA_perawis_perumusan,
                 'borangA_perawis_perumusan_lain' => $request->borangA_perawis_perumusan_lain,
                 // 'borangA_perawis_pengilang' => implode(',', $request->borangA_perawis_pengilang),
@@ -537,7 +559,7 @@ class BorangAController extends Controller
             $borangA->pihakketigas()->sync($pengilangPembekalIds);
             $borangA->penginvoisans()->sync($penginvoisanIds);
             $borangA->gudangs()->sync($gudangIds);
-            $borangA->perawiss()->sync($perawisIds);
+            // $borangA->perawiss()->sync($perawisIds);
             $borangA->pengilangs()->sync($pengilangkontrakIds);
             $borangA->perawis_pengilangs()->sync($perawispengilangIds);
 

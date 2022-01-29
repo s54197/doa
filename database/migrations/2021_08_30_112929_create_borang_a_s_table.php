@@ -38,12 +38,18 @@ class CreateBorangASTable extends Migration
             $table->string('borangA_mengilang_lain')->nullable();
             $table->string('borangA_mengilang_lain_maklumat')->nullable();
 
-            $table->string('borangA_perawis_peratusan');
-            $table->string('borangA_perawis_peratusan_unit');
-            
+            $table->string('borangA_perawis_aktif_1')->nullable();
+            $table->string('borangA_perawis_peratusan_1')->nullable();
+            $table->string('borangA_perawis_peratusan_unit_1')->nullable();
+            $table->string('borangA_perawis_aktif_2')->nullable();
+            $table->string('borangA_perawis_peratusan_2')->nullable();
+            $table->string('borangA_perawis_peratusan_unit_2')->nullable();
+            $table->string('borangA_perawis_aktif_3')->nullable();
+            $table->string('borangA_perawis_peratusan_3')->nullable();
+            $table->string('borangA_perawis_peratusan_unit_3')->nullable();
+
             $table->string('borangA_perawis_perumusan');
             $table->string('borangA_perawis_perumusan_lain')->nullable();
-
             $table->string('borangA_sijil_no_siri')->nullable();
             $table->string('borangA_sijil_tarikh')->nullable();
             $table->string('borangA_sijil_fail_nama')->nullable();
