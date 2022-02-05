@@ -99,7 +99,7 @@
                             <th>Cas No</th>
                             <th>Tarikh Lulus</th>
                             <th>Tarikh Terhad</th>
-                            <th>Peratusan</th>
+                            <th>Tarikh Haram</th>
                             <th>Status</th>
                             <th class="hidden-sm">Tetapan</th>
                         </tr>
@@ -114,7 +114,7 @@
                             <td>{{$perawis->perawis_tarikh_lulus}}</td>
                             <td>{{$perawis->perawis_tarikh_terhad}}</td>
                             <td>{{$perawis->perawis_tarikh_haram}}</td>
-                            <td>{{$perawis->perawis_peratusan}}</td>
+                            {{--<td>{{$perawis->perawis_peratusan}}</td>--}}
                             <td>{{$perawis->perawis_status}}</td>
                             <td>
                                 <div class="btn-group dropdown">
