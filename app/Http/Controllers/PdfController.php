@@ -31,10 +31,18 @@ class PdfController extends Controller
         //perawis
         $perawisnama = [];
         $perawis_peratus_unit = [];
-        foreach(BorangA::find($id)->perawiss as $perawiss_list) {
-            array_push($perawisnama,$perawiss_list->perawis_nama);
-            array_push($perawis_peratus_unit,$perawiss_list->perawis_peratusan.' '.$perawiss_list->perawis_unit);
-        }
+      
+        array_push($perawisnama,$data_borangA->borangA_perawis_aktif_1);
+        if ($data_borangA->borangA_perawis_aktif_2 != null) {
+            array_push($perawisnama,$data_borangA->borangA_perawis_aktif_2); }
+        if ($data_borangA->borangA_perawis_aktif_3 != null) {
+            array_push($perawisnama,$data_borangA->borangA_perawis_aktif_3); }
+        
+        array_push($perawis_peratus_unit,$data_borangA->borangA_perawis_peratusan_1." ".$data_borangA->borangA_perawis_peratusan_unit_1);
+        if ($data_borangA->borangA_perawis_peratusan_2 != null) {
+            array_push($perawis_peratus_unit,$data_borangA->borangA_perawis_peratusan_2." ".$data_borangA->borangA_perawis_peratusan_unit_2); }
+        if ($data_borangA->borangA_perawis_peratusan_3 != null) {
+            array_push($perawis_peratus_unit,$data_borangA->borangA_perawis_peratusan_3." ".$data_borangA->borangA_perawis_peratusan_unit_3); }
 
         $pihakketiganama = [];
         foreach(BorangA::find($id)->pihakketigas as $pihakketiga_list) {
@@ -53,8 +61,8 @@ class PdfController extends Controller
             'jenis_pendaftaran' => strtoupper($jenis_pendaftaran),
             'pendaftar' => strtoupper($data_borangA->syarikat->syarikat_nama),
             'nama_dagangan' => strtoupper($data_borangA->produk->produk_nama),
-            'perawis_aktif' => implode(",# ",$perawisnama),
-            'kepekatan' => implode(",# ",$perawis_peratus_unit),
+            'perawis_aktif' => implode(", ",$perawisnama),
+            'kepekatan' => implode(", ",$perawis_peratus_unit),
             'perumusan' => strtoupper($data_borangA->borangA_perawis_perumusan),
             'kelas' => strtoupper($data_borangA->produk->produk_kelas_racun),
             'penggunaan' => strtoupper($data_borangA->produk->produk_kegunaan),
