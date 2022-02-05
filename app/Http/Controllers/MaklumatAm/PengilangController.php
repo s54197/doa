@@ -154,10 +154,10 @@ class PengilangController extends Controller
             // 'pihak_ketiga_bandar' => 'required',
             // 'pihak_ketiga_negeri' => 'required',
             // 'pihak_ketiga_negeri_luar_malaysia' => 'required',
-            // 'pihak_ketiga_negara' => 'required',
-            // 'pihak_ketiga_no_tel' => 'required',
+            'pihak_ketiga_negara' => 'required',
+            'pihak_ketiga_no_tel' => 'required',
             // 'pihak_ketiga_no_faks' => 'required',
-            // 'pihak_ketiga_emel' => 'required|email',
+            'pihak_ketiga_emel' => 'required|email',
             // 'pihak_ketiga_status' => 'required',
         ]);
 

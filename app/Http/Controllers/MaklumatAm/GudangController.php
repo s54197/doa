@@ -157,7 +157,7 @@ class GudangController extends Controller
             // 'gudang_negara' => 'required',
             // 'gudang_no_tel' => 'required',
             // 'gudang_no_faks' => 'required',
-            // 'gudang_emel' => 'required|email',
+            'gudang_emel' => 'required|email',
             // 'gudang_status' => 'required',
         ]);
 
