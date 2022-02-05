@@ -270,11 +270,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang"><span class="text-danger">*</span>Pengilang/Sumber:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang">{{--<span class="text-danger">*</span>--}}Pengilang/Sumber:</label>
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang[]" id="borangA_pengilang" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($pengilang_pembekals as $pengilang_pembekal)
-                                        @if(isset($borangIds))
+                                        @if(isset($borangIds) && count($borangIds->pihakketigas)>0)
                                             @foreach($borangIds->pihakketigas as $value)
                                                 <option value="{{ $pengilang_pembekal->id }}" {{ old('borangA_pengilang[]' , isset($value->id)?$value->id:null ) == $pengilang_pembekal->id ? 'selected' : '' }}>{{ $pengilang_pembekal->pihak_ketiga_nama }} </option>
                                             @endforeach
@@ -289,11 +289,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang_kontrak"><span class="text-danger">*</span>Pengilang Kontrak:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_pengilang_kontrak">{{--<span class="text-danger">*</span>--}}Pengilang Kontrak:</label>
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_pengilang_kontrak[]" id="borangA_pengilang_kontrak" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($pengilangs as $pengilang)
-                                        @if(isset($borangIds)) 
+                                        @if(isset($borangIds) && count($borangIds->pengilangs)>0) 
                                             @foreach($borangIds->pengilangs as $value)
                                                 <option value="{{ $pengilang->id }}" {{ old('borangA_pengilang_kontrak[]' , isset($value->id)?$value->id:null ) == $pengilang->id ? 'selected' : '' }} >{{ $pengilang->pihak_ketiga_nama }}</option>
                                             @endforeach
@@ -308,11 +308,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_penginvoisan"><span class="text-danger">*</span>Invoicing:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_penginvoisan">{{--<span class="text-danger">*</span>--}}Invoicing:</label>
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_penginvoisan[]" id="borangA_penginvoisan" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($penginvoisans as $penginvoisan)
-                                        @if(isset($borangIds))
+                                        @if(isset($borangIds) && count($borangIds->penginvoisans)>0)
                                             @foreach($borangIds->penginvoisans as $value)
                                                 <option value="{{ $penginvoisan->id }}" {{ old('borangA_penginvoisan[]' , isset($value->id)?$value->id:null ) == $penginvoisan->id ? 'selected' : '' }} >{{ $penginvoisan->penginvoisan_nama }}</option>                                       
                                             @endforeach
@@ -327,11 +327,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label my-md-0" for="borangA_gudang"><span class="text-danger">*</span>Gudang:</label>
+                            <label class="col-md-3 col-form-label my-md-0" for="borangA_gudang">{{--<span class="text-danger">*</span>--}}Gudang:</label>
                             <div class="col-md-9">
                                 <select class="select2 form-control form-control-sm select2-multiple" name="borangA_gudang[]" id="borangA_gudang" multiple="multiple" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
                                     @foreach($gudangs as $gudang)
-                                        @if(isset($borangIds))
+                                        @if(isset($borangIds) && count($borangIds->gudangs)>0)
                                             @foreach($borangIds->gudangs as $value)
                                                 <option value="{{ $gudang->id }}" {{ old('borangA_gudang[]' , isset($value->id)?$value->id:null ) == $gudang->id ? 'selected' : '' }}>{{ $gudang->gudang_nama }}</option>
                                             @endforeach
