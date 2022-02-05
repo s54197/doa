@@ -38,18 +38,20 @@ class BorangAController extends Controller
             // All data borangA
             $borangAs = User::find(Auth::user()->id)->borangAs()->with('syarikat','agen','produk')->get();
         }
+        
+        // Reformat date
+        foreach($borangAs as $borangA) {
+            $borangA->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_lulus)->format('d-m-Y');
+            $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
+        }
 
         // Summary
         $TotalBorangA = BorangA::count();
         $TotalBorangAAktif = BorangA::where('borangA_status', '=', 'Aktif')->count();
         $TotalBorangATidakAktif = BorangA::where('borangA_status', '=', 'Tidak Aktif')->count();
         $TotalBorangABulanTerkini = BorangA::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
-
-        // Reformat date
-        foreach($borangAs as $borangA) {
-            $borangA->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_lulus)->format('d-m-Y');
-            $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
-        }
+        
+        //dd($borangAs->produk);
         
         return view('pendaftaran.main_borang_A', [
             'borangAs' => $borangAs,
@@ -186,7 +188,7 @@ class BorangAController extends Controller
             'tajuk' => 'Paparan'
         );
 
-        // dd($data);
+        //dd($pengilang_pembekals);
         
         return view('pendaftaran.forms.borang_A')->with($data);
     }
@@ -215,15 +217,16 @@ class BorangAController extends Controller
             $produks = User::find(Auth::user()->id)->produks;
             $perawiss = User::find(Auth::user()->id)->perawiss;
             $pengilangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->get();
-            $pengilang_pembekals = User::find(Auth::user()->id)->pihakketigas()->get();
+            $pengilang_pembekals = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->orWhere('pihak_ketiga_jenis','pembekal')->get();
             $gudangs = User::find(Auth::user()->id)->gudangs;
             $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
         }
+        
 
         // Data borangA
         $borangA = BorangA::find($id)->with('syarikat','agen','produk')->get();
         $borangId = BorangA::find($id);
-        // dd($borangId->id);
+        //dd($borangId->id);
 
         setlocale(LC_TIME, 'ms_MY');
         Carbon::setLocale('ms_MY');
@@ -257,7 +260,7 @@ class BorangAController extends Controller
             'jenis' => 'kemaskini',
             'tajuk' => 'Kemaskini'
         );
-        // dd($data);
+        //dd($borangId->pihakketigas->id);
         return view('pendaftaran.forms.borang_A')->with($data);
     }
 
@@ -282,10 +285,10 @@ class BorangAController extends Controller
             'borangA_perniagaan_lain_maklumat' => 'required_if:borangA_perniagaan_lain,Lain-lain (nyatakan)',
             //'borangA_mengilang_lain' => 'required_without_all:borangA_mengilang_merumus,borangA_mengilang_menyedia,borangA_mengilang_mensebati,borangA_mengilang_mencampur,borangA_mengilang_melabel,borangA_mengilang_mempek,borangA_mengilang_membuat',
             'borangA_mengilang_lain_maklumat' => 'required_if:borangA_mengilang_lain,Lain-lain (nyatakan)',
-            'borangA_pengilang' => 'required',
-            'borangA_pengilang_kontrak' => 'required',
-            'borangA_penginvoisan' => 'required',
-            'borangA_gudang' => 'required',
+            //'borangA_pengilang' => 'required',
+            //'borangA_pengilang_kontrak' => 'required',
+            //'borangA_penginvoisan' => 'required',
+            //'borangA_gudang' => 'required',
             'borangA_perawis_aktif_1' => 'required',
             'borangA_perawis_peratusan_1' => 'required',
             'borangA_perawis_peratusan_unit_1' => 'required',
@@ -450,10 +453,10 @@ class BorangAController extends Controller
             'borangA_perniagaan_lain_maklumat' => 'required_if:borangA_perniagaan_lain,Lain-lain (nyatakan)',
             'borangA_mengilang_lain' => 'required_without_all:borangA_mengilang_merumus,borangA_mengilang_menyedia,borangA_mengilang_mensebati,borangA_mengilang_mencampur,borangA_mengilang_melabel,borangA_mengilang_mempek,borangA_mengilang_membuat',
             'borangA_mengilang_lain_maklumat' => 'required_if:borangA_mengilang_lain,Lain-lain (nyatakan)',
-            'borangA_pengilang' => 'required',
-            'borangA_pengilang_kontrak' => 'required',
-            'borangA_penginvoisan' => 'required',
-            'borangA_gudang' => 'required',
+            //'borangA_pengilang' => 'required',
+            //'borangA_pengilang_kontrak' => 'required',
+            //'borangA_penginvoisan' => 'required',
+            //'borangA_gudang' => 'required',
             'borangA_perawis_aktif_1' => 'required',
             'borangA_perawis_peratusan_1' => 'required',
             'borangA_perawis_peratusan_unit_1' => 'required',
