@@ -45,6 +45,12 @@ class BorangAController extends Controller
         $TotalBorangATidakAktif = BorangA::where('borangA_status', '=', 'Tidak Aktif')->count();
         $TotalBorangABulanTerkini = BorangA::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
 
+        // Reformat date
+        foreach($borangAs as $borangA) {
+            $borangA->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_lulus)->format('d-m-Y');
+            $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
+        }
+        
         return view('pendaftaran.main_borang_A', [
             'borangAs' => $borangAs,
             'totalborangA' => $TotalBorangA,
@@ -230,6 +236,12 @@ class BorangAController extends Controller
             $borangA->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangA->borangA_tarikh_tamat)->format('d-m-Y');
             $borangA->borangA_sijil_tarikh = Carbon::createFromFormat('Y-m-d', $borangA->borangA_sijil_tarikh)->format('d-m-Y');
         }
+
+        // Reformat date
+        $borangId->borangA_tarikh_terima_kaunter = Carbon::createFromFormat('Y-m-d', $borangId->borangA_tarikh_terima_kaunter)->format('d-m-Y');
+        $borangId->borangA_tarikh_lulus = Carbon::createFromFormat('Y-m-d', $borangId->borangA_tarikh_lulus)->format('d-m-Y');
+        $borangId->borangA_tarikh_tamat = Carbon::createFromFormat('Y-m-d', $borangId->borangA_tarikh_tamat)->format('d-m-Y');
+        $borangId->borangA_sijil_tarikh = Carbon::createFromFormat('Y-m-d', $borangId->borangA_sijil_tarikh)->format('d-m-Y');
         
         $data = array(
             'syarikats' => $syarikats,
@@ -304,7 +316,7 @@ class BorangAController extends Controller
         $pengilangkontrakIds = $request->borangA_pengilang_kontrak;
         $penginvoisanIds = $request->borangA_penginvoisan;
         $gudangIds = $request->borangA_gudang;
-        $perawisIds = $request->borangA_perawis_aktif;
+        // $perawisIds = $request->borangA_perawis_aktif;
         $perawispengilangIds = $request->borangA_perawis_pengilang;
         
         $borangA_surat_fail_nama = '';
@@ -335,6 +347,7 @@ class BorangAController extends Controller
         try {
 
             $user = User::find(Auth::user()->id);
+            // dd($request);
 
             $borangCreate = $user->borangAs()->create([
                 'syarikat_id' => $request->borangA_syarikat,
@@ -421,7 +434,8 @@ class BorangAController extends Controller
         setlocale(LC_TIME, 'ms_MY');
         Carbon::setLocale('ms_MY');
 
-        
+        // dd($request);
+
         $request->validate([
             'borangA_syarikat' => 'required',
             'borangA_agen' => 'required',
@@ -494,6 +508,7 @@ class BorangAController extends Controller
 
         // dd($request->borangA_sijil_fail);
         // dd($id);
+        // dd($request);
 
         try {
 
@@ -563,9 +578,9 @@ class BorangAController extends Controller
             $borangA->pengilangs()->sync($pengilangkontrakIds);
             $borangA->perawis_pengilangs()->sync($perawispengilangIds);
 
-            return redirect('/pendaftaran')->withSuccess('Pendaftaran '.$request->borangA_nama.' telah berjaya didaftarkan!');
+            return redirect('/pendaftaran')->withSuccess('Pendaftaran '.$request->borangA_nama.' telah berjaya dikemaskinikan!');
         } catch(Exception $e) {
-            return redirect('/pendaftaran')->withWarning('Pendaftaran '.$request->borangA_nama.' tidak berjaya didaftarkan!'. $e);
+            return redirect('/pendaftaran')->withWarning('Pendaftaran '.$request->borangA_nama.' tidak berjaya dikemaskinikan!'. $e);
         }
     }
 

@@ -46,7 +46,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        Terdapat kesilapan pada data semasa mengisi borang, sila semak.
+                        Terdapat kesilapan pada data semasa mengisi borang, sila semak. {{ $errors }}
                     </div>
                 @endif
                 <form method="post" id="wizard-vertical" action="{{ $jenis == 'new' ? route('pendaftaran.create') : route('pendaftaran.update',$borangIds->id) }}" enctype="multipart/form-data">
@@ -139,8 +139,8 @@
                         <div class="form-group row {{ $tajuk == "BorangA" ? 'd-none' : '' }}">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_jenis_pendaftaran"><span class="text-danger">*</span>Jenis Pendaftaran:</label>
                             <div class="col-md-9">
-                                <input type="text" id="borangA_jenis_pendaftaran_1" name="borangA_jenis_pendaftaran" class="form-control custom_border" placeholder="Jenis Pendaftaran " value="{{ old('borangA_jenis_pendaftaran',isset($borangIds->borangA_jenis_pendaftaran)?$borangIds->borangA_jenis_pendaftaran:null) }}" disabled >
-                                <input type="hidden" id="borangA_jenis_pendaftaran" name="borangA_jenis_pendaftaran">
+                                <input type="text" id="borangA_jenis_pendaftaran_1" name="borangA_jenis_pendaftaran_1" class="form-control custom_border" placeholder="Jenis Pendaftaran " value="{{ old('borangA_jenis_pendaftaran',isset($borangIds->borangA_jenis_pendaftaran)?$borangIds->borangA_jenis_pendaftaran:null) }}" disabled >
+                                <input type="hidden" id="borangA_jenis_pendaftaran" name="borangA_jenis_pendaftaran" class="form-control custom_border" placeholder="Jenis Pendaftaran " value="{{ old('borangA_jenis_pendaftaran',isset($borangIds->borangA_jenis_pendaftaran)?$borangIds->borangA_jenis_pendaftaran:null) }}">
 
                                 @error('borangA_jenis_pendaftaran') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -351,14 +351,13 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_aktif_1"><span class="text-danger">*</span>Perawis Aktif 1:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_aktif_1[]" id="borangA_perawis_aktif_1" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                <select class="form-control" name="borangA_perawis_aktif_1" id="borangA_perawis_aktif_1" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                    <option value="">Pilih Perawis Aktif 1...</option>
                                     @foreach($perawiss as $perawis)
                                         @if(isset($borangIds))
-                                            @foreach($borangIds->perawiss as $value)
-                                                <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif_1[]' , isset($value->id)?$value->id:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
-                                            @endforeach
+                                            <option value="{{ $perawis->perawis_nama }}" {{ old('borangA_perawis_aktif_1' , isset($borangIds->borangA_perawis_aktif_1)?$borangIds->borangA_perawis_aktif_1:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
                                         @else
-                                            <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif_1[]' , isset($value->id)?$value->id:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
+                                            <option value="{{ $perawis->perawis_nama }}" {{ old('borangA_perawis_aktif_1' , isset($borangIds->borangA_perawis_aktif_1)?$borangIds->borangA_perawis_aktif_1:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
                                         @endif
                                     @endforeach
                                 </select>  
@@ -370,22 +369,22 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_peratusan_1"><span class="text-danger">*</span>Peratusan 1:</label>
                             <div class="col-md-5">
-                                <input type="number" id="borangA_perawis_peratusan_1" name="borangA_perawis_peratusan_1" class="form-control" placeholder="Peratusan" value="{{ old('borangA_perawis_peratusan_1',isset($perawiss->borangA_perawis_peratusan_1)?$perawiss->borangA_perawis_peratusan_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
+                                <input type="number" id="borangA_perawis_peratusan_1" name="borangA_perawis_peratusan_1" class="form-control" placeholder="Nyatakan Peratusan 1" value="{{ old('borangA_perawis_peratusan_1',isset($borangIds->borangA_perawis_peratusan_1)?$borangIds->borangA_perawis_peratusan_1:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
                                 @error('borangA_perawis_peratusan_1') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <select class="form-control" name="perawis_unit" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
-                                    <option value="">Pilih Unit...</option>
-                                    <option value='%w/w' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                    <option value='mg/mat' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                    <option value='I.U./mg' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'I.U./mg' ? 'selected' : '' }}>I.U./mg</option>
-                                    <option value='ITU/mg' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'ITU/mg' ? 'selected' : '' }}>ITU/mg</option>
-                                    <option value='mg/unit' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                    <option value='Lain-lain (nyatakan)' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                <select class="form-control" name="borangA_perawis_peratusan_unit_1" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                    <option value="">Pilih Unit 1...</option>
+                                    <option value='%w/w' {{ old('borangA_perawis_peratusan_unit_1',isset($borangIds->borangA_perawis_peratusan_unit_1)?$borangIds->borangA_perawis_peratusan_unit_1:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                    <option value='mg/mat' {{ old('borangA_perawis_peratusan_unit_1',isset($borangIds->borangA_perawis_peratusan_unit_1)?$borangIds->borangA_perawis_peratusan_unit_1:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                    <option value='I.U./mg' {{ old('borangA_perawis_peratusan_unit_1',isset($borangIds->borangA_perawis_peratusan_unit_1)?$borangIds->borangA_perawis_peratusan_unit_1:null) == 'I.U./mg' ? 'selected' : '' }}>I.U./mg</option>
+                                    <option value='ITU/mg' {{ old('borangA_perawis_peratusan_unit_1',isset($borangIds->borangA_perawis_peratusan_unit_1)?$borangIds->borangA_perawis_peratusan_unit_1:null) == 'ITU/mg' ? 'selected' : '' }}>ITU/mg</option>
+                                    <option value='mg/unit' {{ old('borangA_perawis_peratusan_unit_1',isset($borangIds->borangA_perawis_peratusan_unit_1)?$borangIds->borangA_perawis_peratusan_unit_1:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                    {{--<option value='Lain-lain (nyatakan)' {{ old('borangA_perawis_peratusan_unit_1',isset($borangIds->borangA_perawis_peratusan_unit_1)?$borangIds->borangA_perawis_peratusan_unit_1:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>--}}
                                 </select>
-                                @error('perawis_unit') 
+                                @error('borangA_perawis_peratusan_unit_1') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror 
                             </div>
@@ -394,14 +393,13 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_aktif_2">Perawis Aktif 2:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_aktif_2[]" id="borangA_perawis_aktif_2" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                <select class="form-control" name="borangA_perawis_aktif_2" id="borangA_perawis_aktif_2" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                    <option value="">Pilih Perawis Aktif 2...</option>
                                     @foreach($perawiss as $perawis)
                                         @if(isset($borangIds))
-                                            @foreach($borangIds->perawiss as $value)
-                                                <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif_2[]' , isset($value->id)?$value->id:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
-                                            @endforeach
+                                            <option value="{{ $perawis->perawis_nama }}" {{ old('borangA_perawis_aktif_2' , isset($borangIds->borangA_perawis_aktif_2)?$borangIds->borangA_perawis_aktif_2:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
                                         @else
-                                            <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif_2[]' , isset($value->id)?$value->id:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
+                                            <option value="{{ $perawis->perawis_nama }}" {{ old('borangA_perawis_aktif_2' , isset($borangIds->borangA_perawis_aktif_2)?$borangIds->borangA_perawis_aktif_2:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
                                         @endif
                                     @endforeach
                                 </select>  
@@ -413,20 +411,20 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_peratusan_2">Peratusan 2:</label>
                             <div class="col-md-5">
-                                <input type="number" id="borangA_perawis_peratusan_2" name="borangA_perawis_peratusan_2" class="form-control" placeholder="Peratusan" value="{{ old('borangA_perawis_peratusan_2',isset($perawiss->borangA_perawis_peratusan_2)?$perawiss->borangA_perawis_peratusan_2:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
+                                <input type="number" id="borangA_perawis_peratusan_2" name="borangA_perawis_peratusan_2" class="form-control" placeholder="Nyatakan Peratusan 2" value="{{ old('borangA_perawis_peratusan_2',isset($borangIds->borangA_perawis_peratusan_2)?$borangIds->borangA_perawis_peratusan_2:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
                                 @error('borangA_perawis_peratusan_2') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <select class="form-control" name="perawis_unit" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
-                                    <option value="">Pilih Unit...</option>
-                                    <option value='%w/w' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                    <option value='mg/mat' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                    <option value='I.U./mg' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'I.U./mg' ? 'selected' : '' }}>I.U./mg</option>
-                                    <option value='ITU/mg' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'ITU/mg' ? 'selected' : '' }}>ITU/mg</option>
-                                    <option value='mg/unit' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                    <option value='Lain-lain (nyatakan)' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                <select class="form-control" name="borangA_perawis_peratusan_unit_2" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                    <option value="">Pilih Unit 2...</option>
+                                    <option value='%w/w' {{ old('borangA_perawis_peratusan_unit_2',isset($borangIds->borangA_perawis_peratusan_unit_2)?$borangIds->borangA_perawis_peratusan_unit_2:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                    <option value='mg/mat' {{ old('borangA_perawis_peratusan_unit_2',isset($borangIds->borangA_perawis_peratusan_unit_2)?$borangIds->borangA_perawis_peratusan_unit_2:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                    <option value='I.U./mg' {{ old('borangA_perawis_peratusan_unit_2',isset($borangIds->borangA_perawis_peratusan_unit_2)?$borangIds->borangA_perawis_peratusan_unit_2:null) == 'I.U./mg' ? 'selected' : '' }}>I.U./mg</option>
+                                    <option value='ITU/mg' {{ old('borangA_perawis_peratusan_unit_2',isset($borangIds->borangA_perawis_peratusan_unit_2)?$borangIds->borangA_perawis_peratusan_unit_2:null) == 'ITU/mg' ? 'selected' : '' }}>ITU/mg</option>
+                                    <option value='mg/unit' {{ old('borangA_perawis_peratusan_unit_2',isset($borangIds->borangA_perawis_peratusan_unit_2)?$borangIds->borangA_perawis_peratusan_unit_2:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                    {{--<option value='Lain-lain (nyatakan)' {{ old('borangA_perawis_peratusan_unit_2',isset($borangIds->perawis_unit)?$borangIds->borangA_perawis_peratusan_unit_2:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>--}}
                                 </select>
                                 @error('perawis_unit') 
                                 <small class='text-danger'>{{ $message }}</small> 
@@ -437,14 +435,13 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_aktif_3">Perawis Aktif 3:</label>
                             <div class="col-md-9">
-                                <select class="select2 form-control form-control-sm select2-multiple" name="borangA_perawis_aktif_3[]" id="borangA_perawis_aktif_3" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
-                                    @foreach($perawiss as $perawis)
+                                <select class="form-control" name="borangA_perawis_aktif_3" id="borangA_perawis_aktif_3" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                <option value="">Pilih Perawis Aktif 3...</option>    
+                                @foreach($perawiss as $perawis)
                                         @if(isset($borangIds))
-                                            @foreach($borangIds->perawiss as $value)
-                                                <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif_3[]' , isset($value->id)?$value->id:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
-                                            @endforeach
+                                            <option value="{{ $perawis->perawis_nama }}" {{ old('borangA_perawis_aktif_3' , isset($borangIds->borangA_perawis_aktif_3)?$borangIds->borangA_perawis_aktif_3:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }}</option>
                                         @else
-                                            <option value="{{ $perawis->id }}" {{ old('borangA_perawis_aktif_3[]' , isset($value->id)?$value->id:null ) == $perawis->id ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
+                                            <option value="{{ $perawis->perawis_nama }}" {{ old('borangA_perawis_aktif_3' , isset($borangIds->borangA_perawis_aktif_3)?$borangIds->borangA_perawis_aktif_3:null ) == $perawis->perawis_nama ? 'selected' : '' }}>{{ $perawis->perawis_nama }} </option>
                                         @endif
                                     @endforeach
                                 </select>  
@@ -456,20 +453,20 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label my-md-0" for="borangA_perawis_peratusan_3">Peratusan 3:</label>
                             <div class="col-md-5">
-                                <input type="number" id="borangA_perawis_peratusan_3" name="borangA_perawis_peratusan_3" class="form-control" placeholder="Peratusan" value="{{ old('borangA_perawis_peratusan_3',isset($perawiss->borangA_perawis_peratusan_3)?$perawiss->borangA_perawis_peratusan_3:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
+                                <input type="number" id="borangA_perawis_peratusan_3" name="borangA_perawis_peratusan_3" class="form-control" placeholder="Nyatakan Peratusan 3..." value="{{ old('borangA_perawis_peratusan_3',isset($borangIds->borangA_perawis_peratusan_3)?$borangIds->borangA_perawis_peratusan_3:null) }}" {{ $tajuk == "Paparan" ? 'disabled' : '' }} min=0 step=0.01>
                                 @error('borangA_perawis_peratusan_3') 
                                 <small class='text-danger'>{{ $message }}</small> 
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <select class="form-control" name="perawis_unit" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
-                                    <option value="">Pilih Unit...</option>
-                                    <option value='%w/w' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
-                                    <option value='mg/mat' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
-                                    <option value='I.U./mg' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'I.U./mg' ? 'selected' : '' }}>I.U./mg</option>
-                                    <option value='ITU/mg' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'ITU/mg' ? 'selected' : '' }}>ITU/mg</option>
-                                    <option value='mg/unit' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
-                                    <option value='Lain-lain (nyatakan)' {{ old('perawis_unit',isset($perawiss->perawis_unit)?$perawiss->perawis_unit:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>
+                                <select class="form-control" name="borangA_perawis_peratusan_unit_3" {{ $tajuk == "Paparan" ? 'disabled' : '' }}>
+                                    <option value="">Pilih Unit 3...</option>
+                                    <option value='%w/w' {{ old('borangA_perawis_peratusan_unit_3',isset($borangIds->borangA_perawis_peratusan_unit_3)?$borangIds->borangA_perawis_peratusan_unit_3:null) == '%w/w' ? 'selected' : '' }}>%w/w</option>
+                                    <option value='mg/mat' {{ old('borangA_perawis_peratusan_unit_3',isset($borangIds->borangA_perawis_peratusan_unit_3)?$borangIds->borangA_perawis_peratusan_unit_3:null) == 'mg/mat' ? 'selected' : '' }}>mg/mat</option>
+                                    <option value='I.U./mg' {{ old('borangA_perawis_peratusan_unit_3',isset($borangIds->borangA_perawis_peratusan_unit_3)?$borangIds->borangA_perawis_peratusan_unit_3:null) == 'I.U./mg' ? 'selected' : '' }}>I.U./mg</option>
+                                    <option value='ITU/mg' {{ old('borangA_perawis_peratusan_unit_3',isset($borangIds->borangA_perawis_peratusan_unit_3)?$borangIds->borangA_perawis_peratusan_unit_3:null) == 'ITU/mg' ? 'selected' : '' }}>ITU/mg</option>
+                                    <option value='mg/unit' {{ old('borangA_perawis_peratusan_unit_3',isset($borangIds->borangA_perawis_peratusan_unit_3)?$borangIds->borangA_perawis_peratusan_unit_3:null) == 'mg/unit' ? 'selected' : '' }}>mg/unit</option>
+                                    {{--<option value='Lain-lain (nyatakan)' {{ old('borangA_perawis_peratusan_unit_3',isset($borangIds->borangA_perawis_peratusan_unit_3)?$borangIds->borangA_perawis_peratusan_unit_3:null) == 'Lain-lain (nyatakan)' ? 'selected' : '' }}>Lain-lain (nyatakan)</option>--}}
                                 </select>
                                 @error('perawis_unit') 
                                 <small class='text-danger'>{{ $message }}</small> 
