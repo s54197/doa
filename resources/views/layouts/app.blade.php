@@ -92,6 +92,14 @@
                             <li class="menu-title">MENU UTAMA</li>
 
                             <li>
+                                <a href="{{ route('dashboard') }}">
+                                    <i class="fe-bar-chart-2"></i>
+                                    {{-- <span class="badge badge-danger float-right">3</span> --}}
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="javascript: void(0);">
                                     <i class="fe-clipboard"></i>
                                     <span>Rekod Maklumat Am</span>
@@ -387,6 +395,12 @@
         <script src="/assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
         <script src="/assets/libs/autonumeric/autoNumeric-min.js"></script>
         <script src="/assets/js/pages/form-masks.init.js"></script>
+
+        
+        <!-- Google Charts js -->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+        <script src="/assets/js/pages/google-charts.init.js"></script>
 
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
