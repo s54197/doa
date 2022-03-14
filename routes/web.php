@@ -205,6 +205,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/download_cert/{id}', [App\Http\Controllers\PdfController::class, 'download_certificate'])->name('download.cert');
     Route::get('/download_letter/{id}', [App\Http\Controllers\PdfController::class, 'download_letter'])->name('download.letter');
 
+    /***********************************
+                   laporan
+    ***********************************/
+
+    Route::get('/laporan/bulanan', [App\Http\Controllers\LaporanBulananController::class, 'index'])->name('laporan.bulanan');
+
+
 });
 
 

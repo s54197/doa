@@ -91,13 +91,13 @@
 
                             <li class="menu-title">MENU UTAMA</li>
 
-                            <li>
+                            <!-- <li>
                                 <a href="{{ route('dashboard') }}">
                                     <i class="fe-bar-chart-2"></i>
                                     {{-- <span class="badge badge-danger float-right">3</span> --}}
                                     <span>Dashboard</span>
                                 </a>
-                            </li>
+                            </li> -->
 
                             <li>
                                 <a href="javascript: void(0);">
@@ -124,6 +124,18 @@
                                     {{-- <span class="badge badge-danger float-right">3</span> --}}
                                     <span>Pendaftaran (Borang A)</span>
                                 </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="fe-clipboard"></i>
+                                    <span>Laporan</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{ route('laporan.bulanan') }}">Bulanan {{--<span class="badge badge-blue float-right">13</span>--}}</a></li>
+                                </ul>
                             </li>
 
                             <li class="menu-title">LAIN-LAIN</li>
