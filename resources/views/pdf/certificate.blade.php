@@ -7,7 +7,7 @@
         <style>
             .cert{
                 font-family: Arial, Helvetica, sans-serif;
-                font-size: 12px
+                font-size: 12px;
             }
             .no_siri{
                 float: right;
@@ -77,7 +77,7 @@
                 <td class="right font-bold" colspan="3">NO SIRI: <span style="font-family: font-family: 'Courier New', Courier, monospace">{{ $no_siri }}</span> </th>
             </tr>
             <tr>
-                <td class="center" colspan="3"><img src="{{ public_path('assets/images/logo kerajaan malaysia.jpg') }}" height="100px"></td>
+                <td class="center" colspan="3"><img src="{{ public_path('assets/images/logo kerajaan malaysia.jpg') }}" height="70px"></td>
             </tr>
             <tr>
                 <td class="center font-bold" style="font-size:12px; padding-bottom: 7px" colspan="3">KERAJAAN MALAYSIA</td>
@@ -101,41 +101,41 @@
                 <td class="center five_pixel" style="font-size:12px; padding-bottom: 3px" colspan="3">Adalah dengan ini diperakui bahawa racun makhluk perosak yang butir-butirnya dinyatakan di bawah ini telah didaftarkan <br> di bawah subseksyen 9(1) Akta Racun Makhluk Perosak 1974 [<span style="font-style: italic">Akta 149</span>] oleh Lembaga Racun Makhluk Perosak <br> selama tempoh lima tahun, tertakluk kepada syarat-syarat yang dinyatakan di bawah ini, dan telah diberikan</td>
             </tr>
             <tr>
-                <td class="center five_pixel" style="padding-bottom: 15px" colspan="3">nombor pendaftaran <span class="font-bold">{{ $no_pendaftaran }}</span></td>
+                <td class="center five_pixel" style="padding-bottom: 15px" colspan="3">nombor pendaftaran <span class="font-bold">LRMP.{{ $no_pendaftaran }}</span></td>
             </tr>
             <tr>
                 <td class="center font-bold five_pixel" style="padding-bottom: 15px" colspan="3">BUTIR-BUTIR RACUN MAKHLUK PEROSAK</td>
             </tr>
             <tr>
-                <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Pendaftar</span> </td>
+                <td class="font-bold five_pixel left alignLabel" style="padding-left: 70px; width: 150px;"><span>Pendaftar</span> </td>
                 <td class="font-bold five_pixel" colspan="2">{{ $pendaftar }} </td>
             </tr>
             <tr>
-                <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Nama Dagangan</span></td>
+                <td class="font-bold five_pixel left alignLabel" style="padding-left: 70px" colspan="1"><span>Nama Dagangan</span></td>
                 <td class="font-bold five_pixel" colspan="2">{{ $nama_dagangan }} </td>
             </tr>
             <tr>
-                <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Perawis Aktif</span></td>
+                <td class="font-bold five_pixel left alignLabel" style="padding-left: 70px" colspan="1"><span>Perawis Aktif</span></td>
                 <td class="font-bold five_pixel" colspan="2">{{ $perawis_aktif }} </td>
             </tr>
             <tr>
-                <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Kepekatan</span></td>
+                <td class="font-bold five_pixel left alignLabel" style="padding-left: 70px" colspan="1"><span>Kepekatan</span></td>
                 <td class="font-bold five_pixel" colspan="2">{{ $kepekatan }} </td>
             </tr>
             <tr>
-                <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Perumusan</span></td>
+                <td class="font-bold five_pixel left alignLabel" style="padding-left: 70px" colspan="1"><span>Perumusan</span></td>
                 <td class="font-bold five_pixel" colspan="2">{{ $perumusan }} </td>
             </tr>
             <tr>
-                <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Kelas</span></td>
+                <td class="font-bold five_pixel left alignLabel" style="padding-left: 70px" colspan="1"><span>Kelas</span></td>
                 <td class="font-bold five_pixel" colspan="2">KELAS {{ $kelas }} </td>
             </tr>
             <tr>
-                <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Penggunaan</span></td>
+                <td class="font-bold five_pixel left alignLabel" style="padding-left: 70px" colspan="1"><span>Penggunaan</span></td>
                 <td class="font-bold five_pixel" colspan="2">{{ $penggunaan }} </td>
             </tr>
             <tr>
-                <td class="font-bold five_pixel left alignLabel" style="padding-left: 100px" colspan="1"><span>Tempoh Sah</span></td>
+                <td class="font-bold five_pixel left alignLabel" style="padding-left: 70px" colspan="1"><span>Tempoh Sah</span></td>
                 <td class="font-bold five_pixel" colspan="2">{{ strtoupper($tempoh_sah) }} </td>
             </tr>
         </table>
