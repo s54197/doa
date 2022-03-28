@@ -210,7 +210,8 @@ Route::middleware('auth')->group(function() {
     ***********************************/
 
     Route::get('/laporan/bulanan', [App\Http\Controllers\LaporanBulananController::class, 'index'])->name('laporan.bulanan');
-
+    // generate data laporan
+    Route::post('laporan/bulanan/data', [App\Http\Controllers\LaporanBulananController::class, 'generate'])->name('laporan.bulanan.data');
 
 });
 

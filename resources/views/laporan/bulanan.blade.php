@@ -30,15 +30,19 @@
             <div class="card-box">
                 <h4 class="header-title mb-3">Tetapan Laporan</h4>
                 <form class="form-inline">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="staticEmail2" class="sr-only">Email</label>
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Pilih Tarikh">
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="inputPassword2" class="mr-2">Pilih Tarikh:</label>
+                        {{-- <input type="password" class="form-control mr-2" id="inputPassword2" placeholder="Password"> --}}
+                        <input class="form-control mr-2" id="pilih_tarikh" type="text" autocomplete="off" name="pilih_tarikh" data-date-orientation="bottom" data-date-format="dd-mm-yyyy" value="">
                     </div>
-                    <div class="form-group mx-md-3">
-                        <label for="inputPassword2" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Generate</button>
+                    <button type="button" class="btn btn-primary" id="jana_laporan">
+                        Jana Laporan
+                        <i id="loading_icon" class="ml-1 mdi mdi-spin mdi-loading" style="display: none"></i>
+                    </button>
                 </form>
             </div>
         </div>
@@ -47,7 +51,7 @@
             <div class="card-box">
                 <div class="row mb-2 mb-sm-3">
                     <div class="col-12 col-md-10">
-                        <h4 class="header-title">Senarai Peracun Rosak</div></h4>
+                        <h4 class="header-title">Senarai Pendaftar</div></h4>
                     <div class="col-12 col-md-2">
                         <!-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah Syarikat</button>
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right ml-1"
@@ -107,24 +111,87 @@ Adakah anda bersetuju untuk memadam data?
 @section('local_js')
 <script>
 $(document).ready(function () {
-    var table = $('#datatable').DataTable({
-        lengthChange: true,
-        responsive: false,
-        // scrollX: true,
-        // dom: 'Bfrtip',
-        buttons: [
-            'excel',
-        ]
-        // language: {
-        //     "paginate": {
-        //         "previous": "<i class='mdi mdi-chevron-left'>",
-        //         "next": "<i class='mdi mdi-chevron-right'>"
-        //     }
-        // },
-        // "drawCallback": function () {
-        //     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
-        // }
+
+    // generate table
+    $("#jana_laporan").on("click", function(){
+        // alert($("#pilih_tarikh").val());
+        $("#loading_icon").show();
+        table.ajax.reload(function () {
+            // hide loading icon
+            $("#loading_icon").hide();
+        });
     });
+
+    // initialize date field using datepicker plugin
+    $('input[name="pilih_tarikh"]').datepicker();
+    // $('input[name="pilih_tarikh"]').attr("placeholder","Tarikh Lulus - Pilih dari kalendar");
+
+    // initialize activity name table
+    var table = $("#datatable").DataTable({
+            // order: [[4, 'desc']],
+            // processing: true,
+            // serverSide: true,
+            paging: true,
+            bFilter: true,
+            destroy: true,
+            scrollX: true,
+            autoWidth: true,
+            buttons: [
+                'excel',
+            ],
+            ajax: {
+                url: "{{ route('laporan.bulanan.data') }}",
+                type: "post",
+                dataSrc: 'pendaftar',
+                data: function(data) {
+                    data.date = $("#pilih_tarikh").val();
+                }
+            },
+            // language:{
+            //     loadingRecords: "<div class='spinner-border text-primary' role='status'><span class='sr-only'>Loading...</span></div>",
+            //     paginate:{
+            //         previous:"<i class='mdi mdi-chevron-left'>",next:"<i class='mdi mdi-chevron-right'>"
+            //     }
+            // },
+            // drawCallback:function(){
+            //     $(".dataTables_paginate > .pagination").addClass("pagination-rounded")},
+            columns: [
+                { 'data': 'bil' },
+                { 'data': 'lrmp' },
+                { 'data': 'syarikat' },
+                { 'data': 'nama_dagangan' },
+                { 'data': 'perawis_aktif' },
+                { 'data': 'peratusan' },
+                { 'data': 'perumusan' },
+                // { 'className': 'text-center', 'data': 'planned_start' },
+                // { 'className': 'text-center', 'data': 'actual_end_date' },
+                // { 'className': 'text-center', 'data': 'status' },
+                // { 'className': 'text-center', 'data': 'product_name' },
+                // { 'className': 'text-center', 'data': 'comments' },
+                // { 'className': 'text-center', 'data': 'owner' },
+                // { 'className': 'text-center', 'data': 'staff_id' },
+            ],
+            rowId: 'bil', //to enable click on row
+        });
+
+    // var table = $('#datatable').DataTable({
+    //     lengthChange: true,
+    //     responsive: false,
+    //     // scrollX: true,
+    //     // dom: 'Bfrtip',
+    //     buttons: [
+    //         'excel',
+    //     ]
+    //     // language: {
+    //     //     "paginate": {
+    //     //         "previous": "<i class='mdi mdi-chevron-left'>",
+    //     //         "next": "<i class='mdi mdi-chevron-right'>"
+    //     //     }
+    //     // },
+    //     // "drawCallback": function () {
+    //     //     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
+    //     // }
+    // });
 
     $(".btn-excel").on("click", function() {
         table.button( '.buttons-excel' ).trigger();
