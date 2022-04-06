@@ -26,7 +26,8 @@ class GudangController extends Controller
             $gudangs = Gudang::all();
         } else {
             // All data gudang
-            $gudangs = User::find(Auth::user()->id)->gudangs;
+            // $gudangs = User::find(Auth::user()->id)->gudangs;
+            $gudangs = Gudang::all();
         }
 
         // Summary

@@ -44,7 +44,8 @@ class AgenController extends Controller
             $agens = Agen::all();
         } else {
             // All data agen
-            $agens = User::find(Auth::user()->id)->agens;
+            // $agens = User::find(Auth::user()->id)->agens;
+            $agens = Agen::all();
         }
 
         // Summary

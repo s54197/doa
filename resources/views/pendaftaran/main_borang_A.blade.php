@@ -103,9 +103,7 @@
                             <th>Nama Dagangan</th>
                             <th>Nombor Pendaftaran</th>
                             <th>Status</th>
-                            @admin
                             <th class="hidden-sm">Tetapan</th>
-                            @endadmin
                         </tr>
                     </thead>
     
@@ -124,12 +122,14 @@
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="{{ route('papar.pendaftaran', $borangA->id) }}"><i class="mdi mdi-file-document-box-search-outline mr-2 text-muted font-18 vertical-middle"></i>Papar</a>
+                                        @admin
                                         <a class="dropdown-item" href="{{ route('kemaskini.pendaftaran', $borangA->id) }}"><i class="mdi mdi-file-document-box-plus-outline mr-2 text-muted font-18 vertical-middle"></i>Kemaskini</a>
                                         <a class="dropdown-item padam" href="#" id="padam_{{ $borangA->id }}" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="mdi mdi-file-document-box-remove-outline mr-2 text-muted font-18 vertical-middle"></i>Padam</a>
                                         <a class="dropdown-item" href="{{ route('create.letter', $borangA->id) }}"><i class="mdi mdi-clipboard-check mr-2 text-muted font-18 vertical-middle"></i>Sahkan Surat</a>
                                         <a class="dropdown-item" href="{{ route('download.letter', $borangA->id) }}"><i class="mdi mdi-file-download mr-2 text-muted font-18 vertical-middle"></i>Muat Turun Surat</a>
                                         <a class="dropdown-item" href="{{ route('create.cert', $borangA->id) }}"><i class="mdi mdi mdi-clipboard-check-outline mr-2 text-muted font-18 vertical-middle"></i>Sahkan Sijil</a>
                                         <a class="dropdown-item" href="{{ route('download.cert', $borangA->id) }}"><i class="mdi mdi mdi-file-download-outline mr-2 text-muted font-18 vertical-middle"></i>Muat Turun Sijil</a>
+                                        @endadmin
                                     </div>
                                 </div>
                             </td>

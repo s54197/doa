@@ -34,7 +34,8 @@ class SyarikatController extends Controller
             $syarikats = Syarikat::all();
         } else {
             // All data syarikat
-            $syarikats = User::find(Auth::user()->id)->syarikats;
+            // $syarikats = User::find(Auth::user()->id)->syarikats;
+            $syarikats = Syarikat::all();
         }
             // Summary
         $TotalSyarikat = Syarikat::count();

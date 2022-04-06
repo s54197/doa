@@ -26,7 +26,8 @@ class PembekalController extends Controller
         } else {
             // All data pembekal
             // $pembekals = User::find(Auth::user()->id)->pembekals;
-            $pembekals = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pembekal')->get();
+            // $pembekals = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pembekal')->get();
+            $pembekals = PihakKetiga::where('pihak_ketiga_jenis','pembekal')->get();
         }
 
         // Summary

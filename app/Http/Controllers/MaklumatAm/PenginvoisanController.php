@@ -25,7 +25,8 @@ class PenginvoisanController extends Controller
             $penginvoisans = Penginvoisan::all();
         } else {
             // All data penginvoisan
-            $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
+            // $penginvoisans = User::find(Auth::user()->id)->penginvoisans;
+            $penginvoisans = Penginvoisan::all();
         }
 
         // Summary

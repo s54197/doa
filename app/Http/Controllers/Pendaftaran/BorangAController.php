@@ -36,7 +36,8 @@ class BorangAController extends Controller
         
         } else {
             // All data borangA
-            $borangAs = User::find(Auth::user()->id)->borangAs()->with('syarikat','agen','produk')->get();
+            // $borangAs = User::find(Auth::user()->id)->borangAs()->with('syarikat','agen','produk')->get();
+            $borangAs = BorangA::with('syarikat','agen','produk')->get();
         }
         
         // Reformat date

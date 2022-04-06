@@ -26,7 +26,8 @@ class PerawisController extends Controller
             $perawiss = Perawis::all();
         } else {
             // All data perawis
-            $perawiss = User::find(Auth::user()->id)->perawiss;
+            // $perawiss = User::find(Auth::user()->id)->perawiss;
+            $perawiss = Perawis::all();
         }
 
         // Summary

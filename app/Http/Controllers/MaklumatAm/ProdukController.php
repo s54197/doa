@@ -25,7 +25,8 @@ class ProdukController extends Controller
             $produks = Produk::all();
         } else {
             // All data produk
-            $produks = User::find(Auth::user()->id)->produks;
+            // $produks = User::find(Auth::user()->id)->produks;
+            $produks = Produk::all();
         }
 
         // Summary

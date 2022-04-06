@@ -24,7 +24,8 @@ class PengilangController extends Controller
             $pengilangs = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
         } else {
             // All data pengilang
-            $pengilangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->get();
+            // $pengilangs = User::find(Auth::user()->id)->pihakketigas()->where('pihak_ketiga_jenis','pengilang')->get();
+            $pengilangs = PihakKetiga::where('pihak_ketiga_jenis','pengilang')->get();
         }
 
         // Summary
