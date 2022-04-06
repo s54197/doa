@@ -111,7 +111,7 @@
                         @foreach($borangAs as $borangA)
                         <tr>
                             <td>{{$borangA->syarikat->syarikat_nama}}</td>
-                            <td>{{$borangA->agen->agen_nama}}</td>
+                            <td>{{$borangA->borangA_jenis_penndaftara}}</td>
                             <td>{{$borangA->borangA_tarikh_lulus}}</td>
                             <td>{{$borangA->borangA_tarikh_tamat}}</td>
                             <td>{{$borangA->produk->produk_nama}}</td>
