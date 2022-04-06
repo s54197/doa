@@ -67,8 +67,10 @@
                         <h4 class="header-title">Senarai Pendaftar</div></h4>
                     <div class="col-12 col-md-2">
                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect float-right">Tambah Syarikat</button> --}}
+                        @admin
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right"
                         onclick="window.location='{{ route("baru.pendaftaran") }}'">Daftar Baru</button>
+                        @endadmin
                         <button type="button" class="btn waves-effect waves-light btn-primary float-md-right btn-excel mr-1"
                         >Excel</button>
                     </div>
@@ -101,7 +103,9 @@
                             <th>Nama Dagangan</th>
                             <th>Nombor Pendaftaran</th>
                             <th>Status</th>
+                            @admin
                             <th class="hidden-sm">Tetapan</th>
+                            @endadmin
                         </tr>
                     </thead>
     
